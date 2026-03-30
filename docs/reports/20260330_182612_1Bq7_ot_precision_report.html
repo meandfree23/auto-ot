@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="ko" class="theme-light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative Strategic Assets: Visual IQ Report</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-primary': '#0F172A',
+                        'slate-dark': '#0f172a'
+                    },
+                    borderRadius: { 'strategic': '1.5rem' }
+                }
+            }
+        }
+    </script>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        :root { --accent: #0F172A; }
+        html.theme-light {
+            --bg: #F8FAFC; --surface: #FFFFFF; --surface-hover: #F1F5F9;
+            --border: rgba(15, 23, 42, 0.08);
+            --text: #0F172A; --text-secondary: #64748B;
+        }
+        body {
+            font-family: 'Inter', 'Noto Sans KR', sans-serif;
+            background: var(--bg); color: var(--text);
+            line-height: 1.6; -webkit-font-smoothing: antialiased;
+        }
+        .strategic-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+            transition: all 0.5s cubic-bezier(0.2, 1, 0.2, 1);
+        }
+        .strategic-card:hover { transform: translateY(-5px); box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.1); }
+        .slide-section {
+            min-height: 100vh;
+            padding: 120px 8% 80px 8%;
+            border-bottom: 2px solid var(--border);
+        }
+        .core-sentence {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 950; letter-spacing: -0.06em; line-height: 1.1;
+            margin-bottom: 2.5rem;
+        }
+        .animate-item { opacity: 0; transform: translateY(30px); transition: all 1s cubic-bezier(0.2, 1, 0.2, 1); }
+        .animate-item.visible { opacity: 1; transform: translateY(0); }
+        .bento-grid { display: grid; grid-template-columns: repeat(1, 1fr); gap: 1.5rem; }
+        @media (min-width: 768px) {
+            .bento-grid { grid-template-columns: repeat(3, 1fr); }
+            .span-2 { grid-column: span 2; }
+        }
+        /* Browser Mockup Frame */
+        .browser-mockup {
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            overflow: hidden;
+            box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.2);
+        }
+        .browser-header {
+            background: #E2E8F0; padding: 6px 12px; display: flex; align-items: center; gap: 6px;
+        }
+        .dot { w: 6px; h: 6px; border-radius: 50%; display: inline-block; }
+        .dot-red { background: #FF5F56; } .dot-yellow { background: #FFBD2E; } .dot-green { background: #27C93F; }
+    </style>
+</head>
+<body class="antialiased theme-light">
+    <header class="fixed top-0 left-0 w-full p-6 flex justify-between items-center z-50 bg-white/80 backdrop-blur-xl border-b border-white/20">
+        <div class="flex items-center gap-4">
+            <div class="w-10 h-10 bg-brand-primary rounded-2xl flex items-center justify-center text-white shadow-xl rotate-3">
+                <i data-lucide="sparkles" class="w-6 h-6"></i>
+            </div>
+            <div class="flex flex-col uppercase">
+                <span class="font-black tracking-tighter text-xl leading-none">High Fidelity Dashboard</span>
+                <span class="text-[9px] font-bold text-slate-400 tracking-widest mt-1">Multi-Media V12.0</span>
+            </div>
+        </div>
+    </header>
+
+    <main id="slides-wrapper">
+        
+    <section class="slide-section" id="slide-title">
+        <div class="max-w-7xl mx-auto w-full pt-20">
+            <h1 class="core-sentence animate-item">Creative Strategic Assets: Visual IQ Report</h1>
+            <div class="h-1 w-64 bg-brand-primary mb-12 animate-item"></div>
+            <p class="text-3xl font-light text-slate-500 mb-12 animate-item max-w-4xl">Multi-Media Intelligence & Strategic Dashboard</p>
+        </div>
+    </section>
+        <section class="slide-section">
+            <div class="max-w-7xl mx-auto w-full">
+                <div class="flex items-center gap-8 mb-16 animate-item">
+                    <span class="text-brand-primary font-black text-xs tracking-widest uppercase">Visual Insights Dash 01</span>
+                    <div class="h-px flex-1 bg-slate-200"></div>
+                </div>
+                <div class="bento-grid">
+            <div class="strategic-card span-2 animate-item flex flex-col p-8 border-slate-200">
+                <div class="flex justify-between items-center mb-6">
+                    <span class="bg-slate-100 text-slate-500 px-3 py-1 rounded-md text-[9px] font-black tracking-widest uppercase">Strategy</span>
+                </div>
+                <h3 class="text-xl font-bold mb-6 leading-tight">크리에이티브 로직 및 레퍼런스</h3>
+                <ul class="flex-1"><li class="flex items-start gap-3 mb-3 text-sm font-medium"><span class="w-1.5 h-1.5 bg-brand-primary rounded-full mt-1.5 shrink-0"></span><span>전략: '세탁'의 행위를 단순 가사가 아닌 '하이엔드 자기 관리(Self-care Ritual)'로 재정의</span></li><li class="flex items-start gap-3 mb-3 text-sm font-medium"><span class="w-1.5 h-1.5 bg-brand-primary rounded-full mt-1.5 shrink-0"></span><span>Insight: 기능적 소구(세척력)를 배제하고 감각적 소구가(잔향, 감촉)에 100% 집중하는 대담한 시각화</span></li></ul>
+                <div class="grid grid-cols-1 gap-2 mt-4">
+                    <div class="group relative mt-4 overflow-hidden rounded-xl animate-item shadow-md hover:shadow-xl transition-all">
+                        <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=2070" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute bottom-0 left-0 w-full p-2 bg-black/60 backdrop-blur-sm text-[8px] text-white opacity-0 group-hover:opacity-100 transition-opacity">
+                            <b>Luxury White Fabric Texture Reference</b> &bull; Unsplash / Premium
+                        </div>
+                    </div></div>
+                <div class="mt-6 pt-4 border-t border-slate-50 text-slate-300 text-[9px] truncate"><i data-lucide="link-2" class="w-3 h-3 inline"></i> https://www.laundrysauce.com/</div>
+            </div>
+            <div class="strategic-card span-2 animate-item flex flex-col p-8 border-brand-primary">
+                <div class="flex justify-between items-center mb-6">
+                    <span class="bg-brand-primary text-white px-3 py-1 rounded-md text-[9px] font-black tracking-widest uppercase">Creative</span>
+                </div>
+                <h3 class="text-xl font-bold mb-6 leading-tight">톤앤매너 상세 무드보드</h3>
+                <ul class="flex-1"><li class="flex items-start gap-3 mb-3 text-sm font-medium"><span class="w-1.5 h-1.5 bg-brand-primary rounded-full mt-1.5 shrink-0"></span><span>Palette: Monochromatic White, Cream, Soft Gray의 극단적 미절제</span></li><li class="flex items-start gap-3 mb-3 text-sm font-medium"><span class="w-1.5 h-1.5 bg-brand-primary rounded-full mt-1.5 shrink-0"></span><span>Lighting: 자연광(Soft Natural Light) 시뮬레이션 및 섀도우 미학 활용</span></li><li class="flex items-start gap-3 mb-3 text-sm font-medium"><span class="w-1.5 h-1.5 bg-brand-primary rounded-full mt-1.5 shrink-0"></span><span>Vibe: 'Silent Luxury' - 소리 없는 고급스러움의 시각적 정의</span></li></ul>
+                <div class="grid grid-cols-2 gap-2 mt-4">
+                    <div class="group relative mt-4 overflow-hidden rounded-xl animate-item shadow-md hover:shadow-xl transition-all">
+                        <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=2070" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute bottom-0 left-0 w-full p-2 bg-black/60 backdrop-blur-sm text-[8px] text-white opacity-0 group-hover:opacity-100 transition-opacity">
+                            <b>Tone #1</b> &bull; AD
+                        </div>
+                    </div>
+                    <div class="group relative mt-4 overflow-hidden rounded-xl animate-item shadow-md hover:shadow-xl transition-all">
+                        <img src="https://images.unsplash.com/photo-1518005020480-4966763a3c22?auto=format&fit=crop&q=80&w=2070" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute bottom-0 left-0 w-full p-2 bg-black/60 backdrop-blur-sm text-[8px] text-white opacity-0 group-hover:opacity-100 transition-opacity">
+                            <b>Texture #1</b> &bull; Unsplash
+                        </div>
+                    </div>
+                    <div class="group relative mt-4 overflow-hidden rounded-xl animate-item shadow-md hover:shadow-xl transition-all">
+                        <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&q=80&w=2070" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute bottom-0 left-0 w-full p-2 bg-black/60 backdrop-blur-sm text-[8px] text-white opacity-0 group-hover:opacity-100 transition-opacity">
+                            <b>Minimalism</b> &bull; Architectural Design
+                        </div>
+                    </div>
+                    <div class="group relative mt-4 overflow-hidden rounded-xl animate-item shadow-md hover:shadow-xl transition-all">
+                        <img src="https://images.unsplash.com/photo-1505691723518-36a5ac3be353?auto=format&fit=crop&q=80&w=2070" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute bottom-0 left-0 w-full p-2 bg-black/60 backdrop-blur-sm text-[8px] text-white opacity-0 group-hover:opacity-100 transition-opacity">
+                            <b>Fabric</b> &bull; Unsplash
+                        </div>
+                    </div></div>
+                
+            </div>
+            <div class="strategic-card span-2 animate-item flex flex-col p-8 border-slate-200">
+                <div class="flex justify-between items-center mb-6">
+                    <span class="bg-slate-100 text-slate-500 px-3 py-1 rounded-md text-[9px] font-black tracking-widest uppercase">Capture</span>
+                </div>
+                <h3 class="text-xl font-bold mb-6 leading-tight">글로벌 경쟁사 웹사이트 UX 캡처</h3>
+                <ul class="flex-1"><li class="flex items-start gap-3 mb-3 text-sm font-medium"><span class="w-1.5 h-1.5 bg-brand-primary rounded-full mt-1.5 shrink-0"></span><span>Laundry Sauce (USA): 럭셔리 향수 세제 시장의 선두주자, 웹사이트 UX / UI 캡처</span></li><li class="flex items-start gap-3 mb-3 text-sm font-medium"><span class="w-1.5 h-1.5 bg-brand-primary rounded-full mt-1.5 shrink-0"></span><span>DedCool: 니치 브랜드의 감각적인 상품 상세 페이지 구성 요소 분석</span></li></ul>
+                <div class="grid grid-cols-1 gap-2 mt-4">
+                    <div class="browser-mockup mt-4 animate-item">
+                        <div class="browser-header"><span class="dot dot-red w-2 h-2"></span><span class="dot dot-yellow w-2 h-2"></span><span class="dot dot-green w-2 h-2"></span></div>
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=2070" class="w-full h-auto object-cover border-t border-slate-200">
+                        <div class="p-2 bg-slate-50 text-[8px] font-bold text-slate-400 uppercase italic">Capture: Competitor UI Layout Reference</div>
+                    </div></div>
+                
+            </div>
+            <div class="strategic-card  animate-item flex flex-col p-8 border-slate-200">
+                <div class="flex justify-between items-center mb-6">
+                    <span class="bg-slate-100 text-slate-500 px-3 py-1 rounded-md text-[9px] font-black tracking-widest uppercase">Visual</span>
+                </div>
+                <h3 class="text-xl font-bold mb-6 leading-tight">페르소나 및 라이프스타일 컷</h3>
+                <ul class="flex-1"><li class="flex items-start gap-3 mb-3 text-sm font-medium"><span class="w-1.5 h-1.5 bg-brand-primary rounded-full mt-1.5 shrink-0"></span><span>Target: 도심의 고밀도 업무와 소음에 노출된 2534 고소득 직장인</span></li><li class="flex items-start gap-3 mb-3 text-sm font-medium"><span class="w-1.5 h-1.5 bg-brand-primary rounded-full mt-1.5 shrink-0"></span><span>Needs: 일상의 번잡함에서 벗어난 '정제된 공간'과 '향기의 안식처'</span></li></ul>
+                <div class="grid grid-cols-1 gap-2 mt-4">
+                    <div class="group relative mt-4 overflow-hidden rounded-xl animate-item shadow-md hover:shadow-xl transition-all">
+                        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=2070" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute bottom-0 left-0 w-full p-2 bg-black/60 backdrop-blur-sm text-[8px] text-white opacity-0 group-hover:opacity-100 transition-opacity">
+                            <b>Urban Sanctuary</b> &bull; Unsplash
+                        </div>
+                    </div></div>
+                
+            </div></div>
+            </div>
+        </section>
+        <section class="slide-section">
+            <div class="max-w-7xl mx-auto w-full">
+                <div class="flex items-center gap-8 mb-16 animate-item">
+                    <span class="text-brand-primary font-black text-xs tracking-widest uppercase">Visual Insights Dash 02</span>
+                    <div class="h-px flex-1 bg-slate-200"></div>
+                </div>
+                <div class="bento-grid">
+            <div class="strategic-card  animate-item flex flex-col p-8 border-slate-200">
+                <div class="flex justify-between items-center mb-6">
+                    <span class="bg-slate-100 text-slate-500 px-3 py-1 rounded-md text-[9px] font-black tracking-widest uppercase">Formula</span>
+                </div>
+                <h3 class="text-xl font-bold mb-6 leading-tight">영상 미학 및 무드 필름 가이드</h3>
+                <ul class="flex-1"><li class="flex items-start gap-3 mb-3 text-sm font-medium"><span class="w-1.5 h-1.5 bg-brand-primary rounded-full mt-1.5 shrink-0"></span><span>Production Q = (S * T) / M (Quality = Scent * Texture / Minimalist Design)</span></li><li class="flex items-start gap-3 mb-3 text-sm font-medium"><span class="w-1.5 h-1.5 bg-brand-primary rounded-full mt-1.5 shrink-0"></span><span>Visual Logic: Tyndall Effect(틴들 효과)를 통한 향기 입자의 시각화</span></li></ul>
+                <div class="grid grid-cols-1 gap-2 mt-4">
+                    <div class="video-container mt-4 rounded-xl shadow-lg overflow-hidden animate-item">
+                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+                    </div></div>
+                
+            </div>
+            <div class="strategic-card  animate-item flex flex-col p-8 border-slate-200">
+                <div class="flex justify-between items-center mb-6">
+                    <span class="bg-slate-100 text-slate-500 px-3 py-1 rounded-md text-[9px] font-black tracking-widest uppercase">Macro</span>
+                </div>
+                <h3 class="text-xl font-bold mb-6 leading-tight">글로벌 거시 트렌드: 'Silent Luxury'</h3>
+                <ul class="flex-1"><li class="flex items-start gap-3 mb-3 text-sm font-medium"><span class="w-1.5 h-1.5 bg-brand-primary rounded-full mt-1.5 shrink-0"></span><span>Deep analysis detail for 06. 글로벌 거시 트렌드: 'Silent Luxury' [Macro].</span></li></ul>
+                
+                
+            </div>
+            <div class="strategic-card  animate-item flex flex-col p-8 border-slate-200">
+                <div class="flex justify-between items-center mb-6">
+                    <span class="bg-slate-100 text-slate-500 px-3 py-1 rounded-md text-[9px] font-black tracking-widest uppercase">SNS</span>
+                </div>
+                <h3 class="text-xl font-bold mb-6 leading-tight">SNS 비주얼 커뮤니케이션: Instagram Reels</h3>
+                <ul class="flex-1"><li class="flex items-start gap-3 mb-3 text-sm font-medium"><span class="w-1.5 h-1.5 bg-brand-primary rounded-full mt-1.5 shrink-0"></span><span>Deep analysis detail for 07. SNS 비주얼 커뮤니케이션: Instagram Reels [SNS].</span></li></ul>
+                
+                
+            </div>
+            <div class="strategic-card  animate-item flex flex-col p-8 border-slate-200">
+                <div class="flex justify-between items-center mb-6">
+                    <span class="bg-slate-100 text-slate-500 px-3 py-1 rounded-md text-[9px] font-black tracking-widest uppercase">Persona</span>
+                </div>
+                <h3 class="text-xl font-bold mb-6 leading-tight">타겟 마케팅 페르소나 분석</h3>
+                <ul class="flex-1"><li class="flex items-start gap-3 mb-3 text-sm font-medium"><span class="w-1.5 h-1.5 bg-brand-primary rounded-full mt-1.5 shrink-0"></span><span>Deep analysis detail for 08. 타겟 마케팅 페르소나 분석 [Persona].</span></li></ul>
+                
+                
+            </div></div>
+            </div>
+        </section>
+        <section class="slide-section">
+            <div class="max-w-7xl mx-auto w-full">
+                <div class="flex items-center gap-8 mb-16 animate-item">
+                    <span class="text-brand-primary font-black text-xs tracking-widest uppercase">Visual Insights Dash 03</span>
+                    <div class="h-px flex-1 bg-slate-200"></div>
+                </div>
+                <div class="bento-grid">
+            <div class="strategic-card  animate-item flex flex-col p-8 border-slate-200">
+                <div class="flex justify-between items-center mb-6">
+                    <span class="bg-slate-100 text-slate-500 px-3 py-1 rounded-md text-[9px] font-black tracking-widest uppercase">Competitor</span>
+                </div>
+                <h3 class="text-xl font-bold mb-6 leading-tight">경쟁사 소구점 분석 A: 'P' 브랜드</h3>
+                <ul class="flex-1"><li class="flex items-start gap-3 mb-3 text-sm font-medium"><span class="w-1.5 h-1.5 bg-brand-primary rounded-full mt-1.5 shrink-0"></span><span>Deep analysis detail for 09. 경쟁사 소구점 분석 A: 'P' 브랜드 [Competitor].</span></li></ul>
+                
+                
+            </div>
+            <div class="strategic-card  animate-item flex flex-col p-8 border-slate-200">
+                <div class="flex justify-between items-center mb-6">
+                    <span class="bg-slate-100 text-slate-500 px-3 py-1 rounded-md text-[9px] font-black tracking-widest uppercase">Competitor</span>
+                </div>
+                <h3 class="text-xl font-bold mb-6 leading-tight">경쟁사 소구점 분석 B: 'L' 브랜드</h3>
+                <ul class="flex-1"><li class="flex items-start gap-3 mb-3 text-sm font-medium"><span class="w-1.5 h-1.5 bg-brand-primary rounded-full mt-1.5 shrink-0"></span><span>Deep analysis detail for 10. 경쟁사 소구점 분석 B: 'L' 브랜드 [Competitor].</span></li></ul>
+                
+                
+            </div>
+            <div class="strategic-card  animate-item flex flex-col p-8 border-slate-200">
+                <div class="flex justify-between items-center mb-6">
+                    <span class="bg-slate-100 text-slate-500 px-3 py-1 rounded-md text-[9px] font-black tracking-widest uppercase">Insight</span>
+                </div>
+                <h3 class="text-xl font-bold mb-6 leading-tight">인문학적 고찰: '정화(Purification)'의 미학</h3>
+                <ul class="flex-1"><li class="flex items-start gap-3 mb-3 text-sm font-medium"><span class="w-1.5 h-1.5 bg-brand-primary rounded-full mt-1.5 shrink-0"></span><span>Deep analysis detail for 11. 인문학적 고찰: '정화(Purification)'의 미학 [Insight].</span></li></ul>
+                
+                
+            </div>
+            <div class="strategic-card  animate-item flex flex-col p-8 border-slate-200">
+                <div class="flex justify-between items-center mb-6">
+                    <span class="bg-slate-100 text-slate-500 px-3 py-1 rounded-md text-[9px] font-black tracking-widest uppercase">Tech</span>
+                </div>
+                <h3 class="text-xl font-bold mb-6 leading-tight">테크놀로지 브랜딩: 'Scent-Lock-Cell'</h3>
+                <ul class="flex-1"><li class="flex items-start gap-3 mb-3 text-sm font-medium"><span class="w-1.5 h-1.5 bg-brand-primary rounded-full mt-1.5 shrink-0"></span><span>Deep analysis detail for 12. 테크놀로지 브랜딩: 'Scent-Lock-Cell' [Tech].</span></li></ul>
+                
+                
+            </div></div>
+            </div>
+        </section>
+        <section class="slide-section">
+            <div class="max-w-7xl mx-auto w-full">
+                <div class="flex items-center gap-8 mb-16 animate-item">
+                    <span class="text-brand-primary font-black text-xs tracking-widest uppercase">Visual Insights Dash 04</span>
+                    <div class="h-px flex-1 bg-slate-200"></div>
+                </div>
+                <div class="bento-grid">
+            <div class="strategic-card  animate-item flex flex-col p-8 border-slate-200">
+                <div class="flex justify-between items-center mb-6">
+                    <span class="bg-slate-100 text-slate-500 px-3 py-1 rounded-md text-[9px] font-black tracking-widest uppercase">Case</span>
+                </div>
+                <h3 class="text-xl font-bold mb-6 leading-tight">글로벌 벤치마킹 - Fashion/Hospitality</h3>
+                <ul class="flex-1"><li class="flex items-start gap-3 mb-3 text-sm font-medium"><span class="w-1.5 h-1.5 bg-brand-primary rounded-full mt-1.5 shrink-0"></span><span>Deep analysis detail for 13. 글로벌 벤치마킹 - Fashion/Hospitality [Case].</span></li></ul>
+                
+                
+            </div>
+            <div class="strategic-card  animate-item flex flex-col p-8 border-slate-200">
+                <div class="flex justify-between items-center mb-6">
+                    <span class="bg-slate-100 text-slate-500 px-3 py-1 rounded-md text-[9px] font-black tracking-widest uppercase">Media</span>
+                </div>
+                <h3 class="text-xl font-bold mb-6 leading-tight">미디어 믹스 전략: 고감도 매체 타겟팅</h3>
+                <ul class="flex-1"><li class="flex items-start gap-3 mb-3 text-sm font-medium"><span class="w-1.5 h-1.5 bg-brand-primary rounded-full mt-1.5 shrink-0"></span><span>Deep analysis detail for 14. 미디어 믹스 전략: 고감도 매체 타겟팅 [Media].</span></li></ul>
+                
+                
+            </div>
+            <div class="strategic-card  animate-item flex flex-col p-8 border-slate-200">
+                <div class="flex justify-between items-center mb-6">
+                    <span class="bg-slate-100 text-slate-500 px-3 py-1 rounded-md text-[9px] font-black tracking-widest uppercase">Strategy</span>
+                </div>
+                <h3 class="text-xl font-bold mb-6 leading-tight">핵심 전략 방향성: 'The Essence of White'</h3>
+                <ul class="flex-1"><li class="flex items-start gap-3 mb-3 text-sm font-medium"><span class="w-1.5 h-1.5 bg-brand-primary rounded-full mt-1.5 shrink-0"></span><span>Deep analysis detail for 15. 핵심 전략 방향성: 'The Essence of White' [Strategy].</span></li></ul>
+                
+                
+            </div>
+            <div class="strategic-card  animate-item flex flex-col p-8 border-slate-200">
+                <div class="flex justify-between items-center mb-6">
+                    <span class="bg-slate-100 text-slate-500 px-3 py-1 rounded-md text-[9px] font-black tracking-widest uppercase">Roadmap</span>
+                </div>
+                <h3 class="text-xl font-bold mb-6 leading-tight">제작 스케줄 및 타임라인 (30-60-90)</h3>
+                <ul class="flex-1"><li class="flex items-start gap-3 mb-3 text-sm font-medium"><span class="w-1.5 h-1.5 bg-brand-primary rounded-full mt-1.5 shrink-0"></span><span>Deep analysis detail for 16. 제작 스케줄 및 타임라인 (30-60-90) [Roadmap].</span></li></ul>
+                
+                
+            </div></div>
+            </div>
+        </section>
+        <section class="slide-section">
+            <div class="max-w-7xl mx-auto w-full">
+                <div class="flex items-center gap-8 mb-16 animate-item">
+                    <span class="text-brand-primary font-black text-xs tracking-widest uppercase">Visual Insights Dash 05</span>
+                    <div class="h-px flex-1 bg-slate-200"></div>
+                </div>
+                <div class="bento-grid">
+            <div class="strategic-card  animate-item flex flex-col p-8 border-slate-200">
+                <div class="flex justify-between items-center mb-6">
+                    <span class="bg-slate-100 text-slate-500 px-3 py-1 rounded-md text-[9px] font-black tracking-widest uppercase">Governance</span>
+                </div>
+                <h3 class="text-xl font-bold mb-6 leading-tight">마케팅 거버넌스 및 가이드라인</h3>
+                <ul class="flex-1"><li class="flex items-start gap-3 mb-3 text-sm font-medium"><span class="w-1.5 h-1.5 bg-brand-primary rounded-full mt-1.5 shrink-0"></span><span>Deep analysis detail for 17. 마케팅 거버넌스 및 가이드라인 [Governance].</span></li></ul>
+                
+                
+            </div>
+            <div class="strategic-card  animate-item flex flex-col p-8 border-slate-200">
+                <div class="flex justify-between items-center mb-6">
+                    <span class="bg-slate-100 text-slate-500 px-3 py-1 rounded-md text-[9px] font-black tracking-widest uppercase">Caution</span>
+                </div>
+                <h3 class="text-xl font-bold mb-6 leading-tight">잠재적 리스크 관리 (Risk & Plan B)</h3>
+                <ul class="flex-1"><li class="flex items-start gap-3 mb-3 text-sm font-medium"><span class="w-1.5 h-1.5 bg-brand-primary rounded-full mt-1.5 shrink-0"></span><span>Deep analysis detail for 18. 잠재적 리스크 관리 (Risk & Plan B) [Caution].</span></li></ul>
+                
+                
+            </div>
+            <div class="strategic-card  animate-item flex flex-col p-8 border-slate-200">
+                <div class="flex justify-between items-center mb-6">
+                    <span class="bg-slate-100 text-slate-500 px-3 py-1 rounded-md text-[9px] font-black tracking-widest uppercase">Result</span>
+                </div>
+                <h3 class="text-xl font-bold mb-6 leading-tight">기대 효과 및 정성적 성과 (ROI/ROAS)</h3>
+                <ul class="flex-1"><li class="flex items-start gap-3 mb-3 text-sm font-medium"><span class="w-1.5 h-1.5 bg-brand-primary rounded-full mt-1.5 shrink-0"></span><span>Deep analysis detail for 19. 기대 효과 및 정성적 성과 (ROI/ROAS) [Result].</span></li></ul>
+                
+                
+            </div>
+            <div class="strategic-card  animate-item flex flex-col p-8 border-slate-200">
+                <div class="flex justify-between items-center mb-6">
+                    <span class="bg-slate-100 text-slate-500 px-3 py-1 rounded-md text-[9px] font-black tracking-widest uppercase">Final</span>
+                </div>
+                <h3 class="text-xl font-bold mb-6 leading-tight">리포트 결언 및 Q&A</h3>
+                <ul class="flex-1"><li class="flex items-start gap-3 mb-3 text-sm font-medium"><span class="w-1.5 h-1.5 bg-brand-primary rounded-full mt-1.5 shrink-0"></span><span>Deep analysis detail for 20. 리포트 결언 및 Q&A [Final].</span></li></ul>
+                
+                
+            </div></div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    const children = entry.target.querySelectorAll('.animate-item');
+                    children.forEach((child, idx) => {
+                        setTimeout(() => child.classList.add('visible'), idx * 80);
+                    });
+                }
+            });
+        }, { threshold: 0.05 });
+        document.querySelectorAll('.animate-item, section .slide-section').forEach(el => observer.observe(el));
+        lucide.createIcons();
+        
+    </script>
+</body>
+</html>
