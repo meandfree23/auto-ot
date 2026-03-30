@@ -9,6 +9,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+    <script src="https://unpkg.com/framer-motion@10.16.4/dist/framer-motion.js"></script>
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -16,9 +17,12 @@
                 extend: {
                     colors: {
                         'brand-primary': '#0F172A',
+                        'organic-sage': '#4A6741',
+                        'organic-clay': '#C08261',
+                        'organic-paper': '#FDFCF9',
                         'slate-dark': '#0f172a'
                     },
-                    borderRadius: { 'strategic': '1.5rem' }
+                    borderRadius: { 'strategic': '2rem' }
                 }
             }
         }
@@ -27,64 +31,74 @@
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         :root { --accent: #0F172A; }
         html.theme-light {
-            --bg: #F8FAFC; --surface: #FFFFFF; --surface-hover: #F1F5F9;
-            --border: rgba(15, 23, 42, 0.08);
-            --text: #0F172A; --text-secondary: #64748B;
+            --bg: #FDFCF9; --surface: rgba(255, 255, 255, 0.4); 
+            --border: rgba(74, 103, 65, 0.15);
+            --text: #2C3E2D; --text-secondary: #5C6F5E;
         }
         body {
             font-family: 'Inter', 'Noto Sans KR', sans-serif;
             background: var(--bg); color: var(--text);
             line-height: 1.6; -webkit-font-smoothing: antialiased;
+            background-image: radial-gradient(circle at 10% 20%, rgba(74, 103, 65, 0.03) 0%, transparent 20%),
+                              radial-gradient(circle at 90% 80%, rgba(192, 130, 97, 0.03) 0%, transparent 20%);
         }
-        .strategic-card {
+        .glass-card {
             background: var(--surface);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border: 1px solid var(--border);
-            border-radius: 1.5rem;
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
-            transition: all 0.5s cubic-bezier(0.2, 1, 0.2, 1);
+            border-radius: 2rem;
+            box-shadow: 0 8px 32px 0 rgba(74, 103, 65, 0.05);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .strategic-card:hover { transform: translateY(-5px); box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.1); }
+        .glass-card:hover { 
+            transform: translateY(-8px) scale(1.01); 
+            background: rgba(255, 255, 255, 0.6);
+            box-shadow: 0 20px 40px -10px rgba(74, 103, 65, 0.12);
+            border-color: rgba(74, 103, 65, 0.3);
+        }
         .slide-section {
             min-height: 100vh;
-            padding: 120px 8% 80px 8%;
-            border-bottom: 2px solid var(--border);
+            padding: 140px 10% 100px 10%;
+            border-bottom: 1px solid var(--border);
+            display: flex; flex-direction: column; justify-content: center;
         }
         .core-sentence {
-            font-size: clamp(2.5rem, 5vw, 4.5rem);
-            font-weight: 950; letter-spacing: -0.06em; line-height: 1.1;
-            margin-bottom: 2.5rem;
+            font-size: clamp(3rem, 6vw, 5.5rem);
+            font-weight: 900; letter-spacing: -0.05em; line-height: 1.05;
+            margin-bottom: 3rem; color: #1B2B1D;
         }
-        .animate-item { opacity: 0; transform: translateY(30px); transition: all 1s cubic-bezier(0.2, 1, 0.2, 1); }
-        .animate-item.visible { opacity: 1; transform: translateY(0); }
-        .bento-grid { display: grid; grid-template-columns: repeat(1, 1fr); gap: 1.5rem; }
-        @media (min-width: 768px) {
+        .animated-entry { opacity: 0; transform: translateY(40px); }
+        .bento-grid { display: grid; grid-template-columns: repeat(1, 1fr); gap: 2rem; }
+        @media (min-width: 1024px) {
             .bento-grid { grid-template-columns: repeat(3, 1fr); }
             .span-2 { grid-column: span 2; }
         }
-        /* Browser Mockup Frame */
         .browser-mockup {
-            border: 1px solid var(--border);
-            border-radius: 0.75rem;
-            overflow: hidden;
-            box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.2);
+            border-radius: 1rem; overflow: hidden;
+            box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(0, 0, 0, 0.05);
         }
-        .browser-header {
-            background: #E2E8F0; padding: 6px 12px; display: flex; align-items: center; gap: 6px;
-        }
-        .dot { w: 6px; h: 6px; border-radius: 50%; display: inline-block; }
-        .dot-red { background: #FF5F56; } .dot-yellow { background: #FFBD2E; } .dot-green { background: #27C93F; }
+        .browser-header { background: #F1F5F9; padding: 10px 16px; display: flex; gap: 8px; }
+        .dot { width: 8px; height: 8px; border-radius: 50%; }
+        .dot-red { background: #FF5F57; } .dot-yellow { background: #FEBC2E; } .dot-green { background: #28C840; }
     </style>
 </head>
 <body class="antialiased theme-light">
-    <header class="fixed top-0 left-0 w-full p-6 flex justify-between items-center z-50 bg-white/80 backdrop-blur-xl border-b border-white/20">
+    <header class="fixed top-0 left-0 w-full p-8 flex justify-between items-center z-50 bg-white/30 backdrop-blur-md border-b border-white/20">
+        <div class="flex items-center gap-5">
+            <div class="w-12 h-12 bg-organic-sage rounded-[1.25rem] flex items-center justify-center text-white shadow-lg rotate-6 hover:rotate-0 transition-transform duration-500">
+                <i data-lucide="leaf" class="w-7 h-7"></i>
+            </div>
+            <div class="flex flex-col">
+                <span class="font-black tracking-tighter text-2xl leading-none color-[#1B2B1D]">Visualize Intelligence</span>
+                <span class="text-[10px] font-bold text-organic-sage tracking-[0.2em] mt-1.5 uppercase">V16.1 Premium Edition</span>
+            </div>
+        </div>
         <div class="flex items-center gap-4">
-            <div class="w-10 h-10 bg-brand-primary rounded-2xl flex items-center justify-center text-white shadow-xl rotate-3">
-                <i data-lucide="sparkles" class="w-6 h-6"></i>
-            </div>
-            <div class="flex flex-col uppercase">
-                <span class="font-black tracking-tighter text-xl leading-none">High Fidelity Dashboard</span>
-                <span class="text-[9px] font-bold text-slate-400 tracking-widest mt-1">Multi-Media V12.0</span>
-            </div>
+             <button onclick="toggleTheme()" class="w-12 h-12 rounded-full bg-white/50 border border-white/20 flex items-center justify-center shadow-sm hover:shadow-md transition-all">
+                <i data-lucide="sun" id="theme-icon" class="w-5 h-5 text-organic-clay"></i>
+             </button>
         </div>
     </header>
 
@@ -92,26 +106,26 @@
         
     <section class="slide-section" id="slide-title">
         <div class="max-w-7xl mx-auto w-full pt-20">
-            <h1 class="core-sentence animate-item">OT Intelligence Report: 20260330_182612_1Bq7_ot</h1>
-            <div class="h-1 w-64 bg-brand-primary mb-12 animate-item"></div>
-            <p class="text-3xl font-light text-slate-500 mb-12 animate-item max-w-4xl">Multi-Media Intelligence & Strategic Dashboard</p>
+            <h1 class="core-sentence animated-entry">OT Intelligence Report: 20260330_182612_1Bq7_ot</h1>
+            <div class="h-1 w-64 bg-brand-primary mb-12 animated-entry"></div>
+            <p class="text-3xl font-light text-slate-500 mb-12 animated-entry max-w-4xl">Multi-Media Intelligence & Strategic Dashboard</p>
         </div>
     </section>
         <section class="slide-section">
             <div class="max-w-7xl mx-auto w-full">
-                <div class="flex items-center gap-8 mb-16 animate-item">
+                <div class="flex items-center gap-8 mb-16 animated-entry">
                     <span class="text-brand-primary font-black text-xs tracking-widest uppercase">Visual Insights Dash 01</span>
                     <div class="h-px flex-1 bg-slate-200"></div>
                 </div>
                 <div class="bento-grid">
-            <div class="strategic-card span-2 animate-item flex flex-col p-8 border-brand-primary">
+            <div class="glass-card span-2 animated-entry flex flex-col p-8 border-brand-primary">
                 <div class="flex justify-between items-center mb-6">
                     <span class="bg-brand-primary text-white px-3 py-1 rounded-md text-[9px] font-black tracking-widest uppercase">Strategy</span>
                 </div>
                 <h3 class="text-xl font-bold mb-6 leading-tight">핵심 전략 로직</h3>
                 <ul class="flex-1"><li class="flex items-start gap-3 mb-3 text-sm font-medium"><span class="w-1.5 h-1.5 bg-brand-primary rounded-full mt-1.5 shrink-0"></span><span>*   **투명성 소구**: Human-grade 등급의 원재료를 가공 과정 없이 그대로 보여주는 'Sizzle Style' 비주얼로 글로벌 신뢰도 확보.</span></li></ul>
                 <div class="grid grid-cols-1 gap-2 mt-4">
-                    <div class="group relative mt-4 overflow-hidden rounded-xl animate-item shadow-md hover:shadow-xl transition-all">
+                    <div class="group relative mt-4 overflow-hidden rounded-xl animated-entry shadow-md hover:shadow-xl transition-all">
                         <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=2070" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500">
                         <div class="absolute bottom-0 left-0 w-full p-2 bg-black/60 backdrop-blur-sm text-[8px] text-white opacity-0 group-hover:opacity-100 transition-opacity">
                             <b>Strategic Visualization</b> &bull; Unsplash Intelligence
@@ -119,20 +133,20 @@
                     </div></div>
                 
             </div>
-            <div class="strategic-card span-2 animate-item flex flex-col p-8 border-brand-primary">
+            <div class="glass-card span-2 animated-entry flex flex-col p-8 border-brand-primary">
                 <div class="flex justify-between items-center mb-6">
                     <span class="bg-brand-primary text-white px-3 py-1 rounded-md text-[9px] font-black tracking-widest uppercase">Creative</span>
                 </div>
                 <h3 class="text-xl font-bold mb-6 leading-tight">톤앤매너 상세 무드보드</h3>
                 <ul class="flex-1"><li class="flex items-start gap-3 mb-3 text-sm font-medium"><span class="w-1.5 h-1.5 bg-brand-primary rounded-full mt-1.5 shrink-0"></span><span>반려동물 사료 시장은 '식사'에서 '건강 관리(Self-care Ritual for Pets)'로 그 중심이 이동했습니다. 2026년 기준 80% 이상의 MZ세대 반려들이 자신의 자녀와 동일한 건강 기준을 반려동물에게 적용하고 있으며, 이에 따라 'Humanization(의인화)'과 'Premiumization(프리미엄화)'이 성장의 핵심 엔진입니다.</span></li><li class="flex items-start gap-3 mb-3 text-sm font-medium"><span class="w-1.5 h-1.5 bg-brand-primary rounded-full mt-1.5 shrink-0"></span><span>글로벌 시장은 Mars(마즈), Nestle Purina(네슬레 퓨리나), Hill's(힐스), Blue Buffalo(블루 버팔로) 등이 지배하고 있으나, 최근에는 츄립과 같은 '기능성 특화 브랜드'들이 DTC(고객 직접 판매) 채널을 통해 급성장하고 있습니다.</span></li><li class="flex items-start gap-3 mb-3 text-sm font-medium"><span class="w-1.5 h-1.5 bg-brand-primary rounded-full mt-1.5 shrink-0"></span><span>*   **강점**: 7종 컬러 기반의 직관적 라인업, 수의사 Eric 설계, 아마존 입점용 고밀도 비주얼.</span></li></ul>
                 <div class="grid grid-cols-2 gap-2 mt-4">
-                    <div class="group relative mt-4 overflow-hidden rounded-xl animate-item shadow-md hover:shadow-xl transition-all">
+                    <div class="group relative mt-4 overflow-hidden rounded-xl animated-entry shadow-md hover:shadow-xl transition-all">
                         <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=2070" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500">
                         <div class="absolute bottom-0 left-0 w-full p-2 bg-black/60 backdrop-blur-sm text-[8px] text-white opacity-0 group-hover:opacity-100 transition-opacity">
                             <b>Tone Ref</b> &bull; Visual Intelligence
                         </div>
                     </div>
-                    <div class="group relative mt-4 overflow-hidden rounded-xl animate-item shadow-md hover:shadow-xl transition-all">
+                    <div class="group relative mt-4 overflow-hidden rounded-xl animated-entry shadow-md hover:shadow-xl transition-all">
                         <img src="https://images.unsplash.com/photo-1518005020480-4966763a3c22?auto=format&fit=crop&q=80&w=2070" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500">
                         <div class="absolute bottom-0 left-0 w-full p-2 bg-black/60 backdrop-blur-sm text-[8px] text-white opacity-0 group-hover:opacity-100 transition-opacity">
                             <b>Texture Ref</b> &bull; Texture Lab
@@ -140,21 +154,21 @@
                     </div></div>
                 
             </div>
-            <div class="strategic-card span-2 animate-item flex flex-col p-8 border-brand-primary">
+            <div class="glass-card span-2 animated-entry flex flex-col p-8 border-brand-primary">
                 <div class="flex justify-between items-center mb-6">
                     <span class="bg-brand-primary text-white px-3 py-1 rounded-md text-[9px] font-black tracking-widest uppercase">Analysis</span>
                 </div>
                 <h3 class="text-xl font-bold mb-6 leading-tight">글로벌 경쟁사 분석 및 캡처</h3>
                 <ul class="flex-1"><li class="flex items-start gap-3 mb-3 text-sm font-medium"><span class="w-1.5 h-1.5 bg-brand-primary rounded-full mt-1.5 shrink-0"></span><span>반려동물 사료 시장은 '식사'에서 '건강 관리(Self-care Ritual for Pets)'로 그 중심이 이동했습니다. 2026년 기준 80% 이상의 MZ세대 반려들이 자신의 자녀와 동일한 건강 기준을 반려동물에게 적용하고 있으며, 이에 따라 'Humanization(의인화)'과 'Premiumization(프리미엄화)'이 성장의 핵심 엔진입니다.</span></li><li class="flex items-start gap-3 mb-3 text-sm font-medium"><span class="w-1.5 h-1.5 bg-brand-primary rounded-full mt-1.5 shrink-0"></span><span>글로벌 시장은 Mars(마즈), Nestle Purina(네슬레 퓨리나), Hill's(힐스), Blue Buffalo(블루 버팔로) 등이 지배하고 있으나, 최근에는 츄립과 같은 '기능성 특화 브랜드'들이 DTC(고객 직접 판매) 채널을 통해 급성장하고 있습니다.</span></li><li class="flex items-start gap-3 mb-3 text-sm font-medium"><span class="w-1.5 h-1.5 bg-brand-primary rounded-full mt-1.5 shrink-0"></span><span>*   **강점**: 7종 컬러 기반의 직관적 라인업, 수의사 Eric 설계, 아마존 입점용 고밀도 비주얼.</span></li></ul>
                 <div class="grid grid-cols-1 gap-2 mt-4">
-                    <div class="browser-mockup mt-4 animate-item">
+                    <div class="browser-mockup mt-4 animated-entry">
                         <div class="browser-header"><span class="dot dot-red w-2 h-2"></span><span class="dot dot-yellow w-2 h-2"></span><span class="dot dot-green w-2 h-2"></span></div>
                         <img src="https://images.unsplash.com/photo-1551288049-bbbda5012373?auto=format&fit=crop&q=80&w=2070" class="w-full h-auto object-cover border-t border-slate-200">
                         <div class="p-2 bg-slate-50 text-[8px] font-bold text-slate-400 uppercase italic">Capture: Competitor Analysis Map</div>
                     </div></div>
                 
             </div>
-            <div class="strategic-card  animate-item flex flex-col p-8 border-slate-200">
+            <div class="glass-card  animated-entry flex flex-col p-8 border-slate-200">
                 <div class="flex justify-between items-center mb-6">
                     <span class="bg-slate-100 text-slate-500 px-3 py-1 rounded-md text-[9px] font-black tracking-widest uppercase">Insight</span>
                 </div>
@@ -167,12 +181,12 @@
         </section>
         <section class="slide-section">
             <div class="max-w-7xl mx-auto w-full">
-                <div class="flex items-center gap-8 mb-16 animate-item">
+                <div class="flex items-center gap-8 mb-16 animated-entry">
                     <span class="text-brand-primary font-black text-xs tracking-widest uppercase">Visual Insights Dash 02</span>
                     <div class="h-px flex-1 bg-slate-200"></div>
                 </div>
                 <div class="bento-grid">
-            <div class="strategic-card  animate-item flex flex-col p-8 border-slate-200">
+            <div class="glass-card  animated-entry flex flex-col p-8 border-slate-200">
                 <div class="flex justify-between items-center mb-6">
                     <span class="bg-slate-100 text-slate-500 px-3 py-1 rounded-md text-[9px] font-black tracking-widest uppercase">Target</span>
                 </div>
@@ -181,7 +195,7 @@
                 
                 
             </div>
-            <div class="strategic-card  animate-item flex flex-col p-8 border-slate-200">
+            <div class="glass-card  animated-entry flex flex-col p-8 border-slate-200">
                 <div class="flex justify-between items-center mb-6">
                     <span class="bg-slate-100 text-slate-500 px-3 py-1 rounded-md text-[9px] font-black tracking-widest uppercase">Market</span>
                 </div>
@@ -190,7 +204,7 @@
                 
                 
             </div>
-            <div class="strategic-card  animate-item flex flex-col p-8 border-slate-200">
+            <div class="glass-card  animated-entry flex flex-col p-8 border-slate-200">
                 <div class="flex justify-between items-center mb-6">
                     <span class="bg-slate-100 text-slate-500 px-3 py-1 rounded-md text-[9px] font-black tracking-widest uppercase">Voice</span>
                 </div>
@@ -199,7 +213,7 @@
                 
                 
             </div>
-            <div class="strategic-card  animate-item flex flex-col p-8 border-slate-200">
+            <div class="glass-card  animated-entry flex flex-col p-8 border-slate-200">
                 <div class="flex justify-between items-center mb-6">
                     <span class="bg-slate-100 text-slate-500 px-3 py-1 rounded-md text-[9px] font-black tracking-widest uppercase">Media</span>
                 </div>
@@ -212,12 +226,12 @@
         </section>
         <section class="slide-section">
             <div class="max-w-7xl mx-auto w-full">
-                <div class="flex items-center gap-8 mb-16 animate-item">
+                <div class="flex items-center gap-8 mb-16 animated-entry">
                     <span class="text-brand-primary font-black text-xs tracking-widest uppercase">Visual Insights Dash 03</span>
                     <div class="h-px flex-1 bg-slate-200"></div>
                 </div>
                 <div class="bento-grid">
-            <div class="strategic-card  animate-item flex flex-col p-8 border-slate-200">
+            <div class="glass-card  animated-entry flex flex-col p-8 border-slate-200">
                 <div class="flex justify-between items-center mb-6">
                     <span class="bg-slate-100 text-slate-500 px-3 py-1 rounded-md text-[9px] font-black tracking-widest uppercase">Roadmap</span>
                 </div>
@@ -226,7 +240,7 @@
                 
                 
             </div>
-            <div class="strategic-card  animate-item flex flex-col p-8 border-slate-200">
+            <div class="glass-card  animated-entry flex flex-col p-8 border-slate-200">
                 <div class="flex justify-between items-center mb-6">
                     <span class="bg-slate-100 text-slate-500 px-3 py-1 rounded-md text-[9px] font-black tracking-widest uppercase">Risk</span>
                 </div>
@@ -235,7 +249,7 @@
                 
                 
             </div>
-            <div class="strategic-card  animate-item flex flex-col p-8 border-slate-200">
+            <div class="glass-card  animated-entry flex flex-col p-8 border-slate-200">
                 <div class="flex justify-between items-center mb-6">
                     <span class="bg-slate-100 text-slate-500 px-3 py-1 rounded-md text-[9px] font-black tracking-widest uppercase">Value</span>
                 </div>
@@ -244,7 +258,7 @@
                 
                 
             </div>
-            <div class="strategic-card  animate-item flex flex-col p-8 border-slate-200">
+            <div class="glass-card  animated-entry flex flex-col p-8 border-slate-200">
                 <div class="flex justify-between items-center mb-6">
                     <span class="bg-slate-100 text-slate-500 px-3 py-1 rounded-md text-[9px] font-black tracking-widest uppercase">Tech</span>
                 </div>
@@ -257,12 +271,12 @@
         </section>
         <section class="slide-section">
             <div class="max-w-7xl mx-auto w-full">
-                <div class="flex items-center gap-8 mb-16 animate-item">
+                <div class="flex items-center gap-8 mb-16 animated-entry">
                     <span class="text-brand-primary font-black text-xs tracking-widest uppercase">Visual Insights Dash 04</span>
                     <div class="h-px flex-1 bg-slate-200"></div>
                 </div>
                 <div class="bento-grid">
-            <div class="strategic-card  animate-item flex flex-col p-8 border-slate-200">
+            <div class="glass-card  animated-entry flex flex-col p-8 border-slate-200">
                 <div class="flex justify-between items-center mb-6">
                     <span class="bg-slate-100 text-slate-500 px-3 py-1 rounded-md text-[9px] font-black tracking-widest uppercase">Case</span>
                 </div>
@@ -271,7 +285,7 @@
                 
                 
             </div>
-            <div class="strategic-card  animate-item flex flex-col p-8 border-slate-200">
+            <div class="glass-card  animated-entry flex flex-col p-8 border-slate-200">
                 <div class="flex justify-between items-center mb-6">
                     <span class="bg-slate-100 text-slate-500 px-3 py-1 rounded-md text-[9px] font-black tracking-widest uppercase">Visual</span>
                 </div>
@@ -280,7 +294,7 @@
                 
                 
             </div>
-            <div class="strategic-card  animate-item flex flex-col p-8 border-slate-200">
+            <div class="glass-card  animated-entry flex flex-col p-8 border-slate-200">
                 <div class="flex justify-between items-center mb-6">
                     <span class="bg-slate-100 text-slate-500 px-3 py-1 rounded-md text-[9px] font-black tracking-widest uppercase">Audio</span>
                 </div>
@@ -289,7 +303,7 @@
                 
                 
             </div>
-            <div class="strategic-card  animate-item flex flex-col p-8 border-slate-200">
+            <div class="glass-card  animated-entry flex flex-col p-8 border-slate-200">
                 <div class="flex justify-between items-center mb-6">
                     <span class="bg-slate-100 text-slate-500 px-3 py-1 rounded-md text-[9px] font-black tracking-widest uppercase">Budget</span>
                 </div>
@@ -302,12 +316,12 @@
         </section>
         <section class="slide-section">
             <div class="max-w-7xl mx-auto w-full">
-                <div class="flex items-center gap-8 mb-16 animate-item">
+                <div class="flex items-center gap-8 mb-16 animated-entry">
                     <span class="text-brand-primary font-black text-xs tracking-widest uppercase">Visual Insights Dash 05</span>
                     <div class="h-px flex-1 bg-slate-200"></div>
                 </div>
                 <div class="bento-grid">
-            <div class="strategic-card  animate-item flex flex-col p-8 border-slate-200">
+            <div class="glass-card  animated-entry flex flex-col p-8 border-slate-200">
                 <div class="flex justify-between items-center mb-6">
                     <span class="bg-slate-100 text-slate-500 px-3 py-1 rounded-md text-[9px] font-black tracking-widest uppercase">Legal</span>
                 </div>
@@ -316,7 +330,7 @@
                 
                 
             </div>
-            <div class="strategic-card  animate-item flex flex-col p-8 border-slate-200">
+            <div class="glass-card  animated-entry flex flex-col p-8 border-slate-200">
                 <div class="flex justify-between items-center mb-6">
                     <span class="bg-slate-100 text-slate-500 px-3 py-1 rounded-md text-[9px] font-black tracking-widest uppercase">Ops</span>
                 </div>
@@ -325,7 +339,7 @@
                 
                 
             </div>
-            <div class="strategic-card  animate-item flex flex-col p-8 border-slate-200">
+            <div class="glass-card  animated-entry flex flex-col p-8 border-slate-200">
                 <div class="flex justify-between items-center mb-6">
                     <span class="bg-slate-100 text-slate-500 px-3 py-1 rounded-md text-[9px] font-black tracking-widest uppercase">Summary</span>
                 </div>
@@ -334,7 +348,7 @@
                 
                 
             </div>
-            <div class="strategic-card  animate-item flex flex-col p-8 border-slate-200">
+            <div class="glass-card  animated-entry flex flex-col p-8 border-slate-200">
                 <div class="flex justify-between items-center mb-6">
                     <span class="bg-slate-100 text-slate-500 px-3 py-1 rounded-md text-[9px] font-black tracking-widest uppercase">Next</span>
                 </div>
@@ -351,15 +365,40 @@
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    const children = entry.target.querySelectorAll('.animate-item');
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform = "translateY(0)";
+                    const children = entry.target.querySelectorAll('.animated-entry');
                     children.forEach((child, idx) => {
-                        setTimeout(() => child.classList.add('visible'), idx * 80);
+                        setTimeout(() => {
+                            child.style.opacity = "1";
+                            child.style.transform = "translateY(0)";
+                            child.style.transition = "all 0.8s cubic-bezier(0.16, 1, 0.3, 1)";
+                        }, idx * 120);
                     });
                 }
             });
-        }, { threshold: 0.05 });
-        document.querySelectorAll('.animate-item, section .slide-section').forEach(el => observer.observe(el));
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('section, .glass-card').forEach(el => {
+            el.style.transition = "all 1s cubic-bezier(0.16, 1, 0.3, 1)";
+            observer.observe(el);
+        });
+
+        function toggleTheme() {
+            const html = document.documentElement;
+            const icon = document.getElementById('theme-icon');
+            if (html.classList.contains('theme-light')) {
+                html.classList.remove('theme-light');
+                html.classList.add('dark');
+                icon.setAttribute('data-lucide', 'moon');
+            } else {
+                html.classList.remove('dark');
+                html.classList.add('theme-light');
+                icon.setAttribute('data-lucide', 'sun');
+            }
+            lucide.createIcons();
+        }
+
         lucide.createIcons();
         
     </script>
