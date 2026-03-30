@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OT Intelligence Report: 20260330_182612_1Bq7_ot</title>
+    <title>V17.0 Topic-First Intelligence: 20260330_182612_1Bq7_ot</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
     <script src="https://unpkg.com/framer-motion@10.16.4/dist/framer-motion.js"></script>
     <script>
         tailwind.config = {
@@ -16,347 +15,435 @@
             theme: {
                 extend: {
                     colors: {
-                        'brand-primary': '#0F172A',
+                        'brand-primary': '#4A6741',
                         'organic-sage': '#4A6741',
                         'organic-clay': '#C08261',
                         'organic-paper': '#FDFCF9',
                         'slate-dark': '#0f172a'
                     },
-                    borderRadius: { 'strategic': '2rem' }
+                    borderRadius: { 'strategic': '2.5rem' }
                 }
             }
         }
     </script>
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        :root { --accent: #0F172A; }
+        :root { --accent: #4A6741; }
         html.theme-light {
-            --bg: #FDFCF9; --surface: rgba(255, 255, 255, 0.4); 
-            --border: rgba(74, 103, 65, 0.15);
-            --text: #2C3E2D; --text-secondary: #5C6F5E;
+            --bg: #FDFCF9; --surface: rgba(255, 255, 255, 0.6); 
+            --border: rgba(74, 103, 65, 0.1);
+            --text: #1B2B1D; --text-secondary: #5C6F5E;
         }
         body {
             font-family: 'Inter', 'Noto Sans KR', sans-serif;
             background: var(--bg); color: var(--text);
             line-height: 1.6; -webkit-font-smoothing: antialiased;
-            background-image: radial-gradient(circle at 10% 20%, rgba(74, 103, 65, 0.03) 0%, transparent 20%),
-                              radial-gradient(circle at 90% 80%, rgba(192, 130, 97, 0.03) 0%, transparent 20%);
+            overflow-x: hidden;
         }
         .glass-card {
             background: var(--surface);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
             border: 1px solid var(--border);
-            border-radius: 2rem;
-            box-shadow: 0 8px 32px 0 rgba(74, 103, 65, 0.05);
-            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            border-radius: 2.5rem;
+            box-shadow: 0 10px 40px -10px rgba(74, 103, 65, 0.05);
+            transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .glass-card:hover { 
-            transform: translateY(-8px) scale(1.01); 
-            background: rgba(255, 255, 255, 0.6);
-            box-shadow: 0 20px 40px -10px rgba(74, 103, 65, 0.12);
+            transform: translateY(-12px) scale(1.02); 
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 30px 60px -15px rgba(74, 103, 65, 0.15);
             border-color: rgba(74, 103, 65, 0.3);
         }
         .slide-section {
             min-height: 100vh;
-            padding: 140px 10% 100px 10%;
+            padding: 160px 10% 120px 10%;
             border-bottom: 1px solid var(--border);
-            display: flex; flex-direction: column; justify-content: center;
+            position: relative;
         }
-        .core-sentence {
-            font-size: clamp(3rem, 6vw, 5.5rem);
-            font-weight: 900; letter-spacing: -0.05em; line-height: 1.05;
-            margin-bottom: 3rem; color: #1B2B1D;
+        .hero-title {
+            font-size: clamp(4rem, 8vw, 7rem);
+            font-weight: 950; letter-spacing: -0.06em; line-height: 1;
+            margin-bottom: 2rem; color: var(--organic-sage);
         }
-        .animated-entry { opacity: 0; transform: translateY(40px); }
-        .bento-grid { display: grid; grid-template-columns: repeat(1, 1fr); gap: 2rem; }
-        @media (min-width: 1024px) {
+        .sub-title {
+            font-size: 1.25rem; font-weight: 700; letter-spacing: 0.3em;
+            color: var(--organic-clay); text-transform: uppercase; margin-bottom: 1rem;
+        }
+        .nav-link {
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .nav-link::after {
+            content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px;
+            background: var(--organic-sage); transition: width 0.3s ease;
+        }
+        .nav-link:hover::after { width: 100%; }
+        
+        .animated-entry { opacity: 0; transform: translateY(50px); }
+        .bento-grid { display: grid; grid-template-columns: repeat(1, 1fr); gap: 2.5rem; }
+        @media (min-width: 1280px) {
             .bento-grid { grid-template-columns: repeat(3, 1fr); }
             .span-2 { grid-column: span 2; }
+            .span-3 { grid-column: span 3; }
         }
         .browser-mockup {
-            border-radius: 1rem; overflow: hidden;
-            box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.1);
-            border: 1px solid rgba(0, 0, 0, 0.05);
+            border-radius: 1.5rem; overflow: hidden;
+            box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.15);
         }
-        .browser-header { background: #F1F5F9; padding: 10px 16px; display: flex; gap: 8px; }
-        .dot { width: 8px; height: 8px; border-radius: 50%; }
-        .dot-red { background: #FF5F57; } .dot-yellow { background: #FEBC2E; } .dot-green { background: #28C840; }
     </style>
 </head>
 <body class="antialiased theme-light">
-    <header class="fixed top-0 left-0 w-full p-8 flex justify-between items-center z-50 bg-white/30 backdrop-blur-md border-b border-white/20">
-        <div class="flex items-center gap-5">
-            <div class="w-12 h-12 bg-organic-sage rounded-[1.25rem] flex items-center justify-center text-white shadow-lg rotate-6 hover:rotate-0 transition-transform duration-500">
-                <i data-lucide="leaf" class="w-7 h-7"></i>
+    <header class="fixed top-0 left-0 w-full p-8 flex justify-between items-center z-50 bg-white/40 backdrop-blur-xl border-b border-white/10">
+        <div class="flex items-center gap-6">
+            <div class="w-14 h-14 bg-organic-sage rounded-[1.5rem] flex items-center justify-center text-white shadow-2xl rotate-12">
+                <i data-lucide="layers" class="w-8 h-8"></i>
             </div>
             <div class="flex flex-col">
-                <span class="font-black tracking-tighter text-2xl leading-none color-[#1B2B1D]">Visualize Intelligence</span>
-                <span class="text-[10px] font-bold text-organic-sage tracking-[0.2em] mt-1.5 uppercase">V16.1 Premium Edition</span>
+                <span class="font-black tracking-tighter text-3xl leading-none">Topic-First Intelligence</span>
+                <span class="text-[11px] font-black text-organic-sage tracking-[0.3em] mt-2 uppercase">V17.0 Strategic Dashboard</span>
             </div>
         </div>
-        <div class="flex items-center gap-4">
-             <button onclick="toggleTheme()" class="w-12 h-12 rounded-full bg-white/50 border border-white/20 flex items-center justify-center shadow-sm hover:shadow-md transition-all">
+        <nav class="hidden xl:flex items-center gap-10 text-[10px] font-black uppercase tracking-[0.15em] text-slate-400">
+            <a href="#Market Intelligence" class="nav-link text-organic-sage">Market</a>
+            <a href="#Strategic Logic" class="nav-link">Strategy</a>
+            <a href="#Creative & Visual" class="nav-link">Creative</a>
+            <a href="#Execution & Roadmap" class="nav-link">Execution</a>
+            <button onclick="toggleTheme()" class="w-12 h-12 rounded-full bg-white/80 border border-white/20 flex items-center justify-center shadow-sm">
                 <i data-lucide="sun" id="theme-icon" class="w-5 h-5 text-organic-clay"></i>
-             </button>
-        </div>
+            </button>
+        </nav>
     </header>
 
     <main id="slides-wrapper">
         
-    <section class="slide-section" id="slide-title">
-        <div class="max-w-7xl mx-auto w-full pt-20">
-            <h1 class="core-sentence animated-entry">OT Intelligence Report: 20260330_182612_1Bq7_ot</h1>
-            <div class="h-1 w-64 bg-brand-primary mb-12 animated-entry"></div>
-            <p class="text-3xl font-light text-slate-500 mb-12 animated-entry max-w-4xl">Multi-Media Intelligence & Strategic Dashboard</p>
+    <section class="slide-section flex items-center" id="slide-intro">
+        <div class="max-w-7xl mx-auto w-full">
+            <div class="sub-title animated-entry">Intelligence Report</div>
+            <h1 class="hero-title animated-entry">V17.0 Topic-First Intelligence: 20260330_182612_1Bq7_ot</h1>
+            <div class="h-2 w-48 bg-organic-sage mb-12 animated-entry"></div>
+            <p class="text-4xl font-light text-slate-400 animated-entry max-w-5xl leading-tight">
+                Global market trends, strategic benchmarks, and high-fidelity creative blueprints synthesized for high-impact decision making.
+            </p>
         </div>
     </section>
-        <section class="slide-section">
+        <section class="slide-section" id="Market Intelligence">
             <div class="max-w-7xl mx-auto w-full">
-                <div class="flex items-center gap-8 mb-16 animated-entry">
-                    <span class="text-brand-primary font-black text-xs tracking-widest uppercase">Visual Insights Dash 01</span>
-                    <div class="h-px flex-1 bg-slate-200"></div>
-                </div>
-                <div class="bento-grid">
-            <div class="glass-card span-2 animated-entry flex flex-col p-8 border-brand-primary">
-                <div class="flex justify-between items-center mb-6">
-                    <span class="bg-brand-primary text-white px-3 py-1 rounded-md text-[9px] font-black tracking-widest uppercase">Strategy</span>
-                </div>
-                <h3 class="text-xl font-bold mb-6 leading-tight">핵심 전략 로직</h3>
-                <ul class="flex-1"><li class="flex items-start gap-3 mb-3 text-sm font-medium"><span class="w-1.5 h-1.5 bg-brand-primary rounded-full mt-1.5 shrink-0"></span><span>*   **투명성 소구**: Human-grade 등급의 원재료를 가공 과정 없이 그대로 보여주는 'Sizzle Style' 비주얼로 글로벌 신뢰도 확보.</span></li></ul>
-                <div class="grid grid-cols-1 gap-2 mt-4">
-                    <div class="group relative mt-4 overflow-hidden rounded-xl animated-entry shadow-md hover:shadow-xl transition-all">
-                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=2070" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500">
-                        <div class="absolute bottom-0 left-0 w-full p-2 bg-black/60 backdrop-blur-sm text-[8px] text-white opacity-0 group-hover:opacity-100 transition-opacity">
-                            <b>Strategic Visualization</b> &bull; Unsplash Intelligence
-                        </div>
-                    </div></div>
-                
-            </div>
-            <div class="glass-card span-2 animated-entry flex flex-col p-8 border-brand-primary">
-                <div class="flex justify-between items-center mb-6">
-                    <span class="bg-brand-primary text-white px-3 py-1 rounded-md text-[9px] font-black tracking-widest uppercase">Creative</span>
-                </div>
-                <h3 class="text-xl font-bold mb-6 leading-tight">톤앤매너 상세 무드보드</h3>
-                <ul class="flex-1"><li class="flex items-start gap-3 mb-3 text-sm font-medium"><span class="w-1.5 h-1.5 bg-brand-primary rounded-full mt-1.5 shrink-0"></span><span>반려동물 사료 시장은 '식사'에서 '건강 관리(Self-care Ritual for Pets)'로 그 중심이 이동했습니다. 2026년 기준 80% 이상의 MZ세대 반려들이 자신의 자녀와 동일한 건강 기준을 반려동물에게 적용하고 있으며, 이에 따라 'Humanization(의인화)'과 'Premiumization(프리미엄화)'이 성장의 핵심 엔진입니다.</span></li><li class="flex items-start gap-3 mb-3 text-sm font-medium"><span class="w-1.5 h-1.5 bg-brand-primary rounded-full mt-1.5 shrink-0"></span><span>글로벌 시장은 Mars(마즈), Nestle Purina(네슬레 퓨리나), Hill's(힐스), Blue Buffalo(블루 버팔로) 등이 지배하고 있으나, 최근에는 츄립과 같은 '기능성 특화 브랜드'들이 DTC(고객 직접 판매) 채널을 통해 급성장하고 있습니다.</span></li><li class="flex items-start gap-3 mb-3 text-sm font-medium"><span class="w-1.5 h-1.5 bg-brand-primary rounded-full mt-1.5 shrink-0"></span><span>*   **강점**: 7종 컬러 기반의 직관적 라인업, 수의사 Eric 설계, 아마존 입점용 고밀도 비주얼.</span></li></ul>
-                <div class="grid grid-cols-2 gap-2 mt-4">
-                    <div class="group relative mt-4 overflow-hidden rounded-xl animated-entry shadow-md hover:shadow-xl transition-all">
-                        <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=2070" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500">
-                        <div class="absolute bottom-0 left-0 w-full p-2 bg-black/60 backdrop-blur-sm text-[8px] text-white opacity-0 group-hover:opacity-100 transition-opacity">
-                            <b>Tone Ref</b> &bull; Visual Intelligence
-                        </div>
+                <div class="flex items-end justify-between mb-24 animated-entry">
+                    <div>
+                        <div class="sub-title">Category Focus</div>
+                        <h2 class="text-6xl font-black tracking-tighter">Market Intelligence</h2>
                     </div>
-                    <div class="group relative mt-4 overflow-hidden rounded-xl animated-entry shadow-md hover:shadow-xl transition-all">
-                        <img src="https://images.unsplash.com/photo-1518005020480-4966763a3c22?auto=format&fit=crop&q=80&w=2070" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500">
-                        <div class="absolute bottom-0 left-0 w-full p-2 bg-black/60 backdrop-blur-sm text-[8px] text-white opacity-0 group-hover:opacity-100 transition-opacity">
-                            <b>Texture Ref</b> &bull; Texture Lab
-                        </div>
-                    </div></div>
-                
-            </div>
-            <div class="glass-card span-2 animated-entry flex flex-col p-8 border-brand-primary">
-                <div class="flex justify-between items-center mb-6">
-                    <span class="bg-brand-primary text-white px-3 py-1 rounded-md text-[9px] font-black tracking-widest uppercase">Analysis</span>
+                    <div class="text-organic-sage font-black opacity-20 text-9xl leading-none select-none">
+                        M
+                    </div>
                 </div>
-                <h3 class="text-xl font-bold mb-6 leading-tight">글로벌 경쟁사 분석 및 캡처</h3>
-                <ul class="flex-1"><li class="flex items-start gap-3 mb-3 text-sm font-medium"><span class="w-1.5 h-1.5 bg-brand-primary rounded-full mt-1.5 shrink-0"></span><span>반려동물 사료 시장은 '식사'에서 '건강 관리(Self-care Ritual for Pets)'로 그 중심이 이동했습니다. 2026년 기준 80% 이상의 MZ세대 반려들이 자신의 자녀와 동일한 건강 기준을 반려동물에게 적용하고 있으며, 이에 따라 'Humanization(의인화)'과 'Premiumization(프리미엄화)'이 성장의 핵심 엔진입니다.</span></li><li class="flex items-start gap-3 mb-3 text-sm font-medium"><span class="w-1.5 h-1.5 bg-brand-primary rounded-full mt-1.5 shrink-0"></span><span>글로벌 시장은 Mars(마즈), Nestle Purina(네슬레 퓨리나), Hill's(힐스), Blue Buffalo(블루 버팔로) 등이 지배하고 있으나, 최근에는 츄립과 같은 '기능성 특화 브랜드'들이 DTC(고객 직접 판매) 채널을 통해 급성장하고 있습니다.</span></li><li class="flex items-start gap-3 mb-3 text-sm font-medium"><span class="w-1.5 h-1.5 bg-brand-primary rounded-full mt-1.5 shrink-0"></span><span>*   **강점**: 7종 컬러 기반의 직관적 라인업, 수의사 Eric 설계, 아마존 입점용 고밀도 비주얼.</span></li></ul>
-                <div class="grid grid-cols-1 gap-2 mt-4">
-                    <div class="browser-mockup mt-4 animated-entry">
-                        <div class="browser-header"><span class="dot dot-red w-2 h-2"></span><span class="dot dot-yellow w-2 h-2"></span><span class="dot dot-green w-2 h-2"></span></div>
-                        <img src="https://images.unsplash.com/photo-1551288049-bbbda5012373?auto=format&fit=crop&q=80&w=2070" class="w-full h-auto object-cover border-t border-slate-200">
-                        <div class="p-2 bg-slate-50 text-[8px] font-bold text-slate-400 uppercase italic">Capture: Competitor Analysis Map</div>
-                    </div></div>
                 
-            </div>
-            <div class="glass-card  animated-entry flex flex-col p-8 border-slate-200">
-                <div class="flex justify-between items-center mb-6">
-                    <span class="bg-slate-100 text-slate-500 px-3 py-1 rounded-md text-[9px] font-black tracking-widest uppercase">Insight</span>
+                <div class="bento-grid">
+                <div class="glass-card span-3 animated-entry p-12 border-white/20 flex flex-col">
+                    <div class="flex justify-between items-center mb-8">
+                        <span class="bg-slate-100 text-slate-500 px-4 py-1.5 rounded-full text-[10px] font-black tracking-widest uppercase">Market</span>
+                    </div>
+                    <h3 class="text-2xl font-black mb-8 leading-[1.1]">시장 환경 및 글로벌 트렌드 [Trend]</h3>
+                    <ul class="flex-1 text-slate-600">
+                <li class="flex items-start gap-4 mb-5 text-sm font-semibold group">
+                    <span class="w-2 h-2 bg-organic-clay rounded-full mt-2 transition-transform group-hover:scale-150 shrink-0"></span>
+                    <span class="leading-relaxed">리서치 데이터를 분석 중입니다.</span>
+                </li>
+                <li class="flex items-start gap-4 mb-5 text-sm font-semibold group">
+                    <span class="w-2 h-2 bg-organic-clay rounded-full mt-2 transition-transform group-hover:scale-150 shrink-0"></span>
+                    <span class="leading-relaxed">해당 섹션의 세부 내용을 OT에서 추출하고 있습니다.</span>
+                </li></ul>
+                    
                 </div>
-                <h3 class="text-xl font-bold mb-6 leading-tight">핵심 인사이트 및 발견점</h3>
-                <ul class="flex-1"><li class="flex items-start gap-3 mb-3 text-sm font-medium"><span class="w-1.5 h-1.5 bg-brand-primary rounded-full mt-1.5 shrink-0"></span><span>*   **글로벌 트렌드: Pet Humanization**: 2026년 반려동물 시장의 핵심 키워드는 '의인화(Humanization)'입니다. 반려인을 넘어 '부모(Pet Parents)'의 관점에서 사람이 먹는 수준(Human-grade)과 동일한 품질의 간식을 선호하는 경향이 뚜렷합니다.</span></li><li class="flex items-start gap-3 mb-3 text-sm font-medium"><span class="w-1.5 h-1.5 bg-brand-primary rounded-full mt-1.5 shrink-0"></span><span>*   **기능성 간식의 의료화(Medicalization)**: 단순히 즐거움을 주는 스낵에서 '예방 의학적(Preventive)' 도구로 진화하고 있습니다. 츄립의 7가지 컬러 시스템은 이러한 글로벌 니즈(소화기계, 관절, 면역 등)를 정확히 관통합니다.</span></li><li class="flex items-start gap-3 mb-3 text-sm font-medium"><span class="w-1.5 h-1.5 bg-brand-primary rounded-full mt-1.5 shrink-0"></span><span>*   **프리미엄 원재료 경쟁**: 글로벌 선도 기업(Mars, Nestle Purina 등)이 고부가가치 프리미엄 브랜드들을 인수하며 시장을 재편하고 있습니다. 츄립은 '수의사 설계'와 '합성 첨가물 배제'를 통해 글로벌 럭셔리 라인업과 경쟁합니다.</span></li></ul>
-                
-                
-            </div></div>
+                <div class="glass-card  animated-entry p-12 border-white/20 flex flex-col">
+                    <div class="flex justify-between items-center mb-8">
+                        <span class="bg-slate-100 text-slate-500 px-4 py-1.5 rounded-full text-[10px] font-black tracking-widest uppercase">Target</span>
+                    </div>
+                    <h3 class="text-2xl font-black mb-8 leading-[1.1]">타겟 오디언스 입체 분석 [Target]</h3>
+                    <ul class="flex-1 text-slate-600">
+                <li class="flex items-start gap-4 mb-5 text-sm font-semibold group">
+                    <span class="w-2 h-2 bg-organic-clay rounded-full mt-2 transition-transform group-hover:scale-150 shrink-0"></span>
+                    <span class="leading-relaxed">반려동물 사료 시장은 '식사'에서 '건강 관리(Self-care Ritual for Pets)'로 그 중심이 이동했습니다. 2026년 기준 80% 이상의 MZ세대 반려들이 자신의 자녀와 동일한 건강 기준을 반려동물에게 적용하고 있으며, 이에 따라 'Humanization(의인화)'과 'Premiumization(프리미엄화)'이 성장의 핵심 엔진입니다.</span>
+                </li>
+                <li class="flex items-start gap-4 mb-5 text-sm font-semibold group">
+                    <span class="w-2 h-2 bg-organic-clay rounded-full mt-2 transition-transform group-hover:scale-150 shrink-0"></span>
+                    <span class="leading-relaxed">글로벌 시장은 Mars(마즈), Nestle Purina(네슬레 퓨리나), Hill's(힐스), Blue Buffalo(블루 버팔로) 등이 지배하고 있으나, 최근에는 츄립과 같은 '기능성 특화 브랜드'들이 DTC(고객 직접 판매) 채널을 통해 급성장하고 있습니다.</span>
+                </li>
+                <li class="flex items-start gap-4 mb-5 text-sm font-semibold group">
+                    <span class="w-2 h-2 bg-organic-clay rounded-full mt-2 transition-transform group-hover:scale-150 shrink-0"></span>
+                    <span class="leading-relaxed">*   **강점**: 7종 컬러 기반의 직관적 라인업, 수의사 Eric 설계, 아마존 입점용 고밀도 비주얼.</span>
+                </li>
+                <li class="flex items-start gap-4 mb-5 text-sm font-semibold group">
+                    <span class="w-2 h-2 bg-organic-clay rounded-full mt-2 transition-transform group-hover:scale-150 shrink-0"></span>
+                    <span class="leading-relaxed">*   **기회**: 소화기(Probiotics), 관절(Glucosamine), 불안 해소(Calming) 리드가 전체 기능성 간식 시장의 60%를 점유함.</span>
+                </li>
+                <li class="flex items-start gap-4 mb-5 text-sm font-semibold group">
+                    <span class="w-2 h-2 bg-organic-clay rounded-full mt-2 transition-transform group-hover:scale-150 shrink-0"></span>
+                    <span class="leading-relaxed">*   **의료형 스낵의 대중화**: "간식은 보상이 아닌 영양 보충제"라는 소비자 인식을 활용하여 7가지 영양 결핍(관절, 피부, 심장 등)을 해결하는 '마이크로 밀(Micro-meal)' 전략.</span>
+                </li></ul>
+                    
+                </div>
+                <div class="glass-card span-2 animated-entry p-12 border-organic-sage/30 flex flex-col">
+                    <div class="flex justify-between items-center mb-8">
+                        <span class="bg-organic-sage text-white px-4 py-1.5 rounded-full text-[10px] font-black tracking-widest uppercase">Analysis</span>
+                    </div>
+                    <h3 class="text-2xl font-black mb-8 leading-[1.1]">글로벌 경쟁사 벤치마킹 [Analysis]</h3>
+                    <ul class="flex-1 text-slate-600">
+                <li class="flex items-start gap-4 mb-5 text-sm font-semibold group">
+                    <span class="w-2 h-2 bg-organic-clay rounded-full mt-2 transition-transform group-hover:scale-150 shrink-0"></span>
+                    <span class="leading-relaxed">반려동물 사료 시장은 '식사'에서 '건강 관리(Self-care Ritual for Pets)'로 그 중심이 이동했습니다. 2026년 기준 80% 이상의 MZ세대 반려들이 자신의 자녀와 동일한 건강 기준을 반려동물에게 적용하고 있으며, 이에 따라 'Humanization(의인화)'과 'Premiumization(프리미엄화)'이 성장의 핵심 엔진입니다.</span>
+                </li>
+                <li class="flex items-start gap-4 mb-5 text-sm font-semibold group">
+                    <span class="w-2 h-2 bg-organic-clay rounded-full mt-2 transition-transform group-hover:scale-150 shrink-0"></span>
+                    <span class="leading-relaxed">글로벌 시장은 Mars(마즈), Nestle Purina(네슬레 퓨리나), Hill's(힐스), Blue Buffalo(블루 버팔로) 등이 지배하고 있으나, 최근에는 츄립과 같은 '기능성 특화 브랜드'들이 DTC(고객 직접 판매) 채널을 통해 급성장하고 있습니다.</span>
+                </li>
+                <li class="flex items-start gap-4 mb-5 text-sm font-semibold group">
+                    <span class="w-2 h-2 bg-organic-clay rounded-full mt-2 transition-transform group-hover:scale-150 shrink-0"></span>
+                    <span class="leading-relaxed">*   **강점**: 7종 컬러 기반의 직관적 라인업, 수의사 Eric 설계, 아마존 입점용 고밀도 비주얼.</span>
+                </li>
+                <li class="flex items-start gap-4 mb-5 text-sm font-semibold group">
+                    <span class="w-2 h-2 bg-organic-clay rounded-full mt-2 transition-transform group-hover:scale-150 shrink-0"></span>
+                    <span class="leading-relaxed">*   **기회**: 소화기(Probiotics), 관절(Glucosamine), 불안 해소(Calming) 리드가 전체 기능성 간식 시장의 60%를 점유함.</span>
+                </li>
+                <li class="flex items-start gap-4 mb-5 text-sm font-semibold group">
+                    <span class="w-2 h-2 bg-organic-clay rounded-full mt-2 transition-transform group-hover:scale-150 shrink-0"></span>
+                    <span class="leading-relaxed">*   **의료형 스낵의 대중화**: "간식은 보상이 아닌 영양 보충제"라는 소비자 인식을 활용하여 7가지 영양 결핍(관절, 피부, 심장 등)을 해결하는 '마이크로 밀(Micro-meal)' 전략.</span>
+                </li>
+                <li class="flex items-start gap-4 mb-5 text-sm font-semibold group">
+                    <span class="w-2 h-2 bg-organic-clay rounded-full mt-2 transition-transform group-hover:scale-150 shrink-0"></span>
+                    <span class="leading-relaxed">*   **투명성 소구**: Human-grade 등급의 원재료를 가공 과정 없이 그대로 보여주는 'Sizzle Style' 비주얼로 글로벌 신뢰도 확보.</span>
+                </li>
+                <li class="flex items-start gap-4 mb-5 text-sm font-semibold group">
+                    <span class="w-2 h-2 bg-organic-clay rounded-full mt-2 transition-transform group-hover:scale-150 shrink-0"></span>
+                    <span class="leading-relaxed">*   **Bento Grid Layout**: 7가지 기능성을 각각의 그리드 섹션으로 시각화하여 정보의 고밀도 전달.</span>
+                </li>
+                <li class="flex items-start gap-4 mb-5 text-sm font-semibold group">
+                    <span class="w-2 h-2 bg-organic-clay rounded-full mt-2 transition-transform group-hover:scale-150 shrink-0"></span>
+                    <span class="leading-relaxed">*   **Color-Coded Identity**: 관절(Purple), 피부(Pink) 등 컬러별 테마를 통한 직관적 UX 완성.</span>
+                </li></ul>
+                    
+                    <div class="browser-mockup mt-8">
+                        <div class="browser-header"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div>
+                        <img src="https://images.unsplash.com/photo-1551288049-bbbda5012373?auto=format&fit=crop&q=80&w=2070" class="w-full h-auto object-cover">
+                    </div>
+                </div>
+                </div>
             </div>
         </section>
-        <section class="slide-section">
+        <section class="slide-section" id="Strategic Logic">
             <div class="max-w-7xl mx-auto w-full">
-                <div class="flex items-center gap-8 mb-16 animated-entry">
-                    <span class="text-brand-primary font-black text-xs tracking-widest uppercase">Visual Insights Dash 02</span>
-                    <div class="h-px flex-1 bg-slate-200"></div>
+                <div class="flex items-end justify-between mb-24 animated-entry">
+                    <div>
+                        <div class="sub-title">Category Focus</div>
+                        <h2 class="text-6xl font-black tracking-tighter">Strategic Logic</h2>
+                    </div>
+                    <div class="text-organic-sage font-black opacity-20 text-9xl leading-none select-none">
+                        S
+                    </div>
                 </div>
+                
                 <div class="bento-grid">
-            <div class="glass-card  animated-entry flex flex-col p-8 border-slate-200">
-                <div class="flex justify-between items-center mb-6">
-                    <span class="bg-slate-100 text-slate-500 px-3 py-1 rounded-md text-[9px] font-black tracking-widest uppercase">Target</span>
+                <div class="glass-card span-3 animated-entry p-12 border-organic-sage/30 flex flex-col">
+                    <div class="flex justify-between items-center mb-8">
+                        <span class="bg-organic-sage text-white px-4 py-1.5 rounded-full text-[10px] font-black tracking-widest uppercase">Strategy</span>
+                    </div>
+                    <h3 class="text-2xl font-black mb-8 leading-[1.1]">핵심 전략 및 캠페인 로직 [Logic]</h3>
+                    <ul class="flex-1 text-slate-600">
+                <li class="flex items-start gap-4 mb-5 text-sm font-semibold group">
+                    <span class="w-2 h-2 bg-organic-clay rounded-full mt-2 transition-transform group-hover:scale-150 shrink-0"></span>
+                    <span class="leading-relaxed">*   **투명성 소구**: Human-grade 등급의 원재료를 가공 과정 없이 그대로 보여주는 'Sizzle Style' 비주얼로 글로벌 신뢰도 확보.</span>
+                </li></ul>
+                    
                 </div>
-                <h3 class="text-xl font-bold mb-6 leading-tight">타겟 오디언스 프로파일</h3>
-                <ul class="flex-1"><li class="flex items-start gap-3 mb-3 text-sm font-medium"><span class="w-1.5 h-1.5 bg-brand-primary rounded-full mt-1.5 shrink-0"></span><span>*   **고품질 비주얼 전략**: '시즐(Sizzle)'과 '라이프스타일'의 결합을 통해 아마존 및 코스트코와 같은 글로벌 채널에서 시각적 신뢰도를 확보하는 것이 핵심입니다.</span></li><li class="flex items-start gap-3 mb-3 text-sm font-medium"><span class="w-1.5 h-1.5 bg-brand-primary rounded-full mt-1.5 shrink-0"></span><span>반려동물 사료 시장은 '식사'에서 '건강 관리(Self-care Ritual for Pets)'로 그 중심이 이동했습니다. 2026년 기준 80% 이상의 MZ세대 반려들이 자신의 자녀와 동일한 건강 기준을 반려동물에게 적용하고 있으며, 이에 따라 'Humanization(의인화)'과 'Premiumization(프리미엄화)'이 성장의 핵심 엔진입니다.</span></li><li class="flex items-start gap-3 mb-3 text-sm font-medium"><span class="w-1.5 h-1.5 bg-brand-primary rounded-full mt-1.5 shrink-0"></span><span>글로벌 시장은 Mars(마즈), Nestle Purina(네슬레 퓨리나), Hill's(힐스), Blue Buffalo(블루 버팔로) 등이 지배하고 있으나, 최근에는 츄립과 같은 '기능성 특화 브랜드'들이 DTC(고객 직접 판매) 채널을 통해 급성장하고 있습니다.</span></li></ul>
-                
-                
-            </div>
-            <div class="glass-card  animated-entry flex flex-col p-8 border-slate-200">
-                <div class="flex justify-between items-center mb-6">
-                    <span class="bg-slate-100 text-slate-500 px-3 py-1 rounded-md text-[9px] font-black tracking-widest uppercase">Market</span>
+                <div class="glass-card span-2 animated-entry p-12 border-white/20 flex flex-col">
+                    <div class="flex justify-between items-center mb-8">
+                        <span class="bg-slate-100 text-slate-500 px-4 py-1.5 rounded-full text-[10px] font-black tracking-widest uppercase">Voice</span>
+                    </div>
+                    <h3 class="text-2xl font-black mb-8 leading-[1.1]">차별화된 브랜드 보이스 [Voice]</h3>
+                    <ul class="flex-1 text-slate-600">
+                <li class="flex items-start gap-4 mb-5 text-sm font-semibold group">
+                    <span class="w-2 h-2 bg-organic-clay rounded-full mt-2 transition-transform group-hover:scale-150 shrink-0"></span>
+                    <span class="leading-relaxed">반려동물 사료 시장은 '식사'에서 '건강 관리(Self-care Ritual for Pets)'로 그 중심이 이동했습니다. 2026년 기준 80% 이상의 MZ세대 반려들이 자신의 자녀와 동일한 건강 기준을 반려동물에게 적용하고 있으며, 이에 따라 'Humanization(의인화)'과 'Premiumization(프리미엄화)'이 성장의 핵심 엔진입니다.</span>
+                </li>
+                <li class="flex items-start gap-4 mb-5 text-sm font-semibold group">
+                    <span class="w-2 h-2 bg-organic-clay rounded-full mt-2 transition-transform group-hover:scale-150 shrink-0"></span>
+                    <span class="leading-relaxed">글로벌 시장은 Mars(마즈), Nestle Purina(네슬레 퓨리나), Hill's(힐스), Blue Buffalo(블루 버팔로) 등이 지배하고 있으나, 최근에는 츄립과 같은 '기능성 특화 브랜드'들이 DTC(고객 직접 판매) 채널을 통해 급성장하고 있습니다.</span>
+                </li>
+                <li class="flex items-start gap-4 mb-5 text-sm font-semibold group">
+                    <span class="w-2 h-2 bg-organic-clay rounded-full mt-2 transition-transform group-hover:scale-150 shrink-0"></span>
+                    <span class="leading-relaxed">*   **강점**: 7종 컬러 기반의 직관적 라인업, 수의사 Eric 설계, 아마존 입점용 고밀도 비주얼.</span>
+                </li>
+                <li class="flex items-start gap-4 mb-5 text-sm font-semibold group">
+                    <span class="w-2 h-2 bg-organic-clay rounded-full mt-2 transition-transform group-hover:scale-150 shrink-0"></span>
+                    <span class="leading-relaxed">*   **기회**: 소화기(Probiotics), 관절(Glucosamine), 불안 해소(Calming) 리드가 전체 기능성 간식 시장의 60%를 점유함.</span>
+                </li>
+                <li class="flex items-start gap-4 mb-5 text-sm font-semibold group">
+                    <span class="w-2 h-2 bg-organic-clay rounded-full mt-2 transition-transform group-hover:scale-150 shrink-0"></span>
+                    <span class="leading-relaxed">*   **의료형 스낵의 대중화**: "간식은 보상이 아닌 영양 보충제"라는 소비자 인식을 활용하여 7가지 영양 결핍(관절, 피부, 심장 등)을 해결하는 '마이크로 밀(Micro-meal)' 전략.</span>
+                </li></ul>
+                    
                 </div>
-                <h3 class="text-xl font-bold mb-6 leading-tight">시장 트렌드 및 기회 요인</h3>
-                <ul class="flex-1"><li class="flex items-start gap-3 mb-3 text-sm font-medium"><span class="w-1.5 h-1.5 bg-brand-primary rounded-full mt-1.5 shrink-0"></span><span>*   **강점**: 7종 컬러 기반의 직관적 라인업, 수의사 Eric 설계, 아마존 입점용 고밀도 비주얼.</span></li><li class="flex items-start gap-3 mb-3 text-sm font-medium"><span class="w-1.5 h-1.5 bg-brand-primary rounded-full mt-1.5 shrink-0"></span><span>*   **기회**: 소화기(Probiotics), 관절(Glucosamine), 불안 해소(Calming) 리드가 전체 기능성 간식 시장의 60%를 점유함.</span></li><li class="flex items-start gap-3 mb-3 text-sm font-medium"><span class="w-1.5 h-1.5 bg-brand-primary rounded-full mt-1.5 shrink-0"></span><span>*   **의료형 스낵의 대중화**: "간식은 보상이 아닌 영양 보충제"라는 소비자 인식을 활용하여 7가지 영양 결핍(관절, 피부, 심장 등)을 해결하는 '마이크로 밀(Micro-meal)' 전략.</span></li></ul>
-                
-                
-            </div>
-            <div class="glass-card  animated-entry flex flex-col p-8 border-slate-200">
-                <div class="flex justify-between items-center mb-6">
-                    <span class="bg-slate-100 text-slate-500 px-3 py-1 rounded-md text-[9px] font-black tracking-widest uppercase">Voice</span>
+                <div class="glass-card  animated-entry p-12 border-white/20 flex flex-col">
+                    <div class="flex justify-between items-center mb-8">
+                        <span class="bg-slate-100 text-slate-500 px-4 py-1.5 rounded-full text-[10px] font-black tracking-widest uppercase">Media</span>
+                    </div>
+                    <h3 class="text-2xl font-black mb-8 leading-[1.1]">미디어 믹스 및 채널 전략 [Media]</h3>
+                    <ul class="flex-1 text-slate-600">
+                <li class="flex items-start gap-4 mb-5 text-sm font-semibold group">
+                    <span class="w-2 h-2 bg-organic-clay rounded-full mt-2 transition-transform group-hover:scale-150 shrink-0"></span>
+                    <span class="leading-relaxed">반려동물 사료 시장은 '식사'에서 '건강 관리(Self-care Ritual for Pets)'로 그 중심이 이동했습니다. 2026년 기준 80% 이상의 MZ세대 반려들이 자신의 자녀와 동일한 건강 기준을 반려동물에게 적용하고 있으며, 이에 따라 'Humanization(의인화)'과 'Premiumization(프리미엄화)'이 성장의 핵심 엔진입니다.</span>
+                </li>
+                <li class="flex items-start gap-4 mb-5 text-sm font-semibold group">
+                    <span class="w-2 h-2 bg-organic-clay rounded-full mt-2 transition-transform group-hover:scale-150 shrink-0"></span>
+                    <span class="leading-relaxed">글로벌 시장은 Mars(마즈), Nestle Purina(네슬레 퓨리나), Hill's(힐스), Blue Buffalo(블루 버팔로) 등이 지배하고 있으나, 최근에는 츄립과 같은 '기능성 특화 브랜드'들이 DTC(고객 직접 판매) 채널을 통해 급성장하고 있습니다.</span>
+                </li>
+                <li class="flex items-start gap-4 mb-5 text-sm font-semibold group">
+                    <span class="w-2 h-2 bg-organic-clay rounded-full mt-2 transition-transform group-hover:scale-150 shrink-0"></span>
+                    <span class="leading-relaxed">*   **강점**: 7종 컬러 기반의 직관적 라인업, 수의사 Eric 설계, 아마존 입점용 고밀도 비주얼.</span>
+                </li>
+                <li class="flex items-start gap-4 mb-5 text-sm font-semibold group">
+                    <span class="w-2 h-2 bg-organic-clay rounded-full mt-2 transition-transform group-hover:scale-150 shrink-0"></span>
+                    <span class="leading-relaxed">*   **기회**: 소화기(Probiotics), 관절(Glucosamine), 불안 해소(Calming) 리드가 전체 기능성 간식 시장의 60%를 점유함.</span>
+                </li>
+                <li class="flex items-start gap-4 mb-5 text-sm font-semibold group">
+                    <span class="w-2 h-2 bg-organic-clay rounded-full mt-2 transition-transform group-hover:scale-150 shrink-0"></span>
+                    <span class="leading-relaxed">*   **의료형 스낵의 대중화**: "간식은 보상이 아닌 영양 보충제"라는 소비자 인식을 활용하여 7가지 영양 결핍(관절, 피부, 심장 등)을 해결하는 '마이크로 밀(Micro-meal)' 전략.</span>
+                </li></ul>
+                    
                 </div>
-                <h3 class="text-xl font-bold mb-6 leading-tight">브랜드 보이스 및 커뮤니케이션</h3>
-                <ul class="flex-1"><li class="flex items-start gap-3 mb-3 text-sm font-medium"><span class="w-1.5 h-1.5 bg-brand-primary rounded-full mt-1.5 shrink-0"></span><span>*   **투명성 소구**: Human-grade 등급의 원재료를 가공 과정 없이 그대로 보여주는 'Sizzle Style' 비주얼로 글로벌 신뢰도 확보.</span></li><li class="flex items-start gap-3 mb-3 text-sm font-medium"><span class="w-1.5 h-1.5 bg-brand-primary rounded-full mt-1.5 shrink-0"></span><span>*   **Bento Grid Layout**: 7가지 기능성을 각각의 그리드 섹션으로 시각화하여 정보의 고밀도 전달.</span></li><li class="flex items-start gap-3 mb-3 text-sm font-medium"><span class="w-1.5 h-1.5 bg-brand-primary rounded-full mt-1.5 shrink-0"></span><span>*   **Color-Coded Identity**: 관절(Purple), 피부(Pink) 등 컬러별 테마를 통한 직관적 UX 완성.</span></li></ul>
-                
-                
-            </div>
-            <div class="glass-card  animated-entry flex flex-col p-8 border-slate-200">
-                <div class="flex justify-between items-center mb-6">
-                    <span class="bg-slate-100 text-slate-500 px-3 py-1 rounded-md text-[9px] font-black tracking-widest uppercase">Media</span>
                 </div>
-                <h3 class="text-xl font-bold mb-6 leading-tight">미디어 믹스 및 채널 전략</h3>
-                <ul class="flex-1"><li class="flex items-start gap-3 mb-3 text-sm font-medium"><span class="w-1.5 h-1.5 bg-brand-primary rounded-full mt-1.5 shrink-0"></span><span>아마존 프라임 이용자 중 반려동물의 노령화나 특정 질환에 민감한 고소득 '펫 페어런츠(Pet Parents)'. 기능적 편익을 위해서는 프리미엄 가격 지불 의사가 뚜렷한 층.</span></li></ul>
-                
-                
-            </div></div>
             </div>
         </section>
-        <section class="slide-section">
+        <section class="slide-section" id="Creative & Visual">
             <div class="max-w-7xl mx-auto w-full">
-                <div class="flex items-center gap-8 mb-16 animated-entry">
-                    <span class="text-brand-primary font-black text-xs tracking-widest uppercase">Visual Insights Dash 03</span>
-                    <div class="h-px flex-1 bg-slate-200"></div>
+                <div class="flex items-end justify-between mb-24 animated-entry">
+                    <div>
+                        <div class="sub-title">Category Focus</div>
+                        <h2 class="text-6xl font-black tracking-tighter">Creative & Visual</h2>
+                    </div>
+                    <div class="text-organic-sage font-black opacity-20 text-9xl leading-none select-none">
+                        C
+                    </div>
                 </div>
+                
                 <div class="bento-grid">
-            <div class="glass-card  animated-entry flex flex-col p-8 border-slate-200">
-                <div class="flex justify-between items-center mb-6">
-                    <span class="bg-slate-100 text-slate-500 px-3 py-1 rounded-md text-[9px] font-black tracking-widest uppercase">Roadmap</span>
+                <div class="glass-card span-2 animated-entry p-12 border-organic-sage/30 flex flex-col">
+                    <div class="flex justify-between items-center mb-8">
+                        <span class="bg-organic-sage text-white px-4 py-1.5 rounded-full text-[10px] font-black tracking-widest uppercase">Creative</span>
+                    </div>
+                    <h3 class="text-2xl font-black mb-8 leading-[1.1]">톤앤매너 상세 가이드라인 [Mood]</h3>
+                    <ul class="flex-1 text-slate-600">
+                <li class="flex items-start gap-4 mb-5 text-sm font-semibold group">
+                    <span class="w-2 h-2 bg-organic-clay rounded-full mt-2 transition-transform group-hover:scale-150 shrink-0"></span>
+                    <span class="leading-relaxed">반려동물 사료 시장은 '식사'에서 '건강 관리(Self-care Ritual for Pets)'로 그 중심이 이동했습니다. 2026년 기준 80% 이상의 MZ세대 반려들이 자신의 자녀와 동일한 건강 기준을 반려동물에게 적용하고 있으며, 이에 따라 'Humanization(의인화)'과 'Premiumization(프리미엄화)'이 성장의 핵심 엔진입니다.</span>
+                </li>
+                <li class="flex items-start gap-4 mb-5 text-sm font-semibold group">
+                    <span class="w-2 h-2 bg-organic-clay rounded-full mt-2 transition-transform group-hover:scale-150 shrink-0"></span>
+                    <span class="leading-relaxed">글로벌 시장은 Mars(마즈), Nestle Purina(네슬레 퓨리나), Hill's(힐스), Blue Buffalo(블루 버팔로) 등이 지배하고 있으나, 최근에는 츄립과 같은 '기능성 특화 브랜드'들이 DTC(고객 직접 판매) 채널을 통해 급성장하고 있습니다.</span>
+                </li>
+                <li class="flex items-start gap-4 mb-5 text-sm font-semibold group">
+                    <span class="w-2 h-2 bg-organic-clay rounded-full mt-2 transition-transform group-hover:scale-150 shrink-0"></span>
+                    <span class="leading-relaxed">*   **강점**: 7종 컬러 기반의 직관적 라인업, 수의사 Eric 설계, 아마존 입점용 고밀도 비주얼.</span>
+                </li>
+                <li class="flex items-start gap-4 mb-5 text-sm font-semibold group">
+                    <span class="w-2 h-2 bg-organic-clay rounded-full mt-2 transition-transform group-hover:scale-150 shrink-0"></span>
+                    <span class="leading-relaxed">*   **기회**: 소화기(Probiotics), 관절(Glucosamine), 불안 해소(Calming) 리드가 전체 기능성 간식 시장의 60%를 점유함.</span>
+                </li>
+                <li class="flex items-start gap-4 mb-5 text-sm font-semibold group">
+                    <span class="w-2 h-2 bg-organic-clay rounded-full mt-2 transition-transform group-hover:scale-150 shrink-0"></span>
+                    <span class="leading-relaxed">*   **의료형 스낵의 대중화**: "간식은 보상이 아닌 영양 보충제"라는 소비자 인식을 활용하여 7가지 영양 결핍(관절, 피부, 심장 등)을 해결하는 '마이크로 밀(Micro-meal)' 전략.</span>
+                </li></ul>
+                    
+                    <div class="mt-8 rounded-3xl overflow-hidden shadow-2xl">
+                        <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=2070" class="w-full h-64 object-cover hover:scale-105 transition-transform duration-700">
+                    </div>
                 </div>
-                <h3 class="text-xl font-bold mb-6 leading-tight">제작 마일스톤 및 로드맵</h3>
-                <ul class="flex-1"><li class="flex items-start gap-3 mb-3 text-sm font-medium"><span class="w-1.5 h-1.5 bg-brand-primary rounded-full mt-1.5 shrink-0"></span><span>No specific data found for 09. 제작 마일스톤 및 로드맵 [Roadmap].</span></li><li class="flex items-start gap-3 mb-3 text-sm font-medium"><span class="w-1.5 h-1.5 bg-brand-primary rounded-full mt-1.5 shrink-0"></span><span>Refer to original OT.</span></li></ul>
-                
-                
-            </div>
-            <div class="glass-card  animated-entry flex flex-col p-8 border-slate-200">
-                <div class="flex justify-between items-center mb-6">
-                    <span class="bg-slate-100 text-slate-500 px-3 py-1 rounded-md text-[9px] font-black tracking-widest uppercase">Risk</span>
+                <div class="glass-card span-2 animated-entry p-12 border-white/20 flex flex-col">
+                    <div class="flex justify-between items-center mb-8">
+                        <span class="bg-slate-100 text-slate-500 px-4 py-1.5 rounded-full text-[10px] font-black tracking-widest uppercase">Visual</span>
+                    </div>
+                    <h3 class="text-2xl font-black mb-8 leading-[1.1]">시각적 크리에이티브 제안 [Visual]</h3>
+                    <ul class="flex-1 text-slate-600">
+                <li class="flex items-start gap-4 mb-5 text-sm font-semibold group">
+                    <span class="w-2 h-2 bg-organic-clay rounded-full mt-2 transition-transform group-hover:scale-150 shrink-0"></span>
+                    <span class="leading-relaxed">*   **Color-Coded Identity**: 관절(Purple), 피부(Pink) 등 컬러별 테마를 통한 직관적 UX 완성.</span>
+                </li></ul>
+                    
                 </div>
-                <h3 class="text-xl font-bold mb-6 leading-tight">리스크 관리 및 대응 방안</h3>
-                <ul class="flex-1"><li class="flex items-start gap-3 mb-3 text-sm font-medium"><span class="w-1.5 h-1.5 bg-brand-primary rounded-full mt-1.5 shrink-0"></span><span>No specific data found for 10. 리스크 관리 및 대응 방안 [Risk].</span></li><li class="flex items-start gap-3 mb-3 text-sm font-medium"><span class="w-1.5 h-1.5 bg-brand-primary rounded-full mt-1.5 shrink-0"></span><span>Refer to original OT.</span></li></ul>
-                
-                
-            </div>
-            <div class="glass-card  animated-entry flex flex-col p-8 border-slate-200">
-                <div class="flex justify-between items-center mb-6">
-                    <span class="bg-slate-100 text-slate-500 px-3 py-1 rounded-md text-[9px] font-black tracking-widest uppercase">Value</span>
                 </div>
-                <h3 class="text-xl font-bold mb-6 leading-tight">예상 기대 효과 (ROI)</h3>
-                <ul class="flex-1"><li class="flex items-start gap-3 mb-3 text-sm font-medium"><span class="w-1.5 h-1.5 bg-brand-primary rounded-full mt-1.5 shrink-0"></span><span>No specific data found for 11. 예상 기대 효과 (ROI) [Value].</span></li><li class="flex items-start gap-3 mb-3 text-sm font-medium"><span class="w-1.5 h-1.5 bg-brand-primary rounded-full mt-1.5 shrink-0"></span><span>Refer to original OT.</span></li></ul>
-                
-                
-            </div>
-            <div class="glass-card  animated-entry flex flex-col p-8 border-slate-200">
-                <div class="flex justify-between items-center mb-6">
-                    <span class="bg-slate-100 text-slate-500 px-3 py-1 rounded-md text-[9px] font-black tracking-widest uppercase">Tech</span>
-                </div>
-                <h3 class="text-xl font-bold mb-6 leading-tight">추가 기술 검토 사항</h3>
-                <ul class="flex-1"><li class="flex items-start gap-3 mb-3 text-sm font-medium"><span class="w-1.5 h-1.5 bg-brand-primary rounded-full mt-1.5 shrink-0"></span><span>No specific data found for 12. 추가 기술 검토 사항 [Tech].</span></li><li class="flex items-start gap-3 mb-3 text-sm font-medium"><span class="w-1.5 h-1.5 bg-brand-primary rounded-full mt-1.5 shrink-0"></span><span>Refer to original OT.</span></li></ul>
-                
-                
-            </div></div>
             </div>
         </section>
-        <section class="slide-section">
+        <section class="slide-section" id="Execution & Roadmap">
             <div class="max-w-7xl mx-auto w-full">
-                <div class="flex items-center gap-8 mb-16 animated-entry">
-                    <span class="text-brand-primary font-black text-xs tracking-widest uppercase">Visual Insights Dash 04</span>
-                    <div class="h-px flex-1 bg-slate-200"></div>
+                <div class="flex items-end justify-between mb-24 animated-entry">
+                    <div>
+                        <div class="sub-title">Category Focus</div>
+                        <h2 class="text-6xl font-black tracking-tighter">Execution & Roadmap</h2>
+                    </div>
+                    <div class="text-organic-sage font-black opacity-20 text-9xl leading-none select-none">
+                        E
+                    </div>
                 </div>
+                
                 <div class="bento-grid">
-            <div class="glass-card  animated-entry flex flex-col p-8 border-slate-200">
-                <div class="flex justify-between items-center mb-6">
-                    <span class="bg-slate-100 text-slate-500 px-3 py-1 rounded-md text-[9px] font-black tracking-widest uppercase">Case</span>
+                <div class="glass-card span-2 animated-entry p-12 border-white/20 flex flex-col">
+                    <div class="flex justify-between items-center mb-8">
+                        <span class="bg-slate-100 text-slate-500 px-4 py-1.5 rounded-full text-[10px] font-black tracking-widest uppercase">Roadmap</span>
+                    </div>
+                    <h3 class="text-2xl font-black mb-8 leading-[1.1]">제작 마일스톤 및 로드맵 [Roadmap]</h3>
+                    <ul class="flex-1 text-slate-600">
+                <li class="flex items-start gap-4 mb-5 text-sm font-semibold group">
+                    <span class="w-2 h-2 bg-organic-clay rounded-full mt-2 transition-transform group-hover:scale-150 shrink-0"></span>
+                    <span class="leading-relaxed">반려동물 사료 시장은 '식사'에서 '건강 관리(Self-care Ritual for Pets)'로 그 중심이 이동했습니다. 2026년 기준 80% 이상의 MZ세대 반려들이 자신의 자녀와 동일한 건강 기준을 반려동물에게 적용하고 있으며, 이에 따라 'Humanization(의인화)'과 'Premiumization(프리미엄화)'이 성장의 핵심 엔진입니다.</span>
+                </li>
+                <li class="flex items-start gap-4 mb-5 text-sm font-semibold group">
+                    <span class="w-2 h-2 bg-organic-clay rounded-full mt-2 transition-transform group-hover:scale-150 shrink-0"></span>
+                    <span class="leading-relaxed">글로벌 시장은 Mars(마즈), Nestle Purina(네슬레 퓨리나), Hill's(힐스), Blue Buffalo(블루 버팔로) 등이 지배하고 있으나, 최근에는 츄립과 같은 '기능성 특화 브랜드'들이 DTC(고객 직접 판매) 채널을 통해 급성장하고 있습니다.</span>
+                </li>
+                <li class="flex items-start gap-4 mb-5 text-sm font-semibold group">
+                    <span class="w-2 h-2 bg-organic-clay rounded-full mt-2 transition-transform group-hover:scale-150 shrink-0"></span>
+                    <span class="leading-relaxed">*   **강점**: 7종 컬러 기반의 직관적 라인업, 수의사 Eric 설계, 아마존 입점용 고밀도 비주얼.</span>
+                </li>
+                <li class="flex items-start gap-4 mb-5 text-sm font-semibold group">
+                    <span class="w-2 h-2 bg-organic-clay rounded-full mt-2 transition-transform group-hover:scale-150 shrink-0"></span>
+                    <span class="leading-relaxed">*   **기회**: 소화기(Probiotics), 관절(Glucosamine), 불안 해소(Calming) 리드가 전체 기능성 간식 시장의 60%를 점유함.</span>
+                </li>
+                <li class="flex items-start gap-4 mb-5 text-sm font-semibold group">
+                    <span class="w-2 h-2 bg-organic-clay rounded-full mt-2 transition-transform group-hover:scale-150 shrink-0"></span>
+                    <span class="leading-relaxed">*   **의료형 스낵의 대중화**: "간식은 보상이 아닌 영양 보충제"라는 소비자 인식을 활용하여 7가지 영양 결핍(관절, 피부, 심장 등)을 해결하는 '마이크로 밀(Micro-meal)' 전략.</span>
+                </li></ul>
+                    
                 </div>
-                <h3 class="text-xl font-bold mb-6 leading-tight">글로벌 벤치마킹 사례</h3>
-                <ul class="flex-1"><li class="flex items-start gap-3 mb-3 text-sm font-medium"><span class="w-1.5 h-1.5 bg-brand-primary rounded-full mt-1.5 shrink-0"></span><span>No specific data found for 13. 글로벌 벤치마킹 사례 [Case].</span></li><li class="flex items-start gap-3 mb-3 text-sm font-medium"><span class="w-1.5 h-1.5 bg-brand-primary rounded-full mt-1.5 shrink-0"></span><span>Refer to original OT.</span></li></ul>
-                
-                
-            </div>
-            <div class="glass-card  animated-entry flex flex-col p-8 border-slate-200">
-                <div class="flex justify-between items-center mb-6">
-                    <span class="bg-slate-100 text-slate-500 px-3 py-1 rounded-md text-[9px] font-black tracking-widest uppercase">Visual</span>
+                <div class="glass-card  animated-entry p-12 border-white/20 flex flex-col">
+                    <div class="flex justify-between items-center mb-8">
+                        <span class="bg-slate-100 text-slate-500 px-4 py-1.5 rounded-full text-[10px] font-black tracking-widest uppercase">Risk</span>
+                    </div>
+                    <h3 class="text-2xl font-black mb-8 leading-[1.1]">리스크 관리 및 대응 방안 [Risk]</h3>
+                    <ul class="flex-1 text-slate-600">
+                <li class="flex items-start gap-4 mb-5 text-sm font-semibold group">
+                    <span class="w-2 h-2 bg-organic-clay rounded-full mt-2 transition-transform group-hover:scale-150 shrink-0"></span>
+                    <span class="leading-relaxed">반려동물 사료 시장은 '식사'에서 '건강 관리(Self-care Ritual for Pets)'로 그 중심이 이동했습니다. 2026년 기준 80% 이상의 MZ세대 반려들이 자신의 자녀와 동일한 건강 기준을 반려동물에게 적용하고 있으며, 이에 따라 'Humanization(의인화)'과 'Premiumization(프리미엄화)'이 성장의 핵심 엔진입니다.</span>
+                </li>
+                <li class="flex items-start gap-4 mb-5 text-sm font-semibold group">
+                    <span class="w-2 h-2 bg-organic-clay rounded-full mt-2 transition-transform group-hover:scale-150 shrink-0"></span>
+                    <span class="leading-relaxed">글로벌 시장은 Mars(마즈), Nestle Purina(네슬레 퓨리나), Hill's(힐스), Blue Buffalo(블루 버팔로) 등이 지배하고 있으나, 최근에는 츄립과 같은 '기능성 특화 브랜드'들이 DTC(고객 직접 판매) 채널을 통해 급성장하고 있습니다.</span>
+                </li>
+                <li class="flex items-start gap-4 mb-5 text-sm font-semibold group">
+                    <span class="w-2 h-2 bg-organic-clay rounded-full mt-2 transition-transform group-hover:scale-150 shrink-0"></span>
+                    <span class="leading-relaxed">*   **강점**: 7종 컬러 기반의 직관적 라인업, 수의사 Eric 설계, 아마존 입점용 고밀도 비주얼.</span>
+                </li>
+                <li class="flex items-start gap-4 mb-5 text-sm font-semibold group">
+                    <span class="w-2 h-2 bg-organic-clay rounded-full mt-2 transition-transform group-hover:scale-150 shrink-0"></span>
+                    <span class="leading-relaxed">*   **기회**: 소화기(Probiotics), 관절(Glucosamine), 불안 해소(Calming) 리드가 전체 기능성 간식 시장의 60%를 점유함.</span>
+                </li>
+                <li class="flex items-start gap-4 mb-5 text-sm font-semibold group">
+                    <span class="w-2 h-2 bg-organic-clay rounded-full mt-2 transition-transform group-hover:scale-150 shrink-0"></span>
+                    <span class="leading-relaxed">*   **의료형 스낵의 대중화**: "간식은 보상이 아닌 영양 보충제"라는 소비자 인식을 활용하여 7가지 영양 결핍(관절, 피부, 심장 등)을 해결하는 '마이크로 밀(Micro-meal)' 전략.</span>
+                </li></ul>
+                    
                 </div>
-                <h3 class="text-xl font-bold mb-6 leading-tight">시각적 표현 제안</h3>
-                <ul class="flex-1"><li class="flex items-start gap-3 mb-3 text-sm font-medium"><span class="w-1.5 h-1.5 bg-brand-primary rounded-full mt-1.5 shrink-0"></span><span>No specific data found for 14. 시각적 표현 제안 [Visual].</span></li><li class="flex items-start gap-3 mb-3 text-sm font-medium"><span class="w-1.5 h-1.5 bg-brand-primary rounded-full mt-1.5 shrink-0"></span><span>Refer to original OT.</span></li></ul>
-                
-                
-            </div>
-            <div class="glass-card  animated-entry flex flex-col p-8 border-slate-200">
-                <div class="flex justify-between items-center mb-6">
-                    <span class="bg-slate-100 text-slate-500 px-3 py-1 rounded-md text-[9px] font-black tracking-widest uppercase">Audio</span>
                 </div>
-                <h3 class="text-xl font-bold mb-6 leading-tight">음향 및 오디오 가이드</h3>
-                <ul class="flex-1"><li class="flex items-start gap-3 mb-3 text-sm font-medium"><span class="w-1.5 h-1.5 bg-brand-primary rounded-full mt-1.5 shrink-0"></span><span>No specific data found for 15. 음향 및 오디오 가이드 [Audio].</span></li><li class="flex items-start gap-3 mb-3 text-sm font-medium"><span class="w-1.5 h-1.5 bg-brand-primary rounded-full mt-1.5 shrink-0"></span><span>Refer to original OT.</span></li></ul>
-                
-                
-            </div>
-            <div class="glass-card  animated-entry flex flex-col p-8 border-slate-200">
-                <div class="flex justify-between items-center mb-6">
-                    <span class="bg-slate-100 text-slate-500 px-3 py-1 rounded-md text-[9px] font-black tracking-widest uppercase">Budget</span>
-                </div>
-                <h3 class="text-xl font-bold mb-6 leading-tight">제작 예산 규모 산정</h3>
-                <ul class="flex-1"><li class="flex items-start gap-3 mb-3 text-sm font-medium"><span class="w-1.5 h-1.5 bg-brand-primary rounded-full mt-1.5 shrink-0"></span><span>No specific data found for 16. 제작 예산 규모 산정 [Budget].</span></li><li class="flex items-start gap-3 mb-3 text-sm font-medium"><span class="w-1.5 h-1.5 bg-brand-primary rounded-full mt-1.5 shrink-0"></span><span>Refer to original OT.</span></li></ul>
-                
-                
-            </div></div>
-            </div>
-        </section>
-        <section class="slide-section">
-            <div class="max-w-7xl mx-auto w-full">
-                <div class="flex items-center gap-8 mb-16 animated-entry">
-                    <span class="text-brand-primary font-black text-xs tracking-widest uppercase">Visual Insights Dash 05</span>
-                    <div class="h-px flex-1 bg-slate-200"></div>
-                </div>
-                <div class="bento-grid">
-            <div class="glass-card  animated-entry flex flex-col p-8 border-slate-200">
-                <div class="flex justify-between items-center mb-6">
-                    <span class="bg-slate-100 text-slate-500 px-3 py-1 rounded-md text-[9px] font-black tracking-widest uppercase">Legal</span>
-                </div>
-                <h3 class="text-xl font-bold mb-6 leading-tight">법규 및 저작권 가이드</h3>
-                <ul class="flex-1"><li class="flex items-start gap-3 mb-3 text-sm font-medium"><span class="w-1.5 h-1.5 bg-brand-primary rounded-full mt-1.5 shrink-0"></span><span>No specific data found for 17. 법규 및 저작권 가이드 [Legal].</span></li><li class="flex items-start gap-3 mb-3 text-sm font-medium"><span class="w-1.5 h-1.5 bg-brand-primary rounded-full mt-1.5 shrink-0"></span><span>Refer to original OT.</span></li></ul>
-                
-                
-            </div>
-            <div class="glass-card  animated-entry flex flex-col p-8 border-slate-200">
-                <div class="flex justify-between items-center mb-6">
-                    <span class="bg-slate-100 text-slate-500 px-3 py-1 rounded-md text-[9px] font-black tracking-widest uppercase">Ops</span>
-                </div>
-                <h3 class="text-xl font-bold mb-6 leading-tight">운영 및 유지보수 플랜</h3>
-                <ul class="flex-1"><li class="flex items-start gap-3 mb-3 text-sm font-medium"><span class="w-1.5 h-1.5 bg-brand-primary rounded-full mt-1.5 shrink-0"></span><span>No specific data found for 18. 운영 및 유지보수 플랜 [Ops].</span></li><li class="flex items-start gap-3 mb-3 text-sm font-medium"><span class="w-1.5 h-1.5 bg-brand-primary rounded-full mt-1.5 shrink-0"></span><span>Refer to original OT.</span></li></ul>
-                
-                
-            </div>
-            <div class="glass-card  animated-entry flex flex-col p-8 border-slate-200">
-                <div class="flex justify-between items-center mb-6">
-                    <span class="bg-slate-100 text-slate-500 px-3 py-1 rounded-md text-[9px] font-black tracking-widest uppercase">Summary</span>
-                </div>
-                <h3 class="text-xl font-bold mb-6 leading-tight">최종 제언 및 결언</h3>
-                <ul class="flex-1"><li class="flex items-start gap-3 mb-3 text-sm font-medium"><span class="w-1.5 h-1.5 bg-brand-primary rounded-full mt-1.5 shrink-0"></span><span>No specific data found for 19. 최종 제언 및 결언 [Summary].</span></li><li class="flex items-start gap-3 mb-3 text-sm font-medium"><span class="w-1.5 h-1.5 bg-brand-primary rounded-full mt-1.5 shrink-0"></span><span>Refer to original OT.</span></li></ul>
-                
-                
-            </div>
-            <div class="glass-card  animated-entry flex flex-col p-8 border-slate-200">
-                <div class="flex justify-between items-center mb-6">
-                    <span class="bg-slate-100 text-slate-500 px-3 py-1 rounded-md text-[9px] font-black tracking-widest uppercase">Next</span>
-                </div>
-                <h3 class="text-xl font-bold mb-6 leading-tight">Q&A 및 후속 조치</h3>
-                <ul class="flex-1"><li class="flex items-start gap-3 mb-3 text-sm font-medium"><span class="w-1.5 h-1.5 bg-brand-primary rounded-full mt-1.5 shrink-0"></span><span>No specific data found for 20. Q&A 및 후속 조치 [Next].</span></li><li class="flex items-start gap-3 mb-3 text-sm font-medium"><span class="w-1.5 h-1.5 bg-brand-primary rounded-full mt-1.5 shrink-0"></span><span>Refer to original OT.</span></li></ul>
-                
-                
-            </div></div>
             </div>
         </section>
     </main>
@@ -365,24 +452,19 @@
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.style.opacity = "1";
-                    entry.target.style.transform = "translateY(0)";
                     const children = entry.target.querySelectorAll('.animated-entry');
                     children.forEach((child, idx) => {
                         setTimeout(() => {
                             child.style.opacity = "1";
                             child.style.transform = "translateY(0)";
-                            child.style.transition = "all 0.8s cubic-bezier(0.16, 1, 0.3, 1)";
-                        }, idx * 120);
+                            child.style.transition = "all 1s cubic-bezier(0.16, 1, 0.3, 1)";
+                        }, idx * 150);
                     });
                 }
             });
         }, { threshold: 0.1 });
 
-        document.querySelectorAll('section, .glass-card').forEach(el => {
-            el.style.transition = "all 1s cubic-bezier(0.16, 1, 0.3, 1)";
-            observer.observe(el);
-        });
+        document.querySelectorAll('.slide-section').forEach(el => observer.observe(el));
 
         function toggleTheme() {
             const html = document.documentElement;
@@ -398,9 +480,7 @@
             }
             lucide.createIcons();
         }
-
         lucide.createIcons();
-        
     </script>
 </body>
 </html>
