@@ -1,0 +1,10 @@
+{
+  "job_id": "20260331_160908_1XjV_ot",
+  "step": "antigravity_process",
+  "started_at": "2026-03-31T07:09:09.375628+00:00",
+  "finished_at": "2026-03-31T07:09:09.420747+00:00",
+  "command": "python3 scripts/antigravity_bridge.py process --task \"/Users/kk/Desktop/오티 자동화/state/processing/20260331_160908_1XjV_ot.json\" --job-id \"20260331_160908_1XjV_ot\"",
+  "returncode": 0,
+  "stdout": "[Bridge Error] Agentic Refinement Failed: No module named 'scripts'\n{\n  \"job_id\": \"process\",\n  \"strategy_title\": \"V18.0 Agentic Intelligence: process\",\n  \"categories\": {\n    \"Market Intelligence\": [],\n    \"Strategic Logic\": [],\n    \"Creative & Visual\": [],\n    \"Execution & Roadmap\": []\n  }\n}\n",
+  "stderr": ""
+}

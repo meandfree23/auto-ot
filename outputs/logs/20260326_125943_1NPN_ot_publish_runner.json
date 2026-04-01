@@ -1,0 +1,10 @@
+{
+  "job_id": "20260326_125943_1NPN_ot",
+  "step": "publish_to_docs",
+  "started_at": "2026-03-26T03:59:48.412873+00:00",
+  "finished_at": "2026-03-26T03:59:51.561802+00:00",
+  "command": "/Library/Frameworks/Python.framework/Versions/3.10/bin/python3 \"/Users/kk/Desktop/오티 자동화/scripts/publish_to_docs.py\" \"20260326_125943_1NPN_ot\"",
+  "returncode": 0,
+  "stdout": "{\n  \"job_id\": \"20260326_125943_1NPN_ot\",\n  \"source_file_id\": \"1NPNn3rTL1K_fPJUo0m-Q3fnvqJZUGLjc\",\n  \"source_file_link\": \"https://docs.google.com/presentation/d/1NPNn3rTL1K_fPJUo0m-Q3fnvqJZUGLjc/edit?usp=drivesdk&ouid=107219426543298663188&rtpof=true&sd=true\",\n  \"published_at\": \"2026-03-26T03:59:51.509630+00:00\",\n  \"status\": \"success\",\n  \"published_docs\": [\n    {\n      \"title\": \"[얼음 기획]_02_OT_심층리포트\",\n      \"document_id\": \"1g1irbUv5hr5g6NMd5HX-e2SzE4yv-njjOzXMHYJV55o\",\n      \"url\": \"https://docs.google.com/document/d/1g1irbUv5hr5g6NMd5HX-e2SzE4yv-njjOzXMHYJV55o/edit\",\n      \"source_markdown\": \"/Users/kk/Desktop/오티 자동화/outputs/deep_reports/20260326_125943_1NPN_ot_deep_report.md\"\n    }\n  ],\n  \"failures\": []\n}\n",
+  "stderr": ""
+}

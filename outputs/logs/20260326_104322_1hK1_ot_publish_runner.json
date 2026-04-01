@@ -1,0 +1,10 @@
+{
+  "job_id": "20260326_104322_1hK1_ot",
+  "step": "publish_to_docs",
+  "started_at": "2026-03-26T01:43:34.394671+00:00",
+  "finished_at": "2026-03-26T01:43:37.484253+00:00",
+  "command": "/Library/Frameworks/Python.framework/Versions/3.10/bin/python3 \"/Users/kk/Desktop/오티 자동화/scripts/publish_to_docs.py\" \"20260326_104322_1hK1_ot\"",
+  "returncode": 0,
+  "stdout": "{\n  \"job_id\": \"20260326_104322_1hK1_ot\",\n  \"source_file_id\": \"1hK1d2blk-rMgFb0gWyWBPjEF4FUq27GF\",\n  \"source_file_link\": \"https://drive.google.com/file/d/1hK1d2blk-rMgFb0gWyWBPjEF4FUq27GF/view?usp=drivesdk\",\n  \"published_at\": \"2026-03-26T01:43:37.449359+00:00\",\n  \"status\": \"success\",\n  \"published_docs\": [\n    {\n      \"title\": \"[[윌슨] KCC 브랜디드 콘텐츠 제안_fin]_02_OT_심층리포트\",\n      \"document_id\": \"1DyA381NoUfEQAkD9vM2OlyYWEelyAuBnzZNig2x0nzY\",\n      \"url\": \"https://docs.google.com/document/d/1DyA381NoUfEQAkD9vM2OlyYWEelyAuBnzZNig2x0nzY/edit\",\n      \"source_markdown\": \"/Users/kk/Desktop/오티 자동화/outputs/deep_reports/20260326_104322_1hK1_ot_deep_report.md\"\n    }\n  ],\n  \"failures\": []\n}\n",
+  "stderr": ""
+}

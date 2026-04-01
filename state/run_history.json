@@ -1,0 +1,3586 @@
+[
+  {
+    "job_id": "20260325_174500_bed_and_scene",
+    "source_file_id": "1m00p-K_zY8jUnV5oBf4I9k9f2w_e9f5e",
+    "source_file_link": "https://drive.google.com/file/d/1m00p-K_zY8jUnV5oBf4I9k9f2w_e9f5e/view",
+    "published_at": "2026-03-25T22:52:16.567289+00:00",
+    "status": "partial_failure",
+    "published_docs": [],
+    "failures": [
+      {
+        "category": "summary",
+        "error": "<HttpError 403 when requesting https://docs.googleapis.com/v1/documents?alt=json returned \"Request had insufficient authentication scopes.\". Details: \"[{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'ACCESS_TOKEN_SCOPE_INSUFFICIENT', 'domain': 'googleapis.com', 'metadata': {'service': 'docs.googleapis.com', 'method': 'google.apps.docs.v1.DocumentsService.CreateDocument'}}]\">"
+      },
+      {
+        "category": "questions",
+        "error": "<HttpError 403 when requesting https://docs.googleapis.com/v1/documents?alt=json returned \"Request had insufficient authentication scopes.\". Details: \"[{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'ACCESS_TOKEN_SCOPE_INSUFFICIENT', 'domain': 'googleapis.com', 'metadata': {'service': 'docs.googleapis.com', 'method': 'google.apps.docs.v1.DocumentsService.CreateDocument'}}]\">"
+      },
+      {
+        "category": "research",
+        "error": "<HttpError 403 when requesting https://docs.googleapis.com/v1/documents?alt=json returned \"Request had insufficient authentication scopes.\". Details: \"[{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'ACCESS_TOKEN_SCOPE_INSUFFICIENT', 'domain': 'googleapis.com', 'metadata': {'service': 'docs.googleapis.com', 'method': 'google.apps.docs.v1.DocumentsService.CreateDocument'}}]\">"
+      },
+      {
+        "category": "solutions",
+        "error": "<HttpError 403 when requesting https://docs.googleapis.com/v1/documents?alt=json returned \"Request had insufficient authentication scopes.\". Details: \"[{'@type': 'type.googleapis.com/google.rpc.ErrorInfo', 'reason': 'ACCESS_TOKEN_SCOPE_INSUFFICIENT', 'domain': 'googleapis.com', 'metadata': {'service': 'docs.googleapis.com', 'method': 'google.apps.docs.v1.DocumentsService.CreateDocument'}}]\">"
+      }
+    ]
+  },
+  {
+    "job_id": "20260325_174500_bed_and_scene",
+    "source_file_id": "1m00p-K_zY8jUnV5oBf4I9k9f2w_e9f5e",
+    "source_file_link": "https://drive.google.com/file/d/1m00p-K_zY8jUnV5oBf4I9k9f2w_e9f5e/view",
+    "published_at": "2026-03-25T23:02:25.373904+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "20260325_174500_bed_and_scene_01_OT_한장요약",
+        "document_id": "1AONr-fYMbMTD_T3GNsnYPiPZgKZeBztf-LpN32C9qXs",
+        "url": "https://docs.google.com/document/d/1AONr-fYMbMTD_T3GNsnYPiPZgKZeBztf-LpN32C9qXs/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/summaries/20260325_174500_bed_and_scene_summary.md"
+      },
+      {
+        "title": "20260325_174500_bed_and_scene_02_OT_핵심질문",
+        "document_id": "1fCVnaJSTH9QCToTwm4jTb87DiJdmArJrS_ofOwd8epA",
+        "url": "https://docs.google.com/document/d/1fCVnaJSTH9QCToTwm4jTb87DiJdmArJrS_ofOwd8epA/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/questions/20260325_174500_bed_and_scene_questions.md"
+      },
+      {
+        "title": "20260325_174500_bed_and_scene_03_OT_리서치팩",
+        "document_id": "1VEqBah68i9pBwnmqu_zjp17rUjF-hFsujYNq1T8G5ms",
+        "url": "https://docs.google.com/document/d/1VEqBah68i9pBwnmqu_zjp17rUjF-hFsujYNq1T8G5ms/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/research/20260325_174500_bed_and_scene_research.md"
+      },
+      {
+        "title": "20260325_174500_bed_and_scene_04_OT_해결방향3안",
+        "document_id": "15PmRgBah4KvXPc48K-8M07T3ZCgGWn0NZ0cOyG0ml0w",
+        "url": "https://docs.google.com/document/d/15PmRgBah4KvXPc48K-8M07T3ZCgGWn0NZ0cOyG0ml0w/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/solutions/20260325_174500_bed_and_scene_solutions.md"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260325_174500_bed_and_scene",
+    "source_file_id": "1m00p-K_zY8jUnV5oBf4I9k9f2w_e9f5e",
+    "source_file_link": "https://drive.google.com/file/d/1m00p-K_zY8jUnV5oBf4I9k9f2w_e9f5e/view",
+    "published_at": "2026-03-25T23:02:56.644159+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "20260325_174500_bed_and_scene_01_OT_한장요약",
+        "document_id": "1ZoFvTxrSXCmrAqxCmEx9PQPZZoSXrovibyHsc63H0cE",
+        "url": "https://docs.google.com/document/d/1ZoFvTxrSXCmrAqxCmEx9PQPZZoSXrovibyHsc63H0cE/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/summaries/20260325_174500_bed_and_scene_summary.md"
+      },
+      {
+        "title": "20260325_174500_bed_and_scene_02_OT_핵심질문",
+        "document_id": "1AIxjKIVHeVfHO3f331wUU1o55vdlaVXUtMeA75F1XQQ",
+        "url": "https://docs.google.com/document/d/1AIxjKIVHeVfHO3f331wUU1o55vdlaVXUtMeA75F1XQQ/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/questions/20260325_174500_bed_and_scene_questions.md"
+      },
+      {
+        "title": "20260325_174500_bed_and_scene_03_OT_리서치팩",
+        "document_id": "1Zy_tTvjGSmXBcZYGs8NWxm7UyjowZzJs-Wf4mlA1U8s",
+        "url": "https://docs.google.com/document/d/1Zy_tTvjGSmXBcZYGs8NWxm7UyjowZzJs-Wf4mlA1U8s/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/research/20260325_174500_bed_and_scene_research.md"
+      },
+      {
+        "title": "20260325_174500_bed_and_scene_04_OT_해결방향3안",
+        "document_id": "1IGdcRwvFveBTpWIR6Ekl-g2LPB6HA58wQOkWWHO2kH4",
+        "url": "https://docs.google.com/document/d/1IGdcRwvFveBTpWIR6Ekl-g2LPB6HA58wQOkWWHO2kH4/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/solutions/20260325_174500_bed_and_scene_solutions.md"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260326_083521_ot",
+    "source_file_id": "1NhAnSKW_zNTbt_R068QW5zzcVGrXmqBd",
+    "source_file_link": "https://drive.google.com/file/d/1NhAnSKW_zNTbt_R068QW5zzcVGrXmqBd/view?usp=drivesdk",
+    "published_at": "2026-03-25T23:35:32.088921+00:00",
+    "status": "partial_failure",
+    "published_docs": [
+      {
+        "title": "20260326_083521_ot_01_OT_한장요약",
+        "document_id": "1wfBgrkhYvsO4GueLyow5AEQ4L2kYdA-JLqC0ximcCTQ",
+        "url": "https://docs.google.com/document/d/1wfBgrkhYvsO4GueLyow5AEQ4L2kYdA-JLqC0ximcCTQ/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/summaries/20260326_083521_ot_summary.md"
+      }
+    ],
+    "failures": [
+      {
+        "category": "questions",
+        "error": "Missing markdown for questions in /Users/kk/Desktop/오티 자동화/outputs/questions"
+      },
+      {
+        "category": "research",
+        "error": "Missing markdown for research in /Users/kk/Desktop/오티 자동화/outputs/research"
+      },
+      {
+        "category": "solutions",
+        "error": "Missing markdown for solutions in /Users/kk/Desktop/오티 자동화/outputs/solutions"
+      }
+    ]
+  },
+  {
+    "job_id": "20260326_083736_ot",
+    "source_file_id": "1NhAnSKW_zNTbt_R068QW5zzcVGrXmqBd",
+    "source_file_link": "https://drive.google.com/file/d/1NhAnSKW_zNTbt_R068QW5zzcVGrXmqBd/view?usp=drivesdk",
+    "published_at": "2026-03-25T23:37:39.590247+00:00",
+    "status": "partial_failure",
+    "published_docs": [
+      {
+        "title": "20260326_083736_ot_01_OT_한장요약",
+        "document_id": "1DaZlN5Ce6_cXYcDbZzeREx6NSUjmiwm4W2r3kr6e9bE",
+        "url": "https://docs.google.com/document/d/1DaZlN5Ce6_cXYcDbZzeREx6NSUjmiwm4W2r3kr6e9bE/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/summaries/20260326_083736_ot_summary.md"
+      }
+    ],
+    "failures": [
+      {
+        "category": "questions",
+        "error": "Missing markdown for questions in /Users/kk/Desktop/오티 자동화/outputs/questions"
+      },
+      {
+        "category": "research",
+        "error": "Missing markdown for research in /Users/kk/Desktop/오티 자동화/outputs/research"
+      },
+      {
+        "category": "solutions",
+        "error": "Missing markdown for solutions in /Users/kk/Desktop/오티 자동화/outputs/solutions"
+      }
+    ]
+  },
+  {
+    "job_id": "20260326_083736_ot",
+    "source_file_id": "1NhAnSKW_zNTbt_R068QW5zzcVGrXmqBd",
+    "source_file_link": "https://drive.google.com/file/d/1NhAnSKW_zNTbt_R068QW5zzcVGrXmqBd/view?usp=drivesdk",
+    "published_at": "2026-03-25T23:37:39.607243+00:00",
+    "status": "partial_failure",
+    "published_docs": [
+      {
+        "title": "20260326_083736_ot_01_OT_한장요약",
+        "document_id": "1kkEENuH_FbKPn6ShaM3MREtpBywEASBXp3K057NZPbw",
+        "url": "https://docs.google.com/document/d/1kkEENuH_FbKPn6ShaM3MREtpBywEASBXp3K057NZPbw/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/summaries/20260326_083736_ot_summary.md"
+      }
+    ],
+    "failures": [
+      {
+        "category": "questions",
+        "error": "Missing markdown for questions in /Users/kk/Desktop/오티 자동화/outputs/questions"
+      },
+      {
+        "category": "research",
+        "error": "Missing markdown for research in /Users/kk/Desktop/오티 자동화/outputs/research"
+      },
+      {
+        "category": "solutions",
+        "error": "Missing markdown for solutions in /Users/kk/Desktop/오티 자동화/outputs/solutions"
+      }
+    ]
+  },
+  {
+    "job_id": "20260326_083736_ot",
+    "source_file_id": "1NhAnSKW_zNTbt_R068QW5zzcVGrXmqBd",
+    "source_file_link": "https://drive.google.com/file/d/1NhAnSKW_zNTbt_R068QW5zzcVGrXmqBd/view?usp=drivesdk",
+    "published_at": "2026-03-25T23:37:39.960164+00:00",
+    "status": "partial_failure",
+    "published_docs": [
+      {
+        "title": "20260326_083736_ot_01_OT_한장요약",
+        "document_id": "1NdaFb0SzT4BVPCA-00FuAyghZDNptxwduopYgSChBuU",
+        "url": "https://docs.google.com/document/d/1NdaFb0SzT4BVPCA-00FuAyghZDNptxwduopYgSChBuU/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/summaries/20260326_083736_ot_summary.md"
+      }
+    ],
+    "failures": [
+      {
+        "category": "questions",
+        "error": "Missing markdown for questions in /Users/kk/Desktop/오티 자동화/outputs/questions"
+      },
+      {
+        "category": "research",
+        "error": "Missing markdown for research in /Users/kk/Desktop/오티 자동화/outputs/research"
+      },
+      {
+        "category": "solutions",
+        "error": "Missing markdown for solutions in /Users/kk/Desktop/오티 자동화/outputs/solutions"
+      }
+    ]
+  },
+  {
+    "job_id": "20260326_083736_ot",
+    "source_file_id": "1NhAnSKW_zNTbt_R068QW5zzcVGrXmqBd",
+    "source_file_link": "https://drive.google.com/file/d/1NhAnSKW_zNTbt_R068QW5zzcVGrXmqBd/view?usp=drivesdk",
+    "published_at": "2026-03-25T23:37:40.447881+00:00",
+    "status": "partial_failure",
+    "published_docs": [
+      {
+        "title": "20260326_083736_ot_01_OT_한장요약",
+        "document_id": "1jauy5Ua9ofMrsB07jSvkwGMxAiHrJXF3IHRznmM1N2A",
+        "url": "https://docs.google.com/document/d/1jauy5Ua9ofMrsB07jSvkwGMxAiHrJXF3IHRznmM1N2A/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/summaries/20260326_083736_ot_summary.md"
+      }
+    ],
+    "failures": [
+      {
+        "category": "questions",
+        "error": "Missing markdown for questions in /Users/kk/Desktop/오티 자동화/outputs/questions"
+      },
+      {
+        "category": "research",
+        "error": "Missing markdown for research in /Users/kk/Desktop/오티 자동화/outputs/research"
+      },
+      {
+        "category": "solutions",
+        "error": "Missing markdown for solutions in /Users/kk/Desktop/오티 자동화/outputs/solutions"
+      }
+    ]
+  },
+  {
+    "job_id": "20260326_083737_ot",
+    "source_file_id": "1NhAnSKW_zNTbt_R068QW5zzcVGrXmqBd",
+    "source_file_link": "https://drive.google.com/file/d/1NhAnSKW_zNTbt_R068QW5zzcVGrXmqBd/view?usp=drivesdk",
+    "published_at": "2026-03-25T23:37:40.621660+00:00",
+    "status": "partial_failure",
+    "published_docs": [
+      {
+        "title": "20260326_083737_ot_01_OT_한장요약",
+        "document_id": "1LuJpxGJFpaXv1SfvVw0BEX7Gt7pW1Jm-N_mjoL-bweI",
+        "url": "https://docs.google.com/document/d/1LuJpxGJFpaXv1SfvVw0BEX7Gt7pW1Jm-N_mjoL-bweI/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/summaries/20260326_083737_ot_summary.md"
+      }
+    ],
+    "failures": [
+      {
+        "category": "questions",
+        "error": "Missing markdown for questions in /Users/kk/Desktop/오티 자동화/outputs/questions"
+      },
+      {
+        "category": "research",
+        "error": "Missing markdown for research in /Users/kk/Desktop/오티 자동화/outputs/research"
+      },
+      {
+        "category": "solutions",
+        "error": "Missing markdown for solutions in /Users/kk/Desktop/오티 자동화/outputs/solutions"
+      }
+    ]
+  },
+  {
+    "job_id": "20260325_174500_bed_and_scene",
+    "source_file_id": "1m00p-K_zY8jUnV5oBf4I9k9f2w_e9f5e",
+    "source_file_link": "https://drive.google.com/file/d/1m00p-K_zY8jUnV5oBf4I9k9f2w_e9f5e/view",
+    "published_at": "2026-03-25T23:41:31.358141+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "20260325_174500_bed_and_scene_01_OT_한장요약",
+        "document_id": "16s8n-hPPmx4gs4Ft1GOQwM5qE1-4OKx9X95dnJDb8lI",
+        "url": "https://docs.google.com/document/d/16s8n-hPPmx4gs4Ft1GOQwM5qE1-4OKx9X95dnJDb8lI/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/summaries/20260325_174500_bed_and_scene_summary.md"
+      },
+      {
+        "title": "20260325_174500_bed_and_scene_02_OT_핵심질문",
+        "document_id": "1Jh3jW4HoaPYAlFJOWcw4y2H9mJV7VtWLPACoRjg4NXU",
+        "url": "https://docs.google.com/document/d/1Jh3jW4HoaPYAlFJOWcw4y2H9mJV7VtWLPACoRjg4NXU/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/questions/20260325_174500_bed_and_scene_questions.md"
+      },
+      {
+        "title": "20260325_174500_bed_and_scene_03_OT_리서치팩",
+        "document_id": "1YmXAaR-8aL3zs0fV5JWBCiVnutVUVLQsAtDUgrcHEK8",
+        "url": "https://docs.google.com/document/d/1YmXAaR-8aL3zs0fV5JWBCiVnutVUVLQsAtDUgrcHEK8/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/research/20260325_174500_bed_and_scene_research.md"
+      },
+      {
+        "title": "20260325_174500_bed_and_scene_04_OT_해결방향3안",
+        "document_id": "18dRdvpYZ-wHhXtqnnDAriUv7sNNtoha90PtxmWrMLZs",
+        "url": "https://docs.google.com/document/d/18dRdvpYZ-wHhXtqnnDAriUv7sNNtoha90PtxmWrMLZs/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/solutions/20260325_174500_bed_and_scene_solutions.md"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260326_085045_ot",
+    "source_file_id": "1NhAnSKW_zNTbt_R068QW5zzcVGrXmqBd",
+    "source_file_link": "https://drive.google.com/file/d/1NhAnSKW_zNTbt_R068QW5zzcVGrXmqBd/view?usp=drivesdk",
+    "published_at": "2026-03-25T23:50:49.030308+00:00",
+    "status": "partial_failure",
+    "published_docs": [
+      {
+        "title": "20260326_085045_ot_01_OT_한장요약",
+        "document_id": "1fThP1jGrK0ZNQASj_ZhSSJWQEX3Bp1DBPDxa-8a1TIA",
+        "url": "https://docs.google.com/document/d/1fThP1jGrK0ZNQASj_ZhSSJWQEX3Bp1DBPDxa-8a1TIA/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/summaries/20260326_085045_ot_summary.md"
+      }
+    ],
+    "failures": [
+      {
+        "category": "questions",
+        "error": "Missing markdown for questions in /Users/kk/Desktop/오티 자동화/outputs/questions"
+      },
+      {
+        "category": "research",
+        "error": "Missing markdown for research in /Users/kk/Desktop/오티 자동화/outputs/research"
+      },
+      {
+        "category": "solutions",
+        "error": "Missing markdown for solutions in /Users/kk/Desktop/오티 자동화/outputs/solutions"
+      }
+    ]
+  },
+  {
+    "job_id": "20260326_085045_ot",
+    "source_file_id": "1NhAnSKW_zNTbt_R068QW5zzcVGrXmqBd",
+    "source_file_link": "https://drive.google.com/file/d/1NhAnSKW_zNTbt_R068QW5zzcVGrXmqBd/view?usp=drivesdk",
+    "published_at": "2026-03-25T23:50:49.060901+00:00",
+    "status": "partial_failure",
+    "published_docs": [
+      {
+        "title": "20260326_085045_ot_01_OT_한장요약",
+        "document_id": "1QmQ7L83ulCuY-qqpsH44omkYTsqRHiBgxy5yJl-mFgQ",
+        "url": "https://docs.google.com/document/d/1QmQ7L83ulCuY-qqpsH44omkYTsqRHiBgxy5yJl-mFgQ/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/summaries/20260326_085045_ot_summary.md"
+      }
+    ],
+    "failures": [
+      {
+        "category": "questions",
+        "error": "Missing markdown for questions in /Users/kk/Desktop/오티 자동화/outputs/questions"
+      },
+      {
+        "category": "research",
+        "error": "Missing markdown for research in /Users/kk/Desktop/오티 자동화/outputs/research"
+      },
+      {
+        "category": "solutions",
+        "error": "Missing markdown for solutions in /Users/kk/Desktop/오티 자동화/outputs/solutions"
+      }
+    ]
+  },
+  {
+    "job_id": "20260326_085149_ot",
+    "source_file_id": "1hK1d2blk-rMgFb0gWyWBPjEF4FUq27GF",
+    "source_file_link": "https://drive.google.com/file/d/1hK1d2blk-rMgFb0gWyWBPjEF4FUq27GF/view?usp=drivesdk",
+    "published_at": "2026-03-25T23:51:53.453357+00:00",
+    "status": "partial_failure",
+    "published_docs": [
+      {
+        "title": "20260326_085149_ot_01_OT_한장요약",
+        "document_id": "1uchsSwtZ3UAdJ5eOzAwWZ63P8h16zXnVk2r39wvWQa8",
+        "url": "https://docs.google.com/document/d/1uchsSwtZ3UAdJ5eOzAwWZ63P8h16zXnVk2r39wvWQa8/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/summaries/20260326_085149_ot_summary.md"
+      }
+    ],
+    "failures": [
+      {
+        "category": "questions",
+        "error": "Missing markdown for questions in /Users/kk/Desktop/오티 자동화/outputs/questions"
+      },
+      {
+        "category": "research",
+        "error": "Missing markdown for research in /Users/kk/Desktop/오티 자동화/outputs/research"
+      },
+      {
+        "category": "solutions",
+        "error": "Missing markdown for solutions in /Users/kk/Desktop/오티 자동화/outputs/solutions"
+      }
+    ]
+  },
+  {
+    "job_id": "20260326_085153_ot",
+    "source_file_id": "1iPpdoLvsZTTh1oEjDdZm0IeslDuQ6ja1",
+    "source_file_link": "https://drive.google.com/file/d/1iPpdoLvsZTTh1oEjDdZm0IeslDuQ6ja1/view?usp=drivesdk",
+    "published_at": "2026-03-25T23:51:56.405103+00:00",
+    "status": "partial_failure",
+    "published_docs": [
+      {
+        "title": "20260326_085153_ot_01_OT_한장요약",
+        "document_id": "1LoCzxF8_F8adhQze13EKLjsCHMkAaOJLbzxgdElCzNE",
+        "url": "https://docs.google.com/document/d/1LoCzxF8_F8adhQze13EKLjsCHMkAaOJLbzxgdElCzNE/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/summaries/20260326_085153_ot_summary.md"
+      }
+    ],
+    "failures": [
+      {
+        "category": "questions",
+        "error": "Missing markdown for questions in /Users/kk/Desktop/오티 자동화/outputs/questions"
+      },
+      {
+        "category": "research",
+        "error": "Missing markdown for research in /Users/kk/Desktop/오티 자동화/outputs/research"
+      },
+      {
+        "category": "solutions",
+        "error": "Missing markdown for solutions in /Users/kk/Desktop/오티 자동화/outputs/solutions"
+      }
+    ]
+  },
+  {
+    "job_id": "20260326_085200_ot",
+    "source_file_id": "1iPpdoLvsZTTh1oEjDdZm0IeslDuQ6ja1",
+    "source_file_link": "https://drive.google.com/file/d/1iPpdoLvsZTTh1oEjDdZm0IeslDuQ6ja1/view?usp=drivesdk",
+    "published_at": "2026-03-25T23:52:03.804888+00:00",
+    "status": "partial_failure",
+    "published_docs": [
+      {
+        "title": "20260326_085200_ot_01_OT_한장요약",
+        "document_id": "1g3K9hZcqgx-Oos-aCIF_0MfbiPpBLMl61m95HB9KD2Y",
+        "url": "https://docs.google.com/document/d/1g3K9hZcqgx-Oos-aCIF_0MfbiPpBLMl61m95HB9KD2Y/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/summaries/20260326_085200_ot_summary.md"
+      }
+    ],
+    "failures": [
+      {
+        "category": "questions",
+        "error": "Missing markdown for questions in /Users/kk/Desktop/오티 자동화/outputs/questions"
+      },
+      {
+        "category": "research",
+        "error": "Missing markdown for research in /Users/kk/Desktop/오티 자동화/outputs/research"
+      },
+      {
+        "category": "solutions",
+        "error": "Missing markdown for solutions in /Users/kk/Desktop/오티 자동화/outputs/solutions"
+      }
+    ]
+  },
+  {
+    "job_id": "20260326_085204_ot",
+    "source_file_id": "1hK1d2blk-rMgFb0gWyWBPjEF4FUq27GF",
+    "source_file_link": "https://drive.google.com/file/d/1hK1d2blk-rMgFb0gWyWBPjEF4FUq27GF/view?usp=drivesdk",
+    "published_at": "2026-03-25T23:52:07.365395+00:00",
+    "status": "partial_failure",
+    "published_docs": [
+      {
+        "title": "20260326_085204_ot_01_OT_한장요약",
+        "document_id": "1sLG9P9zX2lr1K_zUgG6HcgeYAIqAfnyG9j3V_3nky4s",
+        "url": "https://docs.google.com/document/d/1sLG9P9zX2lr1K_zUgG6HcgeYAIqAfnyG9j3V_3nky4s/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/summaries/20260326_085204_ot_summary.md"
+      }
+    ],
+    "failures": [
+      {
+        "category": "questions",
+        "error": "Missing markdown for questions in /Users/kk/Desktop/오티 자동화/outputs/questions"
+      },
+      {
+        "category": "research",
+        "error": "Missing markdown for research in /Users/kk/Desktop/오티 자동화/outputs/research"
+      },
+      {
+        "category": "solutions",
+        "error": "Missing markdown for solutions in /Users/kk/Desktop/오티 자동화/outputs/solutions"
+      }
+    ]
+  },
+  {
+    "job_id": "20260326_085214_ot",
+    "source_file_id": "1iPpdoLvsZTTh1oEjDdZm0IeslDuQ6ja1",
+    "source_file_link": "https://drive.google.com/file/d/1iPpdoLvsZTTh1oEjDdZm0IeslDuQ6ja1/view?usp=drivesdk",
+    "published_at": "2026-03-25T23:52:18.288898+00:00",
+    "status": "partial_failure",
+    "published_docs": [
+      {
+        "title": "20260326_085214_ot_01_OT_한장요약",
+        "document_id": "1uKFg1YtMAhlDYUyj0ZKYmCb4TUdxtADn2tX-UcPAPmY",
+        "url": "https://docs.google.com/document/d/1uKFg1YtMAhlDYUyj0ZKYmCb4TUdxtADn2tX-UcPAPmY/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/summaries/20260326_085214_ot_summary.md"
+      }
+    ],
+    "failures": [
+      {
+        "category": "questions",
+        "error": "Missing markdown for questions in /Users/kk/Desktop/오티 자동화/outputs/questions"
+      },
+      {
+        "category": "research",
+        "error": "Missing markdown for research in /Users/kk/Desktop/오티 자동화/outputs/research"
+      },
+      {
+        "category": "solutions",
+        "error": "Missing markdown for solutions in /Users/kk/Desktop/오티 자동화/outputs/solutions"
+      }
+    ]
+  },
+  {
+    "job_id": "20260326_090000_ot",
+    "source_file_id": "1qam1psa8qGkhJ2khtvK1lm1lZuWMskkO",
+    "source_file_link": "https://drive.google.com/file/d/1qam1psa8qGkhJ2khtvK1lm1lZuWMskkO/view?usp=drivesdk",
+    "published_at": "2026-03-26T00:00:10.470557+00:00",
+    "status": "partial_failure",
+    "published_docs": [
+      {
+        "title": "20260326_090000_ot_01_OT_한장요약",
+        "document_id": "12uVVjtj4DsAvjUjwB1CtnsoT-wLUnMIoFuR9h0DQ6a4",
+        "url": "https://docs.google.com/document/d/12uVVjtj4DsAvjUjwB1CtnsoT-wLUnMIoFuR9h0DQ6a4/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/summaries/20260326_090000_ot_summary.md"
+      }
+    ],
+    "failures": [
+      {
+        "category": "questions",
+        "error": "Missing markdown for questions in /Users/kk/Desktop/오티 자동화/outputs/questions"
+      },
+      {
+        "category": "research",
+        "error": "Missing markdown for research in /Users/kk/Desktop/오티 자동화/outputs/research"
+      },
+      {
+        "category": "solutions",
+        "error": "Missing markdown for solutions in /Users/kk/Desktop/오티 자동화/outputs/solutions"
+      }
+    ]
+  },
+  {
+    "job_id": "20260326_090014_1-yf_ot",
+    "source_file_id": "1-yfaoMTlmS0rCdQ9AY4NvBLpepQq62eT",
+    "source_file_link": "https://drive.google.com/file/d/1-yfaoMTlmS0rCdQ9AY4NvBLpepQq62eT/view?usp=drivesdk",
+    "published_at": "2026-03-26T00:00:24.622900+00:00",
+    "status": "partial_failure",
+    "published_docs": [
+      {
+        "title": "20260326_090014_1-yf_ot_01_OT_한장요약",
+        "document_id": "1Hj9krSXwK86CTAgfFvvpYeStQgwzL6rtuKbvQt2ZRh0",
+        "url": "https://docs.google.com/document/d/1Hj9krSXwK86CTAgfFvvpYeStQgwzL6rtuKbvQt2ZRh0/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/summaries/20260326_090014_1-yf_ot_summary.md"
+      }
+    ],
+    "failures": [
+      {
+        "category": "questions",
+        "error": "Missing markdown for questions in /Users/kk/Desktop/오티 자동화/outputs/questions"
+      },
+      {
+        "category": "research",
+        "error": "Missing markdown for research in /Users/kk/Desktop/오티 자동화/outputs/research"
+      },
+      {
+        "category": "solutions",
+        "error": "Missing markdown for solutions in /Users/kk/Desktop/오티 자동화/outputs/solutions"
+      }
+    ]
+  },
+  {
+    "job_id": "20260326_090014_15X9_ot",
+    "source_file_id": "15X9v6E5wWBukfFVCUxzYPTvoX4NCAqDinWcVOqGq8FI",
+    "source_file_link": "https://docs.google.com/document/d/15X9v6E5wWBukfFVCUxzYPTvoX4NCAqDinWcVOqGq8FI/edit?usp=drivesdk",
+    "published_at": "2026-03-26T00:00:28.182114+00:00",
+    "status": "partial_failure",
+    "published_docs": [
+      {
+        "title": "20260326_090014_15X9_ot_01_OT_한장요약",
+        "document_id": "1EeeAvatQxvNa3lLmXv4UzEmQj1NPDDoFqDXHbxR87q0",
+        "url": "https://docs.google.com/document/d/1EeeAvatQxvNa3lLmXv4UzEmQj1NPDDoFqDXHbxR87q0/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/summaries/20260326_090014_15X9_ot_summary.md"
+      }
+    ],
+    "failures": [
+      {
+        "category": "questions",
+        "error": "Missing markdown for questions in /Users/kk/Desktop/오티 자동화/outputs/questions"
+      },
+      {
+        "category": "research",
+        "error": "Missing markdown for research in /Users/kk/Desktop/오티 자동화/outputs/research"
+      },
+      {
+        "category": "solutions",
+        "error": "Missing markdown for solutions in /Users/kk/Desktop/오티 자동화/outputs/solutions"
+      }
+    ]
+  },
+  {
+    "job_id": "20260326_090014_1hK1_ot",
+    "source_file_id": "1hK1d2blk-rMgFb0gWyWBPjEF4FUq27GF",
+    "source_file_link": "https://drive.google.com/file/d/1hK1d2blk-rMgFb0gWyWBPjEF4FUq27GF/view?usp=drivesdk",
+    "published_at": "2026-03-26T00:00:31.983212+00:00",
+    "status": "partial_failure",
+    "published_docs": [
+      {
+        "title": "20260326_090014_1hK1_ot_01_OT_한장요약",
+        "document_id": "1z-gfiuGpGt9x35C5l3V2SVjWngIp3D33aDCT0CoZT5k",
+        "url": "https://docs.google.com/document/d/1z-gfiuGpGt9x35C5l3V2SVjWngIp3D33aDCT0CoZT5k/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/summaries/20260326_090014_1hK1_ot_summary.md"
+      }
+    ],
+    "failures": [
+      {
+        "category": "questions",
+        "error": "Missing markdown for questions in /Users/kk/Desktop/오티 자동화/outputs/questions"
+      },
+      {
+        "category": "research",
+        "error": "Missing markdown for research in /Users/kk/Desktop/오티 자동화/outputs/research"
+      },
+      {
+        "category": "solutions",
+        "error": "Missing markdown for solutions in /Users/kk/Desktop/오티 자동화/outputs/solutions"
+      }
+    ]
+  },
+  {
+    "job_id": "20260326_090014_1qam_ot",
+    "source_file_id": "1qam1psa8qGkhJ2khtvK1lm1lZuWMskkO",
+    "source_file_link": "https://drive.google.com/file/d/1qam1psa8qGkhJ2khtvK1lm1lZuWMskkO/view?usp=drivesdk",
+    "published_at": "2026-03-26T00:00:35.437590+00:00",
+    "status": "partial_failure",
+    "published_docs": [
+      {
+        "title": "20260326_090014_1qam_ot_01_OT_한장요약",
+        "document_id": "19Ehf9ZM3QcboEDrUaHv3t57qjG_hO6As-ZlpIGI4Ikw",
+        "url": "https://docs.google.com/document/d/19Ehf9ZM3QcboEDrUaHv3t57qjG_hO6As-ZlpIGI4Ikw/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/summaries/20260326_090014_1qam_ot_summary.md"
+      }
+    ],
+    "failures": [
+      {
+        "category": "questions",
+        "error": "Missing markdown for questions in /Users/kk/Desktop/오티 자동화/outputs/questions"
+      },
+      {
+        "category": "research",
+        "error": "Missing markdown for research in /Users/kk/Desktop/오티 자동화/outputs/research"
+      },
+      {
+        "category": "solutions",
+        "error": "Missing markdown for solutions in /Users/kk/Desktop/오티 자동화/outputs/solutions"
+      }
+    ]
+  },
+  {
+    "job_id": "20260326_090758_1hK1_ot",
+    "source_file_id": "1hK1d2blk-rMgFb0gWyWBPjEF4FUq27GF",
+    "source_file_link": "https://drive.google.com/file/d/1hK1d2blk-rMgFb0gWyWBPjEF4FUq27GF/view?usp=drivesdk",
+    "published_at": "2026-03-26T00:08:02.401097+00:00",
+    "status": "partial_failure",
+    "published_docs": [
+      {
+        "title": "20260326_090758_1hK1_ot_01_OT_한장요약",
+        "document_id": "1JmqitnkK-1Fz2hVdyoJXZhAfNBJWXPzYUIP_KgPEcN8",
+        "url": "https://docs.google.com/document/d/1JmqitnkK-1Fz2hVdyoJXZhAfNBJWXPzYUIP_KgPEcN8/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/summaries/20260326_090758_1hK1_ot_summary.md"
+      }
+    ],
+    "failures": [
+      {
+        "category": "questions",
+        "error": "Missing markdown for questions in /Users/kk/Desktop/오티 자동화/outputs/questions"
+      },
+      {
+        "category": "research",
+        "error": "Missing markdown for research in /Users/kk/Desktop/오티 자동화/outputs/research"
+      },
+      {
+        "category": "solutions",
+        "error": "Missing markdown for solutions in /Users/kk/Desktop/오티 자동화/outputs/solutions"
+      }
+    ]
+  },
+  {
+    "job_id": "20260326_090813_1hK1_ot",
+    "source_file_id": "1hK1d2blk-rMgFb0gWyWBPjEF4FUq27GF",
+    "source_file_link": "https://drive.google.com/file/d/1hK1d2blk-rMgFb0gWyWBPjEF4FUq27GF/view?usp=drivesdk",
+    "published_at": "2026-03-26T00:08:16.513833+00:00",
+    "status": "partial_failure",
+    "published_docs": [
+      {
+        "title": "20260326_090813_1hK1_ot_01_OT_한장요약",
+        "document_id": "1JbqqZpGesSSYvCazMZ46hoAI9mZb4GYo95Lurt8VcUE",
+        "url": "https://docs.google.com/document/d/1JbqqZpGesSSYvCazMZ46hoAI9mZb4GYo95Lurt8VcUE/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/summaries/20260326_090813_1hK1_ot_summary.md"
+      }
+    ],
+    "failures": [
+      {
+        "category": "questions",
+        "error": "Missing markdown for questions in /Users/kk/Desktop/오티 자동화/outputs/questions"
+      },
+      {
+        "category": "research",
+        "error": "Missing markdown for research in /Users/kk/Desktop/오티 자동화/outputs/research"
+      },
+      {
+        "category": "solutions",
+        "error": "Missing markdown for solutions in /Users/kk/Desktop/오티 자동화/outputs/solutions"
+      }
+    ]
+  },
+  {
+    "job_id": "20260326_090014_1hK1_ot",
+    "source_file_id": "1hK1d2blk-rMgFb0gWyWBPjEF4FUq27GF",
+    "source_file_link": "https://drive.google.com/file/d/1hK1d2blk-rMgFb0gWyWBPjEF4FUq27GF/view?usp=drivesdk",
+    "published_at": "2026-03-26T00:10:45.239413+00:00",
+    "status": "partial_failure",
+    "published_docs": [
+      {
+        "title": "20260326_090014_1hK1_ot_01_OT_한장요약",
+        "document_id": "1VGjtXkPC34DEKR64WPqDkLOWJqruTG-xJfSZMcvtgKU",
+        "url": "https://docs.google.com/document/d/1VGjtXkPC34DEKR64WPqDkLOWJqruTG-xJfSZMcvtgKU/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/summaries/20260326_090014_1hK1_ot_summary.md"
+      }
+    ],
+    "failures": [
+      {
+        "category": "questions",
+        "error": "Missing markdown for questions in /Users/kk/Desktop/오티 자동화/outputs/questions"
+      },
+      {
+        "category": "research",
+        "error": "Missing markdown for research in /Users/kk/Desktop/오티 자동화/outputs/research"
+      },
+      {
+        "category": "solutions",
+        "error": "Missing markdown for solutions in /Users/kk/Desktop/오티 자동화/outputs/solutions"
+      }
+    ]
+  },
+  {
+    "job_id": "20260326_090014_1hK1_ot",
+    "source_file_id": "1hK1d2blk-rMgFb0gWyWBPjEF4FUq27GF",
+    "source_file_link": "https://drive.google.com/file/d/1hK1d2blk-rMgFb0gWyWBPjEF4FUq27GF/view?usp=drivesdk",
+    "published_at": "2026-03-26T00:11:32.386818+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "20260326_090014_1hK1_ot_01_OT_한장요약",
+        "document_id": "1aszLTJXdY0tBf2TCAh1OB-I5k9oSf7bgZ9Rx-JV6Nzk",
+        "url": "https://docs.google.com/document/d/1aszLTJXdY0tBf2TCAh1OB-I5k9oSf7bgZ9Rx-JV6Nzk/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/summaries/20260326_090014_1hK1_ot_summary.md"
+      },
+      {
+        "title": "20260326_090014_1hK1_ot_02_OT_핵심질문",
+        "document_id": "1tgejONcq54ych2oCtrRGQu8ak4gl6C7tvFSG1Gx6sJA",
+        "url": "https://docs.google.com/document/d/1tgejONcq54ych2oCtrRGQu8ak4gl6C7tvFSG1Gx6sJA/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/questions/20260326_090014_1hK1_ot_questions.md"
+      },
+      {
+        "title": "20260326_090014_1hK1_ot_03_OT_리서치팩",
+        "document_id": "1Y8TaUiREgnTM-uOKYd_5AUj6YzIOnOo492QToHqth5c",
+        "url": "https://docs.google.com/document/d/1Y8TaUiREgnTM-uOKYd_5AUj6YzIOnOo492QToHqth5c/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/research/20260326_090014_1hK1_ot_research.md"
+      },
+      {
+        "title": "20260326_090014_1hK1_ot_04_OT_해결방향3안",
+        "document_id": "13RZtQpIPeMrSIuEEMBM0rTTu8zVZdbplTseEuAsju4Q",
+        "url": "https://docs.google.com/document/d/13RZtQpIPeMrSIuEEMBM0rTTu8zVZdbplTseEuAsju4Q/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/solutions/20260326_090014_1hK1_ot_solutions.md"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260326_093403_1-yf_ot",
+    "source_file_id": "1-yfaoMTlmS0rCdQ9AY4NvBLpepQq62eT",
+    "source_file_link": "https://drive.google.com/file/d/1-yfaoMTlmS0rCdQ9AY4NvBLpepQq62eT/view?usp=drivesdk",
+    "published_at": "2026-03-26T00:34:11.402942+00:00",
+    "status": "partial_failure",
+    "published_docs": [
+      {
+        "title": "[0608_다큐멘터리 정리 J (1)]_01_OT_한장요약",
+        "document_id": "1YlGD8mYnkxUR2jZWqsQ_CyUPrhmMJUeF8iw4qIGPqJQ",
+        "url": "https://docs.google.com/document/d/1YlGD8mYnkxUR2jZWqsQ_CyUPrhmMJUeF8iw4qIGPqJQ/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/summaries/20260326_093403_1-yf_ot_summary.md"
+      }
+    ],
+    "failures": [
+      {
+        "category": "questions",
+        "error": "Missing markdown for questions in /Users/kk/Desktop/오티 자동화/outputs/questions"
+      },
+      {
+        "category": "research",
+        "error": "Missing markdown for research in /Users/kk/Desktop/오티 자동화/outputs/research"
+      },
+      {
+        "category": "solutions",
+        "error": "Missing markdown for solutions in /Users/kk/Desktop/오티 자동화/outputs/solutions"
+      }
+    ]
+  },
+  {
+    "job_id": "20260326_093403_15X9_ot",
+    "source_file_id": "15X9v6E5wWBukfFVCUxzYPTvoX4NCAqDinWcVOqGq8FI",
+    "source_file_link": "https://docs.google.com/document/d/15X9v6E5wWBukfFVCUxzYPTvoX4NCAqDinWcVOqGq8FI/edit?usp=drivesdk",
+    "published_at": "2026-03-26T00:34:14.523408+00:00",
+    "status": "partial_failure",
+    "published_docs": [
+      {
+        "title": "[0608_다큐멘터리 정리 J (1)]_01_OT_한장요약",
+        "document_id": "1jqEPa5Er6VcxhAfTXGnGhNzE8IXqcwboCCRGK5jVd6A",
+        "url": "https://docs.google.com/document/d/1jqEPa5Er6VcxhAfTXGnGhNzE8IXqcwboCCRGK5jVd6A/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/summaries/20260326_093403_15X9_ot_summary.md"
+      }
+    ],
+    "failures": [
+      {
+        "category": "questions",
+        "error": "Missing markdown for questions in /Users/kk/Desktop/오티 자동화/outputs/questions"
+      },
+      {
+        "category": "research",
+        "error": "Missing markdown for research in /Users/kk/Desktop/오티 자동화/outputs/research"
+      },
+      {
+        "category": "solutions",
+        "error": "Missing markdown for solutions in /Users/kk/Desktop/오티 자동화/outputs/solutions"
+      }
+    ]
+  },
+  {
+    "job_id": "20260326_093403_1hK1_ot",
+    "source_file_id": "1hK1d2blk-rMgFb0gWyWBPjEF4FUq27GF",
+    "source_file_link": "https://drive.google.com/file/d/1hK1d2blk-rMgFb0gWyWBPjEF4FUq27GF/view?usp=drivesdk",
+    "published_at": "2026-03-26T00:34:17.912260+00:00",
+    "status": "partial_failure",
+    "published_docs": [
+      {
+        "title": "[[윌슨] KCC 브랜디드 콘텐츠 제안_fin]_01_OT_한장요약",
+        "document_id": "1Z671dL1vJqP37p8PkV29emCkTS4DjNPf7QborC2_U_w",
+        "url": "https://docs.google.com/document/d/1Z671dL1vJqP37p8PkV29emCkTS4DjNPf7QborC2_U_w/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/summaries/20260326_093403_1hK1_ot_summary.md"
+      }
+    ],
+    "failures": [
+      {
+        "category": "questions",
+        "error": "Missing markdown for questions in /Users/kk/Desktop/오티 자동화/outputs/questions"
+      },
+      {
+        "category": "research",
+        "error": "Missing markdown for research in /Users/kk/Desktop/오티 자동화/outputs/research"
+      },
+      {
+        "category": "solutions",
+        "error": "Missing markdown for solutions in /Users/kk/Desktop/오티 자동화/outputs/solutions"
+      }
+    ]
+  },
+  {
+    "job_id": "20260326_093403_1qam_ot",
+    "source_file_id": "1qam1psa8qGkhJ2khtvK1lm1lZuWMskkO",
+    "source_file_link": "https://drive.google.com/file/d/1qam1psa8qGkhJ2khtvK1lm1lZuWMskkO/view?usp=drivesdk",
+    "published_at": "2026-03-26T00:34:21.241682+00:00",
+    "status": "partial_failure",
+    "published_docs": [
+      {
+        "title": "[500cut-1 K]_01_OT_한장요약",
+        "document_id": "17IBR1EgCr86uuUfb8Ey9xNTa7Z3hkx_JRH1vrHUe9LE",
+        "url": "https://docs.google.com/document/d/17IBR1EgCr86uuUfb8Ey9xNTa7Z3hkx_JRH1vrHUe9LE/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/summaries/20260326_093403_1qam_ot_summary.md"
+      }
+    ],
+    "failures": [
+      {
+        "category": "questions",
+        "error": "Missing markdown for questions in /Users/kk/Desktop/오티 자동화/outputs/questions"
+      },
+      {
+        "category": "research",
+        "error": "Missing markdown for research in /Users/kk/Desktop/오티 자동화/outputs/research"
+      },
+      {
+        "category": "solutions",
+        "error": "Missing markdown for solutions in /Users/kk/Desktop/오티 자동화/outputs/solutions"
+      }
+    ]
+  },
+  {
+    "job_id": "20260326_093403_1hK1_ot",
+    "source_file_id": "1hK1d2blk-rMgFb0gWyWBPjEF4FUq27GF",
+    "source_file_link": "https://drive.google.com/file/d/1hK1d2blk-rMgFb0gWyWBPjEF4FUq27GF/view?usp=drivesdk",
+    "published_at": "2026-03-26T00:35:00.123973+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[[윌슨] KCC 브랜디드 콘텐츠 제안_fin]_01_OT_한장요약",
+        "document_id": "1Naw1rFv-UyIGa1ITKHVEffY-Ht98XY9bUoyjsNo9C1c",
+        "url": "https://docs.google.com/document/d/1Naw1rFv-UyIGa1ITKHVEffY-Ht98XY9bUoyjsNo9C1c/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/summaries/20260326_093403_1hK1_ot_summary.md"
+      },
+      {
+        "title": "[[윌슨] KCC 브랜디드 콘텐츠 제안_fin]_02_OT_핵심질문",
+        "document_id": "1SNRd6dcKpaqCYxmD3Ii3uxYRnPOoJAJdrgTs-BVY63U",
+        "url": "https://docs.google.com/document/d/1SNRd6dcKpaqCYxmD3Ii3uxYRnPOoJAJdrgTs-BVY63U/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/questions/20260326_093403_1hK1_ot_questions.md"
+      },
+      {
+        "title": "[[윌슨] KCC 브랜디드 콘텐츠 제안_fin]_03_OT_리서치팩",
+        "document_id": "180A7iEgtbXTJ4lC8ovTQUP4Cjq1mo6GmLu5zWAlO6gM",
+        "url": "https://docs.google.com/document/d/180A7iEgtbXTJ4lC8ovTQUP4Cjq1mo6GmLu5zWAlO6gM/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/research/20260326_093403_1hK1_ot_research.md"
+      },
+      {
+        "title": "[[윌슨] KCC 브랜디드 콘텐츠 제안_fin]_04_OT_해결방향3안",
+        "document_id": "1ApjLJ_ZitQmCOT6Co9uO0L6dC4lEI2YCRHgpjzxiSYA",
+        "url": "https://docs.google.com/document/d/1ApjLJ_ZitQmCOT6Co9uO0L6dC4lEI2YCRHgpjzxiSYA/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/solutions/20260326_093403_1hK1_ot_solutions.md"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260326_094547_1ri2_ot",
+    "source_file_id": "1ri2YcBWd50zXGS1BkhpyXhcM13UWT3xn",
+    "source_file_link": "https://drive.google.com/file/d/1ri2YcBWd50zXGS1BkhpyXhcM13UWT3xn/view?usp=drivesdk",
+    "published_at": "2026-03-26T00:45:51.760321+00:00",
+    "status": "partial_failure",
+    "published_docs": [
+      {
+        "title": "[230217_커스텀그라운드_우리와_ANF_23년 상반기 마케팅 전략 제안_FN]_01_OT_한장요약",
+        "document_id": "16iA99pXwaJyOnOVeNiNh-UJAwJrMwutTMuzF1O5FFIw",
+        "url": "https://docs.google.com/document/d/16iA99pXwaJyOnOVeNiNh-UJAwJrMwutTMuzF1O5FFIw/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/summaries/20260326_094547_1ri2_ot_summary.md"
+      }
+    ],
+    "failures": [
+      {
+        "category": "questions",
+        "error": "Missing markdown for questions in /Users/kk/Desktop/오티 자동화/outputs/questions"
+      },
+      {
+        "category": "research",
+        "error": "Missing markdown for research in /Users/kk/Desktop/오티 자동화/outputs/research"
+      },
+      {
+        "category": "solutions",
+        "error": "Missing markdown for solutions in /Users/kk/Desktop/오티 자동화/outputs/solutions"
+      }
+    ]
+  },
+  {
+    "job_id": "20260326_094938_1ri2_ot",
+    "source_file_id": "1ri2YcBWd50zXGS1BkhpyXhcM13UWT3xn",
+    "source_file_link": "https://drive.google.com/file/d/1ri2YcBWd50zXGS1BkhpyXhcM13UWT3xn/view?usp=drivesdk",
+    "published_at": "2026-03-26T00:49:42.853747+00:00",
+    "status": "partial_failure",
+    "published_docs": [
+      {
+        "title": "[230217_커스텀그라운드_우리와_ANF_23년 상반기 마케팅 전략 제안_FN]_01_OT_한장요약",
+        "document_id": "1DMCYvCVllPAaAEw5LQESIXPA3ubI6Ede7XvensQhaQw",
+        "url": "https://docs.google.com/document/d/1DMCYvCVllPAaAEw5LQESIXPA3ubI6Ede7XvensQhaQw/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/summaries/20260326_094938_1ri2_ot_summary.md"
+      }
+    ],
+    "failures": [
+      {
+        "category": "questions",
+        "error": "Missing markdown for questions in /Users/kk/Desktop/오티 자동화/outputs/questions"
+      },
+      {
+        "category": "research",
+        "error": "Missing markdown for research in /Users/kk/Desktop/오티 자동화/outputs/research"
+      },
+      {
+        "category": "solutions",
+        "error": "Missing markdown for solutions in /Users/kk/Desktop/오티 자동화/outputs/solutions"
+      }
+    ]
+  },
+  {
+    "job_id": "20260326_095646_1-yf_ot",
+    "source_file_id": "1-yfaoMTlmS0rCdQ9AY4NvBLpepQq62eT",
+    "source_file_link": "https://drive.google.com/file/d/1-yfaoMTlmS0rCdQ9AY4NvBLpepQq62eT/view?usp=drivesdk",
+    "published_at": "2026-03-26T00:56:58.455151+00:00",
+    "status": "partial_failure",
+    "published_docs": [
+      {
+        "title": "[0608_다큐멘터리 정리 J (1)]_01_OT_한장요약",
+        "document_id": "1FRgU_NrOIa1BKE_ue_nhi12vgaUSa9H66R4fiUOcCXw",
+        "url": "https://docs.google.com/document/d/1FRgU_NrOIa1BKE_ue_nhi12vgaUSa9H66R4fiUOcCXw/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/summaries/20260326_095646_1-yf_ot_summary.md"
+      }
+    ],
+    "failures": [
+      {
+        "category": "questions",
+        "error": "Missing markdown for questions in /Users/kk/Desktop/오티 자동화/outputs/questions"
+      },
+      {
+        "category": "research",
+        "error": "Missing markdown for research in /Users/kk/Desktop/오티 자동화/outputs/research"
+      },
+      {
+        "category": "solutions",
+        "error": "Missing markdown for solutions in /Users/kk/Desktop/오티 자동화/outputs/solutions"
+      }
+    ]
+  },
+  {
+    "job_id": "20260326_095646_1hK1_ot",
+    "source_file_id": "1hK1d2blk-rMgFb0gWyWBPjEF4FUq27GF",
+    "source_file_link": "https://drive.google.com/file/d/1hK1d2blk-rMgFb0gWyWBPjEF4FUq27GF/view?usp=drivesdk",
+    "published_at": "2026-03-26T00:57:01.459560+00:00",
+    "status": "partial_failure",
+    "published_docs": [
+      {
+        "title": "[[윌슨] KCC 브랜디드 콘텐츠 제안_fin]_01_OT_한장요약",
+        "document_id": "1InXyomWq_ELOblHfXbuDxfo4Lccwti2wRkYB_Mw2N1k",
+        "url": "https://docs.google.com/document/d/1InXyomWq_ELOblHfXbuDxfo4Lccwti2wRkYB_Mw2N1k/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/summaries/20260326_095646_1hK1_ot_summary.md"
+      }
+    ],
+    "failures": [
+      {
+        "category": "questions",
+        "error": "Missing markdown for questions in /Users/kk/Desktop/오티 자동화/outputs/questions"
+      },
+      {
+        "category": "research",
+        "error": "Missing markdown for research in /Users/kk/Desktop/오티 자동화/outputs/research"
+      },
+      {
+        "category": "solutions",
+        "error": "Missing markdown for solutions in /Users/kk/Desktop/오티 자동화/outputs/solutions"
+      }
+    ]
+  },
+  {
+    "job_id": "20260326_095646_1qam_ot",
+    "source_file_id": "1qam1psa8qGkhJ2khtvK1lm1lZuWMskkO",
+    "source_file_link": "https://drive.google.com/file/d/1qam1psa8qGkhJ2khtvK1lm1lZuWMskkO/view?usp=drivesdk",
+    "published_at": "2026-03-26T00:57:05.518743+00:00",
+    "status": "partial_failure",
+    "published_docs": [
+      {
+        "title": "[500cut-1 K]_01_OT_한장요약",
+        "document_id": "1AQO6d5wkZU-B_ruU8oFoWWUGbyv4gDDBAXw7ytpYSac",
+        "url": "https://docs.google.com/document/d/1AQO6d5wkZU-B_ruU8oFoWWUGbyv4gDDBAXw7ytpYSac/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/summaries/20260326_095646_1qam_ot_summary.md"
+      }
+    ],
+    "failures": [
+      {
+        "category": "questions",
+        "error": "Missing markdown for questions in /Users/kk/Desktop/오티 자동화/outputs/questions"
+      },
+      {
+        "category": "research",
+        "error": "Missing markdown for research in /Users/kk/Desktop/오티 자동화/outputs/research"
+      },
+      {
+        "category": "solutions",
+        "error": "Missing markdown for solutions in /Users/kk/Desktop/오티 자동화/outputs/solutions"
+      }
+    ]
+  },
+  {
+    "job_id": "20260326_095646_1ri2_ot",
+    "source_file_id": "1ri2YcBWd50zXGS1BkhpyXhcM13UWT3xn",
+    "source_file_link": "https://drive.google.com/file/d/1ri2YcBWd50zXGS1BkhpyXhcM13UWT3xn/view?usp=drivesdk",
+    "published_at": "2026-03-26T00:57:09.098454+00:00",
+    "status": "partial_failure",
+    "published_docs": [
+      {
+        "title": "[230217_커스텀그라운드_우리와_ANF_23년 상반기 마케팅 전략 제안_FN]_01_OT_한장요약",
+        "document_id": "1JTBOFUqlXo290uJQQeLiy6p4UfKRSU4whjIpJSwU7sE",
+        "url": "https://docs.google.com/document/d/1JTBOFUqlXo290uJQQeLiy6p4UfKRSU4whjIpJSwU7sE/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/summaries/20260326_095646_1ri2_ot_summary.md"
+      }
+    ],
+    "failures": [
+      {
+        "category": "questions",
+        "error": "Missing markdown for questions in /Users/kk/Desktop/오티 자동화/outputs/questions"
+      },
+      {
+        "category": "research",
+        "error": "Missing markdown for research in /Users/kk/Desktop/오티 자동화/outputs/research"
+      },
+      {
+        "category": "solutions",
+        "error": "Missing markdown for solutions in /Users/kk/Desktop/오티 자동화/outputs/solutions"
+      }
+    ]
+  },
+  {
+    "job_id": "20260326_095655_1-yf_ot",
+    "source_file_id": "1-yfaoMTlmS0rCdQ9AY4NvBLpepQq62eT",
+    "source_file_link": "https://drive.google.com/file/d/1-yfaoMTlmS0rCdQ9AY4NvBLpepQq62eT/view?usp=drivesdk",
+    "published_at": "2026-03-26T00:57:23.017862+00:00",
+    "status": "partial_failure",
+    "published_docs": [
+      {
+        "title": "[0608_다큐멘터리 정리 J (1)]_01_OT_한장요약",
+        "document_id": "1UVBRiGVeXqTM429CzvzdN-WC7BMGIhBFqiDUCHRukKo",
+        "url": "https://docs.google.com/document/d/1UVBRiGVeXqTM429CzvzdN-WC7BMGIhBFqiDUCHRukKo/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/summaries/20260326_095655_1-yf_ot_summary.md"
+      }
+    ],
+    "failures": [
+      {
+        "category": "questions",
+        "error": "Missing markdown for questions in /Users/kk/Desktop/오티 자동화/outputs/questions"
+      },
+      {
+        "category": "research",
+        "error": "Missing markdown for research in /Users/kk/Desktop/오티 자동화/outputs/research"
+      },
+      {
+        "category": "solutions",
+        "error": "Missing markdown for solutions in /Users/kk/Desktop/오티 자동화/outputs/solutions"
+      }
+    ]
+  },
+  {
+    "job_id": "20260326_095655_1hK1_ot",
+    "source_file_id": "1hK1d2blk-rMgFb0gWyWBPjEF4FUq27GF",
+    "source_file_link": "https://drive.google.com/file/d/1hK1d2blk-rMgFb0gWyWBPjEF4FUq27GF/view?usp=drivesdk",
+    "published_at": "2026-03-26T00:57:26.448641+00:00",
+    "status": "partial_failure",
+    "published_docs": [
+      {
+        "title": "[[윌슨] KCC 브랜디드 콘텐츠 제안_fin]_01_OT_한장요약",
+        "document_id": "1JClsH5okXjwc5ROToDAsQSZ0xKOYfvhmN9_tGvwJICE",
+        "url": "https://docs.google.com/document/d/1JClsH5okXjwc5ROToDAsQSZ0xKOYfvhmN9_tGvwJICE/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/summaries/20260326_095655_1hK1_ot_summary.md"
+      }
+    ],
+    "failures": [
+      {
+        "category": "questions",
+        "error": "Missing markdown for questions in /Users/kk/Desktop/오티 자동화/outputs/questions"
+      },
+      {
+        "category": "research",
+        "error": "Missing markdown for research in /Users/kk/Desktop/오티 자동화/outputs/research"
+      },
+      {
+        "category": "solutions",
+        "error": "Missing markdown for solutions in /Users/kk/Desktop/오티 자동화/outputs/solutions"
+      }
+    ]
+  },
+  {
+    "job_id": "20260326_095655_1qam_ot",
+    "source_file_id": "1qam1psa8qGkhJ2khtvK1lm1lZuWMskkO",
+    "source_file_link": "https://drive.google.com/file/d/1qam1psa8qGkhJ2khtvK1lm1lZuWMskkO/view?usp=drivesdk",
+    "published_at": "2026-03-26T00:57:30.412371+00:00",
+    "status": "partial_failure",
+    "published_docs": [
+      {
+        "title": "[500cut-1 K]_01_OT_한장요약",
+        "document_id": "1E9MMSGzil0PCaQBMkC79kOOK2S85kNRhq-10Dk8ZSY8",
+        "url": "https://docs.google.com/document/d/1E9MMSGzil0PCaQBMkC79kOOK2S85kNRhq-10Dk8ZSY8/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/summaries/20260326_095655_1qam_ot_summary.md"
+      }
+    ],
+    "failures": [
+      {
+        "category": "questions",
+        "error": "Missing markdown for questions in /Users/kk/Desktop/오티 자동화/outputs/questions"
+      },
+      {
+        "category": "research",
+        "error": "Missing markdown for research in /Users/kk/Desktop/오티 자동화/outputs/research"
+      },
+      {
+        "category": "solutions",
+        "error": "Missing markdown for solutions in /Users/kk/Desktop/오티 자동화/outputs/solutions"
+      }
+    ]
+  },
+  {
+    "job_id": "20260326_095655_1ri2_ot",
+    "source_file_id": "1ri2YcBWd50zXGS1BkhpyXhcM13UWT3xn",
+    "source_file_link": "https://drive.google.com/file/d/1ri2YcBWd50zXGS1BkhpyXhcM13UWT3xn/view?usp=drivesdk",
+    "published_at": "2026-03-26T00:57:34.760933+00:00",
+    "status": "partial_failure",
+    "published_docs": [
+      {
+        "title": "[230217_커스텀그라운드_우리와_ANF_23년 상반기 마케팅 전략 제안_FN]_01_OT_한장요약",
+        "document_id": "1-jkZGriDfA9O_I0ei35odgTyT7l2GmW6jMvsEhjsYDU",
+        "url": "https://docs.google.com/document/d/1-jkZGriDfA9O_I0ei35odgTyT7l2GmW6jMvsEhjsYDU/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/summaries/20260326_095655_1ri2_ot_summary.md"
+      }
+    ],
+    "failures": [
+      {
+        "category": "questions",
+        "error": "Missing markdown for questions in /Users/kk/Desktop/오티 자동화/outputs/questions"
+      },
+      {
+        "category": "research",
+        "error": "Missing markdown for research in /Users/kk/Desktop/오티 자동화/outputs/research"
+      },
+      {
+        "category": "solutions",
+        "error": "Missing markdown for solutions in /Users/kk/Desktop/오티 자동화/outputs/solutions"
+      }
+    ]
+  },
+  {
+    "job_id": "20260326_095859_1-yf_ot",
+    "source_file_id": "1-yfaoMTlmS0rCdQ9AY4NvBLpepQq62eT",
+    "source_file_link": "https://drive.google.com/file/d/1-yfaoMTlmS0rCdQ9AY4NvBLpepQq62eT/view?usp=drivesdk",
+    "published_at": "2026-03-26T00:59:03.815358+00:00",
+    "status": "partial_failure",
+    "published_docs": [
+      {
+        "title": "[0608_다큐멘터리 정리 J (1)]_01_OT_한장요약",
+        "document_id": "1rbcFC95jRr7zAm5kc-8BGowPUiTNUWKMdL3IcQiv8Vo",
+        "url": "https://docs.google.com/document/d/1rbcFC95jRr7zAm5kc-8BGowPUiTNUWKMdL3IcQiv8Vo/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/summaries/20260326_095859_1-yf_ot_summary.md"
+      }
+    ],
+    "failures": [
+      {
+        "category": "questions",
+        "error": "Missing markdown for questions in /Users/kk/Desktop/오티 자동화/outputs/questions"
+      },
+      {
+        "category": "research",
+        "error": "Missing markdown for research in /Users/kk/Desktop/오티 자동화/outputs/research"
+      },
+      {
+        "category": "solutions",
+        "error": "Missing markdown for solutions in /Users/kk/Desktop/오티 자동화/outputs/solutions"
+      }
+    ]
+  },
+  {
+    "job_id": "20260326_095859_1hK1_ot",
+    "source_file_id": "1hK1d2blk-rMgFb0gWyWBPjEF4FUq27GF",
+    "source_file_link": "https://drive.google.com/file/d/1hK1d2blk-rMgFb0gWyWBPjEF4FUq27GF/view?usp=drivesdk",
+    "published_at": "2026-03-26T00:59:06.658875+00:00",
+    "status": "partial_failure",
+    "published_docs": [
+      {
+        "title": "[[윌슨] KCC 브랜디드 콘텐츠 제안_fin]_01_OT_한장요약",
+        "document_id": "1PNdSVm6JA-jCuru1jtmMLi68Ziu_NAbfFkvBFeaQWOM",
+        "url": "https://docs.google.com/document/d/1PNdSVm6JA-jCuru1jtmMLi68Ziu_NAbfFkvBFeaQWOM/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/summaries/20260326_095859_1hK1_ot_summary.md"
+      }
+    ],
+    "failures": [
+      {
+        "category": "questions",
+        "error": "Missing markdown for questions in /Users/kk/Desktop/오티 자동화/outputs/questions"
+      },
+      {
+        "category": "research",
+        "error": "Missing markdown for research in /Users/kk/Desktop/오티 자동화/outputs/research"
+      },
+      {
+        "category": "solutions",
+        "error": "Missing markdown for solutions in /Users/kk/Desktop/오티 자동화/outputs/solutions"
+      }
+    ]
+  },
+  {
+    "job_id": "20260326_095859_1qam_ot",
+    "source_file_id": "1qam1psa8qGkhJ2khtvK1lm1lZuWMskkO",
+    "source_file_link": "https://drive.google.com/file/d/1qam1psa8qGkhJ2khtvK1lm1lZuWMskkO/view?usp=drivesdk",
+    "published_at": "2026-03-26T00:59:10.129426+00:00",
+    "status": "partial_failure",
+    "published_docs": [
+      {
+        "title": "[500cut-1 K]_01_OT_한장요약",
+        "document_id": "1ONtK5vVWt45_rRVYRhJJ3SQxrcmSwR1lOBumgumz_Ac",
+        "url": "https://docs.google.com/document/d/1ONtK5vVWt45_rRVYRhJJ3SQxrcmSwR1lOBumgumz_Ac/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/summaries/20260326_095859_1qam_ot_summary.md"
+      }
+    ],
+    "failures": [
+      {
+        "category": "questions",
+        "error": "Missing markdown for questions in /Users/kk/Desktop/오티 자동화/outputs/questions"
+      },
+      {
+        "category": "research",
+        "error": "Missing markdown for research in /Users/kk/Desktop/오티 자동화/outputs/research"
+      },
+      {
+        "category": "solutions",
+        "error": "Missing markdown for solutions in /Users/kk/Desktop/오티 자동화/outputs/solutions"
+      }
+    ]
+  },
+  {
+    "job_id": "20260326_095859_1ri2_ot",
+    "source_file_id": "1ri2YcBWd50zXGS1BkhpyXhcM13UWT3xn",
+    "source_file_link": "https://drive.google.com/file/d/1ri2YcBWd50zXGS1BkhpyXhcM13UWT3xn/view?usp=drivesdk",
+    "published_at": "2026-03-26T00:59:13.980857+00:00",
+    "status": "partial_failure",
+    "published_docs": [
+      {
+        "title": "[230217_커스텀그라운드_우리와_ANF_23년 상반기 마케팅 전략 제안_FN]_01_OT_한장요약",
+        "document_id": "1YBYLEhxensS91w-IK-3a-uCOYEfBz8LCR_Gz7BDydOk",
+        "url": "https://docs.google.com/document/d/1YBYLEhxensS91w-IK-3a-uCOYEfBz8LCR_Gz7BDydOk/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/summaries/20260326_095859_1ri2_ot_summary.md"
+      }
+    ],
+    "failures": [
+      {
+        "category": "questions",
+        "error": "Missing markdown for questions in /Users/kk/Desktop/오티 자동화/outputs/questions"
+      },
+      {
+        "category": "research",
+        "error": "Missing markdown for research in /Users/kk/Desktop/오티 자동화/outputs/research"
+      },
+      {
+        "category": "solutions",
+        "error": "Missing markdown for solutions in /Users/kk/Desktop/오티 자동화/outputs/solutions"
+      }
+    ]
+  },
+  {
+    "job_id": "20260326_100340_1-yf_ot",
+    "source_file_id": "1-yfaoMTlmS0rCdQ9AY4NvBLpepQq62eT",
+    "source_file_link": "https://drive.google.com/file/d/1-yfaoMTlmS0rCdQ9AY4NvBLpepQq62eT/view?usp=drivesdk",
+    "published_at": "2026-03-26T01:03:51.280786+00:00",
+    "status": "partial_failure",
+    "published_docs": [
+      {
+        "title": "[0608_다큐멘터리 정리 J (1)]_01_OT_한장요약",
+        "document_id": "12gHVtPgYBzubGamDcu8IdS-swJRKG3ulKcJXKc4rGig",
+        "url": "https://docs.google.com/document/d/12gHVtPgYBzubGamDcu8IdS-swJRKG3ulKcJXKc4rGig/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/summaries/20260326_100340_1-yf_ot_summary.md"
+      }
+    ],
+    "failures": [
+      {
+        "category": "deep_report",
+        "error": "Missing markdown for deep_report in /Users/kk/Desktop/오티 자동화/outputs/deep_reports"
+      }
+    ]
+  },
+  {
+    "job_id": "20260326_100340_1hK1_ot",
+    "source_file_id": "1hK1d2blk-rMgFb0gWyWBPjEF4FUq27GF",
+    "source_file_link": "https://drive.google.com/file/d/1hK1d2blk-rMgFb0gWyWBPjEF4FUq27GF/view?usp=drivesdk",
+    "published_at": "2026-03-26T01:03:55.381948+00:00",
+    "status": "partial_failure",
+    "published_docs": [
+      {
+        "title": "[[윌슨] KCC 브랜디드 콘텐츠 제안_fin]_01_OT_한장요약",
+        "document_id": "1xsWO6YykB91AUiSQTXwKwIHJjE72K0wnKmmnRGODjlo",
+        "url": "https://docs.google.com/document/d/1xsWO6YykB91AUiSQTXwKwIHJjE72K0wnKmmnRGODjlo/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/summaries/20260326_100340_1hK1_ot_summary.md"
+      }
+    ],
+    "failures": [
+      {
+        "category": "deep_report",
+        "error": "Missing markdown for deep_report in /Users/kk/Desktop/오티 자동화/outputs/deep_reports"
+      }
+    ]
+  },
+  {
+    "job_id": "20260326_100340_1qam_ot",
+    "source_file_id": "1qam1psa8qGkhJ2khtvK1lm1lZuWMskkO",
+    "source_file_link": "https://drive.google.com/file/d/1qam1psa8qGkhJ2khtvK1lm1lZuWMskkO/view?usp=drivesdk",
+    "published_at": "2026-03-26T01:03:59.022752+00:00",
+    "status": "partial_failure",
+    "published_docs": [
+      {
+        "title": "[500cut-1 K]_01_OT_한장요약",
+        "document_id": "1nTLMPlrsgvapCrEVsRJR__bpK-53ilbTJdtu8cJX3CI",
+        "url": "https://docs.google.com/document/d/1nTLMPlrsgvapCrEVsRJR__bpK-53ilbTJdtu8cJX3CI/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/summaries/20260326_100340_1qam_ot_summary.md"
+      }
+    ],
+    "failures": [
+      {
+        "category": "deep_report",
+        "error": "Missing markdown for deep_report in /Users/kk/Desktop/오티 자동화/outputs/deep_reports"
+      }
+    ]
+  },
+  {
+    "job_id": "20260326_100340_1ri2_ot",
+    "source_file_id": "1ri2YcBWd50zXGS1BkhpyXhcM13UWT3xn",
+    "source_file_link": "https://drive.google.com/file/d/1ri2YcBWd50zXGS1BkhpyXhcM13UWT3xn/view?usp=drivesdk",
+    "published_at": "2026-03-26T01:04:02.050802+00:00",
+    "status": "partial_failure",
+    "published_docs": [
+      {
+        "title": "[230217_커스텀그라운드_우리와_ANF_23년 상반기 마케팅 전략 제안_FN]_01_OT_한장요약",
+        "document_id": "1QgTeenlWPWh7hAY_C6uEtNAMWoNZk4BjHRht6XpiQR4",
+        "url": "https://docs.google.com/document/d/1QgTeenlWPWh7hAY_C6uEtNAMWoNZk4BjHRht6XpiQR4/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/summaries/20260326_100340_1ri2_ot_summary.md"
+      }
+    ],
+    "failures": [
+      {
+        "category": "deep_report",
+        "error": "Missing markdown for deep_report in /Users/kk/Desktop/오티 자동화/outputs/deep_reports"
+      }
+    ]
+  },
+  {
+    "job_id": "20260326_100340_1hK1_ot",
+    "source_file_id": "1hK1d2blk-rMgFb0gWyWBPjEF4FUq27GF",
+    "source_file_link": "https://drive.google.com/file/d/1hK1d2blk-rMgFb0gWyWBPjEF4FUq27GF/view?usp=drivesdk",
+    "published_at": "2026-03-26T01:04:46.286390+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[[윌슨] KCC 브랜디드 콘텐츠 제안_fin]_01_OT_한장요약",
+        "document_id": "1nGBiPH8IEIbEUeBX9U-J6OMP9bIvfMWMu0QYOkPioW0",
+        "url": "https://docs.google.com/document/d/1nGBiPH8IEIbEUeBX9U-J6OMP9bIvfMWMu0QYOkPioW0/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/summaries/20260326_100340_1hK1_ot_summary.md"
+      },
+      {
+        "title": "[[윌슨] KCC 브랜디드 콘텐츠 제안_fin]_02_OT_심층리포트",
+        "document_id": "1j6fbm5MazhOG2KwS1AF-V_J9WSQOba-dwBSRn3M-8is",
+        "url": "https://docs.google.com/document/d/1j6fbm5MazhOG2KwS1AF-V_J9WSQOba-dwBSRn3M-8is/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/deep_reports/20260326_100340_1hK1_ot_deep_report.md"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260326_100340_1-yf_ot",
+    "source_file_id": "1-yfaoMTlmS0rCdQ9AY4NvBLpepQq62eT",
+    "source_file_link": "https://drive.google.com/file/d/1-yfaoMTlmS0rCdQ9AY4NvBLpepQq62eT/view?usp=drivesdk",
+    "published_at": "2026-03-26T01:05:02.568954+00:00",
+    "status": "partial_failure",
+    "published_docs": [
+      {
+        "title": "[0608_다큐멘터리 정리 J (1)]_01_OT_한장요약",
+        "document_id": "1rOLC6xNDiCUTGEGLvp4Ul-NPbM9bUMhYPCMfpEIc8N0",
+        "url": "https://docs.google.com/document/d/1rOLC6xNDiCUTGEGLvp4Ul-NPbM9bUMhYPCMfpEIc8N0/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/summaries/20260326_100340_1-yf_ot_summary.md"
+      }
+    ],
+    "failures": [
+      {
+        "category": "deep_report",
+        "error": "Missing markdown for deep_report in /Users/kk/Desktop/오티 자동화/outputs/deep_reports"
+      }
+    ]
+  },
+  {
+    "job_id": "20260326_100340_1ri2_ot",
+    "source_file_id": "1ri2YcBWd50zXGS1BkhpyXhcM13UWT3xn",
+    "source_file_link": "https://drive.google.com/file/d/1ri2YcBWd50zXGS1BkhpyXhcM13UWT3xn/view?usp=drivesdk",
+    "published_at": "2026-03-26T01:05:05.517462+00:00",
+    "status": "partial_failure",
+    "published_docs": [
+      {
+        "title": "[230217_커스텀그라운드_우리와_ANF_23년 상반기 마케팅 전략 제안_FN]_01_OT_한장요약",
+        "document_id": "1zX_1ORelREb0O4gj8HeS04nYQSt-2r2C43G_FgZqheg",
+        "url": "https://docs.google.com/document/d/1zX_1ORelREb0O4gj8HeS04nYQSt-2r2C43G_FgZqheg/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/summaries/20260326_100340_1ri2_ot_summary.md"
+      }
+    ],
+    "failures": [
+      {
+        "category": "deep_report",
+        "error": "Missing markdown for deep_report in /Users/kk/Desktop/오티 자동화/outputs/deep_reports"
+      }
+    ]
+  },
+  {
+    "job_id": "20260326_100340_1qam_ot",
+    "source_file_id": "1qam1psa8qGkhJ2khtvK1lm1lZuWMskkO",
+    "source_file_link": "https://drive.google.com/file/d/1qam1psa8qGkhJ2khtvK1lm1lZuWMskkO/view?usp=drivesdk",
+    "published_at": "2026-03-26T01:05:08.790947+00:00",
+    "status": "partial_failure",
+    "published_docs": [
+      {
+        "title": "[500cut-1 K]_01_OT_한장요약",
+        "document_id": "1lvbZT6N0fOmivZNums-OyOKFfbW-hJLI3AyGgqb2_14",
+        "url": "https://docs.google.com/document/d/1lvbZT6N0fOmivZNums-OyOKFfbW-hJLI3AyGgqb2_14/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/summaries/20260326_100340_1qam_ot_summary.md"
+      }
+    ],
+    "failures": [
+      {
+        "category": "deep_report",
+        "error": "Missing markdown for deep_report in /Users/kk/Desktop/오티 자동화/outputs/deep_reports"
+      }
+    ]
+  },
+  {
+    "job_id": "20260326_100340_1ri2_ot",
+    "source_file_id": "1ri2YcBWd50zXGS1BkhpyXhcM13UWT3xn",
+    "source_file_link": "https://drive.google.com/file/d/1ri2YcBWd50zXGS1BkhpyXhcM13UWT3xn/view?usp=drivesdk",
+    "published_at": "2026-03-26T01:09:01.446152+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[230217_커스텀그라운드_우리와_ANF_23년 상반기 마케팅 전략 제안_FN]_01_OT_한장요약",
+        "document_id": "1jeCJH3lWe4Z5vBkG4RpAsm2weh-muEhWNNrHYlfMi0o",
+        "url": "https://docs.google.com/document/d/1jeCJH3lWe4Z5vBkG4RpAsm2weh-muEhWNNrHYlfMi0o/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/summaries/20260326_100340_1ri2_ot_summary.md"
+      },
+      {
+        "title": "[230217_커스텀그라운드_우리와_ANF_23년 상반기 마케팅 전략 제안_FN]_02_OT_심층리포트",
+        "document_id": "1bugqLjtCTjBt9jhdLfQQ4SxeNupqK7-nqd9TEoTJC3A",
+        "url": "https://docs.google.com/document/d/1bugqLjtCTjBt9jhdLfQQ4SxeNupqK7-nqd9TEoTJC3A/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/deep_reports/20260326_100340_1ri2_ot_deep_report.md"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260326_100340_1-yf_ot",
+    "source_file_id": "1-yfaoMTlmS0rCdQ9AY4NvBLpepQq62eT",
+    "source_file_link": "https://drive.google.com/file/d/1-yfaoMTlmS0rCdQ9AY4NvBLpepQq62eT/view?usp=drivesdk",
+    "published_at": "2026-03-26T01:09:23.019540+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[0608_다큐멘터리 정리 J (1)]_01_OT_한장요약",
+        "document_id": "1dKqA9FZlCc9VLCzhZI8kDMpwLzkA9N1-GbHaXr58iQY",
+        "url": "https://docs.google.com/document/d/1dKqA9FZlCc9VLCzhZI8kDMpwLzkA9N1-GbHaXr58iQY/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/summaries/20260326_100340_1-yf_ot_summary.md"
+      },
+      {
+        "title": "[0608_다큐멘터리 정리 J (1)]_02_OT_심층리포트",
+        "document_id": "1YLUhropuV7HbXYPKSj0Xb2cnP1eP-donrh3eGDBzS7g",
+        "url": "https://docs.google.com/document/d/1YLUhropuV7HbXYPKSj0Xb2cnP1eP-donrh3eGDBzS7g/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/deep_reports/20260326_100340_1-yf_ot_deep_report.md"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260326_100340_1qam_ot",
+    "source_file_id": "1qam1psa8qGkhJ2khtvK1lm1lZuWMskkO",
+    "source_file_link": "https://drive.google.com/file/d/1qam1psa8qGkhJ2khtvK1lm1lZuWMskkO/view?usp=drivesdk",
+    "published_at": "2026-03-26T01:09:29.464051+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[500cut-1 K]_01_OT_한장요약",
+        "document_id": "1voOoeM-2jYpPLd_mpXjmrRtmRk6Zjh8GAxl2vLziBpg",
+        "url": "https://docs.google.com/document/d/1voOoeM-2jYpPLd_mpXjmrRtmRk6Zjh8GAxl2vLziBpg/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/summaries/20260326_100340_1qam_ot_summary.md"
+      },
+      {
+        "title": "[500cut-1 K]_02_OT_심층리포트",
+        "document_id": "1rsoFZ-6nyZSeAPPI2ihphrRJZk2Str5vbfPPDxsc5No",
+        "url": "https://docs.google.com/document/d/1rsoFZ-6nyZSeAPPI2ihphrRJZk2Str5vbfPPDxsc5No/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/deep_reports/20260326_100340_1qam_ot_deep_report.md"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260326_100340_1hK1_ot",
+    "source_file_id": "1hK1d2blk-rMgFb0gWyWBPjEF4FUq27GF",
+    "source_file_link": "https://drive.google.com/file/d/1hK1d2blk-rMgFb0gWyWBPjEF4FUq27GF/view?usp=drivesdk",
+    "published_at": "2026-03-26T01:23:23.632458+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[[윌슨] KCC 브랜디드 콘텐츠 제안_fin]_01_OT_한장요약",
+        "document_id": "1i46E_MKiCYYF-1sjDcdcrFpmv0Q1sr26LU_LoIylguY",
+        "url": "https://docs.google.com/document/d/1i46E_MKiCYYF-1sjDcdcrFpmv0Q1sr26LU_LoIylguY/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/summaries/20260326_100340_1hK1_ot_summary.md"
+      },
+      {
+        "title": "[[윌슨] KCC 브랜디드 콘텐츠 제안_fin]_02_OT_심층리포트",
+        "document_id": "1wxucwJCP7rj_cRIh-fznS1KYcMVe9W51bTfP8PZWdDc",
+        "url": "https://docs.google.com/document/d/1wxucwJCP7rj_cRIh-fznS1KYcMVe9W51bTfP8PZWdDc/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/deep_reports/20260326_100340_1hK1_ot_deep_report.md"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260326_100340_1hK1_ot",
+    "source_file_id": "1hK1d2blk-rMgFb0gWyWBPjEF4FUq27GF",
+    "source_file_link": "https://drive.google.com/file/d/1hK1d2blk-rMgFb0gWyWBPjEF4FUq27GF/view?usp=drivesdk",
+    "published_at": "2026-03-26T01:23:51.778051+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[[윌슨] KCC 브랜디드 콘텐츠 제안_fin]_01_OT_한장요약",
+        "document_id": "1dhWSrwB7cCZoy7eSuvpR-G7O7KZ7Zwx3Tx55w7EHCnc",
+        "url": "https://docs.google.com/document/d/1dhWSrwB7cCZoy7eSuvpR-G7O7KZ7Zwx3Tx55w7EHCnc/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/summaries/20260326_100340_1hK1_ot_summary.md"
+      },
+      {
+        "title": "[[윌슨] KCC 브랜디드 콘텐츠 제안_fin]_02_OT_심층리포트",
+        "document_id": "1oe4KR5Jp78pFzQcEJiOU7pe3ZBqV7RoOpkLXfhO8nP8",
+        "url": "https://docs.google.com/document/d/1oe4KR5Jp78pFzQcEJiOU7pe3ZBqV7RoOpkLXfhO8nP8/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/deep_reports/20260326_100340_1hK1_ot_deep_report.md"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260326_100340_1hK1_ot",
+    "source_file_id": "1hK1d2blk-rMgFb0gWyWBPjEF4FUq27GF",
+    "source_file_link": "https://drive.google.com/file/d/1hK1d2blk-rMgFb0gWyWBPjEF4FUq27GF/view?usp=drivesdk",
+    "published_at": "2026-03-26T01:25:13.665303+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[[윌슨] KCC 브랜디드 콘텐츠 제안_fin]_01_OT_한장요약",
+        "document_id": "1EEqpWaiRF3vD-fZLQmtH0OQMpNBesn6Mh_1nFgleCgQ",
+        "url": "https://docs.google.com/document/d/1EEqpWaiRF3vD-fZLQmtH0OQMpNBesn6Mh_1nFgleCgQ/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/summaries/20260326_100340_1hK1_ot_summary.md"
+      },
+      {
+        "title": "[[윌슨] KCC 브랜디드 콘텐츠 제안_fin]_02_OT_심층리포트",
+        "document_id": "1VvLncKyhZFrPk-yd6HPlM1yFdzEyMQMrVV1AkNLuln4",
+        "url": "https://docs.google.com/document/d/1VvLncKyhZFrPk-yd6HPlM1yFdzEyMQMrVV1AkNLuln4/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/deep_reports/20260326_100340_1hK1_ot_deep_report.md"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260326_100340_1ri2_ot",
+    "source_file_id": "1ri2YcBWd50zXGS1BkhpyXhcM13UWT3xn",
+    "source_file_link": "https://drive.google.com/file/d/1ri2YcBWd50zXGS1BkhpyXhcM13UWT3xn/view?usp=drivesdk",
+    "published_at": "2026-03-26T01:28:23.251000+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[230217_커스텀그라운드_우리와_ANF_23년 상반기 마케팅 전략 제안_FN]_01_OT_한장요약",
+        "document_id": "1G_aTIcGNynlbYcYCvA-9mry22ByrGsItQ8f1Ex9ZzC8",
+        "url": "https://docs.google.com/document/d/1G_aTIcGNynlbYcYCvA-9mry22ByrGsItQ8f1Ex9ZzC8/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/summaries/20260326_100340_1ri2_ot_summary.md"
+      },
+      {
+        "title": "[230217_커스텀그라운드_우리와_ANF_23년 상반기 마케팅 전략 제안_FN]_02_OT_심층리포트",
+        "document_id": "1IZixrQ_tSI5fNkYoMLfHe_QdddeonEIma6X5aDALaxI",
+        "url": "https://docs.google.com/document/d/1IZixrQ_tSI5fNkYoMLfHe_QdddeonEIma6X5aDALaxI/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/deep_reports/20260326_100340_1ri2_ot_deep_report.md"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260326_100340_1hK1_ot",
+    "source_file_id": "1hK1d2blk-rMgFb0gWyWBPjEF4FUq27GF",
+    "source_file_link": "https://drive.google.com/file/d/1hK1d2blk-rMgFb0gWyWBPjEF4FUq27GF/view?usp=drivesdk",
+    "published_at": "2026-03-26T01:28:29.468784+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[[윌슨] KCC 브랜디드 콘텐츠 제안_fin]_01_OT_한장요약",
+        "document_id": "1xePoVXUfOrA68g5BP44-QMva_HqDhq1YkK_elWIQWJU",
+        "url": "https://docs.google.com/document/d/1xePoVXUfOrA68g5BP44-QMva_HqDhq1YkK_elWIQWJU/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/summaries/20260326_100340_1hK1_ot_summary.md"
+      },
+      {
+        "title": "[[윌슨] KCC 브랜디드 콘텐츠 제안_fin]_02_OT_심층리포트",
+        "document_id": "1hJyXHDOhsX4wIWr3YMJw_CBWcKIA9FhXtvixK59CToU",
+        "url": "https://docs.google.com/document/d/1hJyXHDOhsX4wIWr3YMJw_CBWcKIA9FhXtvixK59CToU/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/deep_reports/20260326_100340_1hK1_ot_deep_report.md"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260326_100340_1qam_ot",
+    "source_file_id": "1qam1psa8qGkhJ2khtvK1lm1lZuWMskkO",
+    "source_file_link": "https://drive.google.com/file/d/1qam1psa8qGkhJ2khtvK1lm1lZuWMskkO/view?usp=drivesdk",
+    "published_at": "2026-03-26T01:28:35.383006+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[500cut-1 K]_01_OT_한장요약",
+        "document_id": "1-cb3BPhuzN_h19dZNN1WI3s87puLltxKfBmDBPGRPds",
+        "url": "https://docs.google.com/document/d/1-cb3BPhuzN_h19dZNN1WI3s87puLltxKfBmDBPGRPds/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/summaries/20260326_100340_1qam_ot_summary.md"
+      },
+      {
+        "title": "[500cut-1 K]_02_OT_심층리포트",
+        "document_id": "1J_qVhtBuO1qPurYymx2OZ65PXt0doHQoLVqLO16HMw8",
+        "url": "https://docs.google.com/document/d/1J_qVhtBuO1qPurYymx2OZ65PXt0doHQoLVqLO16HMw8/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/deep_reports/20260326_100340_1qam_ot_deep_report.md"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260326_100340_1-yf_ot",
+    "source_file_id": "1-yfaoMTlmS0rCdQ9AY4NvBLpepQq62eT",
+    "source_file_link": "https://drive.google.com/file/d/1-yfaoMTlmS0rCdQ9AY4NvBLpepQq62eT/view?usp=drivesdk",
+    "published_at": "2026-03-26T01:28:40.591474+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[0608_다큐멘터리 정리 J (1)]_01_OT_한장요약",
+        "document_id": "1DKGXm_u7x_Yd_V03kAbyssVhgUkId1i-C6PAFgcwHv0",
+        "url": "https://docs.google.com/document/d/1DKGXm_u7x_Yd_V03kAbyssVhgUkId1i-C6PAFgcwHv0/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/summaries/20260326_100340_1-yf_ot_summary.md"
+      },
+      {
+        "title": "[0608_다큐멘터리 정리 J (1)]_02_OT_심층리포트",
+        "document_id": "15EhtjQFnO7WCH38obXiSNIvGleu41hMUHZkU3bZkJ3M",
+        "url": "https://docs.google.com/document/d/15EhtjQFnO7WCH38obXiSNIvGleu41hMUHZkU3bZkJ3M/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/deep_reports/20260326_100340_1-yf_ot_deep_report.md"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260326_100340_1hK1_ot",
+    "source_file_id": "1hK1d2blk-rMgFb0gWyWBPjEF4FUq27GF",
+    "source_file_link": "https://drive.google.com/file/d/1hK1d2blk-rMgFb0gWyWBPjEF4FUq27GF/view?usp=drivesdk",
+    "published_at": "2026-03-26T01:34:09.655403+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[[윌슨] KCC 브랜디드 콘텐츠 제안_fin]_02_OT_심층리포트",
+        "document_id": "10baGedMzRhk5nd0u-qdfFuBvKrTBQq_CGq2YgmO0Rok",
+        "url": "https://docs.google.com/document/d/10baGedMzRhk5nd0u-qdfFuBvKrTBQq_CGq2YgmO0Rok/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/deep_reports/20260326_100340_1hK1_ot_deep_report.md"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260326_100340_1hK1_ot",
+    "source_file_id": "1hK1d2blk-rMgFb0gWyWBPjEF4FUq27GF",
+    "source_file_link": "https://drive.google.com/file/d/1hK1d2blk-rMgFb0gWyWBPjEF4FUq27GF/view?usp=drivesdk",
+    "published_at": "2026-03-26T01:34:22.972732+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[[윌슨] KCC 브랜디드 콘텐츠 제안_fin]_02_OT_심층리포트",
+        "document_id": "1nExRCszCTffeNnmv1gBnzaF9UXG1F3G9Cjti1367dWs",
+        "url": "https://docs.google.com/document/d/1nExRCszCTffeNnmv1gBnzaF9UXG1F3G9Cjti1367dWs/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/deep_reports/20260326_100340_1hK1_ot_deep_report.md"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260326_104322_1-yf_ot",
+    "source_file_id": "1-yfaoMTlmS0rCdQ9AY4NvBLpepQq62eT",
+    "source_file_link": "https://drive.google.com/file/d/1-yfaoMTlmS0rCdQ9AY4NvBLpepQq62eT/view?usp=drivesdk",
+    "published_at": "2026-03-26T01:43:31.975139+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[0608_다큐멘터리 정리 J (1)]_02_OT_심층리포트",
+        "document_id": "1rf9GzW473B10B18roJvdd2i5gM9adhtB6Th98CMbT34",
+        "url": "https://docs.google.com/document/d/1rf9GzW473B10B18roJvdd2i5gM9adhtB6Th98CMbT34/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/deep_reports/20260326_104322_1-yf_ot_deep_report.md"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260326_104322_1hK1_ot",
+    "source_file_id": "1hK1d2blk-rMgFb0gWyWBPjEF4FUq27GF",
+    "source_file_link": "https://drive.google.com/file/d/1hK1d2blk-rMgFb0gWyWBPjEF4FUq27GF/view?usp=drivesdk",
+    "published_at": "2026-03-26T01:43:37.449359+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[[윌슨] KCC 브랜디드 콘텐츠 제안_fin]_02_OT_심층리포트",
+        "document_id": "1DyA381NoUfEQAkD9vM2OlyYWEelyAuBnzZNig2x0nzY",
+        "url": "https://docs.google.com/document/d/1DyA381NoUfEQAkD9vM2OlyYWEelyAuBnzZNig2x0nzY/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/deep_reports/20260326_104322_1hK1_ot_deep_report.md"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260326_104322_1qam_ot",
+    "source_file_id": "1qam1psa8qGkhJ2khtvK1lm1lZuWMskkO",
+    "source_file_link": "https://drive.google.com/file/d/1qam1psa8qGkhJ2khtvK1lm1lZuWMskkO/view?usp=drivesdk",
+    "published_at": "2026-03-26T01:43:42.650348+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[500cut-1 K]_02_OT_심층리포트",
+        "document_id": "1fWACfkF7DD9ty8eA0fVMvegBGEbPiac_9PEmD8l3SUQ",
+        "url": "https://docs.google.com/document/d/1fWACfkF7DD9ty8eA0fVMvegBGEbPiac_9PEmD8l3SUQ/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/deep_reports/20260326_104322_1qam_ot_deep_report.md"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260326_104322_1ri2_ot",
+    "source_file_id": "1ri2YcBWd50zXGS1BkhpyXhcM13UWT3xn",
+    "source_file_link": "https://drive.google.com/file/d/1ri2YcBWd50zXGS1BkhpyXhcM13UWT3xn/view?usp=drivesdk",
+    "published_at": "2026-03-26T01:43:48.299806+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[230217_커스텀그라운드_우리와_ANF_23년 상반기 마케팅 전략 제안_FN]_02_OT_심층리포트",
+        "document_id": "1GXqP1sqvIR4yz8sFD3uZ3Qo2F2XyExg_TMzTMhpuZGo",
+        "url": "https://docs.google.com/document/d/1GXqP1sqvIR4yz8sFD3uZ3Qo2F2XyExg_TMzTMhpuZGo/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/deep_reports/20260326_104322_1ri2_ot_deep_report.md"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260326_104322_1ri2_ot",
+    "source_file_id": "1ri2YcBWd50zXGS1BkhpyXhcM13UWT3xn",
+    "source_file_link": "https://drive.google.com/file/d/1ri2YcBWd50zXGS1BkhpyXhcM13UWT3xn/view?usp=drivesdk",
+    "published_at": "2026-03-26T01:44:45.911933+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[230217_커스텀그라운드_우리와_ANF_23년 상반기 마케팅 전략 제안_FN]_02_OT_심층리포트",
+        "document_id": "1vbwkBdkkUkx9qL60CcTX9hcfmnuGQS9FitLuvEvjEvA",
+        "url": "https://docs.google.com/document/d/1vbwkBdkkUkx9qL60CcTX9hcfmnuGQS9FitLuvEvjEvA/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/deep_reports/20260326_104322_1ri2_ot_deep_report.md"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260326_104322_1hK1_ot",
+    "source_file_id": "1hK1d2blk-rMgFb0gWyWBPjEF4FUq27GF",
+    "source_file_link": "https://drive.google.com/file/d/1hK1d2blk-rMgFb0gWyWBPjEF4FUq27GF/view?usp=drivesdk",
+    "published_at": "2026-03-26T01:45:01.305462+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[[윌슨] KCC 브랜디드 콘텐츠 제안_fin]_02_OT_심층리포트",
+        "document_id": "1sq8y5pWWGXsHkNwtBbzazd4IecsB8ZxjZa-pHVkSLo8",
+        "url": "https://docs.google.com/document/d/1sq8y5pWWGXsHkNwtBbzazd4IecsB8ZxjZa-pHVkSLo8/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/deep_reports/20260326_104322_1hK1_ot_deep_report.md"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260326_125943_1NPN_ot",
+    "source_file_id": "1NPNn3rTL1K_fPJUo0m-Q3fnvqJZUGLjc",
+    "source_file_link": "https://docs.google.com/presentation/d/1NPNn3rTL1K_fPJUo0m-Q3fnvqJZUGLjc/edit?usp=drivesdk&ouid=107219426543298663188&rtpof=true&sd=true",
+    "published_at": "2026-03-26T03:59:51.509630+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[얼음 기획]_02_OT_심층리포트",
+        "document_id": "1g1irbUv5hr5g6NMd5HX-e2SzE4yv-njjOzXMHYJV55o",
+        "url": "https://docs.google.com/document/d/1g1irbUv5hr5g6NMd5HX-e2SzE4yv-njjOzXMHYJV55o/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/deep_reports/20260326_125943_1NPN_ot_deep_report.md"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260326_125943_1NPN_ot",
+    "source_file_id": "1NPNn3rTL1K_fPJUo0m-Q3fnvqJZUGLjc",
+    "source_file_link": "https://docs.google.com/presentation/d/1NPNn3rTL1K_fPJUo0m-Q3fnvqJZUGLjc/edit?usp=drivesdk&ouid=107219426543298663188&rtpof=true&sd=true",
+    "published_at": "2026-03-26T04:00:28.476618+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[얼음 기획]_02_OT_심층리포트",
+        "document_id": "1k7gXRNqiZ6EInRF5wvsEfylrco75zQpEo4m7GRtkirM",
+        "url": "https://docs.google.com/document/d/1k7gXRNqiZ6EInRF5wvsEfylrco75zQpEo4m7GRtkirM/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/deep_reports/20260326_125943_1NPN_ot_deep_report.md"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260326_130146_1NPN_ot",
+    "source_file_id": "1NPNn3rTL1K_fPJUo0m-Q3fnvqJZUGLjc",
+    "source_file_link": "https://docs.google.com/presentation/d/1NPNn3rTL1K_fPJUo0m-Q3fnvqJZUGLjc/edit?usp=drivesdk&ouid=107219426543298663188&rtpof=true&sd=true",
+    "published_at": "2026-03-26T04:01:51.544820+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[얼음 기획]_02_OT_심층리포트",
+        "document_id": "1umwOO1zLlUYvHrioTqyE8_UP7hSnjqURxrwws_SJZlc",
+        "url": "https://docs.google.com/document/d/1umwOO1zLlUYvHrioTqyE8_UP7hSnjqURxrwws_SJZlc/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/deep_reports/20260326_130146_1NPN_ot_deep_report.md"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260326_130445_1cgs_ot",
+    "source_file_id": "1cgsKL1QWu0Sdaxf1eiZ6lMd_2kGx31NG",
+    "source_file_link": "https://docs.google.com/presentation/d/1cgsKL1QWu0Sdaxf1eiZ6lMd_2kGx31NG/edit?usp=drivesdk&ouid=107219426543298663188&rtpof=true&sd=true",
+    "published_at": "2026-03-26T04:04:49.118796+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[얼음 기획]_02_OT_심층리포트",
+        "document_id": "1dEEFiXmpKDqU4zIhWmGuu1yDt3p_s9bM8H4KCUWqZP4",
+        "url": "https://docs.google.com/document/d/1dEEFiXmpKDqU4zIhWmGuu1yDt3p_s9bM8H4KCUWqZP4/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/deep_reports/20260326_130445_1cgs_ot_deep_report.md"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260326_130500_1cgs_ot",
+    "source_file_id": "1cgsKL1QWu0Sdaxf1eiZ6lMd_2kGx31NG",
+    "source_file_link": "https://docs.google.com/presentation/d/1cgsKL1QWu0Sdaxf1eiZ6lMd_2kGx31NG/edit?usp=drivesdk&ouid=107219426543298663188&rtpof=true&sd=true",
+    "published_at": "2026-03-26T04:05:04.880052+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[얼음 기획]_02_OT_심층리포트",
+        "document_id": "1hR78zhFYOuSD-zwOOJxt7XZRFe_X7RSgbUcbkntTpa0",
+        "url": "https://docs.google.com/document/d/1hR78zhFYOuSD-zwOOJxt7XZRFe_X7RSgbUcbkntTpa0/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/deep_reports/20260326_130500_1cgs_ot_deep_report.md"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260326_125943_1NPN_ot",
+    "source_file_id": "1NPNn3rTL1K_fPJUo0m-Q3fnvqJZUGLjc",
+    "source_file_link": "https://docs.google.com/presentation/d/1NPNn3rTL1K_fPJUo0m-Q3fnvqJZUGLjc/edit?usp=drivesdk&ouid=107219426543298663188&rtpof=true&sd=true",
+    "published_at": "2026-03-26T04:05:41.003298+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[얼음 기획]_02_OT_심층리포트",
+        "document_id": "1zwU5uU8W70QqgMmuTYXiRzqo2xJ7tneMJlrRdpZQN9A",
+        "url": "https://docs.google.com/document/d/1zwU5uU8W70QqgMmuTYXiRzqo2xJ7tneMJlrRdpZQN9A/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/deep_reports/20260326_125943_1NPN_ot_deep_report.md"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260326_125943_1NPN_ot",
+    "source_file_id": "1NPNn3rTL1K_fPJUo0m-Q3fnvqJZUGLjc",
+    "source_file_link": "https://docs.google.com/presentation/d/1NPNn3rTL1K_fPJUo0m-Q3fnvqJZUGLjc/edit?usp=drivesdk&ouid=107219426543298663188&rtpof=true&sd=true",
+    "published_at": "2026-03-26T04:11:24.241327+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[얼음 기획]_02_OT_심층리포트",
+        "document_id": "13qRxeRmS9MSc6oIJDoFckMLmplo9KmZ-U95gSlHeaQg",
+        "url": "https://docs.google.com/document/d/13qRxeRmS9MSc6oIJDoFckMLmplo9KmZ-U95gSlHeaQg/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/deep_reports/20260326_125943_1NPN_ot_deep_report.md"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260326_125943_1NPN_ot",
+    "source_file_id": "1NPNn3rTL1K_fPJUo0m-Q3fnvqJZUGLjc",
+    "source_file_link": "https://docs.google.com/presentation/d/1NPNn3rTL1K_fPJUo0m-Q3fnvqJZUGLjc/edit?usp=drivesdk&ouid=107219426543298663188&rtpof=true&sd=true",
+    "published_at": "2026-03-26T04:14:47.126870+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[얼음 기획]_02_OT_심층리포트",
+        "document_id": "1ZnfWz8Z4IJ568hB09Qc1OenPdOhxU1cc4poneUCKLQE",
+        "url": "https://docs.google.com/document/d/1ZnfWz8Z4IJ568hB09Qc1OenPdOhxU1cc4poneUCKLQE/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/deep_reports/20260326_125943_1NPN_ot_deep_report.md"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260326_125943_1NPN_ot",
+    "source_file_id": "1NPNn3rTL1K_fPJUo0m-Q3fnvqJZUGLjc",
+    "source_file_link": "https://docs.google.com/presentation/d/1NPNn3rTL1K_fPJUo0m-Q3fnvqJZUGLjc/edit?usp=drivesdk&ouid=107219426543298663188&rtpof=true&sd=true",
+    "published_at": "2026-03-26T04:15:07.582022+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[얼음 기획]_02_OT_심층리포트",
+        "document_id": "1PZ7gLmZTuGPr3JKWJ6NCmiXifXU-yrvBUMnK-4csKmI",
+        "url": "https://docs.google.com/document/d/1PZ7gLmZTuGPr3JKWJ6NCmiXifXU-yrvBUMnK-4csKmI/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/deep_reports/20260326_125943_1NPN_ot_deep_report.md"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260326_125943_1NPN_ot",
+    "source_file_id": "1NPNn3rTL1K_fPJUo0m-Q3fnvqJZUGLjc",
+    "source_file_link": "https://docs.google.com/presentation/d/1NPNn3rTL1K_fPJUo0m-Q3fnvqJZUGLjc/edit?usp=drivesdk&ouid=107219426543298663188&rtpof=true&sd=true",
+    "published_at": "2026-03-26T04:18:21.322586+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[얼음 기획]_02_OT_심층리포트",
+        "document_id": "1nbLjAnjwZGLXVvBRI-DP1st6lRUroKIHBWwFzScxrAY",
+        "url": "https://docs.google.com/document/d/1nbLjAnjwZGLXVvBRI-DP1st6lRUroKIHBWwFzScxrAY/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/deep_reports/20260326_125943_1NPN_ot_deep_report.md"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260326_131945_12fI_ot",
+    "source_file_id": "12fIGixit0mHcNHPyoB33WoLTn3oiMOTr",
+    "source_file_link": "https://docs.google.com/presentation/d/12fIGixit0mHcNHPyoB33WoLTn3oiMOTr/edit?usp=drivesdk&ouid=107219426543298663188&rtpof=true&sd=true",
+    "published_at": "2026-03-26T04:19:49.143821+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[얼음 기획]_02_OT_심층리포트",
+        "document_id": "1Sv2rL4OTbMFYd_riHKJmyef5nbiTklVwMyJoyFa5GRc",
+        "url": "https://docs.google.com/document/d/1Sv2rL4OTbMFYd_riHKJmyef5nbiTklVwMyJoyFa5GRc/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/deep_reports/20260326_131945_12fI_ot_deep_report.md"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260326_132001_12fI_ot",
+    "source_file_id": "12fIGixit0mHcNHPyoB33WoLTn3oiMOTr",
+    "source_file_link": "https://docs.google.com/presentation/d/12fIGixit0mHcNHPyoB33WoLTn3oiMOTr/edit?usp=drivesdk&ouid=107219426543298663188&rtpof=true&sd=true",
+    "published_at": "2026-03-26T04:20:05.424033+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[얼음 기획]_02_OT_심층리포트",
+        "document_id": "1fRSaMLhWoQInwr2F50q4Av06IkIi9BoN-pQjTtxafk4",
+        "url": "https://docs.google.com/document/d/1fRSaMLhWoQInwr2F50q4Av06IkIi9BoN-pQjTtxafk4/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/deep_reports/20260326_132001_12fI_ot_deep_report.md"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260326_133230_1aq0_ot",
+    "source_file_id": "1aq0WOjVfd0KIS6_MW-I_wDrAFPh0-EJb",
+    "source_file_link": "https://docs.google.com/presentation/d/1aq0WOjVfd0KIS6_MW-I_wDrAFPh0-EJb/edit?usp=drivesdk&ouid=107219426543298663188&rtpof=true&sd=true",
+    "published_at": "2026-03-26T04:32:34.852471+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[얼음 기획]_02_OT_심층리포트",
+        "document_id": "1lUA-7M4_4C_WT_fFpM3fYGRQUgU2MJQPvwIsrhlE8-M",
+        "url": "https://docs.google.com/document/d/1lUA-7M4_4C_WT_fFpM3fYGRQUgU2MJQPvwIsrhlE8-M/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/deep_reports/20260326_133230_1aq0_ot_deep_report.md"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260326_133246_1aq0_ot",
+    "source_file_id": "1aq0WOjVfd0KIS6_MW-I_wDrAFPh0-EJb",
+    "source_file_link": "https://docs.google.com/presentation/d/1aq0WOjVfd0KIS6_MW-I_wDrAFPh0-EJb/edit?usp=drivesdk&ouid=107219426543298663188&rtpof=true&sd=true",
+    "published_at": "2026-03-26T04:32:50.705843+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[얼음 기획]_02_OT_심층리포트",
+        "document_id": "1xFafWSBN1qV3vhmFn9Ezu3LzIiCB8xuwwlWeMfIvceQ",
+        "url": "https://docs.google.com/document/d/1xFafWSBN1qV3vhmFn9Ezu3LzIiCB8xuwwlWeMfIvceQ/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/deep_reports/20260326_133246_1aq0_ot_deep_report.md"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260326_test_v3",
+    "source_file_id": null,
+    "source_file_link": "https://drive.google.com/file/d/test_v3",
+    "published_at": "2026-03-26T04:36:44.135720+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[전략_기획안_v3]_02_OT_심층리포트",
+        "document_id": "1p5XJvAd0VQFoeAkPtY9CSjzZ-W9TpkoNIEMEN5f7HjU",
+        "url": "https://docs.google.com/document/d/1p5XJvAd0VQFoeAkPtY9CSjzZ-W9TpkoNIEMEN5f7HjU/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/deep_reports/20260326_test_v3_deep_report.md"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260326_test_v3",
+    "source_file_id": null,
+    "source_file_link": "https://drive.google.com/file/d/test_v3",
+    "published_at": "2026-03-26T04:37:23.838247+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[전략_기획안_v3]_02_OT_심층리포트",
+        "document_id": "1Hepa_8eVOJYT5ENnX7DW5QDMYNi9YDbowMKIXEjiqlY",
+        "url": "https://docs.google.com/document/d/1Hepa_8eVOJYT5ENnX7DW5QDMYNi9YDbowMKIXEjiqlY/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/deep_reports/20260326_test_v3_deep_report.md"
+      },
+      {
+        "title": "20260326_test_v3_precision_report.html",
+        "document_id": "1ZqFV2AS1qX5hDKbIf7w_eRyCVzsg_g0T",
+        "url": "https://drive.google.com/file/d/1ZqFV2AS1qX5hDKbIf7w_eRyCVzsg_g0T/view?usp=drivesdk",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/reports/20260326_test_v3_precision_report.html"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260326_final_v1",
+    "source_file_id": null,
+    "source_file_link": "https://drive.google.com/file/d/final_v1",
+    "published_at": "2026-03-26T04:37:30.029678+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[프로젝트_전략_최종]_02_OT_심층리포트",
+        "document_id": "1hqvJmw3yPxSeDnRjl5eIETKXHsbIye9Ern6S_yaMOd4",
+        "url": "https://docs.google.com/document/d/1hqvJmw3yPxSeDnRjl5eIETKXHsbIye9Ern6S_yaMOd4/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/deep_reports/20260326_final_v1_deep_report.md"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260326_skill_v1",
+    "source_file_id": null,
+    "source_file_link": "https://drive.google.com/file/d/skill_v1",
+    "published_at": "2026-03-26T04:41:32.555256+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[글로벌_마케팅_시나리오]_02_OT_심층리포트",
+        "document_id": "1a0xR8FziA3XDeentprUExZGDMwxMEwxlYftHSog_G4c",
+        "url": "https://docs.google.com/document/d/1a0xR8FziA3XDeentprUExZGDMwxMEwxlYftHSog_G4c/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/deep_reports/20260326_skill_v1_deep_report.md"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260326_skill_v2",
+    "source_file_id": null,
+    "source_file_link": "https://drive.google.com/file/d/skill_v2",
+    "published_at": "2026-03-26T04:43:25.987672+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[프리미엄_브랜드_전략]_02_OT_심층리포트",
+        "document_id": "1O5mv7VDH2vzaEQAdpDY_I1jmqGxJz0J9LtOq9e1taJg",
+        "url": "https://docs.google.com/document/d/1O5mv7VDH2vzaEQAdpDY_I1jmqGxJz0J9LtOq9e1taJg/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/deep_reports/20260326_skill_v2_deep_report.md"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260326_skill_v2",
+    "source_file_id": null,
+    "source_file_link": "https://drive.google.com/file/d/skill_v2",
+    "published_at": "2026-03-26T04:45:37.852647+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[프리미엄_브랜드_전략]_02_OT_심층리포트",
+        "document_id": "1P127oNfF693jiAu7CCrdTV5LV4EbC2njoHXerP9F0sI",
+        "url": "https://docs.google.com/document/d/1P127oNfF693jiAu7CCrdTV5LV4EbC2njoHXerP9F0sI/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/deep_reports/20260326_skill_v2_deep_report.md"
+      },
+      {
+        "title": "20260326_skill_v2_precision_report.html",
+        "document_id": "1-tJhk_2nIA2sENGS1QeE0hnHXaJeI518",
+        "url": "https://drive.google.com/file/d/1-tJhk_2nIA2sENGS1QeE0hnHXaJeI518/view?usp=drivesdk",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/reports/20260326_skill_v2_precision_report.html"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260326_skill_v2",
+    "source_file_id": null,
+    "source_file_link": "https://drive.google.com/file/d/skill_v2",
+    "published_at": "2026-03-26T04:45:48.757471+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[프리미엄_브랜드_전략]_02_OT_심층리포트",
+        "document_id": "1y842C2xQ1JCArPsCuUPQLdRn-3IQUyeVhQETR7fBN5M",
+        "url": "https://docs.google.com/document/d/1y842C2xQ1JCArPsCuUPQLdRn-3IQUyeVhQETR7fBN5M/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/deep_reports/20260326_skill_v2_deep_report.md"
+      },
+      {
+        "title": "20260326_skill_v2_precision_report.html",
+        "document_id": "1uPae_L8Q0bPntPmfpo2CREV-gUu2VcfW",
+        "url": "https://drive.google.com/file/d/1uPae_L8Q0bPntPmfpo2CREV-gUu2VcfW/view?usp=drivesdk",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/reports/20260326_skill_v2_precision_report.html"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260326_skill_v2",
+    "source_file_id": null,
+    "source_file_link": "https://drive.google.com/file/d/skill_v2",
+    "published_at": "2026-03-26T04:45:59.054377+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[프리미엄_브랜드_전략]_02_OT_심층리포트",
+        "document_id": "1-wNvA6NvjLXslA89568Q-o_KO3yOW9C1vSpcrS7QcWE",
+        "url": "https://docs.google.com/document/d/1-wNvA6NvjLXslA89568Q-o_KO3yOW9C1vSpcrS7QcWE/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/deep_reports/20260326_skill_v2_deep_report.md"
+      },
+      {
+        "title": "20260326_skill_v2_precision_report.html",
+        "document_id": "10T5fro_1JgNQ7_32r79jHxifeb7ei1wq",
+        "url": "https://drive.google.com/file/d/10T5fro_1JgNQ7_32r79jHxifeb7ei1wq/view?usp=drivesdk",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/reports/20260326_skill_v2_precision_report.html"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260326_skill_v2",
+    "source_file_id": null,
+    "source_file_link": "https://drive.google.com/file/d/skill_v2",
+    "published_at": "2026-03-26T04:46:28.103734+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[프리미엄_브랜드_전략]_02_OT_심층리포트",
+        "document_id": "1_cPH07fLqykaXbQRD5ZsaMtKnPml59d2hgqYvx7_Fmk",
+        "url": "https://docs.google.com/document/d/1_cPH07fLqykaXbQRD5ZsaMtKnPml59d2hgqYvx7_Fmk/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/deep_reports/20260326_skill_v2_deep_report.md"
+      },
+      {
+        "title": "20260326_skill_v2_precision_report.html",
+        "document_id": "1dvX_jqEkxrocIvq0MCU5JtnHq9VnXhMY",
+        "url": "https://drive.google.com/file/d/1dvX_jqEkxrocIvq0MCU5JtnHq9VnXhMY/view?usp=drivesdk",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/reports/20260326_skill_v2_precision_report.html"
+      },
+      {
+        "title": "20260326_skill_v2_depth_report.docx",
+        "document_id": "175NqvsVDs3OHiPofihfIPtF5HEbsz47R",
+        "url": "https://docs.google.com/document/d/175NqvsVDs3OHiPofihfIPtF5HEbsz47R/edit?usp=drivesdk&ouid=107219426543298663188&rtpof=true&sd=true",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/reports/20260326_skill_v2_depth_report.docx"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260326_134955_1aq0_ot",
+    "source_file_id": "1aq0WOjVfd0KIS6_MW-I_wDrAFPh0-EJb",
+    "source_file_link": "https://docs.google.com/presentation/d/1aq0WOjVfd0KIS6_MW-I_wDrAFPh0-EJb/edit?usp=drivesdk&ouid=107219426543298663188&rtpof=true&sd=true",
+    "published_at": "2026-03-26T04:49:59.467619+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[얼음 기획]_02_OT_심층리포트",
+        "document_id": "1W-cnkC5fbpeq8sAZ17Cx2XRnHjoPOQlXORiBmLsVwWw",
+        "url": "https://docs.google.com/document/d/1W-cnkC5fbpeq8sAZ17Cx2XRnHjoPOQlXORiBmLsVwWw/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/deep_reports/20260326_134955_1aq0_ot_deep_report.md"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260326_presentation_v1",
+    "source_file_id": null,
+    "source_file_link": "",
+    "published_at": "2026-03-26T04:56:06.732739+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[v3_presentation_test]_02_OT_심층리포트",
+        "document_id": "1BQAWe7E0kOL2g48doh4V7ok_6SPGXbiRtz0j_42SMPQ",
+        "url": "https://docs.google.com/document/d/1BQAWe7E0kOL2g48doh4V7ok_6SPGXbiRtz0j_42SMPQ/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/deep_reports/20260326_presentation_v1_deep_report.md"
+      },
+      {
+        "title": "20260326_presentation_v1_depth_report.docx",
+        "document_id": "11pWplUdLi4vp4IG2db53ko5kbg1KYXfM",
+        "url": "https://docs.google.com/document/d/11pWplUdLi4vp4IG2db53ko5kbg1KYXfM/edit?usp=drivesdk&ouid=107219426543298663188&rtpof=true&sd=true",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/reports/20260326_presentation_v1_depth_report.docx"
+      },
+      {
+        "title": "20260326_presentation_v1_precision_report.html",
+        "document_id": "1izpfSMOdfY6XdlGqcF5l8iYF0e_FYerW",
+        "url": "https://drive.google.com/file/d/1izpfSMOdfY6XdlGqcF5l8iYF0e_FYerW/view?usp=drivesdk",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/reports/20260326_presentation_v1_precision_report.html"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260326_presentation_v1",
+    "source_file_id": null,
+    "source_file_link": "",
+    "published_at": "2026-03-26T04:56:08.643230+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[v3_presentation_test]_02_OT_심층리포트",
+        "document_id": "1qWs4OXSLBlHFqI_K3syaFNswRD1wVE4bRVO93NHboIU",
+        "url": "https://docs.google.com/document/d/1qWs4OXSLBlHFqI_K3syaFNswRD1wVE4bRVO93NHboIU/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/deep_reports/20260326_presentation_v1_deep_report.md"
+      },
+      {
+        "title": "20260326_presentation_v1_depth_report.docx",
+        "document_id": "1hFBwybW3z3S9johmfAQu09v-hvIHmQHT",
+        "url": "https://docs.google.com/document/d/1hFBwybW3z3S9johmfAQu09v-hvIHmQHT/edit?usp=drivesdk&ouid=107219426543298663188&rtpof=true&sd=true",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/reports/20260326_presentation_v1_depth_report.docx"
+      },
+      {
+        "title": "20260326_presentation_v1_precision_report.html",
+        "document_id": "1rKumwwIHiBUreQ5s3ozK5y-k5zVV6Ym7",
+        "url": "https://drive.google.com/file/d/1rKumwwIHiBUreQ5s3ozK5y-k5zVV6Ym7/view?usp=drivesdk",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/reports/20260326_presentation_v1_precision_report.html"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260326_presentation_v1",
+    "source_file_id": null,
+    "source_file_link": "",
+    "published_at": "2026-03-26T04:56:19.864668+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[v3_presentation_test]_02_OT_심층리포트",
+        "document_id": "1CZdv6CACz_grXc43wMRL7a3FbPD8YbyG4vY03xdd3as",
+        "url": "https://docs.google.com/document/d/1CZdv6CACz_grXc43wMRL7a3FbPD8YbyG4vY03xdd3as/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/deep_reports/20260326_presentation_v1_deep_report.md"
+      },
+      {
+        "title": "20260326_presentation_v1_depth_report.docx",
+        "document_id": "1V4RpFSsLvNXYEhpI5O8sBkePn2m1w_4m",
+        "url": "https://docs.google.com/document/d/1V4RpFSsLvNXYEhpI5O8sBkePn2m1w_4m/edit?usp=drivesdk&ouid=107219426543298663188&rtpof=true&sd=true",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/reports/20260326_presentation_v1_depth_report.docx"
+      },
+      {
+        "title": "20260326_presentation_v1_precision_report.html",
+        "document_id": "1DXbNrqwQrwUZ7siCrmMZCl_vpX5mb3cG",
+        "url": "https://drive.google.com/file/d/1DXbNrqwQrwUZ7siCrmMZCl_vpX5mb3cG/view?usp=drivesdk",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/reports/20260326_presentation_v1_precision_report.html"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260326_142459_1P-p_ot",
+    "source_file_id": "1P-piVoM6isPMNpaiaYJnsAn57Pg3eK__",
+    "source_file_link": "https://drive.google.com/file/d/1P-piVoM6isPMNpaiaYJnsAn57Pg3eK__/view?usp=drivesdk",
+    "published_at": "2026-03-26T05:25:03.321588+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[[APLLO]GS건설_개포자이 안_브랜디드 콘텐츠 제안_240201_(중간공유)]_02_OT_심층리포트",
+        "document_id": "1iUYdqFO-3ZigdcxyVPgcmRHUJZWDrMKeVKcOeIfZfWg",
+        "url": "https://docs.google.com/document/d/1iUYdqFO-3ZigdcxyVPgcmRHUJZWDrMKeVKcOeIfZfWg/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/deep_reports/20260326_142459_1P-p_ot_deep_report.md"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260326_142515_1P-p_ot",
+    "source_file_id": "1P-piVoM6isPMNpaiaYJnsAn57Pg3eK__",
+    "source_file_link": "https://drive.google.com/file/d/1P-piVoM6isPMNpaiaYJnsAn57Pg3eK__/view?usp=drivesdk",
+    "published_at": "2026-03-26T05:25:20.113694+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[[APLLO]GS건설_개포자이 안_브랜디드 콘텐츠 제안_240201_(중간공유)]_02_OT_심층리포트",
+        "document_id": "16OCdAvGOqwa2x3ljY_nDwpcSTdEP-D08ljxRTGRbYO0",
+        "url": "https://docs.google.com/document/d/16OCdAvGOqwa2x3ljY_nDwpcSTdEP-D08ljxRTGRbYO0/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/deep_reports/20260326_142515_1P-p_ot_deep_report.md"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260326_142515_1P-p_ot",
+    "source_file_id": "1P-piVoM6isPMNpaiaYJnsAn57Pg3eK__",
+    "source_file_link": "https://drive.google.com/file/d/1P-piVoM6isPMNpaiaYJnsAn57Pg3eK__/view?usp=drivesdk",
+    "published_at": "2026-03-26T05:25:41.413366+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[[APLLO]GS건설_개포자이 안_브랜디드 콘텐츠 제안_240201_(중간공유)]_02_OT_심층리포트",
+        "document_id": "1xMVc8UvJim0CkhF4QI5CdzV6d_l8f8Rj8xILMEU-ZwE",
+        "url": "https://docs.google.com/document/d/1xMVc8UvJim0CkhF4QI5CdzV6d_l8f8Rj8xILMEU-ZwE/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/deep_reports/20260326_142515_1P-p_ot_deep_report.md"
+      },
+      {
+        "title": "20260326_142515_1P-p_ot_precision_report.html",
+        "document_id": "1F_IbZ2qxvCeLkpvx5EVSQLJf8Cj2zPF4",
+        "url": "https://drive.google.com/file/d/1F_IbZ2qxvCeLkpvx5EVSQLJf8Cj2zPF4/view?usp=drivesdk",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/reports/20260326_142515_1P-p_ot_precision_report.html"
+      },
+      {
+        "title": "20260326_142515_1P-p_ot_depth_report.docx",
+        "document_id": "1DVTPsOXPOBZggzEnk9iF2uk9Xu2eQXz4",
+        "url": "https://docs.google.com/document/d/1DVTPsOXPOBZggzEnk9iF2uk9Xu2eQXz4/edit?usp=drivesdk&ouid=107219426543298663188&rtpof=true&sd=true",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/reports/20260326_142515_1P-p_ot_depth_report.docx"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260326_v4_test",
+    "source_file_id": null,
+    "source_file_link": "",
+    "published_at": "2026-03-26T05:50:55.211099+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[unknown_source]_02_OT_심층리포트",
+        "document_id": "16ZSnzLgY9CFaIdMGxXs8GS-yykfk5Oiw6IQvlEyNogI",
+        "url": "https://docs.google.com/document/d/16ZSnzLgY9CFaIdMGxXs8GS-yykfk5Oiw6IQvlEyNogI/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/deep_reports/20260326_v4_test_deep_report.md"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260326_v4_test",
+    "source_file_id": null,
+    "source_file_link": "",
+    "published_at": "2026-03-26T05:51:54.740598+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[unknown_source]_02_OT_심층리포트",
+        "document_id": "1i32BYNL4wChJLPmDbhRgSaydyjmiqGUchmpOJItZuxs",
+        "url": "https://docs.google.com/document/d/1i32BYNL4wChJLPmDbhRgSaydyjmiqGUchmpOJItZuxs/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/deep_reports/20260326_v4_test_deep_report.md"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260326_v4_test",
+    "source_file_id": null,
+    "source_file_link": "",
+    "published_at": "2026-03-26T05:54:59.880854+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[unknown_source]_02_OT_심층리포트",
+        "document_id": "16F9Nd7x1VlOoeV32JQDiHQ8EMsCRz93h20mKboZB0DY",
+        "url": "https://docs.google.com/document/d/16F9Nd7x1VlOoeV32JQDiHQ8EMsCRz93h20mKboZB0DY/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/deep_reports/20260326_v4_test_deep_report.md"
+      },
+      {
+        "title": "20260326_v4_test_depth_report.docx",
+        "document_id": "1v4XV_cwHsiDjOKVFgVynBgKivtd3mrS0",
+        "url": "https://docs.google.com/document/d/1v4XV_cwHsiDjOKVFgVynBgKivtd3mrS0/edit?usp=drivesdk&ouid=107219426543298663188&rtpof=true&sd=true",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/reports/20260326_v4_test_depth_report.docx"
+      },
+      {
+        "title": "20260326_v4_test_precision_report.html",
+        "document_id": "15AZrAH9ajFGjVvRatKqprbmjzxlM0E_x",
+        "url": "https://drive.google.com/file/d/15AZrAH9ajFGjVvRatKqprbmjzxlM0E_x/view?usp=drivesdk",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/reports/20260326_v4_test_precision_report.html"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260326_v4_test",
+    "source_file_id": null,
+    "source_file_link": "",
+    "published_at": "2026-03-26T05:56:08.060564+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[unknown_source]_02_OT_심층리포트",
+        "document_id": "1Uq1kA3OpwVKwLeaCIyo3dT1tV3e67xpsU_IGQefMeoo",
+        "url": "https://docs.google.com/document/d/1Uq1kA3OpwVKwLeaCIyo3dT1tV3e67xpsU_IGQefMeoo/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/deep_reports/20260326_v4_test_deep_report.md"
+      },
+      {
+        "title": "20260326_v4_test_depth_report.docx",
+        "document_id": "19IvX0vzWc5txP9v20fbw94sMRS15doDM",
+        "url": "https://docs.google.com/document/d/19IvX0vzWc5txP9v20fbw94sMRS15doDM/edit?usp=drivesdk&ouid=107219426543298663188&rtpof=true&sd=true",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/reports/20260326_v4_test_depth_report.docx"
+      },
+      {
+        "title": "20260326_v4_test_precision_report.html",
+        "document_id": "1M975H0EAuCY0HN2nUFBl981qIRmVovCy",
+        "url": "https://drive.google.com/file/d/1M975H0EAuCY0HN2nUFBl981qIRmVovCy/view?usp=drivesdk",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/reports/20260326_v4_test_precision_report.html"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260326_v4_test",
+    "source_file_id": null,
+    "source_file_link": "",
+    "published_at": "2026-03-26T05:57:05.185725+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[unknown_source]_02_OT_심층리포트",
+        "document_id": "1FL5zlcmk7Lrlj5Yd5ZIAwUMj9T5rV4golZYa1uwcX1E",
+        "url": "https://docs.google.com/document/d/1FL5zlcmk7Lrlj5Yd5ZIAwUMj9T5rV4golZYa1uwcX1E/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/deep_reports/20260326_v4_test_deep_report.md"
+      },
+      {
+        "title": "20260326_v4_test_precision_report.pptx",
+        "document_id": "1-_9pwo5psB75I7eDubhms_WUIs8339dK",
+        "url": "https://docs.google.com/presentation/d/1-_9pwo5psB75I7eDubhms_WUIs8339dK/edit?usp=drivesdk&ouid=107219426543298663188&rtpof=true&sd=true",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/reports/20260326_v4_test_precision_report.pptx"
+      },
+      {
+        "title": "20260326_v4_test_depth_report.docx",
+        "document_id": "1fYfcrVzRABEZ0yz3yVo4QeMT351vLpD1",
+        "url": "https://docs.google.com/document/d/1fYfcrVzRABEZ0yz3yVo4QeMT351vLpD1/edit?usp=drivesdk&ouid=107219426543298663188&rtpof=true&sd=true",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/reports/20260326_v4_test_depth_report.docx"
+      },
+      {
+        "title": "20260326_v4_test_precision_report.html",
+        "document_id": "1ggRtK5NE2YTiDcau5xrLR8goMaKQOj71",
+        "url": "https://drive.google.com/file/d/1ggRtK5NE2YTiDcau5xrLR8goMaKQOj71/view?usp=drivesdk",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/reports/20260326_v4_test_precision_report.html"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260326_v4_test",
+    "source_file_id": null,
+    "source_file_link": "",
+    "published_at": "2026-03-26T06:06:13.363999+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[unknown_source]_02_OT_심층리포트",
+        "document_id": "1B-wwNi5wXv35J1hdD-BLXH_0ntoSuyquaKdvMKW3nDk",
+        "url": "https://docs.google.com/document/d/1B-wwNi5wXv35J1hdD-BLXH_0ntoSuyquaKdvMKW3nDk/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/deep_reports/20260326_v4_test_deep_report.md"
+      },
+      {
+        "title": "20260326_v4_test_precision_report.pptx",
+        "document_id": "1oyOlGjjyxptzbFuzcbyOiO_g8U1VS3Le",
+        "url": "https://docs.google.com/presentation/d/1oyOlGjjyxptzbFuzcbyOiO_g8U1VS3Le/edit?usp=drivesdk&ouid=107219426543298663188&rtpof=true&sd=true",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/reports/20260326_v4_test_precision_report.pptx"
+      },
+      {
+        "title": "20260326_v4_test_depth_report.docx",
+        "document_id": "1pTId6pwZUbFAckWE_ipceOsYtXteWley",
+        "url": "https://docs.google.com/document/d/1pTId6pwZUbFAckWE_ipceOsYtXteWley/edit?usp=drivesdk&ouid=107219426543298663188&rtpof=true&sd=true",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/reports/20260326_v4_test_depth_report.docx"
+      },
+      {
+        "title": "20260326_v4_test_precision_report.html",
+        "document_id": "1jk71IYkEMhzQL70cTWmxo7Z7v0oXGLeg",
+        "url": "https://drive.google.com/file/d/1jk71IYkEMhzQL70cTWmxo7Z7v0oXGLeg/view?usp=drivesdk",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/reports/20260326_v4_test_precision_report.html"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260326_v4_test",
+    "source_file_id": null,
+    "source_file_link": "",
+    "published_at": "2026-03-26T06:10:59.033110+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[unknown_source]_02_OT_심층리포트",
+        "document_id": "1Bx7iBlubSt80pMFcvKcnK_GJsbPMngYTuXaO3srxRi8",
+        "url": "https://docs.google.com/document/d/1Bx7iBlubSt80pMFcvKcnK_GJsbPMngYTuXaO3srxRi8/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/deep_reports/20260326_v4_test_deep_report.md"
+      },
+      {
+        "title": "20260326_v4_test_precision_report.pptx",
+        "document_id": "1pFdrA7q2SkBNWp6HbsrqYOY5lYJe92sQ",
+        "url": "https://docs.google.com/presentation/d/1pFdrA7q2SkBNWp6HbsrqYOY5lYJe92sQ/edit?usp=drivesdk&ouid=107219426543298663188&rtpof=true&sd=true",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/reports/20260326_v4_test_precision_report.pptx"
+      },
+      {
+        "title": "20260326_v4_test_depth_report.docx",
+        "document_id": "19ftIvW1HoEXqR46mgkzshacyjFp_tghW",
+        "url": "https://docs.google.com/document/d/19ftIvW1HoEXqR46mgkzshacyjFp_tghW/edit?usp=drivesdk&ouid=107219426543298663188&rtpof=true&sd=true",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/reports/20260326_v4_test_depth_report.docx"
+      },
+      {
+        "title": "20260326_v4_test_precision_report.html",
+        "document_id": "1IPiiwuG25wniuk4QzbPqELv0htURDlIT",
+        "url": "https://drive.google.com/file/d/1IPiiwuG25wniuk4QzbPqELv0htURDlIT/view?usp=drivesdk",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/reports/20260326_v4_test_precision_report.html"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260326_v4_test",
+    "source_file_id": null,
+    "source_file_link": "",
+    "published_at": "2026-03-26T06:18:21.753411+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[unknown_source]_02_OT_심층리포트",
+        "document_id": "1ZWdYXPwME38KfZUsSFHpmbet4h6k32-pCjov2MoM2Jw",
+        "url": "https://docs.google.com/document/d/1ZWdYXPwME38KfZUsSFHpmbet4h6k32-pCjov2MoM2Jw/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/deep_reports/20260326_v4_test_deep_report.md"
+      },
+      {
+        "title": "20260326_v4_test_precision_report.pptx",
+        "document_id": "1obWwPay1nZVF1vQo5RhVQ0iv5w0KgQpv",
+        "url": "https://docs.google.com/presentation/d/1obWwPay1nZVF1vQo5RhVQ0iv5w0KgQpv/edit?usp=drivesdk&ouid=107219426543298663188&rtpof=true&sd=true",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/reports/20260326_v4_test_precision_report.pptx"
+      },
+      {
+        "title": "20260326_v4_test_depth_report.docx",
+        "document_id": "13oK-5lRvg_Z5LmobdzG_xr9b3Zek_o0A",
+        "url": "https://docs.google.com/document/d/13oK-5lRvg_Z5LmobdzG_xr9b3Zek_o0A/edit?usp=drivesdk&ouid=107219426543298663188&rtpof=true&sd=true",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/reports/20260326_v4_test_depth_report.docx"
+      },
+      {
+        "title": "20260326_v4_test_precision_report.html",
+        "document_id": "18mrW9W13D0gi8RnbcwP6tV287i3rLKe0",
+        "url": "https://drive.google.com/file/d/18mrW9W13D0gi8RnbcwP6tV287i3rLKe0/view?usp=drivesdk",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/reports/20260326_v4_test_precision_report.html"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260326_v4_test",
+    "source_file_id": null,
+    "source_file_link": "",
+    "published_at": "2026-03-26T06:23:16.100658+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[unknown_source]_02_OT_심층리포트",
+        "document_id": "1527Su3QhXG2U1OW2Udy8zNrMgJEp7WtMTufODpl9x-Y",
+        "url": "https://docs.google.com/document/d/1527Su3QhXG2U1OW2Udy8zNrMgJEp7WtMTufODpl9x-Y/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/deep_reports/20260326_v4_test_deep_report.md"
+      },
+      {
+        "title": "20260326_v4_test_precision_report.pptx",
+        "document_id": "1bRb4UeNY3wRQBiQDfrDHttIsq0Sg4vFY",
+        "url": "https://docs.google.com/presentation/d/1bRb4UeNY3wRQBiQDfrDHttIsq0Sg4vFY/edit?usp=drivesdk&ouid=107219426543298663188&rtpof=true&sd=true",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/reports/20260326_v4_test_precision_report.pptx"
+      },
+      {
+        "title": "20260326_v4_test_depth_report.docx",
+        "document_id": "1B_eYF-qNXcSwRV3nTY0ul1aSAkCu5yRv",
+        "url": "https://docs.google.com/document/d/1B_eYF-qNXcSwRV3nTY0ul1aSAkCu5yRv/edit?usp=drivesdk&ouid=107219426543298663188&rtpof=true&sd=true",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/reports/20260326_v4_test_depth_report.docx"
+      },
+      {
+        "title": "20260326_v4_test_precision_report.html",
+        "document_id": "1PEo8ioy-J-nW7FPgwGu1MX-UtjaMGs1v",
+        "url": "https://drive.google.com/file/d/1PEo8ioy-J-nW7FPgwGu1MX-UtjaMGs1v/view?usp=drivesdk",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/reports/20260326_v4_test_precision_report.html"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260326_v4_test",
+    "source_file_id": null,
+    "source_file_link": "",
+    "published_at": "2026-03-26T06:31:50.063077+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[unknown_source]_02_OT_심층리포트",
+        "document_id": "1ZKVL98nVfIxC4uz2EIYLFzJmZUXhI3WHFYzyV3c40FA",
+        "url": "https://docs.google.com/document/d/1ZKVL98nVfIxC4uz2EIYLFzJmZUXhI3WHFYzyV3c40FA/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/deep_reports/20260326_v4_test_deep_report.md"
+      },
+      {
+        "title": "20260326_v4_test_precision_report.pptx",
+        "document_id": "1OinfPVFC_yjZSW_DL9rTGoEeEWQ76DOZ",
+        "url": "https://docs.google.com/presentation/d/1OinfPVFC_yjZSW_DL9rTGoEeEWQ76DOZ/edit?usp=drivesdk&ouid=107219426543298663188&rtpof=true&sd=true",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/reports/20260326_v4_test_precision_report.pptx"
+      },
+      {
+        "title": "20260326_v4_test_depth_report.docx",
+        "document_id": "1P-Th5VhiIe23QRaNcqKUkEscrkz5azNs",
+        "url": "https://docs.google.com/document/d/1P-Th5VhiIe23QRaNcqKUkEscrkz5azNs/edit?usp=drivesdk&ouid=107219426543298663188&rtpof=true&sd=true",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/reports/20260326_v4_test_depth_report.docx"
+      },
+      {
+        "title": "20260326_v4_test_precision_report.html",
+        "document_id": "1BuUAI5OC9koQBXlajJFyWN8apbkkoGXH",
+        "url": "https://drive.google.com/file/d/1BuUAI5OC9koQBXlajJFyWN8apbkkoGXH/view?usp=drivesdk",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/reports/20260326_v4_test_precision_report.html"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260326_v4_test",
+    "source_file_id": null,
+    "source_file_link": "",
+    "published_at": "2026-03-26T06:36:20.776073+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[unknown_source]_02_OT_심층리포트",
+        "document_id": "1JJQdIPPNRz3uIKnjHwgH0fYvdMCQR_UNcj6jTL6Um0o",
+        "url": "https://docs.google.com/document/d/1JJQdIPPNRz3uIKnjHwgH0fYvdMCQR_UNcj6jTL6Um0o/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/deep_reports/20260326_v4_test_deep_report.md"
+      },
+      {
+        "title": "20260326_v4_test_precision_report.pptx",
+        "document_id": "1PHvBjjzRHZTCQjP6sid0CDqNgqC7vIcn",
+        "url": "https://docs.google.com/presentation/d/1PHvBjjzRHZTCQjP6sid0CDqNgqC7vIcn/edit?usp=drivesdk&ouid=107219426543298663188&rtpof=true&sd=true",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/reports/20260326_v4_test_precision_report.pptx"
+      },
+      {
+        "title": "20260326_v4_test_depth_report.docx",
+        "document_id": "1-Pfm_yH_yKZKMGklSFmG3mYwpduLtC00",
+        "url": "https://docs.google.com/document/d/1-Pfm_yH_yKZKMGklSFmG3mYwpduLtC00/edit?usp=drivesdk&ouid=107219426543298663188&rtpof=true&sd=true",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/reports/20260326_v4_test_depth_report.docx"
+      },
+      {
+        "title": "20260326_v4_test_precision_report.html",
+        "document_id": "11szXYWCD3GKonQ5GtEIFj6Fz0AI-noxA",
+        "url": "https://drive.google.com/file/d/11szXYWCD3GKonQ5GtEIFj6Fz0AI-noxA/view?usp=drivesdk",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/reports/20260326_v4_test_precision_report.html"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260326_v4_test",
+    "source_file_id": null,
+    "source_file_link": "",
+    "published_at": "2026-03-26T06:44:16.192053+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[unknown_source]_02_OT_심층리포트",
+        "document_id": "1Vss38F9z4BVKvJswcvKEIPktUJVMDBN9FCGhqrISe9k",
+        "url": "https://docs.google.com/document/d/1Vss38F9z4BVKvJswcvKEIPktUJVMDBN9FCGhqrISe9k/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/deep_reports/20260326_v4_test_deep_report.md"
+      },
+      {
+        "title": "20260326_v4_test_precision_report.pptx",
+        "document_id": "1LwqPQCqWjepiWI8pfvEykfhAlh3-fHdJ",
+        "url": "https://docs.google.com/presentation/d/1LwqPQCqWjepiWI8pfvEykfhAlh3-fHdJ/edit?usp=drivesdk&ouid=107219426543298663188&rtpof=true&sd=true",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/reports/20260326_v4_test_precision_report.pptx"
+      },
+      {
+        "title": "20260326_v4_test_depth_report.docx",
+        "document_id": "1HmkADo7b6Wj1RK7LGooaKorLCYtmgqUc",
+        "url": "https://docs.google.com/document/d/1HmkADo7b6Wj1RK7LGooaKorLCYtmgqUc/edit?usp=drivesdk&ouid=107219426543298663188&rtpof=true&sd=true",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/reports/20260326_v4_test_depth_report.docx"
+      },
+      {
+        "title": "20260326_v4_test_precision_report.html",
+        "document_id": "1rHGxJF_Tivo8eBXr5MSeglMmhNZS_Wjr",
+        "url": "https://drive.google.com/file/d/1rHGxJF_Tivo8eBXr5MSeglMmhNZS_Wjr/view?usp=drivesdk",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/reports/20260326_v4_test_precision_report.html"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260326_v4_test",
+    "source_file_id": null,
+    "source_file_link": "",
+    "published_at": "2026-03-26T06:50:00.495854+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[unknown_source]_02_OT_심층리포트",
+        "document_id": "1d5kTivoNHP9Dke2Rf0qxu7AJfwoXTFWDpRkNEUas_SE",
+        "url": "https://docs.google.com/document/d/1d5kTivoNHP9Dke2Rf0qxu7AJfwoXTFWDpRkNEUas_SE/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/deep_reports/20260326_v4_test_deep_report.md"
+      },
+      {
+        "title": "20260326_v4_test_precision_report.pptx",
+        "document_id": "10qjqC8FKP0DP4Fo0hoec0FcK9bygekt9",
+        "url": "https://docs.google.com/presentation/d/10qjqC8FKP0DP4Fo0hoec0FcK9bygekt9/edit?usp=drivesdk&ouid=107219426543298663188&rtpof=true&sd=true",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/reports/20260326_v4_test_precision_report.pptx"
+      },
+      {
+        "title": "20260326_v4_test_depth_report.docx",
+        "document_id": "1bnhmLQH0dH3uGqUM4HLpMAa-iZrp0KTK",
+        "url": "https://docs.google.com/document/d/1bnhmLQH0dH3uGqUM4HLpMAa-iZrp0KTK/edit?usp=drivesdk&ouid=107219426543298663188&rtpof=true&sd=true",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/reports/20260326_v4_test_depth_report.docx"
+      },
+      {
+        "title": "20260326_v4_test_precision_report.html",
+        "document_id": "1WKAL-qRMl9OCh-3L5cmRjmZmTyAuAOJC",
+        "url": "https://drive.google.com/file/d/1WKAL-qRMl9OCh-3L5cmRjmZmTyAuAOJC/view?usp=drivesdk",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/reports/20260326_v4_test_precision_report.html",
+        "direct_url": "https://meandfree23.github.io/auto-ot/reports/20260326_v4_test_precision_report.html"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260330_105037_1N9l_ot",
+    "source_file_id": "1N9l75DMrAo--3mjUT0Mq5XoembJ7uNtQ",
+    "source_file_link": "https://drive.google.com/file/d/1N9l75DMrAo--3mjUT0Mq5XoembJ7uNtQ/view?usp=drivesdk",
+    "published_at": "2026-03-30T01:59:54.918336+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[김경진 감독님께_Malone Lev_Production Bid_Brief_fin_KR]_02_OT_심층리포트",
+        "document_id": "1XYUzwujlqIh1oH13qu4VzuEmBCBVPT4zFZuuNmXwCHY",
+        "url": "https://docs.google.com/document/d/1XYUzwujlqIh1oH13qu4VzuEmBCBVPT4zFZuuNmXwCHY/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/deep_reports/20260330_105037_1N9l_ot_deep_report.md"
+      },
+      {
+        "title": "20260330_105037_1N9l_ot_depth_report.docx",
+        "document_id": "1gTbbRRAtgpAYkaddZ3Fj5BbQqihyKsmi",
+        "url": "https://docs.google.com/document/d/1gTbbRRAtgpAYkaddZ3Fj5BbQqihyKsmi/edit?usp=drivesdk&ouid=107219426543298663188&rtpof=true&sd=true",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/reports/20260330_105037_1N9l_ot_depth_report.docx"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260330_105037_1N9l_ot",
+    "source_file_id": "1N9l75DMrAo--3mjUT0Mq5XoembJ7uNtQ",
+    "source_file_link": "https://drive.google.com/file/d/1N9l75DMrAo--3mjUT0Mq5XoembJ7uNtQ/view?usp=drivesdk",
+    "published_at": "2026-03-30T03:36:30.681049+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[김경진 감독님께_Malone Lev_Production Bid_Brief_fin_KR]_02_OT_심층리포트",
+        "document_id": "1a817hsrPjD_t3t3dTm_P5aFrFUOXYkKLlVBNPf9Pn64",
+        "url": "https://docs.google.com/document/d/1a817hsrPjD_t3t3dTm_P5aFrFUOXYkKLlVBNPf9Pn64/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/deep_reports/20260330_105037_1N9l_ot_deep_report.md"
+      },
+      {
+        "title": "20260330_105037_1N9l_ot_depth_report.docx",
+        "document_id": "1LAS32jcxH-33a1mlESPAKI2ohTB34x7p",
+        "url": "https://docs.google.com/document/d/1LAS32jcxH-33a1mlESPAKI2ohTB34x7p/edit?usp=drivesdk&ouid=107219426543298663188&rtpof=true&sd=true",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/reports/20260330_105037_1N9l_ot_depth_report.docx"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260330_105037_1N9l_ot",
+    "source_file_id": "1N9l75DMrAo--3mjUT0Mq5XoembJ7uNtQ",
+    "source_file_link": "https://drive.google.com/file/d/1N9l75DMrAo--3mjUT0Mq5XoembJ7uNtQ/view?usp=drivesdk",
+    "published_at": "2026-03-30T04:09:12.446434+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[김경진 감독님께_Malone Lev_Production Bid_Brief_fin_KR]_02_OT_심층리포트",
+        "document_id": "1fuOrBaJqAy4Ew-Xv7jF-zs1IwoMTvfSbK0725L7QW3w",
+        "url": "https://docs.google.com/document/d/1fuOrBaJqAy4Ew-Xv7jF-zs1IwoMTvfSbK0725L7QW3w/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/deep_reports/20260330_105037_1N9l_ot_deep_report.md"
+      },
+      {
+        "title": "20260330_105037_1N9l_ot_depth_report.docx",
+        "document_id": "19mYISw6nlE17a1vn7Cjel0OSlzMuPUsE",
+        "url": "https://docs.google.com/document/d/19mYISw6nlE17a1vn7Cjel0OSlzMuPUsE/edit?usp=drivesdk&ouid=107219426543298663188&rtpof=true&sd=true",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/reports/20260330_105037_1N9l_ot_depth_report.docx"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260330_105037_1N9l_ot",
+    "source_file_id": "1N9l75DMrAo--3mjUT0Mq5XoembJ7uNtQ",
+    "source_file_link": "https://drive.google.com/file/d/1N9l75DMrAo--3mjUT0Mq5XoembJ7uNtQ/view?usp=drivesdk",
+    "published_at": "2026-03-30T04:26:10.096496+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[김경진 감독님께_Malone Lev_Production Bid_Brief_fin_KR]_02_OT_심층리포트",
+        "document_id": "1GispKxAhPAlKAftFq_7Xqd7tb9Ut58CfxZ8al6Z-Aqc",
+        "url": "https://docs.google.com/document/d/1GispKxAhPAlKAftFq_7Xqd7tb9Ut58CfxZ8al6Z-Aqc/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/deep_reports/20260330_105037_1N9l_ot_deep_report.md"
+      },
+      {
+        "title": "20260330_105037_1N9l_ot_depth_report.docx",
+        "document_id": "1FQWIAfTEUz0R8iTkJSM-R4-Y9SwO-l4b",
+        "url": "https://docs.google.com/document/d/1FQWIAfTEUz0R8iTkJSM-R4-Y9SwO-l4b/edit?usp=drivesdk&ouid=107219426543298663188&rtpof=true&sd=true",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/reports/20260330_105037_1N9l_ot_depth_report.docx"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260330_105037_1N9l_ot",
+    "source_file_id": "1N9l75DMrAo--3mjUT0Mq5XoembJ7uNtQ",
+    "source_file_link": "https://drive.google.com/file/d/1N9l75DMrAo--3mjUT0Mq5XoembJ7uNtQ/view?usp=drivesdk",
+    "published_at": "2026-03-30T04:38:31.722403+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[김경진 감독님께_Malone Lev_Production Bid_Brief_fin_KR]_02_OT_심층리포트",
+        "document_id": "1-4j_SJMq9tx093ijYEiA2fNzaaG0K3s3iXIMbMh_1ec",
+        "url": "https://docs.google.com/document/d/1-4j_SJMq9tx093ijYEiA2fNzaaG0K3s3iXIMbMh_1ec/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/deep_reports/20260330_105037_1N9l_ot_deep_report.md"
+      },
+      {
+        "title": "20260330_105037_1N9l_ot_depth_report.docx",
+        "document_id": "16kuFSBhWtZaSnpytbEH0cbkJ0g3hhs3N",
+        "url": "https://docs.google.com/document/d/16kuFSBhWtZaSnpytbEH0cbkJ0g3hhs3N/edit?usp=drivesdk&ouid=107219426543298663188&rtpof=true&sd=true",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/reports/20260330_105037_1N9l_ot_depth_report.docx"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260330_105037_1N9l_ot",
+    "source_file_id": "1N9l75DMrAo--3mjUT0Mq5XoembJ7uNtQ",
+    "source_file_link": "https://drive.google.com/file/d/1N9l75DMrAo--3mjUT0Mq5XoembJ7uNtQ/view?usp=drivesdk",
+    "published_at": "2026-03-30T04:46:22.871539+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[김경진 감독님께_Malone Lev_Production Bid_Brief_fin_KR]_02_OT_심층리포트",
+        "document_id": "1za2qZvf2A_HbzMd_UH3Or4kFVK__sPIwqRiSfJ7TAso",
+        "url": "https://docs.google.com/document/d/1za2qZvf2A_HbzMd_UH3Or4kFVK__sPIwqRiSfJ7TAso/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/deep_reports/20260330_105037_1N9l_ot_deep_report.md"
+      },
+      {
+        "title": "20260330_105037_1N9l_ot_depth_report.docx",
+        "document_id": "1oPgm4dTyF3ebfbQJDncxKYKPOwVdc484",
+        "url": "https://docs.google.com/document/d/1oPgm4dTyF3ebfbQJDncxKYKPOwVdc484/edit?usp=drivesdk&ouid=107219426543298663188&rtpof=true&sd=true",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/reports/20260330_105037_1N9l_ot_depth_report.docx"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260330_105037_1N9l_ot",
+    "source_file_id": "1N9l75DMrAo--3mjUT0Mq5XoembJ7uNtQ",
+    "source_file_link": "https://drive.google.com/file/d/1N9l75DMrAo--3mjUT0Mq5XoembJ7uNtQ/view?usp=drivesdk",
+    "published_at": "2026-03-30T04:50:56.781631+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[김경진 감독님께_Malone Lev_Production Bid_Brief_fin_KR]_01_OT_한장요약",
+        "document_id": "17-4vnG3oqs8MPjMdXVfaQRnwvxcPrDVrEMofyLV-jFw",
+        "url": "https://docs.google.com/document/d/17-4vnG3oqs8MPjMdXVfaQRnwvxcPrDVrEMofyLV-jFw/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/01_summaries/20260330_105037_1N9l_ot_summary.md"
+      },
+      {
+        "title": "[김경진 감독님께_Malone Lev_Production Bid_Brief_fin_KR]_02_OT_심층리포트",
+        "document_id": "19RS0UMxW0mRWcfwGc6k3IBYfs9YF2CT4SFbtDnDoig0",
+        "url": "https://docs.google.com/document/d/19RS0UMxW0mRWcfwGc6k3IBYfs9YF2CT4SFbtDnDoig0/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/02_deep_analysis/20260330_105037_1N9l_ot_deep_report.md"
+      },
+      {
+        "title": "20260330_105037_1N9l_ot_depth_report.docx",
+        "document_id": "1TmdGDVODqOpomVXMju36zaIi41VTdsJN",
+        "url": "https://docs.google.com/document/d/1TmdGDVODqOpomVXMju36zaIi41VTdsJN/edit?usp=drivesdk&ouid=107219426543298663188&rtpof=true&sd=true",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/03_final_reports/20260330_105037_1N9l_ot_depth_report.docx"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260330_105037_1N9l_ot",
+    "source_file_id": "1N9l75DMrAo--3mjUT0Mq5XoembJ7uNtQ",
+    "source_file_link": "https://drive.google.com/file/d/1N9l75DMrAo--3mjUT0Mq5XoembJ7uNtQ/view?usp=drivesdk",
+    "published_at": "2026-03-30T04:55:18.849013+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[김경진 감독님께_Malone Lev_Production Bid_Brief_fin_KR]_01_OT_한장요약",
+        "document_id": "13UGgiSsIiMQI48T-UfxcnTwuhGyFhFrec-jVMSWiIoA",
+        "url": "https://docs.google.com/document/d/13UGgiSsIiMQI48T-UfxcnTwuhGyFhFrec-jVMSWiIoA/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/01_summaries/20260330_105037_1N9l_ot_summary.md"
+      },
+      {
+        "title": "[김경진 감독님께_Malone Lev_Production Bid_Brief_fin_KR]_02_OT_심층리포트",
+        "document_id": "1cF0_KCgsIGRERZ44WEaw-NW-1jBQnZA6OD5B_IHLTiE",
+        "url": "https://docs.google.com/document/d/1cF0_KCgsIGRERZ44WEaw-NW-1jBQnZA6OD5B_IHLTiE/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/02_deep_analysis/20260330_105037_1N9l_ot_deep_report.md"
+      },
+      {
+        "title": "20260330_105037_1N9l_ot_depth_report.docx",
+        "document_id": "1UEQWTNAUn3yIz8T4-_e4An7CmGCUZWbK",
+        "url": "https://docs.google.com/document/d/1UEQWTNAUn3yIz8T4-_e4An7CmGCUZWbK/edit?usp=drivesdk&ouid=107219426543298663188&rtpof=true&sd=true",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/03_final_reports/20260330_105037_1N9l_ot_depth_report.docx"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260330_105037_1N9l_ot",
+    "source_file_id": "1N9l75DMrAo--3mjUT0Mq5XoembJ7uNtQ",
+    "source_file_link": "https://drive.google.com/file/d/1N9l75DMrAo--3mjUT0Mq5XoembJ7uNtQ/view?usp=drivesdk",
+    "published_at": "2026-03-30T05:13:02.630537+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[김경진 감독님께_Malone Lev_Production Bid_Brief_fin_KR]_01_OT_한장요약",
+        "document_id": "154NKL3IYu__vU3kUxNObwIsAdsK8T44S8tbkZ_gU1zk",
+        "url": "https://docs.google.com/document/d/154NKL3IYu__vU3kUxNObwIsAdsK8T44S8tbkZ_gU1zk/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/01_summaries/20260330_105037_1N9l_ot_summary.md"
+      },
+      {
+        "title": "[김경진 감독님께_Malone Lev_Production Bid_Brief_fin_KR]_02_OT_심층리포트",
+        "document_id": "1xDhsJf1s890o8qtgupZJfbUmWRoubS9aPybeJaiRd8Y",
+        "url": "https://docs.google.com/document/d/1xDhsJf1s890o8qtgupZJfbUmWRoubS9aPybeJaiRd8Y/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/02_deep_analysis/20260330_105037_1N9l_ot_deep_report.md"
+      },
+      {
+        "title": "20260330_105037_1N9l_ot_depth_report.docx",
+        "document_id": "1yeTXzsdiNa1Kjd2GwpqRR5KO1D9XfvQj",
+        "url": "https://docs.google.com/document/d/1yeTXzsdiNa1Kjd2GwpqRR5KO1D9XfvQj/edit?usp=drivesdk&ouid=107219426543298663188&rtpof=true&sd=true",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/03_final_reports/20260330_105037_1N9l_ot_depth_report.docx"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260330_105037_1N9l_ot",
+    "source_file_id": "1N9l75DMrAo--3mjUT0Mq5XoembJ7uNtQ",
+    "source_file_link": "https://drive.google.com/file/d/1N9l75DMrAo--3mjUT0Mq5XoembJ7uNtQ/view?usp=drivesdk",
+    "published_at": "2026-03-30T05:28:03.975797+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[김경진 감독님께_Malone Lev_Production Bid_Brief_fin_KR]_01_OT_한장요약",
+        "document_id": "1b6RZu0nuRssbi_gO7T8_GzR2YrUnjS5avFwJfEF4s0E",
+        "url": "https://docs.google.com/document/d/1b6RZu0nuRssbi_gO7T8_GzR2YrUnjS5avFwJfEF4s0E/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/01_summaries/20260330_105037_1N9l_ot_summary.md"
+      },
+      {
+        "title": "[김경진 감독님께_Malone Lev_Production Bid_Brief_fin_KR]_02_OT_심층리포트",
+        "document_id": "1Aozu1RiqnBebX9M2N35HVS54XC4CHziiyDXTTI64Ktc",
+        "url": "https://docs.google.com/document/d/1Aozu1RiqnBebX9M2N35HVS54XC4CHziiyDXTTI64Ktc/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/02_deep_analysis/20260330_105037_1N9l_ot_deep_report.md"
+      },
+      {
+        "title": "20260330_105037_1N9l_ot_precision_report.html",
+        "document_id": "1aEZ_OuMqjIQ8EusLS6q4yUYjFJNCSYGH",
+        "url": "https://drive.google.com/file/d/1aEZ_OuMqjIQ8EusLS6q4yUYjFJNCSYGH/view?usp=drivesdk",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/03_final_reports/20260330_105037_1N9l_ot_precision_report.html",
+        "direct_url": "https://meandfree23.github.io/auto-ot/reports/20260330_105037_1N9l_ot_precision_report.html"
+      },
+      {
+        "title": "20260330_105037_1N9l_ot_precision_report.pptx",
+        "document_id": "1VKSJokcUbfFwpBW65BigHnmbqBTnwvEt",
+        "url": "https://docs.google.com/presentation/d/1VKSJokcUbfFwpBW65BigHnmbqBTnwvEt/edit?usp=drivesdk&ouid=107219426543298663188&rtpof=true&sd=true",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/03_final_reports/20260330_105037_1N9l_ot_precision_report.pptx"
+      },
+      {
+        "title": "20260330_105037_1N9l_ot_depth_report.docx",
+        "document_id": "1vV6fQ4rRmUbeIsiTa9NXjubyl6vuXoo7",
+        "url": "https://docs.google.com/document/d/1vV6fQ4rRmUbeIsiTa9NXjubyl6vuXoo7/edit?usp=drivesdk&ouid=107219426543298663188&rtpof=true&sd=true",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/03_final_reports/20260330_105037_1N9l_ot_depth_report.docx"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260330_105037_1N9l_ot",
+    "source_file_id": "1N9l75DMrAo--3mjUT0Mq5XoembJ7uNtQ",
+    "source_file_link": "https://drive.google.com/file/d/1N9l75DMrAo--3mjUT0Mq5XoembJ7uNtQ/view?usp=drivesdk",
+    "published_at": "2026-03-30T06:53:27.594248+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[김경진 감독님께_Malone Lev_Production Bid_Brief_fin_KR]_01_OT_한장요약",
+        "document_id": "1nT18fagyJ5B_KbCK3Wts0dI636t6CHXw6sX-TE7d3NM",
+        "url": "https://docs.google.com/document/d/1nT18fagyJ5B_KbCK3Wts0dI636t6CHXw6sX-TE7d3NM/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/01_summaries/20260330_105037_1N9l_ot_summary.md"
+      },
+      {
+        "title": "[김경진 감독님께_Malone Lev_Production Bid_Brief_fin_KR]_02_OT_심층리포트",
+        "document_id": "1sZEK5tat1CL0-dr6uPeFIaDOs46fsCLuLzyncMzrbzg",
+        "url": "https://docs.google.com/document/d/1sZEK5tat1CL0-dr6uPeFIaDOs46fsCLuLzyncMzrbzg/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/02_deep_analysis/20260330_105037_1N9l_ot_deep_report.md"
+      },
+      {
+        "title": "20260330_105037_1N9l_ot_precision_report.html",
+        "document_id": "1KssUJMXT5UxoikhPrYjzp_A2M1GLAes7",
+        "url": "https://drive.google.com/file/d/1KssUJMXT5UxoikhPrYjzp_A2M1GLAes7/view?usp=drivesdk",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/03_final_reports/20260330_105037_1N9l_ot_precision_report.html",
+        "direct_url": "https://meandfree23.github.io/auto-ot/reports/20260330_105037_1N9l_ot_precision_report.html"
+      },
+      {
+        "title": "20260330_105037_1N9l_ot_precision_report.pptx",
+        "document_id": "1IQo_DSnc7jmefEcDQCYXLl_Ql0FKBmR_",
+        "url": "https://docs.google.com/presentation/d/1IQo_DSnc7jmefEcDQCYXLl_Ql0FKBmR_/edit?usp=drivesdk&ouid=107219426543298663188&rtpof=true&sd=true",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/03_final_reports/20260330_105037_1N9l_ot_precision_report.pptx"
+      },
+      {
+        "title": "20260330_105037_1N9l_ot_depth_report.docx",
+        "document_id": "1mVNz1nTEuQfLJWcRAHpnVJiMrPTd6Tom",
+        "url": "https://docs.google.com/document/d/1mVNz1nTEuQfLJWcRAHpnVJiMrPTd6Tom/edit?usp=drivesdk&ouid=107219426543298663188&rtpof=true&sd=true",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/03_final_reports/20260330_105037_1N9l_ot_depth_report.docx"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260330_105037_1N9l_ot",
+    "source_file_id": "1N9l75DMrAo--3mjUT0Mq5XoembJ7uNtQ",
+    "source_file_link": "https://drive.google.com/file/d/1N9l75DMrAo--3mjUT0Mq5XoembJ7uNtQ/view?usp=drivesdk",
+    "published_at": "2026-03-30T06:56:47.471079+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[김경진 감독님께_Malone Lev_Production Bid_Brief_fin_KR]_01_OT_한장요약",
+        "document_id": "1bThQlL_ffCvEZzgG5ab5xEytVJR3y40IYNvQA5O09tU",
+        "url": "https://docs.google.com/document/d/1bThQlL_ffCvEZzgG5ab5xEytVJR3y40IYNvQA5O09tU/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/01_summaries/20260330_105037_1N9l_ot_summary.md"
+      },
+      {
+        "title": "[김경진 감독님께_Malone Lev_Production Bid_Brief_fin_KR]_02_OT_심층리포트",
+        "document_id": "1a4u4Kit2uH29qyLVlsFpE7Dhm-fTGTg0v8TOKilGgt0",
+        "url": "https://docs.google.com/document/d/1a4u4Kit2uH29qyLVlsFpE7Dhm-fTGTg0v8TOKilGgt0/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/02_deep_analysis/20260330_105037_1N9l_ot_deep_report.md"
+      },
+      {
+        "title": "20260330_105037_1N9l_ot_precision_report.html",
+        "document_id": "1YjVVR865lqunZx_-E5_fIl7RwF0KWzDP",
+        "url": "https://drive.google.com/file/d/1YjVVR865lqunZx_-E5_fIl7RwF0KWzDP/view?usp=drivesdk",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/03_final_reports/20260330_105037_1N9l_ot_precision_report.html",
+        "direct_url": "https://meandfree23.github.io/auto-ot/reports/20260330_105037_1N9l_ot_precision_report.html"
+      },
+      {
+        "title": "20260330_105037_1N9l_ot_precision_report.pptx",
+        "document_id": "1VyhcH9pTzqCxpo9ov5DpULwqtJ6rr4Q8",
+        "url": "https://docs.google.com/presentation/d/1VyhcH9pTzqCxpo9ov5DpULwqtJ6rr4Q8/edit?usp=drivesdk&ouid=107219426543298663188&rtpof=true&sd=true",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/03_final_reports/20260330_105037_1N9l_ot_precision_report.pptx"
+      },
+      {
+        "title": "20260330_105037_1N9l_ot_depth_report.docx",
+        "document_id": "1vLx2oieVVZHh7TjyRV98xRlPahqX8og-",
+        "url": "https://docs.google.com/document/d/1vLx2oieVVZHh7TjyRV98xRlPahqX8og-/edit?usp=drivesdk&ouid=107219426543298663188&rtpof=true&sd=true",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/03_final_reports/20260330_105037_1N9l_ot_depth_report.docx"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260330_105037_1N9l_ot",
+    "source_file_id": "1N9l75DMrAo--3mjUT0Mq5XoembJ7uNtQ",
+    "source_file_link": "https://drive.google.com/file/d/1N9l75DMrAo--3mjUT0Mq5XoembJ7uNtQ/view?usp=drivesdk",
+    "published_at": "2026-03-30T07:02:43.421866+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[김경진 감독님께_Malone Lev_Production Bid_Brief_fin_KR]_01_OT_한장요약",
+        "document_id": "1pqvhhEJaWRPco9uxhSiULt3EpUTi-r5xKDFMXBxNgVU",
+        "url": "https://docs.google.com/document/d/1pqvhhEJaWRPco9uxhSiULt3EpUTi-r5xKDFMXBxNgVU/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/01_summaries/20260330_105037_1N9l_ot_summary.md"
+      },
+      {
+        "title": "[김경진 감독님께_Malone Lev_Production Bid_Brief_fin_KR]_02_OT_심층리포트",
+        "document_id": "1zToP2ZdFZ315BQuf59yyAKjB4qyLay8BbmIVixd7ivM",
+        "url": "https://docs.google.com/document/d/1zToP2ZdFZ315BQuf59yyAKjB4qyLay8BbmIVixd7ivM/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/02_deep_analysis/20260330_105037_1N9l_ot_deep_report.md"
+      },
+      {
+        "title": "20260330_105037_1N9l_ot_precision_report.html",
+        "document_id": "1NqIm9lARprqXa5xmLGOO94wIH7N3_rGq",
+        "url": "https://drive.google.com/file/d/1NqIm9lARprqXa5xmLGOO94wIH7N3_rGq/view?usp=drivesdk",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/03_final_reports/20260330_105037_1N9l_ot_precision_report.html",
+        "direct_url": "https://meandfree23.github.io/auto-ot/reports/20260330_105037_1N9l_ot_precision_report.html"
+      },
+      {
+        "title": "20260330_105037_1N9l_ot_depth_report.docx",
+        "document_id": "1cu5L4fo66pXijH0tuCnVhaX8IKyVBWLO",
+        "url": "https://docs.google.com/document/d/1cu5L4fo66pXijH0tuCnVhaX8IKyVBWLO/edit?usp=drivesdk&ouid=107219426543298663188&rtpof=true&sd=true",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/03_final_reports/20260330_105037_1N9l_ot_depth_report.docx"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260330_105037_1N9l_ot",
+    "source_file_id": "1N9l75DMrAo--3mjUT0Mq5XoembJ7uNtQ",
+    "source_file_link": "https://drive.google.com/file/d/1N9l75DMrAo--3mjUT0Mq5XoembJ7uNtQ/view?usp=drivesdk",
+    "published_at": "2026-03-30T08:01:43.272877+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[김경진 감독님께_Malone Lev_Production Bid_Brief_fin_KR]_01_OT_한장요약",
+        "document_id": "1h3UH7GxjXU5KT_PYSELFb-HiLatPXNoagVpdvNNMsEU",
+        "url": "https://docs.google.com/document/d/1h3UH7GxjXU5KT_PYSELFb-HiLatPXNoagVpdvNNMsEU/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/01_summaries/20260330_105037_1N9l_ot_summary.md"
+      },
+      {
+        "title": "[김경진 감독님께_Malone Lev_Production Bid_Brief_fin_KR]_02_OT_심층리포트",
+        "document_id": "1wAqF3lz5FOz8e1SMjxW4NChZjtV_el8zJKzTX11cJdY",
+        "url": "https://docs.google.com/document/d/1wAqF3lz5FOz8e1SMjxW4NChZjtV_el8zJKzTX11cJdY/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/02_deep_analysis/20260330_105037_1N9l_ot_deep_report.md"
+      },
+      {
+        "title": "20260330_105037_1N9l_ot_precision_report.html",
+        "document_id": "1Aee75CGcXABglnG2f7uZrPqNRNdJe9TM",
+        "url": "https://drive.google.com/file/d/1Aee75CGcXABglnG2f7uZrPqNRNdJe9TM/view?usp=drivesdk",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/03_final_reports/20260330_105037_1N9l_ot_precision_report.html",
+        "direct_url": "https://meandfree23.github.io/auto-ot/reports/20260330_105037_1N9l_ot_precision_report.html"
+      },
+      {
+        "title": "20260330_105037_1N9l_ot_depth_report.docx",
+        "document_id": "1XsxaEtSUU_QpGWl5ycrxN3peMabv8rD2",
+        "url": "https://docs.google.com/document/d/1XsxaEtSUU_QpGWl5ycrxN3peMabv8rD2/edit?usp=drivesdk&ouid=107219426543298663188&rtpof=true&sd=true",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/03_final_reports/20260330_105037_1N9l_ot_depth_report.docx"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260330_182253_1Bq7_ot",
+    "source_file_id": "1Bq7z-WScPWkk0DZVhvbcD8YcI6UgKSns",
+    "source_file_link": "https://drive.google.com/file/d/1Bq7z-WScPWkk0DZVhvbcD8YcI6UgKSns/view?usp=drivesdk",
+    "published_at": "2026-03-30T09:23:46.649998+00:00",
+    "status": "partial_failure",
+    "published_docs": [],
+    "failures": [
+      {
+        "category": "deep_report",
+        "error": "Missing markdown for deep_report in /Users/kk/Desktop/오티 자동화/outputs/02_deep_analysis"
+      }
+    ]
+  },
+  {
+    "job_id": "20260330_182612_1Bq7_ot",
+    "source_file_id": "1Bq7z-WScPWkk0DZVhvbcD8YcI6UgKSns",
+    "source_file_link": "https://drive.google.com/file/d/1Bq7z-WScPWkk0DZVhvbcD8YcI6UgKSns/view?usp=drivesdk",
+    "published_at": "2026-03-30T09:36:26.555024+00:00",
+    "status": "partial_failure",
+    "published_docs": [],
+    "failures": [
+      {
+        "category": "deep_report",
+        "error": "Missing markdown for deep_report in /Users/kk/Desktop/오티 자동화/outputs/02_deep_analysis"
+      }
+    ]
+  },
+  {
+    "job_id": "20260330_182612_1Bq7_ot",
+    "source_file_id": "1Bq7z-WScPWkk0DZVhvbcD8YcI6UgKSns",
+    "source_file_link": "https://drive.google.com/file/d/1Bq7z-WScPWkk0DZVhvbcD8YcI6UgKSns/view?usp=drivesdk",
+    "published_at": "2026-03-30T10:40:12.423349+00:00",
+    "status": "partial_failure",
+    "published_docs": [
+      {
+        "title": "20260330_182612_1Bq7_ot_precision_report.html",
+        "document_id": "1EBDED1pt46Z_9PqSSvFs6y1xT96szP0Z",
+        "url": "https://drive.google.com/file/d/1EBDED1pt46Z_9PqSSvFs6y1xT96szP0Z/view?usp=drivesdk",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/03_final_reports/20260330_182612_1Bq7_ot_precision_report.html",
+        "direct_url": "https://meandfree23.github.io/auto-ot/reports/20260330_182612_1Bq7_ot_precision_report.html"
+      }
+    ],
+    "failures": [
+      {
+        "category": "deep_report",
+        "error": "Missing markdown for deep_report in /Users/kk/Desktop/오티 자동화/outputs/02_deep_analysis"
+      }
+    ]
+  },
+  {
+    "job_id": "20260330_182612_1Bq7_ot",
+    "source_file_id": "1Bq7z-WScPWkk0DZVhvbcD8YcI6UgKSns",
+    "source_file_link": "https://drive.google.com/file/d/1Bq7z-WScPWkk0DZVhvbcD8YcI6UgKSns/view?usp=drivesdk",
+    "published_at": "2026-03-30T12:23:02.025799+00:00",
+    "status": "partial_failure",
+    "published_docs": [
+      {
+        "title": "20260330_182612_1Bq7_ot_precision_report.html",
+        "document_id": "1wMECtqCuhxXFnhjeFM9OLsNVR_GEem4B",
+        "url": "https://drive.google.com/file/d/1wMECtqCuhxXFnhjeFM9OLsNVR_GEem4B/view?usp=drivesdk",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/03_final_reports/20260330_182612_1Bq7_ot_precision_report.html",
+        "direct_url": "https://meandfree23.github.io/auto-ot/reports/20260330_182612_1Bq7_ot_precision_report.html"
+      }
+    ],
+    "failures": [
+      {
+        "category": "deep_report",
+        "error": "Missing markdown for deep_report in /Users/kk/Desktop/오티 자동화/outputs/02_deep_analysis"
+      }
+    ]
+  },
+  {
+    "job_id": "20260330_212418_1Bq7_ot",
+    "source_file_id": "1Bq7z-WScPWkk0DZVhvbcD8YcI6UgKSns",
+    "source_file_link": "https://drive.google.com/file/d/1Bq7z-WScPWkk0DZVhvbcD8YcI6UgKSns/view?usp=drivesdk",
+    "published_at": "2026-03-30T12:24:19.670928+00:00",
+    "status": "partial_failure",
+    "published_docs": [],
+    "failures": [
+      {
+        "category": "deep_report",
+        "error": "Missing markdown for deep_report in /Users/kk/Desktop/오티 자동화/outputs/02_deep_analysis"
+      }
+    ]
+  },
+  {
+    "job_id": "20260330_182612_1Bq7_ot",
+    "source_file_id": "1Bq7z-WScPWkk0DZVhvbcD8YcI6UgKSns",
+    "source_file_link": "https://drive.google.com/file/d/1Bq7z-WScPWkk0DZVhvbcD8YcI6UgKSns/view?usp=drivesdk",
+    "published_at": "2026-03-30T12:25:33.209937+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[츄립 제안 0702]_02_OT_심층리포트",
+        "document_id": "1Wfz1PdK7bz-SP83200Ryh3-_9WIGccew_AZdzd_9tS8",
+        "url": "https://docs.google.com/document/d/1Wfz1PdK7bz-SP83200Ryh3-_9WIGccew_AZdzd_9tS8/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/02_deep_analysis/20260330_182612_1Bq7_ot_deep_report.md"
+      },
+      {
+        "title": "20260330_182612_1Bq7_ot_precision_report.html",
+        "document_id": "19FZ6N0da6iBnkjxArV6GivAvm2umg5Ew",
+        "url": "https://drive.google.com/file/d/19FZ6N0da6iBnkjxArV6GivAvm2umg5Ew/view?usp=drivesdk",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/03_final_reports/20260330_182612_1Bq7_ot_precision_report.html",
+        "direct_url": "https://meandfree23.github.io/auto-ot/reports/20260330_182612_1Bq7_ot_precision_report.html"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260330_182612_1Bq7_ot",
+    "source_file_id": "1Bq7z-WScPWkk0DZVhvbcD8YcI6UgKSns",
+    "source_file_link": "https://drive.google.com/file/d/1Bq7z-WScPWkk0DZVhvbcD8YcI6UgKSns/view?usp=drivesdk",
+    "published_at": "2026-03-30T12:34:55.416380+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[츄립 제안 0702]_02_OT_심층리포트",
+        "document_id": "1HPQhDMRnCG4XaNnTTz1zlX626mHJL2LaTXNySuU5zaE",
+        "url": "https://docs.google.com/document/d/1HPQhDMRnCG4XaNnTTz1zlX626mHJL2LaTXNySuU5zaE/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/02_deep_analysis/20260330_182612_1Bq7_ot_deep_report.md"
+      },
+      {
+        "title": "20260330_182612_1Bq7_ot_precision_report.html",
+        "document_id": "16jk-pTDB7m9r6i1gZVmoILE8r-VjDDOU",
+        "url": "https://drive.google.com/file/d/16jk-pTDB7m9r6i1gZVmoILE8r-VjDDOU/view?usp=drivesdk",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/03_final_reports/20260330_182612_1Bq7_ot_precision_report.html",
+        "direct_url": "https://meandfree23.github.io/auto-ot/reports/20260330_182612_1Bq7_ot_precision_report.html"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260330_182612_1Bq7_ot",
+    "source_file_id": "1Bq7z-WScPWkk0DZVhvbcD8YcI6UgKSns",
+    "source_file_link": "https://drive.google.com/file/d/1Bq7z-WScPWkk0DZVhvbcD8YcI6UgKSns/view?usp=drivesdk",
+    "published_at": "2026-03-30T12:52:44.599435+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[츄립 제안 0702]_02_OT_심층리포트",
+        "document_id": "1uW6_8qj__JyiUtljySQnd9jStOlJP25qJ2Z4B_4qCD0",
+        "url": "https://docs.google.com/document/d/1uW6_8qj__JyiUtljySQnd9jStOlJP25qJ2Z4B_4qCD0/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/02_deep_analysis/20260330_182612_1Bq7_ot_deep_report.md"
+      },
+      {
+        "title": "20260330_182612_1Bq7_ot_precision_report.html",
+        "document_id": "166T3cQRP7OzGF6L1rfyEa3Q0hclwTJ3g",
+        "url": "https://drive.google.com/file/d/166T3cQRP7OzGF6L1rfyEa3Q0hclwTJ3g/view?usp=drivesdk",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/03_final_reports/20260330_182612_1Bq7_ot_precision_report.html",
+        "direct_url": "https://meandfree23.github.io/auto-ot/reports/20260330_182612_1Bq7_ot_precision_report.html"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260330_182612_1Bq7_ot",
+    "source_file_id": "1Bq7z-WScPWkk0DZVhvbcD8YcI6UgKSns",
+    "source_file_link": "https://drive.google.com/file/d/1Bq7z-WScPWkk0DZVhvbcD8YcI6UgKSns/view?usp=drivesdk",
+    "published_at": "2026-03-30T13:00:44.063630+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[츄립 제안 0702]_02_OT_심층리포트",
+        "document_id": "1emfPSRsDHdv_-85JHs4NOI4DmJ8BNmFK2WDhpPaTpew",
+        "url": "https://docs.google.com/document/d/1emfPSRsDHdv_-85JHs4NOI4DmJ8BNmFK2WDhpPaTpew/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/02_deep_analysis/20260330_182612_1Bq7_ot_deep_report.md"
+      },
+      {
+        "title": "20260330_182612_1Bq7_ot_precision_report.html",
+        "document_id": "14WsxF55S_JpY7GZ-rZajyaEWk8lqEm0S",
+        "url": "https://drive.google.com/file/d/14WsxF55S_JpY7GZ-rZajyaEWk8lqEm0S/view?usp=drivesdk",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/03_final_reports/20260330_182612_1Bq7_ot_precision_report.html",
+        "direct_url": "https://meandfree23.github.io/auto-ot/reports/20260330_182612_1Bq7_ot_precision_report.html"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260330_182612_1Bq7_ot",
+    "source_file_id": "1Bq7z-WScPWkk0DZVhvbcD8YcI6UgKSns",
+    "source_file_link": "https://drive.google.com/file/d/1Bq7z-WScPWkk0DZVhvbcD8YcI6UgKSns/view?usp=drivesdk",
+    "published_at": "2026-03-30T13:16:53.163761+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[츄립 제안 0702]_02_OT_심층리포트",
+        "document_id": "1IfMZPsE2qcCFfjFYJvP1P8ARTNKw7WBp74Z-WlIapqo",
+        "url": "https://docs.google.com/document/d/1IfMZPsE2qcCFfjFYJvP1P8ARTNKw7WBp74Z-WlIapqo/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/02_deep_analysis/20260330_182612_1Bq7_ot_deep_report.md"
+      },
+      {
+        "title": "20260330_182612_1Bq7_ot_precision_report.html",
+        "document_id": "1S9LnNdSDqdCuqbBgWtAGyEJiWp5z-tGn",
+        "url": "https://drive.google.com/file/d/1S9LnNdSDqdCuqbBgWtAGyEJiWp5z-tGn/view?usp=drivesdk",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/03_final_reports/20260330_182612_1Bq7_ot_precision_report.html",
+        "direct_url": "https://meandfree23.github.io/auto-ot/reports/20260330_182612_1Bq7_ot_precision_report.html"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260331_081428_1aId_ot",
+    "source_file_id": "1aId4X1iagwe8F1q0PXb47RosPjk2O3Rs",
+    "source_file_link": "https://docs.google.com/document/d/1aId4X1iagwe8F1q0PXb47RosPjk2O3Rs/edit?usp=drivesdk&ouid=107219426543298663188&rtpof=true&sd=true",
+    "published_at": "2026-03-30T23:14:29.796208+00:00",
+    "status": "partial_failure",
+    "published_docs": [],
+    "failures": [
+      {
+        "category": "deep_report",
+        "error": "Missing markdown for deep_report in /Users/kk/Desktop/오티 자동화/outputs/02_deep_analysis"
+      }
+    ]
+  },
+  {
+    "job_id": "20260331_081441_1aId_ot",
+    "source_file_id": "1aId4X1iagwe8F1q0PXb47RosPjk2O3Rs",
+    "source_file_link": "https://docs.google.com/document/d/1aId4X1iagwe8F1q0PXb47RosPjk2O3Rs/edit?usp=drivesdk&ouid=107219426543298663188&rtpof=true&sd=true",
+    "published_at": "2026-03-30T23:14:43.417785+00:00",
+    "status": "partial_failure",
+    "published_docs": [],
+    "failures": [
+      {
+        "category": "deep_report",
+        "error": "Missing markdown for deep_report in /Users/kk/Desktop/오티 자동화/outputs/02_deep_analysis"
+      }
+    ]
+  },
+  {
+    "job_id": "dummy_test_job",
+    "source_file_id": "test_id_123",
+    "source_file_link": "https://example.com/test",
+    "published_at": "2026-03-31T06:54:25.400337+00:00",
+    "status": "partial_failure",
+    "published_docs": [],
+    "failures": [
+      {
+        "category": "deep_report",
+        "error": "Missing REQUIRED markdown for deep_report in /Users/kk/Desktop/오티 자동화/outputs/02_deep_analysis"
+      }
+    ]
+  },
+  {
+    "job_id": "20260331_160908_1XjV_ot",
+    "source_file_id": "1XjVrRp4cZrDw5uVrIG-5tkOdHY8zTWDP",
+    "source_file_link": "https://drive.google.com/file/d/1XjVrRp4cZrDw5uVrIG-5tkOdHY8zTWDP/view?usp=drivesdk",
+    "published_at": "2026-03-31T07:09:09.709171+00:00",
+    "status": "partial_failure",
+    "published_docs": [],
+    "failures": [
+      {
+        "category": "deep_report",
+        "error": "Missing REQUIRED markdown for deep_report in /Users/kk/Desktop/오티 자동화/outputs/02_deep_analysis"
+      }
+    ]
+  },
+  {
+    "job_id": "20260331_160921_1XjV_ot",
+    "source_file_id": "1XjVrRp4cZrDw5uVrIG-5tkOdHY8zTWDP",
+    "source_file_link": "https://drive.google.com/file/d/1XjVrRp4cZrDw5uVrIG-5tkOdHY8zTWDP/view?usp=drivesdk",
+    "published_at": "2026-03-31T07:09:22.895324+00:00",
+    "status": "partial_failure",
+    "published_docs": [],
+    "failures": [
+      {
+        "category": "deep_report",
+        "error": "Missing REQUIRED markdown for deep_report in /Users/kk/Desktop/오티 자동화/outputs/02_deep_analysis"
+      }
+    ]
+  },
+  {
+    "job_id": "20260331_171337_1hRD_ot",
+    "source_file_id": "1hRD_Nio10UcJXxoI2UQMsBdo_Hb_Rv51",
+    "source_file_link": "https://drive.google.com/file/d/1hRD_Nio10UcJXxoI2UQMsBdo_Hb_Rv51/view?usp=drivesdk",
+    "published_at": "2026-03-31T08:13:38.869946+00:00",
+    "status": "partial_failure",
+    "published_docs": [],
+    "failures": [
+      {
+        "category": "deep_report",
+        "error": "Missing REQUIRED markdown for deep_report in /Users/kk/Desktop/오티 자동화/outputs/02_deep_analysis"
+      }
+    ]
+  },
+  {
+    "job_id": "20260331_171350_1hRD_ot",
+    "source_file_id": "1hRD_Nio10UcJXxoI2UQMsBdo_Hb_Rv51",
+    "source_file_link": "https://drive.google.com/file/d/1hRD_Nio10UcJXxoI2UQMsBdo_Hb_Rv51/view?usp=drivesdk",
+    "published_at": "2026-03-31T08:13:52.194059+00:00",
+    "status": "partial_failure",
+    "published_docs": [],
+    "failures": [
+      {
+        "category": "deep_report",
+        "error": "Missing REQUIRED markdown for deep_report in /Users/kk/Desktop/오티 자동화/outputs/02_deep_analysis"
+      }
+    ]
+  },
+  {
+    "job_id": "test_verification_job_999",
+    "source_file_id": null,
+    "source_file_link": "",
+    "published_at": "2026-03-31T08:21:36.002098+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[verification_test]_02_OT_심층리포트",
+        "document_id": "1aw2NJXO4Kvb3nQs9SdKlqtrhmhnGehxua0MGHE1hp4Y",
+        "url": "https://docs.google.com/document/d/1aw2NJXO4Kvb3nQs9SdKlqtrhmhnGehxua0MGHE1hp4Y/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/02_deep_analysis/test_verification_job_999_deep_report.md"
+      },
+      {
+        "title": "test_verification_job_999_depth_report.docx",
+        "document_id": "1Aro6rmI6qgjrbUDAUyMc7CsNvM9PbEW0",
+        "url": "https://docs.google.com/document/d/1Aro6rmI6qgjrbUDAUyMc7CsNvM9PbEW0/edit?usp=drivesdk&ouid=107219426543298663188&rtpof=true&sd=true",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/03_final_reports/test_verification_job_999_depth_report.docx"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260331_173136_1ItZ_ot",
+    "source_file_id": "1ItZv9stz2WPBAsl25MhF1tUE07Hnvf11",
+    "source_file_link": "https://docs.google.com/presentation/d/1ItZv9stz2WPBAsl25MhF1tUE07Hnvf11/edit?usp=drivesdk&ouid=107219426543298663188&rtpof=true&sd=true",
+    "published_at": "2026-03-31T08:31:47.537961+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[0816_SAIC AUDI proposal_KOR (1)]_02_OT_심층리포트",
+        "document_id": "14YDZnqj14sut2crVU-LhgQIBxecmOzDC7v5DHW9vhnI",
+        "url": "https://docs.google.com/document/d/14YDZnqj14sut2crVU-LhgQIBxecmOzDC7v5DHW9vhnI/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/02_deep_analysis/20260331_173136_1ItZ_ot_deep_report.md"
+      },
+      {
+        "title": "20260331_173136_1ItZ_ot_depth_report.docx",
+        "document_id": "1vg29ygmri59DknY_1aqL7XXSubSLGuOe",
+        "url": "https://docs.google.com/document/d/1vg29ygmri59DknY_1aqL7XXSubSLGuOe/edit?usp=drivesdk&ouid=107219426543298663188&rtpof=true&sd=true",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/03_final_reports/20260331_173136_1ItZ_ot_depth_report.docx"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260331_173136_1ItZ_ot",
+    "source_file_id": "1ItZv9stz2WPBAsl25MhF1tUE07Hnvf11",
+    "source_file_link": "https://docs.google.com/presentation/d/1ItZv9stz2WPBAsl25MhF1tUE07Hnvf11/edit?usp=drivesdk&ouid=107219426543298663188&rtpof=true&sd=true",
+    "published_at": "2026-03-31T11:45:23.210396+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[0816_SAIC AUDI proposal_KOR (1)]_02_OT_심층리포트",
+        "document_id": "1vKoKTCMUlhOaErq8x9Zo3Xdobtf7xsXlkLUcXuzIbSk",
+        "url": "https://docs.google.com/document/d/1vKoKTCMUlhOaErq8x9Zo3Xdobtf7xsXlkLUcXuzIbSk/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/02_deep_analysis/20260331_173136_1ItZ_ot_deep_report.md"
+      },
+      {
+        "title": "20260331_173136_1ItZ_ot_precision_report.html",
+        "document_id": "1HtUu4YAbQglo5iFE9rUJyuQzR46lZtps",
+        "url": "https://drive.google.com/file/d/1HtUu4YAbQglo5iFE9rUJyuQzR46lZtps/view?usp=drivesdk",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/03_final_reports/20260331_173136_1ItZ_ot_precision_report.html",
+        "direct_url": "https://meandfree23.github.io/auto-ot/reports/20260331_173136_1ItZ_ot_precision_report.html"
+      },
+      {
+        "title": "20260331_173136_1ItZ_ot_depth_report.docx",
+        "document_id": "11sMAeMgygcPU8hiMaXtXVWp3YVaPiHRh",
+        "url": "https://docs.google.com/document/d/11sMAeMgygcPU8hiMaXtXVWp3YVaPiHRh/edit?usp=drivesdk&ouid=107219426543298663188&rtpof=true&sd=true",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/03_final_reports/20260331_173136_1ItZ_ot_depth_report.docx"
+      }
+    ],
+    "failures": []
+  }
+]

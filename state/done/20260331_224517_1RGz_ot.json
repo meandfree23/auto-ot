@@ -1,0 +1,23 @@
+{
+  "job_id": "20260331_224517_1RGz_ot",
+  "created_at": "2026-03-31T13:45:17.538503+00:00",
+  "project_type": "brand_film",
+  "language": "ko",
+  "priority": "high",
+  "source": {
+    "provider": "google_drive",
+    "file_id": "1RGzalf9HMqHC3ubquBFJPNCJCXoPkduK",
+    "file_name": "츄립 제안 0702.pdf",
+    "mime_type": "application/pdf",
+    "web_view_link": "https://drive.google.com/file/d/1RGzalf9HMqHC3ubquBFJPNCJCXoPkduK/view?usp=drivesdk",
+    "modified_time": "2025-07-01T12:33:19.000Z"
+  },
+  "required_outputs": [
+    "summary",
+    "questions",
+    "research",
+    "solutions"
+  ],
+  "human_review_required": true,
+  "notes": "Automatically detected via Drive polling."
+}

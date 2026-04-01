@@ -1,0 +1,23 @@
+{
+  "job_id": "20260401_095609_1cuR_ot",
+  "created_at": "2026-04-01T00:56:09.753733+00:00",
+  "project_type": "brand_film",
+  "language": "ko",
+  "priority": "high",
+  "source": {
+    "provider": "google_drive",
+    "file_id": "1cuR-qeLGEj8W_IBqkTgJtI_7KkH-2Inw",
+    "file_name": "김경진 감독님께_Malone Lev_Production Bid_Brief_fin_KR.pdf",
+    "mime_type": "application/pdf",
+    "web_view_link": "https://drive.google.com/file/d/1cuR-qeLGEj8W_IBqkTgJtI_7KkH-2Inw/view?usp=drivesdk",
+    "modified_time": "2025-02-25T05:23:54.000Z"
+  },
+  "required_outputs": [
+    "summary",
+    "questions",
+    "research",
+    "solutions"
+  ],
+  "human_review_required": true,
+  "notes": "Automatically detected via Drive polling."
+}

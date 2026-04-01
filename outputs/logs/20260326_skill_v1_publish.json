@@ -1,0 +1,16 @@
+{
+  "job_id": "20260326_skill_v1",
+  "source_file_id": null,
+  "source_file_link": "https://drive.google.com/file/d/skill_v1",
+  "published_at": "2026-03-26T04:41:32.555256+00:00",
+  "status": "success",
+  "published_docs": [
+    {
+      "title": "[글로벌_마케팅_시나리오]_02_OT_심층리포트",
+      "document_id": "1a0xR8FziA3XDeentprUExZGDMwxMEwxlYftHSog_G4c",
+      "url": "https://docs.google.com/document/d/1a0xR8FziA3XDeentprUExZGDMwxMEwxlYftHSog_G4c/edit",
+      "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/deep_reports/20260326_skill_v1_deep_report.md"
+    }
+  ],
+  "failures": []
+}

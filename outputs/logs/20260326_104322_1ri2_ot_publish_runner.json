@@ -1,0 +1,10 @@
+{
+  "job_id": "20260326_104322_1ri2_ot",
+  "step": "publish_to_docs",
+  "started_at": "2026-03-26T01:43:44.916693+00:00",
+  "finished_at": "2026-03-26T01:43:48.359082+00:00",
+  "command": "/Library/Frameworks/Python.framework/Versions/3.10/bin/python3 \"/Users/kk/Desktop/오티 자동화/scripts/publish_to_docs.py\" \"20260326_104322_1ri2_ot\"",
+  "returncode": 0,
+  "stdout": "{\n  \"job_id\": \"20260326_104322_1ri2_ot\",\n  \"source_file_id\": \"1ri2YcBWd50zXGS1BkhpyXhcM13UWT3xn\",\n  \"source_file_link\": \"https://drive.google.com/file/d/1ri2YcBWd50zXGS1BkhpyXhcM13UWT3xn/view?usp=drivesdk\",\n  \"published_at\": \"2026-03-26T01:43:48.299806+00:00\",\n  \"status\": \"success\",\n  \"published_docs\": [\n    {\n      \"title\": \"[230217_커스텀그라운드_우리와_ANF_23년 상반기 마케팅 전략 제안_FN]_02_OT_심층리포트\",\n      \"document_id\": \"1GXqP1sqvIR4yz8sFD3uZ3Qo2F2XyExg_TMzTMhpuZGo\",\n      \"url\": \"https://docs.google.com/document/d/1GXqP1sqvIR4yz8sFD3uZ3Qo2F2XyExg_TMzTMhpuZGo/edit\",\n      \"source_markdown\": \"/Users/kk/Desktop/오티 자동화/outputs/deep_reports/20260326_104322_1ri2_ot_deep_report.md\"\n    }\n  ],\n  \"failures\": []\n}\n",
+  "stderr": ""
+}

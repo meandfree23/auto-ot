@@ -1,0 +1,14 @@
+{
+  "job_id": "20260331_081428_1aId_ot",
+  "source_file_id": "1aId4X1iagwe8F1q0PXb47RosPjk2O3Rs",
+  "source_file_link": "https://docs.google.com/document/d/1aId4X1iagwe8F1q0PXb47RosPjk2O3Rs/edit?usp=drivesdk&ouid=107219426543298663188&rtpof=true&sd=true",
+  "published_at": "2026-03-30T23:14:29.796208+00:00",
+  "status": "partial_failure",
+  "published_docs": [],
+  "failures": [
+    {
+      "category": "deep_report",
+      "error": "Missing markdown for deep_report in /Users/kk/Desktop/오티 자동화/outputs/02_deep_analysis"
+    }
+  ]
+}

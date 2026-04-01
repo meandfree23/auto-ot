@@ -1,0 +1,6 @@
+[2026-04-01 09:55:06] 🔄 이전 비정상 종료 기록 발견 (Stale lock PID 79608). 시스템을 재정렬합니다.
+[2026-04-01 09:55:06] WATCHDOG V23.0 (macOS Optimised) STARTED.
+[2026-04-01 09:55:06] DOWN: poll_drive detected offline.
+[2026-04-01 09:55:06] RESTARTING: poll_drive (Cmd: /Library/Frameworks/Python.framework/Versions/3.10/bin/python3 '/Users/kk/Desktop/오티 자동화/scripts/poll_drive_to_tasks.py')
+[2026-04-01 09:55:06] DOWN: run_pipeline detected offline.
+[2026-04-01 09:55:06] RESTARTING: run_pipeline (Cmd: /Library/Frameworks/Python.framework/Versions/3.10/bin/python3 '/Users/kk/Desktop/오티 자동화/scripts/run_pipeline.py' all)

@@ -1,0 +1,23 @@
+{
+  "job_id": "20260326_104322_1qam_ot",
+  "created_at": "2026-03-26T01:43:22.594528+00:00",
+  "project_type": "brand_film",
+  "language": "ko",
+  "priority": "high",
+  "source": {
+    "provider": "google_drive",
+    "file_id": "1qam1psa8qGkhJ2khtvK1lm1lZuWMskkO",
+    "file_name": "500cut-1 K.pdf",
+    "mime_type": "application/pdf",
+    "web_view_link": "https://drive.google.com/file/d/1qam1psa8qGkhJ2khtvK1lm1lZuWMskkO/view?usp=drivesdk",
+    "modified_time": "2023-03-22T02:33:11.000Z"
+  },
+  "required_outputs": [
+    "summary",
+    "questions",
+    "research",
+    "solutions"
+  ],
+  "human_review_required": true,
+  "notes": "Automatically detected via Drive polling."
+}

@@ -1,0 +1,10 @@
+{
+  "job_id": "20260330_105037_1N9l_ot",
+  "step": "antigravity_process",
+  "started_at": "2026-03-30T04:50:46.195414+00:00",
+  "finished_at": "2026-03-30T04:50:46.230702+00:00",
+  "command": "python3 scripts/antigravity_bridge.py process --task \"/Users/kk/Desktop/오티 자동화/state/processing/20260330_105037_1N9l_ot.json\" --job-id \"20260330_105037_1N9l_ot\"",
+  "returncode": 0,
+  "stdout": "",
+  "stderr": ""
+}

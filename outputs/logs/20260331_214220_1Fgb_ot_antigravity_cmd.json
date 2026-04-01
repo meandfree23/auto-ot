@@ -1,0 +1,3 @@
+{
+  "cmd": "python3 scripts/antigravity_bridge.py process --task \"/Users/kk/Desktop/오티 자동화/state/processing/NOTIFY_TEST_Malone.json\" --job-id \"20260331_214220_1Fgb_ot\""
+}

@@ -1,0 +1,10 @@
+{
+  "job_id": "20260326_v4_test",
+  "step": "publish_to_docs",
+  "started_at": "2026-03-26T05:51:51.343938+00:00",
+  "finished_at": "2026-03-26T05:51:54.791435+00:00",
+  "command": "/Library/Frameworks/Python.framework/Versions/3.10/bin/python3 \"/Users/kk/Desktop/오티 자동화/scripts/publish_to_docs.py\" \"20260326_v4_test\"",
+  "returncode": 0,
+  "stdout": "{\n  \"job_id\": \"20260326_v4_test\",\n  \"source_file_id\": null,\n  \"source_file_link\": \"\",\n  \"published_at\": \"2026-03-26T05:51:54.740598+00:00\",\n  \"status\": \"success\",\n  \"published_docs\": [\n    {\n      \"title\": \"[unknown_source]_02_OT_심층리포트\",\n      \"document_id\": \"1i32BYNL4wChJLPmDbhRgSaydyjmiqGUchmpOJItZuxs\",\n      \"url\": \"https://docs.google.com/document/d/1i32BYNL4wChJLPmDbhRgSaydyjmiqGUchmpOJItZuxs/edit\",\n      \"source_markdown\": \"/Users/kk/Desktop/오티 자동화/outputs/deep_reports/20260326_v4_test_deep_report.md\"\n    }\n  ],\n  \"failures\": []\n}\n",
+  "stderr": ""
+}

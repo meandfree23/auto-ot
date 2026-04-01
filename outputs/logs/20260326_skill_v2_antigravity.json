@@ -1,0 +1,10 @@
+{
+  "job_id": "20260326_skill_v2",
+  "step": "antigravity_process",
+  "started_at": "2026-03-26T04:43:22.810346+00:00",
+  "finished_at": "2026-03-26T04:43:22.848340+00:00",
+  "command": "python3 scripts/antigravity_bridge.py process --task \"/Users/kk/Desktop/오티 자동화/state/processing/20260326_skill_v2.json\" --job-id \"20260326_skill_v2\"",
+  "returncode": 0,
+  "stdout": "[Bridge] Skill-Injected JSON and MD data created for 20260326_skill_v2\n",
+  "stderr": ""
+}

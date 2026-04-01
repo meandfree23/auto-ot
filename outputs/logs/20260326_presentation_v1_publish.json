@@ -1,0 +1,28 @@
+{
+  "job_id": "20260326_presentation_v1",
+  "source_file_id": null,
+  "source_file_link": "",
+  "published_at": "2026-03-26T04:56:19.864668+00:00",
+  "status": "success",
+  "published_docs": [
+    {
+      "title": "[v3_presentation_test]_02_OT_심층리포트",
+      "document_id": "1CZdv6CACz_grXc43wMRL7a3FbPD8YbyG4vY03xdd3as",
+      "url": "https://docs.google.com/document/d/1CZdv6CACz_grXc43wMRL7a3FbPD8YbyG4vY03xdd3as/edit",
+      "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/deep_reports/20260326_presentation_v1_deep_report.md"
+    },
+    {
+      "title": "20260326_presentation_v1_depth_report.docx",
+      "document_id": "1V4RpFSsLvNXYEhpI5O8sBkePn2m1w_4m",
+      "url": "https://docs.google.com/document/d/1V4RpFSsLvNXYEhpI5O8sBkePn2m1w_4m/edit?usp=drivesdk&ouid=107219426543298663188&rtpof=true&sd=true",
+      "local_path": "/Users/kk/Desktop/오티 자동화/outputs/reports/20260326_presentation_v1_depth_report.docx"
+    },
+    {
+      "title": "20260326_presentation_v1_precision_report.html",
+      "document_id": "1DXbNrqwQrwUZ7siCrmMZCl_vpX5mb3cG",
+      "url": "https://drive.google.com/file/d/1DXbNrqwQrwUZ7siCrmMZCl_vpX5mb3cG/view?usp=drivesdk",
+      "local_path": "/Users/kk/Desktop/오티 자동화/outputs/reports/20260326_presentation_v1_precision_report.html"
+    }
+  ],
+  "failures": []
+}

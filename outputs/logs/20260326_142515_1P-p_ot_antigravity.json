@@ -1,0 +1,10 @@
+{
+  "job_id": "20260326_142515_1P-p_ot",
+  "step": "antigravity_process",
+  "started_at": "2026-03-26T05:25:16.452745+00:00",
+  "finished_at": "2026-03-26T05:25:16.492064+00:00",
+  "command": "python3 scripts/antigravity_bridge.py process --task \"/Users/kk/Desktop/오티 자동화/state/processing/20260326_142515_1P-p_ot.json\" --job-id \"20260326_142515_1P-p_ot\"",
+  "returncode": 0,
+  "stdout": "[Bridge] High-Density Strategic Data created for 20260326_142515_1P-p_ot\n",
+  "stderr": ""
+}

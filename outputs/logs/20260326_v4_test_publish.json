@@ -1,0 +1,35 @@
+{
+  "job_id": "20260326_v4_test",
+  "source_file_id": null,
+  "source_file_link": "",
+  "published_at": "2026-03-26T06:50:00.495854+00:00",
+  "status": "success",
+  "published_docs": [
+    {
+      "title": "[unknown_source]_02_OT_심층리포트",
+      "document_id": "1d5kTivoNHP9Dke2Rf0qxu7AJfwoXTFWDpRkNEUas_SE",
+      "url": "https://docs.google.com/document/d/1d5kTivoNHP9Dke2Rf0qxu7AJfwoXTFWDpRkNEUas_SE/edit",
+      "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/deep_reports/20260326_v4_test_deep_report.md"
+    },
+    {
+      "title": "20260326_v4_test_precision_report.pptx",
+      "document_id": "10qjqC8FKP0DP4Fo0hoec0FcK9bygekt9",
+      "url": "https://docs.google.com/presentation/d/10qjqC8FKP0DP4Fo0hoec0FcK9bygekt9/edit?usp=drivesdk&ouid=107219426543298663188&rtpof=true&sd=true",
+      "local_path": "/Users/kk/Desktop/오티 자동화/outputs/reports/20260326_v4_test_precision_report.pptx"
+    },
+    {
+      "title": "20260326_v4_test_depth_report.docx",
+      "document_id": "1bnhmLQH0dH3uGqUM4HLpMAa-iZrp0KTK",
+      "url": "https://docs.google.com/document/d/1bnhmLQH0dH3uGqUM4HLpMAa-iZrp0KTK/edit?usp=drivesdk&ouid=107219426543298663188&rtpof=true&sd=true",
+      "local_path": "/Users/kk/Desktop/오티 자동화/outputs/reports/20260326_v4_test_depth_report.docx"
+    },
+    {
+      "title": "20260326_v4_test_precision_report.html",
+      "document_id": "1WKAL-qRMl9OCh-3L5cmRjmZmTyAuAOJC",
+      "url": "https://drive.google.com/file/d/1WKAL-qRMl9OCh-3L5cmRjmZmTyAuAOJC/view?usp=drivesdk",
+      "local_path": "/Users/kk/Desktop/오티 자동화/outputs/reports/20260326_v4_test_precision_report.html",
+      "direct_url": "https://meandfree23.github.io/auto-ot/reports/20260326_v4_test_precision_report.html"
+    }
+  ],
+  "failures": []
+}

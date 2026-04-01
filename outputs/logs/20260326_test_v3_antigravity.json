@@ -1,0 +1,10 @@
+{
+  "job_id": "20260326_test_v3",
+  "step": "antigravity_process",
+  "started_at": "2026-03-26T04:36:40.952526+00:00",
+  "finished_at": "2026-03-26T04:36:40.988764+00:00",
+  "command": "python3 scripts/antigravity_bridge.py process --task \"/Users/kk/Desktop/오티 자동화/state/processing/20260326_test_v3.json\" --job-id \"20260326_test_v3\"",
+  "returncode": 0,
+  "stdout": "[Bridge] Task 20260326_test_v3 received at /Users/kk/Desktop/오티 자동화/state/processing/20260326_test_v3.json\n[Bridge] Created 20260326_test_v3_summary.md\n[Bridge] Created 20260326_test_v3_questions.md\n[Bridge] Created 20260326_test_v3_research.md\n[Bridge] Created 20260326_test_v3_solutions.md\n",
+  "stderr": ""
+}

@@ -1,0 +1,28 @@
+{
+  "job_id": "20260326_skill_v2",
+  "source_file_id": null,
+  "source_file_link": "https://drive.google.com/file/d/skill_v2",
+  "published_at": "2026-03-26T04:46:28.103734+00:00",
+  "status": "success",
+  "published_docs": [
+    {
+      "title": "[프리미엄_브랜드_전략]_02_OT_심층리포트",
+      "document_id": "1_cPH07fLqykaXbQRD5ZsaMtKnPml59d2hgqYvx7_Fmk",
+      "url": "https://docs.google.com/document/d/1_cPH07fLqykaXbQRD5ZsaMtKnPml59d2hgqYvx7_Fmk/edit",
+      "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/deep_reports/20260326_skill_v2_deep_report.md"
+    },
+    {
+      "title": "20260326_skill_v2_precision_report.html",
+      "document_id": "1dvX_jqEkxrocIvq0MCU5JtnHq9VnXhMY",
+      "url": "https://drive.google.com/file/d/1dvX_jqEkxrocIvq0MCU5JtnHq9VnXhMY/view?usp=drivesdk",
+      "local_path": "/Users/kk/Desktop/오티 자동화/outputs/reports/20260326_skill_v2_precision_report.html"
+    },
+    {
+      "title": "20260326_skill_v2_depth_report.docx",
+      "document_id": "175NqvsVDs3OHiPofihfIPtF5HEbsz47R",
+      "url": "https://docs.google.com/document/d/175NqvsVDs3OHiPofihfIPtF5HEbsz47R/edit?usp=drivesdk&ouid=107219426543298663188&rtpof=true&sd=true",
+      "local_path": "/Users/kk/Desktop/오티 자동화/outputs/reports/20260326_skill_v2_depth_report.docx"
+    }
+  ],
+  "failures": []
+}

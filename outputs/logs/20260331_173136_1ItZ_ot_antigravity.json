@@ -1,0 +1,10 @@
+{
+  "job_id": "20260331_173136_1ItZ_ot",
+  "step": "antigravity_process",
+  "started_at": "2026-03-31T08:31:37.828666+00:00",
+  "finished_at": "2026-03-31T08:31:37.937026+00:00",
+  "command": "python3 scripts/antigravity_bridge.py process --task \"/Users/kk/Desktop/오티 자동화/state/processing/20260331_173136_1ItZ_ot.json\" --job-id \"20260331_173136_1ItZ_ot\"",
+  "returncode": 0,
+  "stdout": "[Bridge] Starting automated processing for Job ID: 20260331_173136_1ItZ_ot\n[Brain] Generated Summary: 20260331_173136_1ItZ_ot_summary.md\n[Brain] Generated Deep Report: 20260331_173136_1ItZ_ot_deep_report.md\n[Bridge] Strategic analysis reports generated successfully.\n",
+  "stderr": ""
+}

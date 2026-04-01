@@ -1,0 +1,23 @@
+{
+  "job_id": "20260331_173136_1ItZ_ot",
+  "created_at": "2026-03-31T08:31:36.659727+00:00",
+  "project_type": "brand_film",
+  "language": "ko",
+  "priority": "high",
+  "source": {
+    "provider": "google_drive",
+    "file_id": "1ItZv9stz2WPBAsl25MhF1tUE07Hnvf11",
+    "file_name": "0816_SAIC AUDI proposal_KOR (1).pptx",
+    "mime_type": "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+    "web_view_link": "https://docs.google.com/presentation/d/1ItZv9stz2WPBAsl25MhF1tUE07Hnvf11/edit?usp=drivesdk&ouid=107219426543298663188&rtpof=true&sd=true",
+    "modified_time": "2021-08-19T02:32:33.000Z"
+  },
+  "required_outputs": [
+    "summary",
+    "questions",
+    "research",
+    "solutions"
+  ],
+  "human_review_required": true,
+  "notes": "Automatically detected via Drive polling."
+}

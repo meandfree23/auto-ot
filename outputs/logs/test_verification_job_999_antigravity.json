@@ -1,0 +1,10 @@
+{
+  "job_id": "test_verification_job_999",
+  "step": "antigravity_process",
+  "started_at": "2026-03-31T08:21:27.162613+00:00",
+  "finished_at": "2026-03-31T08:21:27.256408+00:00",
+  "command": "python3 scripts/antigravity_bridge.py process --task \"/Users/kk/Desktop/오티 자동화/state/processing/test_verification_job_999.json\" --job-id \"test_verification_job_999\"",
+  "returncode": 0,
+  "stdout": "[Bridge] Starting automated processing for Job ID: test_verification_job_999\n[Brain] Generated Summary: test_verification_job_999_summary.md\n[Brain] Generated Deep Report: test_verification_job_999_deep_report.md\n[Bridge] Strategic analysis reports generated successfully.\n",
+  "stderr": ""
+}
