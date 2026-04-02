@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ko" class="theme-light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project 20260326_v4_test - Semantic Analysis (V6.2)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html-to-image/1.11.11/html-to-image.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-primary': '#10B981',
+                        'slate-dark': '#0f172a'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        :root { 
+            interpolate-size: allow-keywords; 
+            --accent: #10B981;
+        }
+        html.theme-light {
+            --bg: #FFFFFF; --surface: #FFFFFF; --surface-hover: #F8FAFC;
+            --border: rgba(15, 23, 42, 0.08);
+            --text: #0F172A; --text-secondary: #64748B;
+        }
+        html.theme-dark {
+            --bg: #0F172A; --surface: #1E293B; --surface-hover: #334155;
+            --border: rgba(255, 255, 255, 0.1);
+            --text: #F8FAFC; --text-secondary: #94A3B8;
+        }
+        body {
+            font-family: 'Inter', 'Noto Sans KR', sans-serif;
+            background: var(--bg); color: var(--text);
+            line-height: 1.8; -webkit-font-smoothing: antialiased;
+            transition: background 0.4s ease, color 0.4s ease;
+        }
+        .glass-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .slide-container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 8rem 10% 4rem 10%;
+            position: relative;
+            border-bottom: 1px solid var(--border);
+        }
+        .core-sentence {
+            font-size: clamp(2.5rem, 4.5vw, 4rem);
+            font-weight: 900;
+            letter-spacing: -0.05em;
+            line-height: 1.15;
+            margin-bottom: 3.5rem;
+            color: var(--text);
+        }
+        .animate-item { opacity: 0; transform: translateY(30px); transition: all 0.7s cubic-bezier(0.2, 0.8, 0.2, 1); }
+        .animate-item.visible { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body class="antialiased font-sans theme-light">
+    <header class="fixed top-0 left-0 w-full p-6 flex justify-between items-center z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-brand-primary rounded-xl flex items-center justify-center text-white shadow-lg">
+                <i data-lucide="sparkles" class="w-6 h-6"></i>
+            </div>
+            <span class="font-black tracking-tighter text-2xl text-slate-900 dark:text-white">Project 20260326_v4_test - Semantic Analysis (V6.2)</span>
+        </div>
+    </header>
+    <main id="slides-wrapper">
+        <section class="slide-container" id="slide-title">
+        <div class="max-w-7xl mx-auto w-full text-center">
+            <h1 class="text-7xl md:text-9xl font-black tracking-tighter mb-12 text-slate-900 dark:text-white leading-[0.85] animate-item">Project 20260326_v4_test - Semantic Analysis (V6.2)</h1>
+            <div class="h-2 w-32 bg-brand-primary mx-auto mb-12 animate-item"></div>
+            <p class="text-2xl md:text-3xl font-medium text-slate-500 dark:text-slate-400 max-w-4xl mx-auto leading-relaxed animate-item whitespace-pre-line">
+                본 리포트는 최신 데이터 기반의 미래 지향적 포지셔닝을 제안합니다.
+            </p>
+        </div>
+    </section><section class="slide-container" id="slide-0"><div class="max-w-7xl mx-auto w-full"><div class="flex items-center gap-6 mb-10 animate-item"><span class="text-brand-primary font-black tracking-widest text-[10px] uppercase border border-brand-primary/20 px-3 py-1 rounded bg-brand-primary/5">Slide 01</span><div class="h-px flex-1 bg-slate-200"></div></div><h2 class="core-sentence animate-item">01. 글로벌 시장 트렌드 개요</h2><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full mt-10"><div class="glass-card p-10 animate-item flex flex-col gap-6"><div class="w-12 h-12 bg-brand-primary/10 rounded-xl flex items-center justify-center text-brand-primary"><i data-lucide="check-circle-2"></i></div><p class="text-lg text-slate-700 dark:text-slate-300 font-semibold">트렌드: '지속 가능한 럭셔리'</p></div><div class="glass-card p-10 animate-item flex flex-col gap-6"><div class="w-12 h-12 bg-brand-primary/10 rounded-xl flex items-center justify-center text-brand-primary"><i data-lucide="check-circle-2"></i></div><p class="text-lg text-slate-700 dark:text-slate-300 font-semibold">뉴스: 테크-패션 콜라보 급증</p></div></div></div></section><section class="slide-container" id="slide-1"><div class="max-w-7xl mx-auto w-full"><div class="flex items-center gap-6 mb-10 animate-item"><span class="text-brand-primary font-black tracking-widest text-[10px] uppercase border border-brand-primary/20 px-3 py-1 rounded bg-brand-primary/5">Slide 02</span><div class="h-px flex-1 bg-slate-200"></div></div><h2 class="core-sentence animate-item">02. 주요 핵심 지표 추위</h2><div class="w-full max-w-5xl mx-auto mt-12 animate-item"><div class="glass-card p-10 h-[500px]"><canvas id="chart_0"></canvas></div></div></div></section><section class="slide-container" id="slide-2"><div class="max-w-7xl mx-auto w-full"><div class="flex items-center gap-6 mb-10 animate-item"><span class="text-brand-primary font-black tracking-widest text-[10px] uppercase border border-brand-primary/20 px-3 py-1 rounded bg-brand-primary/5">Slide 03</span><div class="h-px flex-1 bg-slate-200"></div></div><h2 class="core-sentence animate-item">03. 경쟁사 벤치마킹 분석</h2><div class="w-full mt-12 overflow-x-auto glass-card p-8 animate-item"><table class="w-full text-left border-collapse"><thead><tr class="border-b-2 border-slate-200 dark:border-slate-700"><th class="py-4 px-6 text-brand-primary font-extrabold uppercase text-xs tracking-widest">- 항목</th><th class="py-4 px-6 text-brand-primary font-extrabold uppercase text-xs tracking-widest">A</th><th class="py-4 px-6 text-brand-primary font-extrabold uppercase text-xs tracking-widest">B</th><th class="py-4 px-6 text-brand-primary font-extrabold uppercase text-xs tracking-widest">C</th></tr></thead><tbody><tr class="border-b border-slate-100 dark:border-slate-800 hover:bg-slate-50 transition-colors"><td class="py-5 px-6 font-bold text-slate-900 dark:text-white">- 디자인</td><td class="py-5 px-6 text-slate-600 dark:text-slate-400">High</td><td class="py-5 px-6 text-slate-600 dark:text-slate-400">Med</td><td class="py-5 px-6 text-slate-600 dark:text-slate-400">Low</td></tr><tr class="border-b border-slate-100 dark:border-slate-800 hover:bg-slate-50 transition-colors"><td class="py-5 px-6 font-bold text-slate-900 dark:text-white">- 신뢰도</td><td class="py-5 px-6 text-slate-600 dark:text-slate-400">98%</td><td class="py-5 px-6 text-slate-600 dark:text-slate-400">92%</td><td class="py-5 px-6 text-slate-600 dark:text-slate-400">85%</td></tr></tbody></table></div></div></section><section class="slide-container" id="slide-3"><div class="max-w-7xl mx-auto w-full"><div class="flex items-center gap-6 mb-10 animate-item"><span class="text-brand-primary font-black tracking-widest text-[10px] uppercase border border-brand-primary/20 px-3 py-1 rounded bg-brand-primary/5">Slide 04</span><div class="h-px flex-1 bg-slate-200"></div></div><h2 class="core-sentence animate-item">04. 핵심 성과 가치 함수</h2><div class="w-full mt-12 flex justify-center animate-item"><div class="glass-card p-20 text-center border-t-8 border-brand-primary"><div class="text-brand-primary text-xs font-black tracking-[0.3em] uppercase mb-8">Strategic Intelligence Formula</div><div class="text-6xl md:text-8xl font-black text-slate-900 dark:text-white mb-10 font-mono">V = (E * I) / C</div><p class="text-slate-500 text-xl font-medium max-w-2xl mx-auto">- 가치 극대화 공식</p></div></div></div></section><section class="slide-container" id="slide-4"><div class="max-w-7xl mx-auto w-full"><div class="flex items-center gap-6 mb-10 animate-item"><span class="text-brand-primary font-black tracking-widest text-[10px] uppercase border border-brand-primary/20 px-3 py-1 rounded bg-brand-primary/5">Slide 05</span><div class="h-px flex-1 bg-slate-200"></div></div><h2 class="core-sentence animate-item">05. 전략 세부 실행안 5</h2><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full mt-10"><div class="glass-card p-10 animate-item flex flex-col gap-6"><div class="w-12 h-12 bg-brand-primary/10 rounded-xl flex items-center justify-center text-brand-primary"><i data-lucide="check-circle-2"></i></div><p class="text-lg text-slate-700 dark:text-slate-300 font-semibold">세부 전략 5: 디지털 미장센 구축</p></div></div></div></section><section class="slide-container" id="slide-5"><div class="max-w-7xl mx-auto w-full"><div class="flex items-center gap-6 mb-10 animate-item"><span class="text-brand-primary font-black tracking-widest text-[10px] uppercase border border-brand-primary/20 px-3 py-1 rounded bg-brand-primary/5">Slide 06</span><div class="h-px flex-1 bg-slate-200"></div></div><h2 class="core-sentence animate-item">06. 전략 세부 실행안 6</h2><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full mt-10"><div class="glass-card p-10 animate-item flex flex-col gap-6"><div class="w-12 h-12 bg-brand-primary/10 rounded-xl flex items-center justify-center text-brand-primary"><i data-lucide="check-circle-2"></i></div><p class="text-lg text-slate-700 dark:text-slate-300 font-semibold">세부 전략 6: 디지털 미장센 구축</p></div></div></div></section><section class="slide-container" id="slide-6"><div class="max-w-7xl mx-auto w-full"><div class="flex items-center gap-6 mb-10 animate-item"><span class="text-brand-primary font-black tracking-widest text-[10px] uppercase border border-brand-primary/20 px-3 py-1 rounded bg-brand-primary/5">Slide 07</span><div class="h-px flex-1 bg-slate-200"></div></div><h2 class="core-sentence animate-item">07. 전략 세부 실행안 7</h2><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full mt-10"><div class="glass-card p-10 animate-item flex flex-col gap-6"><div class="w-12 h-12 bg-brand-primary/10 rounded-xl flex items-center justify-center text-brand-primary"><i data-lucide="check-circle-2"></i></div><p class="text-lg text-slate-700 dark:text-slate-300 font-semibold">세부 전략 7: 디지털 미장센 구축</p></div></div></div></section><section class="slide-container" id="slide-7"><div class="max-w-7xl mx-auto w-full"><div class="flex items-center gap-6 mb-10 animate-item"><span class="text-brand-primary font-black tracking-widest text-[10px] uppercase border border-brand-primary/20 px-3 py-1 rounded bg-brand-primary/5">Slide 08</span><div class="h-px flex-1 bg-slate-200"></div></div><h2 class="core-sentence animate-item">08. 전략 세부 실행안 8</h2><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full mt-10"><div class="glass-card p-10 animate-item flex flex-col gap-6"><div class="w-12 h-12 bg-brand-primary/10 rounded-xl flex items-center justify-center text-brand-primary"><i data-lucide="check-circle-2"></i></div><p class="text-lg text-slate-700 dark:text-slate-300 font-semibold">세부 전략 8: 디지털 미장센 구축</p></div></div></div></section><section class="slide-container" id="slide-8"><div class="max-w-7xl mx-auto w-full"><div class="flex items-center gap-6 mb-10 animate-item"><span class="text-brand-primary font-black tracking-widest text-[10px] uppercase border border-brand-primary/20 px-3 py-1 rounded bg-brand-primary/5">Slide 09</span><div class="h-px flex-1 bg-slate-200"></div></div><h2 class="core-sentence animate-item">09. 전략 세부 실행안 9</h2><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full mt-10"><div class="glass-card p-10 animate-item flex flex-col gap-6"><div class="w-12 h-12 bg-brand-primary/10 rounded-xl flex items-center justify-center text-brand-primary"><i data-lucide="check-circle-2"></i></div><p class="text-lg text-slate-700 dark:text-slate-300 font-semibold">세부 전략 9: 디지털 미장센 구축</p></div></div></div></section><section class="slide-container" id="slide-9"><div class="max-w-7xl mx-auto w-full"><div class="flex items-center gap-6 mb-10 animate-item"><span class="text-brand-primary font-black tracking-widest text-[10px] uppercase border border-brand-primary/20 px-3 py-1 rounded bg-brand-primary/5">Slide 10</span><div class="h-px flex-1 bg-slate-200"></div></div><h2 class="core-sentence animate-item">10. 전략 세부 실행안 10</h2><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full mt-10"><div class="glass-card p-10 animate-item flex flex-col gap-6"><div class="w-12 h-12 bg-brand-primary/10 rounded-xl flex items-center justify-center text-brand-primary"><i data-lucide="check-circle-2"></i></div><p class="text-lg text-slate-700 dark:text-slate-300 font-semibold">세부 전략 10: 디지털 미장센 구축</p></div></div></div></section><section class="slide-container" id="slide-10"><div class="max-w-7xl mx-auto w-full"><div class="flex items-center gap-6 mb-10 animate-item"><span class="text-brand-primary font-black tracking-widest text-[10px] uppercase border border-brand-primary/20 px-3 py-1 rounded bg-brand-primary/5">Slide 11</span><div class="h-px flex-1 bg-slate-200"></div></div><h2 class="core-sentence animate-item">11. 전략 세부 실행안 11</h2><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full mt-10"><div class="glass-card p-10 animate-item flex flex-col gap-6"><div class="w-12 h-12 bg-brand-primary/10 rounded-xl flex items-center justify-center text-brand-primary"><i data-lucide="check-circle-2"></i></div><p class="text-lg text-slate-700 dark:text-slate-300 font-semibold">세부 전략 11: 디지털 미장센 구축</p></div></div></div></section><section class="slide-container" id="slide-11"><div class="max-w-7xl mx-auto w-full"><div class="flex items-center gap-6 mb-10 animate-item"><span class="text-brand-primary font-black tracking-widest text-[10px] uppercase border border-brand-primary/20 px-3 py-1 rounded bg-brand-primary/5">Slide 12</span><div class="h-px flex-1 bg-slate-200"></div></div><h2 class="core-sentence animate-item">12. 전략 세부 실행안 12</h2><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full mt-10"><div class="glass-card p-10 animate-item flex flex-col gap-6"><div class="w-12 h-12 bg-brand-primary/10 rounded-xl flex items-center justify-center text-brand-primary"><i data-lucide="check-circle-2"></i></div><p class="text-lg text-slate-700 dark:text-slate-300 font-semibold">세부 전략 12: 디지털 미장센 구축</p></div></div></div></section><section class="slide-container" id="slide-12"><div class="max-w-7xl mx-auto w-full"><div class="flex items-center gap-6 mb-10 animate-item"><span class="text-brand-primary font-black tracking-widest text-[10px] uppercase border border-brand-primary/20 px-3 py-1 rounded bg-brand-primary/5">Slide 13</span><div class="h-px flex-1 bg-slate-200"></div></div><h2 class="core-sentence animate-item">13. 전략 세부 실행안 13</h2><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full mt-10"><div class="glass-card p-10 animate-item flex flex-col gap-6"><div class="w-12 h-12 bg-brand-primary/10 rounded-xl flex items-center justify-center text-brand-primary"><i data-lucide="check-circle-2"></i></div><p class="text-lg text-slate-700 dark:text-slate-300 font-semibold">세부 전략 13: 디지털 미장센 구축</p></div></div></div></section><section class="slide-container" id="slide-13"><div class="max-w-7xl mx-auto w-full"><div class="flex items-center gap-6 mb-10 animate-item"><span class="text-brand-primary font-black tracking-widest text-[10px] uppercase border border-brand-primary/20 px-3 py-1 rounded bg-brand-primary/5">Slide 14</span><div class="h-px flex-1 bg-slate-200"></div></div><h2 class="core-sentence animate-item">14. 전략 세부 실행안 14</h2><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full mt-10"><div class="glass-card p-10 animate-item flex flex-col gap-6"><div class="w-12 h-12 bg-brand-primary/10 rounded-xl flex items-center justify-center text-brand-primary"><i data-lucide="check-circle-2"></i></div><p class="text-lg text-slate-700 dark:text-slate-300 font-semibold">세부 전략 14: 디지털 미장센 구축</p></div></div></div></section><section class="slide-container" id="slide-14"><div class="max-w-7xl mx-auto w-full"><div class="flex items-center gap-6 mb-10 animate-item"><span class="text-brand-primary font-black tracking-widest text-[10px] uppercase border border-brand-primary/20 px-3 py-1 rounded bg-brand-primary/5">Slide 15</span><div class="h-px flex-1 bg-slate-200"></div></div><h2 class="core-sentence animate-item">15. 전략 세부 실행안 15</h2><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full mt-10"><div class="glass-card p-10 animate-item flex flex-col gap-6"><div class="w-12 h-12 bg-brand-primary/10 rounded-xl flex items-center justify-center text-brand-primary"><i data-lucide="check-circle-2"></i></div><p class="text-lg text-slate-700 dark:text-slate-300 font-semibold">세부 전략 15: 디지털 미장센 구축</p></div></div></div></section><section class="slide-container" id="slide-15"><div class="max-w-7xl mx-auto w-full"><div class="flex items-center gap-6 mb-10 animate-item"><span class="text-brand-primary font-black tracking-widest text-[10px] uppercase border border-brand-primary/20 px-3 py-1 rounded bg-brand-primary/5">Slide 16</span><div class="h-px flex-1 bg-slate-200"></div></div><h2 class="core-sentence animate-item">16. 전략 세부 실행안 16</h2><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full mt-10"><div class="glass-card p-10 animate-item flex flex-col gap-6"><div class="w-12 h-12 bg-brand-primary/10 rounded-xl flex items-center justify-center text-brand-primary"><i data-lucide="check-circle-2"></i></div><p class="text-lg text-slate-700 dark:text-slate-300 font-semibold">세부 전략 16: 디지털 미장센 구축</p></div></div></div></section><section class="slide-container" id="slide-16"><div class="max-w-7xl mx-auto w-full"><div class="flex items-center gap-6 mb-10 animate-item"><span class="text-brand-primary font-black tracking-widest text-[10px] uppercase border border-brand-primary/20 px-3 py-1 rounded bg-brand-primary/5">Slide 17</span><div class="h-px flex-1 bg-slate-200"></div></div><h2 class="core-sentence animate-item">17. 전략 세부 실행안 17</h2><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full mt-10"><div class="glass-card p-10 animate-item flex flex-col gap-6"><div class="w-12 h-12 bg-brand-primary/10 rounded-xl flex items-center justify-center text-brand-primary"><i data-lucide="check-circle-2"></i></div><p class="text-lg text-slate-700 dark:text-slate-300 font-semibold">세부 전략 17: 디지털 미장센 구축</p></div></div></div></section><section class="slide-container" id="slide-17"><div class="max-w-7xl mx-auto w-full"><div class="flex items-center gap-6 mb-10 animate-item"><span class="text-brand-primary font-black tracking-widest text-[10px] uppercase border border-brand-primary/20 px-3 py-1 rounded bg-brand-primary/5">Slide 18</span><div class="h-px flex-1 bg-slate-200"></div></div><h2 class="core-sentence animate-item">18. 전략 세부 실행안 18</h2><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full mt-10"><div class="glass-card p-10 animate-item flex flex-col gap-6"><div class="w-12 h-12 bg-brand-primary/10 rounded-xl flex items-center justify-center text-brand-primary"><i data-lucide="check-circle-2"></i></div><p class="text-lg text-slate-700 dark:text-slate-300 font-semibold">세부 전략 18: 디지털 미장센 구축</p></div></div></div></section><section class="slide-container" id="slide-18"><div class="max-w-7xl mx-auto w-full"><div class="flex items-center gap-6 mb-10 animate-item"><span class="text-brand-primary font-black tracking-widest text-[10px] uppercase border border-brand-primary/20 px-3 py-1 rounded bg-brand-primary/5">Slide 19</span><div class="h-px flex-1 bg-slate-200"></div></div><h2 class="core-sentence animate-item">19. 전략 세부 실행안 19</h2><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full mt-10"><div class="glass-card p-10 animate-item flex flex-col gap-6"><div class="w-12 h-12 bg-brand-primary/10 rounded-xl flex items-center justify-center text-brand-primary"><i data-lucide="check-circle-2"></i></div><p class="text-lg text-slate-700 dark:text-slate-300 font-semibold">세부 전략 19: 디지털 미장센 구축</p></div></div></div></section><section class="slide-container" id="slide-19"><div class="max-w-7xl mx-auto w-full"><div class="flex items-center gap-6 mb-10 animate-item"><span class="text-brand-primary font-black tracking-widest text-[10px] uppercase border border-brand-primary/20 px-3 py-1 rounded bg-brand-primary/5">Slide 20</span><div class="h-px flex-1 bg-slate-200"></div></div><h2 class="core-sentence animate-item">20. 전략 세부 실행안 20</h2><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full mt-10"><div class="glass-card p-10 animate-item flex flex-col gap-6"><div class="w-12 h-12 bg-brand-primary/10 rounded-xl flex items-center justify-center text-brand-primary"><i data-lucide="check-circle-2"></i></div><p class="text-lg text-slate-700 dark:text-slate-300 font-semibold">세부 전략 20: 디지털 미장센 구축</p></div></div></div></section>
+    </main>
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    const children = entry.target.querySelectorAll('.animate-item');
+                    children.forEach((child, idx) => {
+                        setTimeout(() => child.classList.add('visible'), idx * 80);
+                    });
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('section').forEach(section => observer.observe(section));
+        lucide.createIcons();
+    </script>
+    <script>
+        Chart.defaults.font.family = 'Inter, Noto Sans KR, sans-serif';
+        (function() { var ctx = document.getElementById('chart_0'); if (!ctx) return; new Chart(ctx, { type: 'bar', data: { labels: ["Q1", "Q2", "Q3", "Q4"], datasets: [{ data: [15.2, 24.5, 38.1, 52.0], backgroundColor: '#10B981', borderRadius: 8 }] }, options: { responsive: true, maintainAspectRatio: false } }); })();
+    </script>
+</body>
+</html>
