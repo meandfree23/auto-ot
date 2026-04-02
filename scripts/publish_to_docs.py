@@ -333,8 +333,9 @@ def prepare_gh_pages_branch():
     Steps:
     1. Ensure the branch exists (or create an orphan branch).
     2. Clean the branch content.
-    3. Copy `docs/reports/` into a top-level `reports/` folder.
-    4. Commit and force‑push to origin.
+    3. Pull latest reports from master: docs/reports/
+    4. Set the latest precision report as docs/index.html for GitHub Pages.
+    5. Commit and force‑push to origin.
     """
     # 1️⃣ Ensure branch exists locally (or create orphan)
     result = subprocess.run(["git", "rev-parse", "--verify", "gh-pages-live"], cwd=ROOT, capture_output=True)
@@ -343,24 +344,25 @@ def prepare_gh_pages_branch():
         subprocess.run(["git", "reset"], cwd=ROOT, check=True)
     else:
         subprocess.run(["git", "checkout", "gh-pages-live"], cwd=ROOT, check=True)
+
     # 2️⃣ Clean working tree
-    subprocess.run(["git", "rm", "-r", "--ignore-unmatch", "*"], cwd=ROOT, check=False)
-    # 3️⃣ Copy generated reports to reports/ folder
-    src = ROOT / "docs" / "reports"
-    dst = ROOT / "reports"
-    if src.exists():
-        shutil.copytree(src, dst, dirs_exist_ok=True)
+    subprocess.run(["git", "rm", "-rf", "*", "--ignore-unmatch"], cwd=ROOT, check=False)
+    
+    # 3️⃣ Pull latest reports from master branch directly into doc structure
+    # This ensures we have the latest files in gh-pages-live:docs/reports/
+    subprocess.run(["git", "checkout", "master", "--", "docs/reports/"], cwd=ROOT, check=True)
                 
-    # 4️⃣ Create index.html at root (Latest Preview)
-    # Find the latest precision report
-    html_files = sorted(list(dst.glob("*_precision_report.html")), reverse=True)
+    # 4️⃣ Create docs/index.html (Latest Preview)
+    # Find the latest precision report in the repo
+    deploy_reports = ROOT / "docs" / "reports"
+    html_files = sorted(list(deploy_reports.glob("*_precision_report.html")), reverse=True)
     if html_files:
-        shutil.copy2(html_files[0], ROOT / "index.html")
-        print(f"[Git] Set {html_files[0].name} as index.html (Root Dashboard)")
+        shutil.copy2(html_files[0], ROOT / "docs" / "index.html")
+        print(f"[Git] Set {html_files[0].name} as docs/index.html (Dashboard)")
 
     # 5️⃣ Add, commit, and push
-    subprocess.run(["git", "add", "."], cwd=ROOT, check=True)
-    subprocess.run(["git", "commit", "-m", "Deploy dashboard and reports to gh-pages-live"], cwd=ROOT, check=False)
+    subprocess.run(["git", "add", "docs"], cwd=ROOT, check=True)
+    subprocess.run(["git", "commit", "-m", "Auto-deploy dashboard into /docs folder (V33.0)"], cwd=ROOT, check=False)
     subprocess.run(["git", "push", "origin", "gh-pages-live", "--force"], cwd=ROOT, check=True)
     
     # Switch back to master
