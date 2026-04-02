@@ -397,7 +397,7 @@ def publish_job(job_id: str) -> dict[str, Any]:
     
     if report_dir.exists():
         for file in report_dir.glob(f"{job_id}_*"):
-            if file.suffix.lower() in [".docx", ".html"]:
+            if file.suffix.lower() in [".docx", ".html", ".pptx"]:
                 try:
                     # [V6.4] Copy to docs/ for GitHub Pages
                     import shutil
@@ -405,6 +405,8 @@ def publish_job(job_id: str) -> dict[str, Any]:
                     
                     if file.suffix == ".docx":
                         mime = "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    elif file.suffix == ".pptx":
+                        mime = "application/vnd.openxmlformats-officedocument.presentationml.presentation"
                     else:
                         mime = "text/html"
                     

@@ -22,12 +22,14 @@ RESEARCH_DIR.mkdir(parents=True, exist_ok=True)
 TELEGRAM_BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN")
 TELEGRAM_CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID")
 
-def notify_telegram(msg: str):
+def notify_telegram(msg: str, reply_markup: dict = None):
     """Utility to send telegram notifications."""
     if not TELEGRAM_BOT_TOKEN or not TELEGRAM_CHAT_ID:
         return
     url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
     payload = {"chat_id": TELEGRAM_CHAT_ID, "text": msg, "parse_mode": "HTML"}
+    if reply_markup:
+        payload["reply_markup"] = reply_markup
     try:
         requests.post(url, json=payload, timeout=10)
     except Exception as e:
@@ -119,13 +121,56 @@ def run_orchestrator(job_id: str):
     
     # 4. Trigger Visual Presentation (PPT/HTML)
     try:
-        # Generate Advanced Dashboard or PPT
         ppt_script = ROOT / "scripts" / "ppt_engine_v4.py"
         if ppt_script.exists():
             subprocess.run([sys.executable, str(ppt_script), "--job-id", job_id, "--mode", "advanced"], cwd=str(ROOT))
         
-        notify_telegram(f"🏆 <b>딥 리서치 패키지 및 PPTX/HTML 자동 생성 완료!</b>\n\n🆔 <code>{job_id}</code>\n\n최종 프리미엄 전략 대시보드(.html)와 파워포인트 슬라이드(.pptx) 파일이 <code>03_final_reports</code> 폴더에 생성되었습니다. 바로 확인해보세요!")
-        print(f"🏆 [Deep Intel] DONE: Full package delivered for {job_id}")
+        # 5. Auto-Publish & Grab Links
+        notify_telegram(f"🌐 <b>결과물 클라우드 배포 중...</b>\n웹 대시보드와 PPTX를 연동하고 있습니다.")
+        
+        publish_script = ROOT / "scripts" / "publish_to_docs.py"
+        html_link = "생성 중 오류 발생"
+        pptx_link = "생성 중 오류 발생"
+        
+        if publish_script.exists():
+            # Run the publish script and capture stdout
+            pub_res = subprocess.run([sys.executable, str(publish_script), job_id], cwd=str(ROOT), capture_output=True, text=True)
+            try:
+                # Parse JSON output from the script (it prints formatted json at the end)
+                # Find the last valid JSON block
+                output_str = pub_res.stdout.strip()
+                # Find the start of the JSON block (usually {)
+                start_idx = output_str.find('{')
+                if start_idx != -1:
+                    json_str = output_str[start_idx:]
+                    pub_data = json.loads(json_str)
+                    
+                    if "published_docs" in pub_data:
+                        for doc in pub_data["published_docs"]:
+                            if doc["title"].endswith(".html") and "direct_url" in doc:
+                                html_link = doc["direct_url"]
+                            elif doc["title"].endswith(".pptx"):
+                                pptx_link = doc["url"]
+            except Exception as e:
+                print(f"[Deep Intel] Publish JSON parse error: {e}\nRaw output: {pub_res.stdout}")
+
+        final_msg = (
+            f"🏆 <b>딥 리서치 패키지 완성!</b>\n\n"
+            f"🆔 <code>{job_id}</code>\n\n"
+            f"<b>[결과물 바로보기 링크]</b>\n"
+            f"🌐 <a href='{html_link}'>1. 최고급 웹 대시보드 (스마트폰 즉시 열람)</a>\n\n"
+            f"📊 <a href='{pptx_link}'>2. 전략 파워포인트 문서 (드라이브 뷰어/다운로드)</a>\n\n"
+            f"<i>* 아래 버튼을 눌러 언제든 즉시 수정을 지시할 수 있습니다.</i>"
+        )
+        
+        reply_markup = {
+            "inline_keyboard": [
+                [{"text": "📝 피드백/수정 지시 추가하기", "callback_data": f"request_edit|{job_id}"}]
+            ]
+        }
+        
+        notify_telegram(final_msg, reply_markup=reply_markup)
+        print(f"🏆 [Deep Intel] DONE: Full package delivered with URLs for {job_id}")
     except Exception as e:
         print(f"❌ [Deep Intel Error] {e}")
 
