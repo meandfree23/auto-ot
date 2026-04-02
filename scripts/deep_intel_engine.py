@@ -90,7 +90,7 @@ def run_orchestrator(job_id: str):
     
     # 1. Load context via Bridge
     from scripts.antigravity_bridge import load_markdown
-    summary, deep_txt = load_markdown(job_id)
+    summary, deep_txt, _ = load_markdown(job_id)
     
     if not summary and not deep_txt:
         print(f"❌ [Deep Intel] Could not find initial analysis for {job_id}")

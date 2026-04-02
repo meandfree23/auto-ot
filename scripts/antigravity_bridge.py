@@ -105,14 +105,16 @@ def process_task(job_id: str, task_path_str: str):
         return False
 
 def load_markdown(job_id: str):
-    """Retrieve summary and deep reports for a given job_id."""
+    """Retrieve summary, deep, and question reports for a given job_id."""
     summary_path = SUMMARY_DIR / f"{job_id}_summary.md"
     deep_path = DEEP_DIR / f"{job_id}_deep_report.md"
+    questions_path = ROOT / "outputs" / "questions" / f"{job_id}_questions.md"
     
     summary = summary_path.read_text(encoding="utf-8") if summary_path.exists() else None
     deep = deep_path.read_text(encoding="utf-8") if deep_path.exists() else None
+    questions = questions_path.read_text(encoding="utf-8") if questions_path.exists() else None
     
-    return summary, deep
+    return summary, deep, questions
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Antigravity Strategic Bridge V22.0")

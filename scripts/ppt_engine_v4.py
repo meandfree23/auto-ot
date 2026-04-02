@@ -212,10 +212,10 @@ def generate_strategic_base_inline(job_id):
     import re
     try:
         from scripts.antigravity_bridge import load_markdown
-        summary, deep = load_markdown(job_id)
+        summary, deep, questions = load_markdown(job_id)
     except:
-        summary, deep = "", ""
-    text = (summary or "") + "\n" + (deep or "")
+        summary, deep, questions = "", "", ""
+    text = (summary or "") + "\n" + (deep or "") + "\n" + (questions or "")
     
     title = f"Topic-First Intelligence: {job_id}"
     m_title = re.search(r'# \[(.+?)\] (.+)', text)
@@ -223,6 +223,7 @@ def generate_strategic_base_inline(job_id):
         title = m_title.group(2).strip()
         
     categories = {
+        "Gap Check & Risks": [],
         "Strategic Logic": [],
         "Creative & Visual": [],
         "Market Intelligence": []
@@ -238,6 +239,7 @@ def generate_strategic_base_inline(job_id):
         
         cat = "Market Intelligence"
         if any(k in h2 for k in ["크리에이티브", "솔루션", "Creative"]): cat = "Creative & Visual"
+        elif any(k in h2 for k in ["질문", "리스크", "가정", "확인", "Risk", "Gap"]): cat = "Gap Check & Risks"
         elif any(k in h2 for k in ["전략", "Insights", "목표", "과제", "OT"]): cat = "Strategic Logic"
             
         items = [re.sub(r'^\s*[-*]\s*', '', l.strip()) for l in lines[1:] if l.strip().startswith('-') or l.strip().startswith('*')]
