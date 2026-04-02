@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import sys
 import json
 import os
 import time
@@ -23,6 +24,13 @@ SCOPES = [
 ]
 
 ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.append(str(ROOT))
+try:
+    from scripts.send_telegram import send_message as notify_telegram
+except ImportError:
+    notify_telegram = lambda msg: print(f"[No Telegram] {msg}")
+
 STATE_DIR = ROOT / "state"
 TASK_DIR = ROOT / "incoming_tasks" / "tasks"
 STATE_DIR.mkdir(parents=True, exist_ok=True)
@@ -134,6 +142,16 @@ def write_task(task: dict[str, Any]) -> Path:
     """Save task JSON to the tasks directory."""
     path = TASK_DIR / f"{task['job_id']}.json"
     path.write_text(json.dumps(task, ensure_ascii=False, indent=2), encoding="utf-8")
+    
+    file_name = task.get("source", {}).get("file_name", "알 수 없는 파일")
+    msg = (
+        f"🚨 <b>[새 문서 자동 접수]</b>\n"
+        f"구글 드라이브 지정 폴더에 신규 문서가 감지되었습니다.\n\n"
+        f"📄 <b>파일명:</b> {file_name}\n"
+        f"📌 파이프라인이 태스크(<code>{task['job_id']}</code>)를 인식하여 분석 및 리포트 생성을 🚀즉시 시작합니다."
+    )
+    notify_telegram(msg)
+    
     return path
 
 

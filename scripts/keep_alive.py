@@ -10,6 +10,13 @@ from datetime import datetime
 # Uses pgrep for accurate detection and google.com:443 for heartbeats.
 
 ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.append(str(ROOT))
+try:
+    from scripts.send_telegram import send_message as notify_telegram
+except ImportError:
+    notify_telegram = lambda msg: print(f"[No Telegram] {msg}")
+
 LOG_DIR = ROOT / "outputs" / "logs"
 LOG_DIR.mkdir(parents=True, exist_ok=True)
 WATCH_LOG = LOG_DIR / "keep_alive.log"
@@ -78,6 +85,11 @@ def start_service(name: str, config: dict):
     # Using 'nohup ... &' and ensuring log directory is writable
     nohup_cmd = f"nohup {cmd_str} > '{log_path}' 2>&1 &"
     subprocess.run(nohup_cmd, shell=True, cwd=str(ROOT))
+    
+    notify_telegram(
+        f"⚠️ <b>[Watchdog 알림]</b>\n"
+        f"프로세스 <code>{name}</code> 가 예기치 않게 종료되어 백그라운드 자동 복구를 수행했습니다."
+    )
 
 def acquire_lock():
     pid = str(os.getpid())
@@ -99,6 +111,7 @@ def acquire_lock():
 def main():
     acquire_lock()
     log_event("WATCHDOG V23.0 (macOS Optimised) STARTED.")
+    notify_telegram("🛡 <b>[Watchdog 가동]</b>\n시스템 마스터 데몬(Keep-Alive V23.0)이 백그라운드 감시를 시작했습니다.")
     
     while True:
         try:
