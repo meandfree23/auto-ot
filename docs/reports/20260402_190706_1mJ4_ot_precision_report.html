@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ko" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OT 분석 기획안 (1차)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-accent': '#8a2be2',
+                        'glass-bg': 'rgba(255, 255, 255, 0.05)',
+                        'glass-border': 'rgba(255, 255, 255, 0.1)',
+                    },
+                    fontFamily: { sans: ['Inter', 'Noto Sans KR', 'sans-serif'] },
+                    boxShadow: { 'glow': '0 0 40px -10px rgba(138, 43, 226, 0.3)' }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #000000;
+            color: #f5f5f7;
+            background-image: radial-gradient(circle at 15% 50%, rgba(138, 43, 226, 0.15), transparent 25%), radial-gradient(circle at 85% 30%, rgba(255, 255, 255, 0.05), transparent 25%);
+            background-attachment: fixed;
+            -webkit-font-smoothing: antialiased;
+        }
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 1.5rem;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .glass-card:hover {
+            transform: translateY(-5px) scale(1.01);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: var(--glow);
+        }
+        .hero-title {
+            font-size: clamp(3rem, 6vw, 5.5rem);
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            line-height: 1.1;
+            background: linear-gradient(180deg, #fff 0%, #a1a1a6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .bento-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+        @media (min-width: 1024px) { .bento-grid { grid-template-columns: repeat(3, 1fr); } .span-2 { grid-column: span 2; } .span-3 { grid-column: span 3; } }
+        .animated-entry { opacity: 0; transform: translateY(40px); filter: blur(10px); }
+        .visible { opacity: 1; transform: translateY(0); filter: blur(0); transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); }
+    </style>
+</head>
+<body class="antialiased min-h-screen">
+    <header class="fixed top-0 w-full p-6 flex justify-between items-center z-50 bg-black/50 backdrop-blur-xl border-b border-white/10">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-gradient-to-br from-gray-800 to-black rounded-xl border border-white/10 flex items-center justify-center text-white shadow-glow">
+                <i data-lucide="cpu" class="w-5 h-5 text-brand-accent"></i>
+            </div>
+            <div class="flex flex-col">
+                <span class="font-bold tracking-tight text-xl leading-none text-white">Antigravity</span>
+                <span class="text-[9px] font-medium text-gray-400 tracking-[0.2em] mt-1 uppercase">Strategic Intelligence V26.0</span>
+            </div>
+        </div>
+    </header>
+    <main class="pt-32 pb-24 px-6 md:px-12 lg:px-24 max-w-[1600px] mx-auto">
+        <section class="min-h-[70vh] flex flex-col justify-center mb-20">
+            <div class="inline-block mb-6 animated-entry">
+                <span class="px-3 py-1 rounded-full border border-brand-accent/30 bg-brand-accent/10 text-brand-accent text-xs font-bold tracking-widest uppercase">Job ID: 20260402_190706_1mJ4_ot</span>
+            </div>
+            <h1 class="hero-title animated-entry mb-8">OT 분석 기획안 (1차)</h1>
+            <p class="text-xl md:text-2xl font-light text-gray-400 animated-entry max-w-4xl leading-relaxed tracking-tight">
+                Global market trends, gap-check risks, and high-fidelity creative blueprints synthesized for high-impact decision making.
+            </p>
+        </section>
+        
+        <section class="mb-32">
+            <div class="flex items-center gap-4 mb-12 animated-entry">
+                <div class="h-px bg-white/20 flex-1"></div>
+                <h2 class="text-2xl font-medium tracking-widest uppercase text-gray-500">Creative & Visual</h2>
+                <div class="h-px bg-white/20 flex-1"></div>
+            </div>
+            <div class="bento-grid">
+                <div class="glass-card  p-8 md:p-10 animated-entry flex flex-col">
+                    <div class="flex justify-between items-center mb-6">
+                        <span class="bg-brand-accent/20 text-brand-accent border border-brand-accent/30 px-3 py-1 rounded-md text-[10px] font-bold tracking-widest uppercase">INSIGHT</span>
+                        <i data-lucide="trending-up" class="text-gray-400 w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-6 tracking-tight text-white">Creative & Visual</h3>
+                    <ul class="flex-1 space-y-4"><li class="flex items-start gap-4 text-sm font-medium text-gray-200 mt-3"><span class="w-[3px] h-4 bg-brand-accent/50 mt-1 shrink-0 rounded-full"></span><span class="leading-relaxed">핵심 인플루언서 연계 숏폼 비주얼 기획안 도출.</span></li><p class="text-sm text-gray-400 mt-3 leading-relaxed">---</p><p class="text-sm text-gray-400 mt-3 leading-relaxed">© 2026 Antigravity | 1차 브리핑 데이터 추출 완료.</p><p class="text-sm text-gray-400 mt-3 leading-relaxed">(이 파일을 기반으로 2차 딥-리서치가 PPTX를 생성합니다.)</p></ul>
+                </div>
+                <div class="glass-card  p-8 md:p-10 animated-entry flex flex-col">
+                    <div class="flex justify-between items-center mb-6">
+                        <span class="bg-brand-accent/20 text-brand-accent border border-brand-accent/30 px-3 py-1 rounded-md text-[10px] font-bold tracking-widest uppercase">INSIGHT</span>
+                        <i data-lucide="trending-up" class="text-gray-400 w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-6 tracking-tight text-white">Creative & Visual</h3>
+                    <ul class="flex-1 space-y-4"><blockquote class="border-l-4 border-brand-accent/80 pl-5 py-3 my-5 bg-brand-accent/10 rounded-r-lg italic text-white text-sm font-semibold tracking-tight shadow-glow leading-relaxed">"2025년 숏폼 영상은 단순한 트렌드를 넘어 필수적인 마케팅 도구로 자리매김했습니다. 짧고 강렬한 메시지를 넘어 '짧고 깊이 있게' 가치 있는 정보를 전달하고 숏폼 커머스로 직접 구매를 유도해야 합니다."</blockquote><div class="my-5 rounded-xl overflow-hidden border border-brand-accent/20 shadow-[0_0_20px_rgba(0,113,227,0.15)] cursor-pointer transform hover:scale-[1.01] transition-all duration-300"><img src="https://images.unsplash.com/photo-1627843232675-b65147575306?w=800&q=80" alt="creative content creation" class="w-full object-cover max-h-56 opacity-90 hover:opacity-100 transition-opacity duration-500"></div><p class="text-sm text-gray-400 mt-3 leading-relaxed">이번 크리에이티브는 '핵심 인플루언서 연계 숏폼 비주얼 기획안 도출'을 통해 Z세대 및 알파세대의 팬덤 문화를 적극 활용하고, AI 기술을 접목하여 초개인화된 경험을 제공하는 데 중점을 둡니다. 마이크로 및 나노 인플루언서는 높은 참여율과 신뢰도를 바탕으로 브랜드와 소비자 간의 신뢰를 구축하는 데 더욱 강력한 영향력을 발휘할 것입니다. 숏폼 콘텐츠는 단순한 재미를 넘어 가치 있는 정보 전달과 숏폼 커머스로의 직접 구매를 유도하는 방향으로 진화하고 있습니다. AI는 콘텐츠 제작 단계에서 스토리보드부터 완성된 광고 영상까지, 브랜드 아이덴티티에 맞는 일관된 스타일의 영상 시리즈 제작을 가능하게 하며, 타겟 고객층별 맞춤형 광고 영상을 효율적으로 생성할 수 있습니다. 하지만 AI 활용 시 진정성(authenticity)을 훼손하지 않도록 유의하며, 인간적인 스토리텔링과 AI의 효율성을 조화시키는 것이 중요합니다.</p><div class="overflow-x-auto my-5 w-full rounded-lg border border-brand-accent/30 bg-brand-accent/5 shadow-glow"><table class="w-full text-left border-collapse whitespace-nowrap"><tr class="hover:bg-brand-accent/20 transition-colors"><td class="px-5 py-3 border-b border-brand-accent/20 text-sm font-medium text-gray-200">장면(Scene)</td><td class="px-5 py-3 border-b border-brand-accent/20 text-sm font-medium text-gray-200">연출 의도</td><td class="px-5 py-3 border-b border-brand-accent/20 text-sm font-medium text-gray-200">시각적 톤앤매너</td></tr></table></div></ul>
+                </div>
+            </div>
+        </section>
+        <section class="mb-32">
+            <div class="flex items-center gap-4 mb-12 animated-entry">
+                <div class="h-px bg-white/20 flex-1"></div>
+                <h2 class="text-2xl font-medium tracking-widest uppercase text-gray-500">Market Intelligence</h2>
+                <div class="h-px bg-white/20 flex-1"></div>
+            </div>
+            <div class="bento-grid">
+                <div class="glass-card span-3 p-8 md:p-10 animated-entry flex flex-col">
+                    <div class="flex justify-between items-center mb-6">
+                        <span class="bg-brand-accent/20 text-brand-accent border border-brand-accent/30 px-3 py-1 rounded-md text-[10px] font-bold tracking-widest uppercase">INSIGHT</span>
+                        <i data-lucide="trending-up" class="text-gray-400 w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-6 tracking-tight text-white">1. 프로젝트 메타 인텔리전스</h3>
+                    <ul class="flex-1 space-y-4"><li class="flex items-start gap-4 text-sm font-medium text-gray-200 mt-3"><span class="w-[3px] h-4 bg-brand-accent/50 mt-1 shrink-0 rounded-full"></span><span class="leading-relaxed">**수집 ID**: `20260402_190706_1mJ4_ot`</span></li><li class="flex items-start gap-4 text-sm font-medium text-gray-200 mt-3"><span class="w-[3px] h-4 bg-brand-accent/50 mt-1 shrink-0 rounded-full"></span><span class="leading-relaxed">**분석 코어**: Antigravity V25.0 (Consultant Model)</span></li><li class="flex items-start gap-4 text-sm font-medium text-gray-200 mt-3"><span class="w-[3px] h-4 bg-brand-accent/50 mt-1 shrink-0 rounded-full"></span><span class="leading-relaxed">**키 필터링**: 2025, 07, 02, 광고영상제안, AGENCY</span></li></ul>
+                </div>
+                <div class="glass-card  p-8 md:p-10 animated-entry flex flex-col">
+                    <div class="flex justify-between items-center mb-6">
+                        <span class="bg-brand-accent/20 text-brand-accent border border-brand-accent/30 px-3 py-1 rounded-md text-[10px] font-bold tracking-widest uppercase">INSIGHT</span>
+                        <i data-lucide="trending-up" class="text-gray-400 w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-6 tracking-tight text-white">Market Intelligence</h3>
+                    <ul class="flex-1 space-y-4"><li class="flex items-start gap-4 text-sm font-medium text-gray-200 mt-3"><span class="w-[3px] h-4 bg-brand-accent/50 mt-1 shrink-0 rounded-full"></span><span class="leading-relaxed">시장 트렌드 변화 및 프리미엄 타겟 니즈 분석.</span></li></ul>
+                </div>
+                <div class="glass-card  p-8 md:p-10 animated-entry flex flex-col">
+                    <div class="flex justify-between items-center mb-6">
+                        <span class="bg-brand-accent/20 text-brand-accent border border-brand-accent/30 px-3 py-1 rounded-md text-[10px] font-bold tracking-widest uppercase">INSIGHT</span>
+                        <i data-lucide="trending-up" class="text-gray-400 w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-6 tracking-tight text-white">Strategic Logic</h3>
+                    <ul class="flex-1 space-y-4"><li class="flex items-start gap-4 text-sm font-medium text-gray-200 mt-3"><span class="w-[3px] h-4 bg-brand-accent/50 mt-1 shrink-0 rounded-full"></span><span class="leading-relaxed">데이터 기반 타겟팅 최적화 및 신규 어젠다 선점 전략.</span></li></ul>
+                </div>
+                <div class="glass-card  p-8 md:p-10 animated-entry flex flex-col">
+                    <div class="flex justify-between items-center mb-6">
+                        <span class="bg-brand-accent/20 text-brand-accent border border-brand-accent/30 px-3 py-1 rounded-md text-[10px] font-bold tracking-widest uppercase">INSIGHT</span>
+                        <i data-lucide="trending-up" class="text-gray-400 w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-6 tracking-tight text-white">Market Intelligence</h3>
+                    <ul class="flex-1 space-y-4"><blockquote class="border-l-4 border-brand-accent/80 pl-5 py-3 my-5 bg-brand-accent/10 rounded-r-lg italic text-white text-sm font-semibold tracking-tight shadow-glow leading-relaxed">"2025년, AI 에이전트의 등장은 인터넷 광고 시장에 근본적인 변화를 예고하고 있습니다. 광고 타겟은 '사람'에서 'AI'로 확장되며, 머신-투-머신(M2M) 커뮤니케이션 시대가 도래하고 있습니다."</blockquote><div class="my-5 rounded-xl overflow-hidden border border-brand-accent/20 shadow-[0_0_20px_rgba(0,113,227,0.15)] cursor-pointer transform hover:scale-[1.01] transition-all duration-300"><img src="https://images.unsplash.com/photo-1593538356947-f55e5d11824a?q=80&w=800" alt="global connections" class="w-full object-cover max-h-56 opacity-90 hover:opacity-100 transition-opacity duration-500"></div><p class="text-sm text-gray-400 mt-3 leading-relaxed">디지털 광고 시장은 2025년 1조 1,900억 달러 규모로 성장할 것으로 전망되며, 이 성장의 대부분은 메타, 구글, 아마존과 같은 빅테크 플랫폼이 주도할 것입니다. 특히 디지털 광고가 전체 시장을 견인하며, AI 기술과 초개인화가 디지털 미디어 변화의 중심에 있습니다. Z세대와 알파세대는 인류 최초의 '모바일 네이티브'이자 'AI 네이티브'로, 이들은 전통적인 검색보다 음성 검색과 AI 기반 추천 알고리즘을 선호하며, 맞춤형 경험에 강한 흥미를 느낍니다. 이들은 소비를 통해 자신의 정체성을 표현하고, 인플루언서의 영향을 크게 받으며, '팬덤'을 단순한 소비를 넘어 창작 활동으로 경험하는 세대입니다.</p><div class="overflow-x-auto my-5 w-full rounded-lg border border-brand-accent/30 bg-brand-accent/5 shadow-glow"><table class="w-full text-left border-collapse whitespace-nowrap"><tr class="hover:bg-brand-accent/20 transition-colors"><td class="px-5 py-3 border-b border-brand-accent/20 text-sm font-medium text-gray-200">구분</td><td class="px-5 py-3 border-b border-brand-accent/20 text-sm font-medium text-gray-200">현황 (2025년 기준)</td><td class="px-5 py-3 border-b border-brand-accent/20 text-sm font-medium text-gray-200">트렌드 지수 (5점 만점)</td></tr></table></div></ul>
+                </div>
+                <div class="glass-card  p-8 md:p-10 animated-entry flex flex-col">
+                    <div class="flex justify-between items-center mb-6">
+                        <span class="bg-brand-accent/20 text-brand-accent border border-brand-accent/30 px-3 py-1 rounded-md text-[10px] font-bold tracking-widest uppercase">INSIGHT</span>
+                        <i data-lucide="trending-up" class="text-gray-400 w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-6 tracking-tight text-white">Strategic Logic</h3>
+                    <ul class="flex-1 space-y-4"><blockquote class="border-l-4 border-brand-accent/80 pl-5 py-3 my-5 bg-brand-accent/10 rounded-r-lg italic text-white text-sm font-semibold tracking-tight shadow-glow leading-relaxed">"AI는 더 이상 광고에서 옵션이 아닌, 기본 운영의 핵심 요소가 되었습니다. 캠페인 목표를 명확히 정의하고, AI 툴을 통해 실시간으로 테스트하고 학습하며 재조정하는 것이 성공의 열쇠입니다."</blockquote><div class="my-5 rounded-xl overflow-hidden border border-brand-accent/20 shadow-[0_0_20px_rgba(0,113,227,0.15)] cursor-pointer transform hover:scale-[1.01] transition-all duration-300"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80" alt="strategy concept" class="w-full object-cover max-h-56 opacity-90 hover:opacity-100 transition-opacity duration-500"></div><p class="text-sm text-gray-400 mt-3 leading-relaxed">우리의 전략은 '데이터 기반 타겟팅 최적화 및 신규 어젠다 선점'을 통해 시장의 초격차를 확보하는 데 있습니다. AI는 잠재고객 타겟팅, 입찰 전략, 광고 소재 제작, 성과 측정 및 캠페인 최적화 전반에 걸쳐 인간의 의사결정을 지원하며 반복적인 작업을 자동화합니다. 특히, Google Ads의 AI Max와 같은 AI 기반 캠페인은 포괄적인 타겟팅 및 생성 기능을 제공하여 광고주가 향상된 관련성, 도달범위, 실적을 달성할 수 있도록 돕습니다. 고객 행동 분석을 통한 초개인화된 추천 시스템과 AI 챗봇 및 음성 검색 최적화는 고객 만족도를 높이고 브랜드 충성도를 강화할 것입니다. 또한, 단순한 광고를 넘어 생성형 AI를 활용한 고객 참여형 UGC 캠페인 활성화는 브랜드 충성도를 높이고 소비자 니즈를 직접적으로 파악하는 새로운 어젠다를 선점할 수 있습니다.</p><div class="overflow-x-auto my-5 w-full rounded-lg border border-brand-accent/30 bg-brand-accent/5 shadow-glow"><table class="w-full text-left border-collapse whitespace-nowrap"><tr class="hover:bg-brand-accent/20 transition-colors"><td class="px-5 py-3 border-b border-brand-accent/20 text-sm font-medium text-gray-200">전략 Phase</td><td class="px-5 py-3 border-b border-brand-accent/20 text-sm font-medium text-gray-200">세부 Action Plan</td><td class="px-5 py-3 border-b border-brand-accent/20 text-sm font-medium text-gray-200">핵심 KPI</td></tr></table></div></ul>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="py-12 border-t border-white/10 text-center text-gray-500 text-sm font-medium tracking-widest uppercase animated-entry">
+        CONFIDENTIAL & PROPRIETARY &copy; 2026 Antigravity Intelligence
+    </footer>
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+        }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+        document.querySelectorAll('.animated-entry').forEach((el, idx) => {
+            el.style.transitionDelay = `${(idx % 4) * 100}ms`;
+            observer.observe(el);
+        });
+        lucide.createIcons();
+    </script>
+</body>
+</html>
