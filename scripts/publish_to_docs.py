@@ -18,6 +18,7 @@ from googleapiclient.http import MediaFileUpload
 from dotenv import load_dotenv
 
 import subprocess
+import shutil
 load_dotenv()
 
 SCOPES = [
@@ -326,28 +327,40 @@ def upload_binary_file(drive_service, file_path: Path, folder_id: str | None, mi
         "local_path": str(file_path)
     }
 
+def prepare_gh_pages_branch():
+    """Create or update the gh-pages-live branch with the latest reports.
+
+    Steps:
+    1. Ensure the branch exists (or create an orphan branch).
+    2. Clean the branch content.
+    3. Copy `docs/reports/` into a top-level `reports/` folder.
+    4. Commit and force‑push to origin.
+    """
+    # 1️⃣ Ensure branch exists locally (or create orphan)
+    result = subprocess.run(["git", "rev-parse", "--verify", "gh-pages-live"], cwd=ROOT, capture_output=True)
+    if result.returncode != 0:
+        subprocess.run(["git", "checkout", "--orphan", "gh-pages-live"], cwd=ROOT, check=True)
+        subprocess.run(["git", "reset"], cwd=ROOT, check=True)
+    else:
+        subprocess.run(["git", "checkout", "gh-pages-live"], cwd=ROOT, check=True)
+    # 2️⃣ Clean working tree
+    subprocess.run(["git", "rm", "-r", "--ignore-unmatch", "*"], cwd=ROOT, check=False)
+    # 3️⃣ Copy generated reports
+    src = ROOT / "docs" / "reports"
+    dst = ROOT / "reports"
+    shutil.copytree(src, dst, dirs_exist_ok=True)
+    # 4️⃣ Add, commit, and push
+    subprocess.run(["git", "add", "reports"], cwd=ROOT, check=True)
+    subprocess.run(["git", "commit", "-m", "Deploy reports to gh-pages-live"], cwd=ROOT, check=False)
+    subprocess.run(["git", "push", "origin", "gh-pages-live", "--force"], cwd=ROOT, check=True)
+
 def git_sync_reports(job_id: str) -> bool:
     """Commit and push new reports to GitHub for Pages deployment."""
     try:
         print(f"[Git] Syncing reports for job {job_id}...")
         
-        # 1. Add changes in docs/reports
-        subprocess.run(["git", "add", "docs/reports/"], cwd=ROOT, check=True)
-        
-        # 2. Check if there are changes to commit
-        status = subprocess.run(["git", "status", "--porcelain"], cwd=ROOT, capture_output=True, text=True, check=True)
-        if not status.stdout.strip():
-            print("[Git] No changes to commit.")
-            return True
-            
-        # 3. Commit
-        commit_msg = f"Auto-deploy reports for job {job_id}"
-        subprocess.run(["git", "commit", "-m", commit_msg], cwd=ROOT, check=True)
-        
-        # 4. Push to origin (Targeting 'main' for GitHub Pages)
-        subprocess.run(["git", "push", "origin", "master:main"], cwd=ROOT, check=True)
-        subprocess.run(["git", "push", "origin", "master"], cwd=ROOT, check=True)
-        print(f"[Git] Successfully pushed reports for job {job_id} to both master and main branches.")
+        # 1. Prepare and push to gh-pages-live branch
+        prepare_gh_pages_branch()
         return True
     except Exception as e:
         print(f"[Git Error] Failed to sync reports: {e}")
@@ -428,6 +441,19 @@ def publish_job(job_id: str) -> dict[str, Any]:
                     published_docs.append(info)
                 except Exception as e:
                     failures.append({"file": file.name, "error": str(e)})
+
+    # [V30.0/V31.0] Generate 3-page Word Summary and Strategic Sheets
+    try:
+        print(f"[Publish] Generating 3-page Word strategy summary...")
+        subprocess.run([sys.executable, str(ROOT / "scripts" / "generate_3page_doc.py"), job_id], cwd=ROOT)
+        # Note: generate_3page_doc handles uploading to Drive internally? 
+        # No, generate_3page_doc just saves to file, publish_job below will pick it up.
+        
+        print(f"[Publish] Generating Strategic Google Sheets board...")
+        subprocess.run([sys.executable, str(ROOT / "scripts" / "generate_strategy_sheet.py"), job_id], cwd=ROOT)
+        # Note: generate_strategy_sheet creates sheet directly on Drive.
+    except Exception as e:
+        print(f"[Publish Warning] Failed to generate Sheet/Word summaries: {e}")
 
     # [V16.0] New: Sync changes to GitHub for Pages deployment
     git_sync_reports(job_id)
