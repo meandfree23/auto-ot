@@ -26,12 +26,12 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
             theme: {
                 extend: {
                     colors: {
-                        'brand-accent': '#0071e3',
+                        'brand-accent': '[[BRAND_HEX]]',
                         'glass-bg': 'rgba(255, 255, 255, 0.05)',
                         'glass-border': 'rgba(255, 255, 255, 0.1)',
                     },
                     fontFamily: { sans: ['Inter', 'Noto Sans KR', 'sans-serif'] },
-                    boxShadow: { 'glow': '0 0 40px -10px rgba(0, 113, 227, 0.3)' }
+                    boxShadow: { 'glow': '0 0 40px -10px rgba([[BRAND_RGB]], 0.3)' }
                 }
             }
         }
@@ -40,7 +40,7 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
         body {
             background-color: #000000;
             color: #f5f5f7;
-            background-image: radial-gradient(circle at 15% 50%, rgba(0, 113, 227, 0.15), transparent 25%), radial-gradient(circle at 85% 30%, rgba(255, 255, 255, 0.05), transparent 25%);
+            background-image: radial-gradient(circle at 15% 50%, rgba([[BRAND_RGB]], 0.15), transparent 25%), radial-gradient(circle at 85% 30%, rgba(255, 255, 255, 0.05), transparent 25%);
             background-attachment: fixed;
             -webkit-font-smoothing: antialiased;
         }
@@ -113,6 +113,30 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
 </body>
 </html>'''
 
+
+def get_dynamic_theme(title):
+    themes = [
+        {"name": "Apple Blue", "hex": "#0071e3", "rgb": "0, 113, 227"},
+        {"name": "McKinsey Navy", "hex": "#002855", "rgb": "0, 40, 85"},
+        {"name": "Hermes Orange", "hex": "#F37021", "rgb": "243, 112, 33"},
+        {"name": "Forest Green", "hex": "#2e4635", "rgb": "46, 70, 53"},
+        {"name": "Rose Gold", "hex": "#b76e79", "rgb": "183, 110, 121"},
+        {"name": "Electric Purple", "hex": "#8a2be2", "rgb": "138, 43, 226"},
+        {"name": "Lush Red", "hex": "#e63946", "rgb": "230, 57, 70"}
+    ]
+    
+    title_lower = title.lower()
+    if any(k in title_lower for k in ["테크", "it", "플랫폼", "디지털", "앱"]): return themes[0]
+    if any(k in title_lower for k in ["금융", "전략", "비즈니스", "b2b"]): return themes[1]
+    if any(k in title_lower for k in ["커머스", "명품", "쇼핑", "프리미엄"]): return themes[2]
+    if any(k in title_lower for k in ["친환경", "환경", "자연", "에너지", "esg"]): return themes[3]
+    if any(k in title_lower for k in ["뷰티", "화장품", "여성", "코스메틱"]): return themes[4]
+    if any(k in title_lower for k in ["게임", "메타버스", "web3", "ai"]): return themes[5]
+    if any(k in title_lower for k in ["식품", "음식", "엔터테인먼트", "f&b"]): return themes[6]
+    
+    idx = sum(ord(c) for c in title) % len(themes)
+    return themes[idx]
+
 def generate_html(data, output_dir, job_id):
     title = data.get("strategy_title", "Topic-First Intelligence")
     categories = data.get("categories", {})
@@ -162,6 +186,10 @@ def generate_html(data, output_dir, job_id):
         </section>''')
         
     final_html = HTML_TEMPLATE.replace('[[TITLE]]', title).replace('[[SLIDES_HTML]]', "".join(slides_html_list)).replace('[[JOB_ID]]', job_id)
+    
+    theme = get_dynamic_theme(title)
+    final_html = final_html.replace('[[BRAND_HEX]]', theme['hex']).replace('[[BRAND_RGB]]', theme['rgb'])
+
     
     os.makedirs(output_dir, exist_ok=True)
     out_path = os.path.join(output_dir, f"{job_id}_precision_report.html")
