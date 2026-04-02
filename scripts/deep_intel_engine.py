@@ -90,7 +90,10 @@ def generate_deep_report(content: str):
         response = client.models.generate_content(
             model='gemini-2.5-flash',
             contents=prompt,
-            config=types.GenerateContentConfig(temperature=0.7)
+            config=types.GenerateContentConfig(
+                temperature=0.7,
+                tools=[{"google_search": {}}]
+            )
         )
         return response.text.strip()
     except Exception as e:
@@ -171,7 +174,7 @@ def run_orchestrator(job_id: str):
             f"🆔 <code>{job_id}</code>\n\n"
             f"<b>[결과물 바로보기 링크]</b>\n"
             f"🌐 <a href='{html_link}'>1. 최고급 웹 대시보드 (스마트폰 즉시 열람)</a>\n\n"
-            f"📊 <a href='{pptx_link}'>2. 전략 파워포인트 문서 (드라이브 뷰어/다운로드)</a>\n\n"
+            f"📊 <a href='{pptx_link}'>2. 동시 편집 구글 슬라이드 보드 (Google Slides)</a>\n\n"
             f"<i>* 아래 버튼을 눌러 언제든 즉시 수정을 지시할 수 있습니다.</i>"
         )
         

@@ -93,7 +93,11 @@ def identify_strategic_intent(content: str):
         response = client.models.generate_content(
             model='gemini-2.5-flash',
             contents=prompt,
-            config=types.GenerateContentConfig(response_mime_type="application/json", temperature=0.3)
+            config=types.GenerateContentConfig(
+                response_mime_type="application/json", 
+                temperature=0.3,
+                tools=[{"google_search": {}}]
+            )
         )
         return json.loads(response.text)
     except Exception as e:

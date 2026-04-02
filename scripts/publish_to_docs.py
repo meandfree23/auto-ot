@@ -294,7 +294,7 @@ def append_run_history(entry: dict[str, Any]) -> None:
     save_json(RUN_HISTORY_PATH, history)
 
 
-def upload_binary_file(drive_service, file_path: Path, folder_id: str | None, mime_type: str) -> dict[str, str]:
+def upload_binary_file(drive_service, file_path: Path, folder_id: str | None, mime_type: str, target_mime_type: str | None = None) -> dict[str, str]:
     """Upload a binary file (docx, html, etc.) to Drive and return ID and URL."""
     from googleapiclient.http import MediaFileUpload
     
@@ -302,6 +302,9 @@ def upload_binary_file(drive_service, file_path: Path, folder_id: str | None, mi
         "name": file_path.name,
         "parents": [folder_id] if folder_id else []
     }
+    if target_mime_type:
+        file_metadata["mimeType"] = target_mime_type
+        
     media = MediaFileUpload(str(file_path), mimetype=mime_type, resumable=True)
     
     file_resp = drive_service.files().create(
@@ -403,15 +406,18 @@ def publish_job(job_id: str) -> dict[str, Any]:
                     import shutil
                     shutil.copy2(file, docs_report_dir / file.name)
                     
+                    target_mime = None
                     if file.suffix == ".docx":
                         mime = "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                        target_mime = "application/vnd.google-apps.document"
                     elif file.suffix == ".pptx":
                         mime = "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+                        target_mime = "application/vnd.google-apps.presentation" # Smart Google Slides Conversion
                     else:
                         mime = "text/html"
                     
                     print(f"[Publish] Uploading binary report to Drive: {file.name}")
-                    info = upload_binary_file(drive_service, file, OUTPUT_FOLDER_ID, mime)
+                    info = upload_binary_file(drive_service, file, OUTPUT_FOLDER_ID, mime, target_mime)
                     
                     # [V6.4] Add Direct GitHub Pages Link if HTML
                     if file.suffix == ".html":
