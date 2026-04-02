@@ -165,11 +165,37 @@ def generate_html(data, output_dir, job_id):
             icon = "alert-triangle" if "Gap" in cat_name else "trending-up"
             tag_name = "CRITICAL RISK" if "Gap" in cat_name else "INSIGHT"
             
-            content_lines = "".join([f'''
-                <li class="flex items-start gap-4 text-sm font-medium text-gray-300">
-                    <span class="w-[3px] h-4 bg-gray-500 mt-1 shrink-0 rounded-full"></span>
-                    <span class="leading-relaxed">{line.strip()}</span>
-                </li>''' for line in sec.get('contents', [])])
+            content_lines = ""
+            in_table = False
+            for line in sec.get('contents', []):
+                if line.startswith('|'):
+                    if not in_table:
+                        content_lines += '<div class="overflow-x-auto my-4 w-full rounded-lg border border-white/10 bg-black/20"><table class="w-full text-left border-collapse whitespace-nowrap">'
+                        in_table = True
+                    if '---' in line: continue
+                    cells = [c.strip() for c in line.split('|') if c.strip()]
+                    if not cells: continue
+                    tds = "".join([f'<td class="px-4 py-3 border-b border-white/5 text-sm text-gray-300">{c}</td>' for c in cells])
+                    content_lines += f'<tr class="hover:bg-white/5 transition-colors">{tds}</tr>'
+                else:
+                    if in_table:
+                        content_lines += '</table></div>'
+                        in_table = False
+                        
+                    if line.startswith('![') and '](' in line:
+                        m = re.search(r'\((.*?)\)', line)
+                        url = m.group(1) if m else ""
+                        m_alt = re.search(r'\[(.*?)\]', line)
+                        alt = m_alt.group(1) if m_alt else ""
+                        content_lines += f'<div class="my-5 rounded-xl overflow-hidden border border-brand-accent/20 shadow-[0_0_20px_rgba(0,113,227,0.15)] cursor-pointer transform hover:scale-[1.01] transition-all duration-300"><img src="{url}" alt="{alt}" class="w-full object-cover max-h-56 opacity-90 hover:opacity-100 transition-opacity duration-500"></div>'
+                    elif line.startswith('> '):
+                        content_lines += f'<blockquote class="border-l-4 border-brand-accent/80 pl-5 py-3 my-5 bg-brand-accent/10 rounded-r-lg italic text-white text-sm font-semibold tracking-tight shadow-glow leading-relaxed">{line[2:]}</blockquote>'
+                    elif line.startswith('- ') or line.startswith('* '):
+                        content_lines += f'<li class="flex items-start gap-4 text-sm font-medium text-gray-200 mt-3"><span class="w-[3px] h-4 bg-brand-accent/50 mt-1 shrink-0 rounded-full"></span><span class="leading-relaxed">{line[2:]}</span></li>'
+                    else:
+                        content_lines += f'<p class="text-sm text-gray-400 mt-3 leading-relaxed">{line}</p>'
+            if in_table:
+                content_lines += '</table></div>'
 
             slides_html_list.append(f'''
                 <div class="glass-card {grid_class} p-8 md:p-10 animated-entry flex flex-col">
@@ -230,7 +256,7 @@ def generate_strategic_base_inline(job_id):
         elif any(k in h2 for k in ["질문", "리스크", "가정", "확인", "Risk", "Gap"]): cat = "Gap Check & Risks"
         elif any(k in h2 for k in ["전략", "Insights", "목표", "과제", "OT"]): cat = "Strategic Logic"
             
-        items = [re.sub(r'^\s*[-*]\s*', '', l.strip()) for l in lines[1:] if l.strip().startswith('-') or l.strip().startswith('*')]
+        items = [l.strip() for l in lines[1:] if l.strip()]
         
         if items:
             categories[cat].append({
@@ -319,13 +345,40 @@ def generate_pptx(data, output_dir, job_id):
                     except: pass
                     
                     for line in sec.get('contents', []):
+                        if line.startswith('![') and '](' in line:
+                            continue # skip images for PPT layout safety
+                            
                         p2 = tf.add_paragraph()
-                        p2.text = f"  - {line}"
-                        try:
-                            if not has_master:
-                                p2.font.size = Pt(12)
-                                p2.font.color.rgb = RGBColor(80, 80, 90)
-                        except: pass
+                        if line.startswith('|') and '---' not in line:
+                            cells = [c.strip() for c in line.split('|') if c.strip()]
+                            p2.text = "   [데이터 표] " + " | ".join(cells)
+                            try:
+                                if not has_master:
+                                    p2.font.size = Pt(11)
+                                    p2.font.color.rgb = RGBColor(100, 100, 120)
+                            except: pass
+                        elif line.startswith('> '):
+                            p2.text = f"   (인용) {line[2:]}"
+                            try:
+                                if not has_master:
+                                    p2.font.size = Pt(12)
+                                    p2.font.bold = True
+                                    p2.font.color.rgb = RGBColor(40, 40, 80)
+                            except: pass
+                        elif line.startswith('- ') or line.startswith('* '):
+                            p2.text = f"  - {line[2:]}"
+                            try:
+                                if not has_master:
+                                    p2.font.size = Pt(12)
+                                    p2.font.color.rgb = RGBColor(80, 80, 90)
+                            except: pass
+                        elif '---' in line and line.startswith('|'):
+                            pass
+                        else:
+                            p2.text = f"    {line}"
+                            try:
+                                if not has_master: p2.font.size = Pt(12)
+                            except: pass
                     
     os.makedirs(output_dir, exist_ok=True)
     out_path = os.path.join(output_dir, f"{job_id}_strategic_deck.pptx")
