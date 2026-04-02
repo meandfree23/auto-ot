@@ -345,14 +345,26 @@ def prepare_gh_pages_branch():
         subprocess.run(["git", "checkout", "gh-pages-live"], cwd=ROOT, check=True)
     # 2️⃣ Clean working tree
     subprocess.run(["git", "rm", "-r", "--ignore-unmatch", "*"], cwd=ROOT, check=False)
-    # 3️⃣ Copy generated reports
+    # 3️⃣ Copy generated reports to reports/ folder
     src = ROOT / "docs" / "reports"
     dst = ROOT / "reports"
-    shutil.copytree(src, dst, dirs_exist_ok=True)
-    # 4️⃣ Add, commit, and push
-    subprocess.run(["git", "add", "reports"], cwd=ROOT, check=True)
-    subprocess.run(["git", "commit", "-m", "Deploy reports to gh-pages-live"], cwd=ROOT, check=False)
+    if src.exists():
+        shutil.copytree(src, dst, dirs_exist_ok=True)
+                
+    # 4️⃣ Create index.html at root (Latest Preview)
+    # Find the latest precision report
+    html_files = sorted(list(dst.glob("*_precision_report.html")), reverse=True)
+    if html_files:
+        shutil.copy2(html_files[0], ROOT / "index.html")
+        print(f"[Git] Set {html_files[0].name} as index.html (Root Dashboard)")
+
+    # 5️⃣ Add, commit, and push
+    subprocess.run(["git", "add", "."], cwd=ROOT, check=True)
+    subprocess.run(["git", "commit", "-m", "Deploy dashboard and reports to gh-pages-live"], cwd=ROOT, check=False)
     subprocess.run(["git", "push", "origin", "gh-pages-live", "--force"], cwd=ROOT, check=True)
+    
+    # Switch back to master
+    subprocess.run(["git", "checkout", "master"], cwd=ROOT, check=True)
 
 def git_sync_reports(job_id: str) -> bool:
     """Commit and push new reports to GitHub for Pages deployment."""
