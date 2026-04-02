@@ -170,13 +170,13 @@ def generate_html(data, output_dir, job_id):
             for line in sec.get('contents', []):
                 if line.startswith('|'):
                     if not in_table:
-                        content_lines += '<div class="overflow-x-auto my-4 w-full rounded-lg border border-white/10 bg-black/20"><table class="w-full text-left border-collapse whitespace-nowrap">'
+                        content_lines += '<div class="overflow-x-auto my-5 w-full rounded-lg border border-brand-accent/30 bg-brand-accent/5 shadow-glow"><table class="w-full text-left border-collapse whitespace-nowrap">'
                         in_table = True
                     if '---' in line: continue
                     cells = [c.strip() for c in line.split('|') if c.strip()]
                     if not cells: continue
-                    tds = "".join([f'<td class="px-4 py-3 border-b border-white/5 text-sm text-gray-300">{c}</td>' for c in cells])
-                    content_lines += f'<tr class="hover:bg-white/5 transition-colors">{tds}</tr>'
+                    tds = "".join([f'<td class="px-5 py-3 border-b border-brand-accent/20 text-sm font-medium text-gray-200">{c}</td>' for c in cells])
+                    content_lines += f'<tr class="hover:bg-brand-accent/20 transition-colors">{tds}</tr>'
                 else:
                     if in_table:
                         content_lines += '</table></div>'
