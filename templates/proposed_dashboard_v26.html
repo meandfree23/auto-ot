@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ko" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Topic-First Intelligence (V26.0 Preview)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-accent': '#0071e3', // Apple Blue
+                        'mckinsey-blue': '#002855',
+                        'glass-bg': 'rgba(255, 255, 255, 0.05)',
+                        'glass-border': 'rgba(255, 255, 255, 0.1)',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'Noto Sans KR', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'glow': '0 0 40px -10px rgba(0, 113, 227, 0.3)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #000000;
+            color: #f5f5f7;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(0, 113, 227, 0.15), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(255, 255, 255, 0.05), transparent 25%);
+            background-attachment: fixed;
+            -webkit-font-smoothing: antialiased;
+        }
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 1.5rem;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .glass-card:hover {
+            transform: translateY(-5px) scale(1.01);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: var(--glow);
+        }
+        .hero-title {
+            font-size: clamp(3rem, 6vw, 5.5rem);
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            line-height: 1.1;
+            background: linear-gradient(180deg, #fff 0%, #a1a1a6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .bento-grid {
+            display: grid; grid-template-columns: 1fr; gap: 1.5rem;
+        }
+        @media (min-width: 1024px) {
+            .bento-grid { grid-template-columns: repeat(3, 1fr); }
+            .span-2 { grid-column: span 2; }
+            .span-3 { grid-column: span 3; }
+        }
+        .animated-entry {
+            opacity: 0; transform: translateY(40px);
+            filter: blur(10px);
+        }
+        .visible {
+            opacity: 1; transform: translateY(0);
+            filter: blur(0);
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen">
+    <header class="fixed top-0 w-full p-6 flex justify-between items-center z-50 bg-black/50 backdrop-blur-xl border-b border-white/10">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-gradient-to-br from-gray-800 to-black rounded-xl border border-white/10 flex items-center justify-center text-white shadow-glow">
+                <i data-lucide="cpu" class="w-5 h-5 text-brand-accent"></i>
+            </div>
+            <div class="flex flex-col">
+                <span class="font-bold tracking-tight text-xl leading-none text-white">Antigravity</span>
+                <span class="text-[9px] font-medium text-gray-400 tracking-[0.2em] mt-1 uppercase">Strategic Intelligence V26.0</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="pt-32 pb-24 px-6 md:px-12 lg:px-24 max-w-[1600px] mx-auto">
+        <!-- Intro Section -->
+        <section class="min-h-[70vh] flex flex-col justify-center mb-20">
+            <div class="inline-block mb-6 animated-entry">
+                <span class="px-3 py-1 rounded-full border border-brand-accent/30 bg-brand-accent/10 text-brand-accent text-xs font-bold tracking-widest uppercase">Job ID: 20261010_1tQ_ot</span>
+            </div>
+            <h1 class="hero-title animated-entry mb-8">차세대 글로벌 브랜드 런칭 캠페인 전략</h1>
+            <p class="text-xl md:text-2xl font-light text-gray-400 animated-entry max-w-4xl leading-relaxed tracking-tight">
+                Global market trends, gap-check risks, and high-fidelity creative blueprints synthesized for high-impact decision making.
+            </p>
+        </section>
+
+        <!-- Bento Grid Categories -->
+        <section class="mb-32">
+            <div class="flex items-center gap-4 mb-12 animated-entry">
+                <div class="h-px bg-white/20 flex-1"></div>
+                <h2 class="text-2xl font-medium tracking-widest uppercase text-gray-500">Gap Check & Risks</h2>
+                <div class="h-px bg-white/20 flex-1"></div>
+            </div>
+            
+            <div class="bento-grid">
+                <div class="glass-card span-2 p-8 md:p-10 animated-entry flex flex-col">
+                    <div class="flex justify-between items-center mb-6">
+                        <span class="bg-red-500/20 text-red-400 border border-red-500/30 px-3 py-1 rounded-md text-[10px] font-bold tracking-widest uppercase">CRITICAL RISK</span>
+                        <i data-lucide="alert-triangle" class="text-red-400 w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-6 tracking-tight text-white">예산 및 핵심 KPI 누락</h3>
+                    <ul class="flex-1 space-y-4">
+                        <li class="flex items-start gap-4 text-sm font-medium text-gray-300">
+                            <span class="w-[3px] h-4 bg-red-400 mt-1 shrink-0 rounded-full"></span>
+                            <span class="leading-relaxed">광고주 OT 문서 내 총 가용 예산(Media/Production 구분)이 명시되어 있지 않습니다.</span>
+                        </li>
+                        <li class="flex items-start gap-4 text-sm font-medium text-gray-300">
+                            <span class="w-[3px] h-4 bg-red-400 mt-1 shrink-0 rounded-full"></span>
+                            <span class="leading-relaxed">캠페인 성공 여부를 판단할 최우선 정량 지표(KPI) 확인이 시급합니다.</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="glass-card p-8 md:p-10 animated-entry flex flex-col">
+                    <div class="flex justify-between items-center mb-6">
+                        <span class="bg-yellow-500/20 text-yellow-400 border border-yellow-500/30 px-3 py-1 rounded-md text-[10px] font-bold tracking-widest uppercase">ASSUMPTION</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-6 tracking-tight text-white">타겟 오디언스 가정</h3>
+                    <ul class="flex-1 space-y-4">
+                        <li class="flex items-start gap-4 text-sm text-gray-400">
+                            <span class="w-[3px] h-4 bg-yellow-400 mt-1 shrink-0 rounded-full"></span>
+                            <span>MZ타겟이라고 명시되어 있으나, 실질적인 구매력을 갖춘 20대 후반~30대 초반으로 범위를 좁혀 기획안을 전개합니다.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <section class="mb-32">
+            <div class="flex items-center gap-4 mb-12 animated-entry">
+                <div class="h-px bg-white/20 flex-1"></div>
+                <h2 class="text-2xl font-medium tracking-widest uppercase text-gray-500">Market Intelligence</h2>
+                <div class="h-px bg-white/20 flex-1"></div>
+            </div>
+            
+            <div class="bento-grid">
+                <div class="glass-card span-3 p-8 md:p-10 animated-entry">
+                    <div class="flex justify-between items-center mb-6">
+                        <span class="bg-brand-accent/20 text-brand-accent border border-brand-accent/30 px-3 py-1 rounded-md text-[10px] font-bold tracking-widest uppercase">INSIGHT</span>
+                        <i data-lucide="trending-up" class="text-brand-accent w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-6 tracking-tight text-white">글로벌 프리미엄 시장 트렌드</h3>
+                    <ul class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <li class="flex items-start gap-4 text-sm text-gray-300">
+                            <span class="w-[3px] h-4 bg-brand-accent mt-1 shrink-0 rounded-full shadow-glow"></span>
+                            <span class="leading-relaxed">디지털 네이티브 세대의 브랜드 인지도는 틱톡 및 숏폼 채널 전환율에 80% 이상 의존하고 있습니다.</span>
+                        </li>
+                        <li class="flex items-start gap-4 text-sm text-gray-300">
+                            <span class="w-[3px] h-4 bg-brand-accent mt-1 shrink-0 rounded-full shadow-glow"></span>
+                            <span class="leading-relaxed">경쟁사인 브랜드 A는 최근 3개월 미디어 지출을 200% 증액하며 시장 점유율을 무섭게 빼앗고 있습니다.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="py-12 border-t border-white/10 text-center text-gray-500 text-sm font-medium tracking-widest uppercase animated-entry">
+        CONFIDENTIAL & PROPRIETARY &copy; 2026 Antigravity Intelligence
+    </footer>
+
+    <script>
+        // Smooth reveal animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+        
+        document.querySelectorAll('.animated-entry').forEach((el, idx) => {
+            el.style.transitionDelay = `${(idx % 4) * 100}ms`;
+            observer.observe(el);
+        });
+        
+        lucide.createIcons();
+    </script>
+</body>
+</html>
