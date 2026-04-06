@@ -22,10 +22,10 @@
         <header class="mb-24 text-center">
             <div class="inline-flex items-center gap-3 px-4 py-2 bg-white rounded-full shadow-sm mb-10 border border-slate-100">
                 <span class="w-3 h-3 bg-blue-500 rounded-full animate-pulse"></span>
-                <span class="text-sm font-black text-slate-500 uppercase tracking-widest">Ahn-Eoleum Project Gateway</span>
+                <span class="text-sm font-black text-slate-500 uppercase tracking-widest">Ahn-Eoleum Project Gateway | Active Projects: 3</span>
             </div>
-            <h1 class="text-6xl md:text-8xl font-black text-slate-900 tracking-tighter leading-none mb-10">스킬 통합<br><span class="text-blue-600">워크스페이스</span></h1>
-            <p class="text-xl text-slate-500 max-w-2xl mx-auto leading-relaxed">모든 프로젝트는 독립적으로 존재하며, 안얼음의 핵심 자산으로 안전하게 격리 배포되었습니다.</p>
+            <h1 class="text-6xl md:text-8xl font-black text-slate-900 tracking-tighter leading-none mb-10">안얼음 통합<br><span class="text-blue-600">워크스페이스</span></h1>
+            <p class="text-xl text-slate-500 max-w-2xl mx-auto leading-relaxed">모든 프로젝트는 독립적으로 존재하며, 안얼음의 핵심 자산으로 안전하게 배포되었습니다.</p>
         </header>
 
         <!-- Project Grid -->
@@ -34,48 +34,67 @@
             <!-- Project 1: YouTube -->
             <div class="project-card bg-white p-12 rounded-[40px] flex flex-col">
                 <div class="mb-10 flex justify-between items-start">
-                    <span class="badge status-active">Active</span>
+                    <span class="badge status-active">Active Strategy</span>
                     <span class="text-4xl text-blue-100 font-black">01</span>
                 </div>
                 <h2 class="text-3xl font-black text-slate-900 mb-6">2026 유튜브<br>수익화 마스터</h2>
                 <p class="text-sm text-slate-500 mb-12 leading-relaxed flex-grow">글로벌 고수익(D2B) 파이프라인 구축을 위한 최신 알고리즘 전략 포털 및 수익 시뮬레이터.</p>
-                <a href="./youtube/index.html" class="inline-flex items-center justify-center py-4 bg-slate-900 text-white rounded-2xl font-bold hover:bg-blue-600 transition-colors">프로젝트 진입하기</a>
+                <a href="/auto-ot/youtube/" class="inline-flex items-center justify-center py-4 bg-slate-900 text-white rounded-2xl font-bold hover:bg-blue-600 transition-colors">프로젝트 진입</a>
             </div>
 
             <!-- Project 2: Climate -->
             <div class="project-card bg-white p-12 rounded-[40px] flex flex-col">
                 <div class="mb-10 flex justify-between items-start">
-                    <span class="badge status-periodic">Periodic</span>
+                    <span class="badge status-periodic">Notion Live</span>
                     <span class="text-4xl text-emerald-100 font-black">02</span>
                 </div>
                 <h2 class="text-3xl font-black text-slate-900 mb-6">글로벌 기후<br>트렌드 리포트</h2>
                 <p class="text-sm text-slate-500 mb-12 leading-relaxed flex-grow">백그라운드에서 상시 수집되는 데이터 기반 기후 위기 분석 및 노션 자동화 리포트.</p>
-                <!-- NOTE: Notion link placeholder -->
-                <a href="./climate/index.html" class="inline-flex items-center justify-center py-4 border-2 border-slate-900 text-slate-900 rounded-2xl font-bold hover:bg-slate-50 transition-colors">리포트 아카이브</a>
+                <a href="/auto-ot/climate/" class="inline-flex items-center justify-center py-4 border-2 border-slate-900 text-slate-900 rounded-2xl font-bold hover:bg-slate-50 transition-colors">리포트 확인</a>
             </div>
 
             <!-- Project 3: Ahn-Eoleum -->
             <div class="project-card bg-white p-12 rounded-[40px] flex flex-col">
                 <div class="mb-10 flex justify-between items-start">
-                    <span class="badge status-tool">Production Tool</span>
+                    <span class="badge status-tool">Production</span>
                     <span class="text-4xl text-slate-100 font-black">03</span>
                 </div>
                 <h2 class="text-3xl font-black text-slate-900 mb-6">안얼음 에피소드<br>제작 공정 엔진</h2>
                 <p class="text-sm text-slate-500 mb-12 leading-relaxed flex-grow">날씨 데이터 및 문화적 은유를 분석하여 에피소드 브리프를 생성하는 제작 지원 도구 명세.</p>
-                <a href="./ahn-eoleum/index.html" class="inline-flex items-center justify-center py-4 border-2 border-slate-200 text-slate-400 rounded-2xl font-bold cursor-not-allowed">가이드 준비 중</a>
+                <a href="/auto-ot/ahn-eoleum/" class="inline-flex items-center justify-center py-4 border-2 border-slate-900 text-slate-900 rounded-2xl font-bold hover:bg-slate-50 transition-colors">공정 현황 보기</a>
             </div>
 
+        </div>
+
+        <!-- Infrastructure Blueprint (Corrected Mermaid) -->
+        <div class="mt-24 bg-white p-12 rounded-[40px] shadow-sm border border-slate-100 overflow-hidden">
+            <h3 class="text-xl font-black mb-10 text-slate-800 uppercase tracking-widest text-center">Infrastructure Blueprint</h3>
+            <div class="mermaid flex justify-center">
+graph TD
+    Hub[Ahn-Eoleum Hub] --> YT[YouTube Strategy]
+    Hub --> CL[Climate Report]
+    Hub --> AN[Ahn Engine]
+    YT --> SIM[Simulation]
+    CL --> NT[Notion API]
+    AN --> WF[Workflow]
+            </div>
         </div>
 
         <!-- System Status -->
         <footer class="mt-32 pt-16 border-t border-slate-200">
             <div class="flex flex-col md:flex-row justify-between items-center gap-6 opacity-40 grayscale">
-                <p class="text-xs font-bold uppercase tracking-widest">© 2026 Ahn-Eoleum Project Suite. Status: Normalized.</p>
+                <p class="text-xs font-bold uppercase tracking-widest">© 2026 Ahn-Eoleum Project Suite. All Systems Normalized.</p>
                 <div class="flex gap-8">
-                    <span class="text-[10px] font-black italic">GitHub Pages / Notion API / Local Python Engine</span>
+                    <span class="text-[10px] font-black italic">Deployment: GH-PAGES-LIVE / Engine: MASTER</span>
                 </div>
             </div>
         </footer>
     </div>
+
+    <!-- Mermaid Fix -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'neutral' });
+    </script>
 </body>
 </html>
