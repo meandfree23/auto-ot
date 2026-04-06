@@ -1,530 +1,81 @@
 <!DOCTYPE html>
-<html lang="ko" class="theme-dark">
+<html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Antigravity Mission Control | System Intelligence</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/html-to-image@1.11.11/dist/html-to-image.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root { interpolate-size: allow-keywords; }
-
-    html.theme-dark {
-      --bg: #020617; --surface: #0f172a; --surface-hover: #1e293b;
-      --border: rgba(255,255,255,0.08);
-      --text: #f8fafc; --text-secondary: #94a3b8;
-      --accent: #38bdf8; --accent-secondary: #818cf8;
-      --green: #10b981; --red: #f43f5e; --warning: #fbbf24;
-      --glass: rgba(15, 23, 42, 0.7);
-      --card-bg: linear-gradient(135deg, rgba(15, 23, 42, 0.8), rgba(30, 41, 59, 0.8));
-    }
-    html.theme-light {
-      --bg: #f8fafc; --surface: #ffffff; --surface-hover: #f1f5f9;
-      --border: rgba(0,0,0,0.1);
-      --text: #0f172a; --text-secondary: #64748b;
-      --accent: #0ea5e9; --accent-secondary: #6366f1;
-      --green: #10b981; --red: #e11d48; --warning: #d97706;
-      --glass: rgba(255, 255, 255, 0.7);
-      --card-bg: linear-gradient(135deg, #ffffff, #f1f5f9);
-    }
-
-    body {
-      font-family: 'Inter', 'Noto Sans KR', sans-serif;
-      background: var(--bg); color: var(--text);
-      line-height: 1.6; -webkit-font-smoothing: antialiased;
-      overflow-x: hidden; transition: background 0.3s, color 0.3s;
-    }
-    
-    .container { max-width: 1600px; margin: 0 auto; padding: 0 40px; }
-    
-    /* ===== HEADER & HEARTBEAT ===== */
-    header { padding: 80px 0 60px; display: flex; justify-content: space-between; align-items: flex-end; }
-    .header-main h1 { font-size: 4.5rem; font-weight: 900; letter-spacing: -0.05em; line-height: 1; margin-bottom: 12px; background: linear-gradient(135deg, var(--accent), var(--accent-secondary)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
-    .header-main p { font-size: 1.5rem; color: var(--text-secondary); font-weight: 300; }
-    
-    .system-status { display: flex; align-items: center; gap: 40px; }
-    .metric { text-align: right; }
-    .metric-label { font-size: 0.75rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; margin-bottom: 4px; display: block; }
-    .metric-value { font-size: 2rem; font-weight: 800; font-variant-numeric: tabular-nums; }
-    
-    .heartbeat-zone { display: flex; align-items: center; gap: 12px; padding: 12px 24px; background: rgba(16, 185, 129, 0.1); border: 1px solid var(--green); border-radius: 16px; color: var(--green); font-weight: 700; font-size: 1rem; }
-    .pulse { width: 12px; height: 12px; background: var(--green); border-radius: 50%; position: relative; }
-    .pulse::after { content: ''; position: absolute; inset: -4px; border-radius: 50%; border: 2px solid var(--green); animation: pulse-ring 2s cubic-bezier(0.24, 0, 0.38, 1) infinite; }
-    @keyframes pulse-ring { 0% { transform: scale(0.5); opacity: 1; } 100% { transform: scale(2.5); opacity: 0; } }
-
-    /* ===== CORE COMMAND CENTER ===== */
-    .section-title { font-size: 2rem; font-weight: 800; margin-bottom: 40px; border-left: 6px solid var(--accent); padding-left: 20px; display: flex; justify-content: space-between; align-items: center; }
-    .section-tag { font-size: 0.875rem; color: var(--text-secondary); font-weight: 400; text-transform: none; }
-
-    .grid-2 { display: grid; gap: 40px; grid-template-columns: 1fr 1fr; margin-bottom: 60px; }
-    .card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 32px; padding: 48px; backdrop-filter: blur(20px); transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s; position: relative; }
-    .card:hover { transform: translateY(-8px); box-shadow: 0 40px 80px rgba(0,0,0,0.3); border-color: var(--accent); }
-    
-    .card-title { font-size: 1.75rem; font-weight: 800; color: var(--accent); margin-bottom: 32px; display: flex; align-items: center; gap: 16px; }
-    .file-list { display: flex; flex-direction: column; gap: 16px; }
-    .file-item { display: flex; align-items: center; gap: 16px; padding: 20px; background: rgba(255,255,255,0.03); border-radius: 20px; border: 1px solid var(--border); transition: 0.2s; }
-    .file-item:hover { background: rgba(56, 189, 248, 0.05); }
-    .file-info { flex: 1; }
-    .file-name { font-family: monospace; font-size: 1.125rem; font-weight: 600; display: block; }
-    .file-meta { font-size: 0.813rem; color: var(--text-secondary); }
-    .status-badge { font-size: 0.75rem; font-weight: 700; padding: 4px 10px; border-radius: 6px; background: var(--border); border: 1px solid var(--border); }
-    .status-badge.active { background: rgba(16, 185, 129, 0.1); color: var(--green); border-color: var(--green); }
-
-    /* ===== PROJECT COMMAND CARDS ===== */
-    .project-grid { display: grid; gap: 24px; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); margin-bottom: 80px; }
-    .cmd-card { padding: 40px; background: var(--surface); border: 1px solid var(--border); border-radius: 28px; transition: all 0.3s; position: relative; overflow: hidden; }
-    .cmd-card:hover { background: var(--surface-hover); border-color: var(--accent-secondary); }
-    .cmd-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 24px; }
-    .cmd-icon { width: 56px; height: 56px; border-radius: 16px; background: var(--border); display: flex; align-items: center; justify-content: center; font-size: 24px; }
-    .cmd-stats { text-align: right; }
-    .cmd-health { font-weight: 700; color: var(--green); font-size: 0.875rem; }
-    .cmd-title { font-size: 1.5rem; font-weight: 800; margin-bottom: 12px; color: var(--text); }
-    .cmd-desc { color: var(--text-secondary); font-size: 1rem; line-height: 1.5; margin-bottom: 32px; height: 3rem; overflow: hidden; }
-    
-    .btn-group { display: flex; gap: 12px; }
-    .btn { flex: 1; padding: 14px; border-radius: 12px; border: 1px solid var(--border); background: var(--border); color: var(--text); font-weight: 700; text-align: center; cursor: pointer; font-size: 0.875rem; transition: 0.2s; text-decoration: none; }
-    .btn:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
-    .btn-primary { background: linear-gradient(45deg, var(--accent), var(--accent-secondary)); color: #fff; border: none; }
-
-    /* ===== 3X ARCHITECTURE MAP ===== */
-    .map-section { background: var(--surface); border-radius: 40px; padding: 100px 40px; border: 1px solid var(--border); margin-bottom: 100px; display: flex; flex-direction: column; align-items: center; overflow: hidden; position: relative; }
-    .map-title { position: absolute; top: 40px; left: 40px; }
-    .mermaid { width: 100%; max-width: none; display: flex; justify-content: center; }
-    .mermaid svg { transform: scale(3.2); transform-origin: center; transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1); cursor: grab; }
-    .mermaid svg:active { cursor: grabbing; transform: scale(3.5); }
-
-    /* ===== SHARED SKILLS TOOLBELT ===== */
-    .tool-belt { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); margin-bottom: 80px; }
-    .tool-card { padding: 24px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 20px; display: flex; align-items: center; gap: 20px; }
-    .tool-icon { font-size: 1.5rem; width: 48px; height: 48px; background: var(--border); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--accent); }
-    .tool-info h4 { font-weight: 700; font-size: 1.125rem; }
-    .tool-info p { font-size: 0.813rem; color: var(--text-secondary); }
-
-    /* ===== MENU & CONTROLLS ===== */
-    .viz-menu { position: fixed; top: 24px; right: 24px; z-index: 1000; display: flex; gap: 12px; }
-    .viz-toggle { width: 56px; height: 56px; border-radius: 18px; background: var(--glass); backdrop-filter: blur(12px); border: 1px solid var(--border); color: var(--text); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.3s; }
-    .viz-toggle:hover { background: var(--surface-hover); transform: rotate(90deg); }
-    .viz-dropdown { position: absolute; top: 68px; right: 0; min-width: 240px; background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 12px; opacity: 0; visibility: hidden; transform: translateY(-16px); transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
-    .viz-dropdown.open { opacity: 1; visibility: visible; transform: translateY(0); }
-    .viz-dropdown button { width: 100%; padding: 14px 20px; border: none; border-radius: 12px; background: transparent; color: var(--text); font-size: 15px; font-family: inherit; cursor: pointer; text-align: left; display: flex; align-items: center; gap: 14px; transition: background 0.2s; }
-    .viz-dropdown button:hover { background: var(--surface-hover); padding-left: 24px; }
-
-    /* ===== SCROLL ANIMATION ===== */
-    .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-
-    footer { padding: 80px 0; border-top: 1px solid var(--border); text-align: center; color: var(--text-secondary); font-size: 0.875rem; }
-
-    /* ===== TOAST NOTIFICATIONS ===== */
-    .toast-container { position: fixed; bottom: 40px; left: 50%; transform: translateX(-50%); z-index: 9999; display: flex; flex-direction: column; gap: 12px; pointer-events: none; }
-    .toast { background: var(--surface); border: 1px solid var(--accent); color: var(--text); padding: 16px 32px; border-radius: 100px; box-shadow: 0 10px 40px rgba(0,0,0,0.4); backdrop-filter: blur(20px); font-weight: 700; transform: translateY(100px); opacity: 0; transition: 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); min-width: 300px; text-align: center; }
-    .toast.show { transform: translateY(0); opacity: 1; }
-    .toast.success { border-color: var(--green); color: var(--green); }
-    .toast.error { border-color: var(--red); color: var(--red); }
-
-    /* ===== SETTINGS MODAL ===== */
-    .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.8); backdrop-filter: blur(8px); z-index: 10000; display: none; align-items: center; justify-content: center; opacity: 0; transition: 0.3s ease; }
-    .modal-overlay.open { display: flex; opacity: 1; }
-    .modal { background: var(--surface); border: 1px solid var(--border); border-radius: 32px; padding: 48px; width: 100%; max-width: 540px; box-shadow: 0 40px 100px rgba(0,0,0,0.5); transform: translateY(24px); transition: 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); }
-    .modal-overlay.open .modal { transform: translateY(0); }
-    .modal-title { font-size: 2rem; font-weight: 800; margin-bottom: 12px; }
-    .modal-desc { color: var(--text-secondary); margin-bottom: 32px; }
-    .input-field { width: 100%; padding: 16px 24px; border-radius: 12px; border: 1px solid var(--border); background: var(--bg); color: var(--text); font-family: monospace; font-size: 1rem; margin-bottom: 24px; outline: none; transition: 0.2s; }
-    .input-field:focus { border-color: var(--accent); box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.2); }
-    .api-status-badge { display: flex; align-items: center; gap: 8px; font-size: 0.813rem; color: var(--text-secondary); margin-bottom: 8px; }
-    .api-status-dot { width: 6px; height: 6px; border-radius: 50%; background: #94a3b8; }
-    .api-status-active .api-status-dot { background: var(--green); box-shadow: 0 0 8px var(--green); }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>안얼음 통합 프로젝트 허브 (Project Hub)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Noto Sans KR', 'Inter', sans-serif; background: #FAFAF9; color: #0F172A; }
+        .project-card { transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); border: 1px solid rgba(0,0,0,0.05); }
+        .project-card:hover { transform: translateY(-8px); box-shadow: 0 30px 60px rgba(0,0,0,0.08); border-color: rgba(37, 99, 235, 0.2); }
+        .badge { padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: 800; text-transform: uppercase; }
+        .status-active { background: rgba(5, 150, 105, 0.1); color: #059669; }
+        .status-periodic { background: rgba(37, 99, 235, 0.1); color: #2563EB; }
+        .status-tool { background: rgba(100, 116, 139, 0.1); color: #64748B; }
+    </style>
 </head>
-<body>
-  <div class="viz-menu">
-     <button class="viz-toggle" onclick="toggleMenu()" aria-label="Menu">
-       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-     </button>
-     <div class="viz-dropdown" id="vizDropdown">
-        <button onclick="openSettings()"><span>⚙️</span> API Settings</button>
-        <button onclick="cycleTheme()"><span id="themeIcon">🌙</span> <span id="themeLabel">Deep Noir</span></button>
-        <button onclick="deployDashboard()"><span>🚀</span> Deploy Master</button>
-        <button onclick="downloadImage()"><span>📥</span> Export PNG</button>
-        <button onclick="window.print()"><span>🖨️</span> System Report</button>
-     </div>
-  </div>
+<body class="min-h-screen py-24 px-6 md:px-12 bg-[#F5F5F4]">
+    <div class="max-w-7xl mx-auto">
+        <!-- Header -->
+        <header class="mb-24 text-center">
+            <div class="inline-flex items-center gap-3 px-4 py-2 bg-white rounded-full shadow-sm mb-10 border border-slate-100">
+                <span class="w-3 h-3 bg-blue-500 rounded-full animate-pulse"></span>
+                <span class="text-sm font-black text-slate-500 uppercase tracking-widest">Ahn-Eoleum Project Gateway</span>
+            </div>
+            <h1 class="text-6xl md:text-8xl font-black text-slate-900 tracking-tighter leading-none mb-10">스킬 통합<br><span class="text-blue-600">워크스페이스</span></h1>
+            <p class="text-xl text-slate-500 max-w-2xl mx-auto leading-relaxed">모든 프로젝트는 독립적으로 존재하며, 안얼음의 핵심 자산으로 안전하게 격리 배포되었습니다.</p>
+        </header>
 
-  <div class="modal-overlay" id="settingsModal">
-     <div class="modal">
-        <h2 class="modal-title">API Connection</h2>
-        <p class="modal-desc">Enter your Local Mac IP or Tunnel URL (ngrok) to control the system remotely.</p>
-        <div class="api-status-badge" id="apiStatusBadge">
-           <span class="api-status-dot"></span>
-           <span id="apiStatusText">Checking connection...</span>
-        </div>
-        <input type="text" id="apiUrlInput" class="input-field" placeholder="http://localhost:8000" oninput="checkApiConnection(this.value)">
-        <div class="btn-group">
-           <button onclick="saveApiUrl()" class="btn btn-primary">Connect & Save</button>
-           <button onclick="closeSettings()" class="btn">Close</button>
-        </div>
-     </div>
-  </div>
-
-  <div class="toast-container" id="toastContainer"></div>
-
-  <main class="container">
-    <header class="reveal">
-      <div class="header-main">
-        <h1>Master Control</h1>
-        <p>Antigravity Multi-Project Mission Command</p>
-      </div>
-      <div class="system-status">
-        <div class="metric">
-          <span class="metric-label">Active Projects</span>
-          <span class="metric-value" data-count="2">0</span>
-        </div>
-        <div class="metric">
-          <span class="metric-label">Core Stability</span>
-          <span class="metric-value">99.8%</span>
-        </div>
-        <div class="heartbeat-zone">
-          <span class="pulse"></span>
-          OPERATIONAL
-        </div>
-      </div>
-    </header>
-
-    <!-- CORE COMMAND CENTER -->
-    <section class="reveal">
-      <div class="section-title">
-        Command Core Engine <span class="section-tag">/ Central Hub</span>
-      </div>
-      <div class="grid-2">
-        <article class="card">
-          <div class="card-title">🚀 Orchestration Hub</div>
-          <div class="file-list">
-             <div class="file-item">
-                <span class="icon">📁</span>
-                <div class="file-info">
-                   <span class="file-name">run.py</span>
-                   <span class="file-meta">System Entry & Portal Hub</span>
+        <!-- Project Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+            
+            <!-- Project 1: YouTube -->
+            <div class="project-card bg-white p-12 rounded-[40px] flex flex-col">
+                <div class="mb-10 flex justify-between items-start">
+                    <span class="badge status-active">Active</span>
+                    <span class="text-4xl text-blue-100 font-black">01</span>
                 </div>
-                <span class="status-badge active">LOCKED</span>
-             </div>
-             <div class="file-item">
-                <span class="icon">⚙️</span>
-                <div class="file-info">
-                   <span class="file-name">core/engine.py</span>
-                   <span class="file-meta">Instruction Processing Unit</span>
+                <h2 class="text-3xl font-black text-slate-900 mb-6">2026 유튜브<br>수익화 마스터</h2>
+                <p class="text-sm text-slate-500 mb-12 leading-relaxed flex-grow">글로벌 고수익(D2B) 파이프라인 구축을 위한 최신 알고리즘 전략 포털 및 수익 시뮬레이터.</p>
+                <a href="./youtube/index.html" class="inline-flex items-center justify-center py-4 bg-slate-900 text-white rounded-2xl font-bold hover:bg-blue-600 transition-colors">프로젝트 진입하기</a>
+            </div>
+
+            <!-- Project 2: Climate -->
+            <div class="project-card bg-white p-12 rounded-[40px] flex flex-col">
+                <div class="mb-10 flex justify-between items-start">
+                    <span class="badge status-periodic">Periodic</span>
+                    <span class="text-4xl text-emerald-100 font-black">02</span>
                 </div>
-                <span class="status-badge active">READY</span>
-             </div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="card-title">📦 Dynamic Loader</div>
-          <div class="file-list">
-             <div class="file-item">
-                <span class="icon">🔌</span>
-                <div class="file-info">
-                   <span class="file-name">core/loader.py</span>
-                   <span class="file-meta">Context Injection Engine</span>
+                <h2 class="text-3xl font-black text-slate-900 mb-6">글로벌 기후<br>트렌드 리포트</h2>
+                <p class="text-sm text-slate-500 mb-12 leading-relaxed flex-grow">백그라운드에서 상시 수집되는 데이터 기반 기후 위기 분석 및 노션 자동화 리포트.</p>
+                <!-- NOTE: Notion link placeholder -->
+                <a href="./climate/index.html" class="inline-flex items-center justify-center py-4 border-2 border-slate-900 text-slate-900 rounded-2xl font-bold hover:bg-slate-50 transition-colors">리포트 아카이브</a>
+            </div>
+
+            <!-- Project 3: Ahn-Eoleum -->
+            <div class="project-card bg-white p-12 rounded-[40px] flex flex-col">
+                <div class="mb-10 flex justify-between items-start">
+                    <span class="badge status-tool">Production Tool</span>
+                    <span class="text-4xl text-slate-100 font-black">03</span>
                 </div>
-                <span class="status-badge active">READY</span>
-             </div>
-             <div class="file-item">
-                <span class="icon">📄</span>
-                <div class="file-info">
-                   <span class="file-name">README.md</span>
-                   <span class="file-meta">Operations Manual</span>
+                <h2 class="text-3xl font-black text-slate-900 mb-6">안얼음 에피소드<br>제작 공정 엔진</h2>
+                <p class="text-sm text-slate-500 mb-12 leading-relaxed flex-grow">날씨 데이터 및 문화적 은유를 분석하여 에피소드 브리프를 생성하는 제작 지원 도구 명세.</p>
+                <a href="./ahn-eoleum/index.html" class="inline-flex items-center justify-center py-4 border-2 border-slate-200 text-slate-400 rounded-2xl font-bold cursor-not-allowed">가이드 준비 중</a>
+            </div>
+
+        </div>
+
+        <!-- System Status -->
+        <footer class="mt-32 pt-16 border-t border-slate-200">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6 opacity-40 grayscale">
+                <p class="text-xs font-bold uppercase tracking-widest">© 2026 Ahn-Eoleum Project Suite. Status: Normalized.</p>
+                <div class="flex gap-8">
+                    <span class="text-[10px] font-black italic">GitHub Pages / Notion API / Local Python Engine</span>
                 </div>
-                <span class="status-badge">DOCS</span>
-             </div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- PROJECT GRID -->
-    <section class="reveal">
-      <div class="section-title">Project Command Grid <span class="section-tag">/ Instance Management</span></div>
-      <div class="project-grid">
-         <!-- Ahn-Eoleum -->
-         <article class="cmd-card">
-           <div class="cmd-header">
-             <div class="cmd-icon">❄️</div>
-             <div class="cmd-stats">
-               <span class="cmd-health">Healthy (Active)</span>
-             </div>
-           </div>
-           <h3 class="cmd-title">ahn-eoleum</h3>
-           <p class="cmd-desc">기후 위기를 감각의 장면과 시적 번역으로 승화시키는 안티그래비티 메인 제작 엔진.</p>
-           <div class="btn-group">
-            <button onclick="runProject('ahn-eoleum', this)" class="btn btn-primary">Run Daily</button>
-            <button onclick="openProjectFolder('ahn-eoleum')" class="btn">View Production</button>
-           </div>
-         </article>
-
-         <!-- Climate Report -->
-         <article class="cmd-card">
-           <div class="cmd-header">
-             <div class="cmd-icon">🌍</div>
-             <div class="cmd-stats">
-               <span class="cmd-health" style="color:var(--warning)">Scheduled (9AM)</span>
-             </div>
-           </div>
-           <h3 class="cmd-title">climate_report</h3>
-           <p class="cmd-desc">Notion API 기반의 글로벌 기후 이슈 자동 수집 및 실시간 검색 리포팅 솔루션.</p>
-           <div class="btn-group">
-            <button onclick="runProject('climate_report', this)" class="btn btn-primary">Trigger Now</button>
-            <button onclick="openProjectFolder('climate_report')" class="btn">Notion Live</button>
-           </div>
-         </article>
-
-
-      </div>
-    </section>
-
-    <!-- ARCHITECTURE BLUEPRINT (3X) -->
-    <section class="reveal">
-      <div class="section-title">Infrastructure Blueprint <span class="section-tag">/ Advanced Scale 3.2x</span></div>
-      <div class="map-section">
-         <div class="map-title">
-            <span class="metric-label">Architecture Layout</span>
-            <span style="font-size: 1.25rem; font-weight: 800;">Framework Interdependency Flow</span>
-         </div>
-         <div class="mermaid">
-graph LR
-    Hub[<b>run.py</b><br/>Global Portal] -->|Select| Loader[<b>core/loader.py</b><br/>Project Context Loader]
-    Loader -->|Inject .env / BrandKit| Engine[<b>core/engine.py</b><br/>Instruction Master]
-    
-    subgraph Instances [Project Instances]
-        AE[ahn-eoleum<br/><i>Sensory Translation</i>]
-        CR[climate_report<br/><i>Automated Search</i>]
-    end
-    
-    Engine -->|Execute| AE
-    Engine -->|Execute| CR
-    
-    AE -->|Output| Prod[production/<br/>Final Content]
-    CR -->|Output| Prod
-
-    style Hub fill:rgba(56, 189, 248, 0.2),stroke:#38bdf8,stroke-width:2px,color:#38bdf8
-    style Engine fill:rgba(56, 189, 248, 0.2),stroke:#38bdf8,stroke-width:2px,color:#38bdf8
-    style Instances fill:transparent,stroke:var(--border),stroke-dasharray: 5 5
-    style Prod fill:rgba(16, 185, 129, 0.2),stroke:#10b981,stroke-width:2px,color:#10b981
-         </div>
-      </div>
-    </section>
-
-    <!-- SHARED TOOLBELT -->
-    <section class="reveal">
-       <div class="section-title">Shared Toolbelt <span class="section-tag">/ Global Intelligence Skills</span></div>
-       <div class="tool-belt">
-          <div class="tool-card">
-             <div class="tool-icon">🔍</div>
-             <div class="tool-info">
-                <h4>/research</h4>
-                <p>NLM Deep Search & Video Analysis</p>
-             </div>
-          </div>
-          <div class="tool-card">
-             <div class="tool-icon">🖌️</div>
-             <div class="tool-info">
-                <h4>/visualize</h4>
-                <p>Instant Premium HTML Dashboards</p>
-             </div>
-          </div>
-          <div class="tool-card">
-             <div class="tool-icon">📦</div>
-             <div class="tool-info">
-                <h4>/archive</h4>
-                <p>System Cleanliness & History Mgmt</p>
-             </div>
-          </div>
-          <div class="tool-card">
-             <div class="tool-icon">🔌</div>
-             <div class="tool-info">
-                <h4>Integrated APIs</h4>
-                <p>Notion, YouTube, GoogleDrive Sync</p>
-             </div>
-          </div>
-       </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container">
-      <p>&copy; 2026 Antigravity Mission Command | Designed by Google DeepMind Agentic Coding Team</p>
+            </div>
+        </footer>
     </div>
-  </footer>
-
-  <script>
-    // === Mermaid ===
-    mermaid.initialize({ startOnLoad: true, theme: 'dark', securityLevel: 'loose', flowchart: { htmlLabels: true, useMaxWidth: false } });
-
-    // === Menu ===
-    function toggleMenu() { document.getElementById('vizDropdown').classList.toggle('open'); }
-    document.addEventListener('click', e => { if (!e.target.closest('.viz-menu')) document.getElementById('vizDropdown').classList.remove('open'); });
-
-    // === Theme ===
-    var currentTheme = localStorage.getItem('theme') || 'dark';
-    function applyTheme(t) {
-      document.documentElement.className = 'theme-' + t;
-      document.getElementById('themeIcon').textContent = t === 'dark' ? '🌙' : '☀️';
-      document.getElementById('themeLabel').textContent = t === 'dark' ? 'Deep Noir' : 'Pure Light';
-      localStorage.setItem('theme', t);
-      currentTheme = t;
-    }
-    function cycleTheme() { applyTheme(currentTheme === 'dark' ? 'light' : 'dark'); }
-    applyTheme(currentTheme);
-
-    // === Scroll Reveal ===
-    var observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-    // === Number Counter ===
-    function animateCounters() {
-      document.querySelectorAll('[data-count]').forEach(el => {
-        var target = +el.dataset.count, count = 0, inc = target / 60;
-        var tick = () => {
-          count += inc;
-          if (count < target) { el.innerText = Math.floor(count); requestAnimationFrame(tick); }
-          else { el.innerText = target; }
-        }; tick();
-      });
-    }
-    window.addEventListener('load', () => setTimeout(animateCounters, 500));
-
-    // === Download PNG ===
-    async function downloadImage() {
-      var menu = document.querySelector('.viz-menu'); menu.style.display = 'none';
-      try {
-        var dataUrl = await htmlToImage.toPng(document.body, { quality: 1, pixelRatio: 2 });
-        var link = document.createElement('a'); link.download = 'antigravity-master-control.png';
-        link.href = dataUrl; link.click();
-      } catch (e) { console.error('Export failed', e); }
-      menu.style.display = 'flex';
-    }
-
-    // === Backend Controls ===
-    function getApiBase() {
-        return localStorage.getItem('antigravity_api_url') || "http://localhost:8000";
-    }
-
-    function showToast(msg, type = "info") {
-      const container = document.getElementById('toastContainer');
-      const toast = document.createElement('div');
-      toast.className = `toast show ${type}`;
-      toast.innerText = msg;
-      container.appendChild(toast);
-      setTimeout(() => {
-        toast.classList.remove('show');
-        setTimeout(() => toast.remove(), 300);
-      }, 4000);
-    }
-
-    async function runProject(project, btn) {
-      const originalText = btn.innerText;
-      const apiBase = getApiBase();
-      btn.innerText = "⏳ Running...";
-      btn.classList.add('btn-primary');
-      
-      try {
-        const res = await fetch(`${apiBase}/run/${project}`, { method: 'POST' });
-        const data = await res.json();
-        if (res.ok) {
-          showToast(`🚀 ${project} 워크플로우 시작됨 (PID: ${data.pid})`, "success");
-        } else {
-          showToast(`❌ 오류: ${data.detail || '실행 실패'}`, "error");
-        }
-      } catch (e) {
-        showToast("⚠️ API 연결 실패. Settings에서 주소를 확인해 주세요.", "error");
-      } finally {
-        setTimeout(() => btn.innerText = originalText, 1500);
-      }
-    }
-
-    async function openProjectFolder(project) {
-       const apiBase = getApiBase();
-       try {
-        const res = await fetch(`${apiBase}/open/${project}`, { method: 'POST' });
-        if (res.ok) {
-          showToast(`📂 ${project} 폴더를 열었습니다.`, "success");
-        } else {
-          showToast("❌ 폴더를 찾을 수 없습니다.", "error");
-        }
-      } catch (e) {
-        showToast("⚠️ 연결 실패 (브라우저는 로컬 폴더 제어 권한이 없습니다)", "error");
-      }
-    }
-
-    async function deployDashboard() {
-        showToast("🚀 대시보드 배포 프로세스 시작 중...", "info");
-        // This would call a deployment script via backend if needed
-        setTimeout(() => showToast("✅ 배포 요청이 전송되었습니다.", "success"), 1000);
-    }
-
-    // === API Settings ===
-    var API_URL = localStorage.getItem('antigravity_api_url') || "http://localhost:8000";
-
-    function openSettings() {
-      document.getElementById('settingsModal').classList.add('open');
-      document.getElementById('apiUrlInput').value = API_URL;
-      checkApiConnection(API_URL);
-    }
-
-    function closeSettings() {
-      document.getElementById('settingsModal').classList.remove('open');
-    }
-
-    function saveApiUrl() {
-      const url = document.getElementById('apiUrlInput').value.trim();
-      if (url) {
-        API_URL = url.endsWith('/') ? url.slice(0, -1) : url;
-        localStorage.setItem('antigravity_api_url', API_URL);
-        showToast("✅ API 연결 설정이 저장되었습니다.", "success");
-        closeSettings();
-        // Update dashboard status
-        updateSystemStatus();
-      }
-    }
-
-    async function checkApiConnection(url) {
-      if (!url) return;
-      const cleanUrl = url.endsWith('/') ? url.slice(0, -1) : url;
-      const badge = document.getElementById('apiStatusBadge');
-      const text = document.getElementById('apiStatusText');
-      
-      try {
-        const res = await fetch(`${cleanUrl}/status`);
-        if (res.ok) {
-          badge.classList.add('api-status-active');
-          text.innerText = "System Connected (Live)";
-        } else {
-          badge.classList.remove('api-status-active');
-          text.innerText = "System Exists but error";
-        }
-      } catch (e) {
-        badge.classList.remove('api-status-active');
-        text.innerText = "System Offline / Refused";
-      }
-    }
-
-    async function updateSystemStatus() {
-        // We could fetch actual stability/project metrics here
-        checkApiConnection(API_URL);
-    }
-
-    // Initial check
-    updateSystemStatus();
-    setInterval(updateSystemStatus, 30000); // Check every 30s
-  </script>
 </body>
 </html>
