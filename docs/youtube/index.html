@@ -151,7 +151,7 @@
     </section>
 
     <!-- SECTION 3: ENGINEERING (Physics) -->
-    <section id="physics" class="reveal">
+    <section id="engineering" class="reveal">
       <div class="flex items-center mb-8">
         <span class="badge-check fact-badge">Verified Fact</span>
         <h4 class="text-sm font-black text-slate-400 uppercase">Content Physics 60M (Consolidated)</h4>
@@ -350,7 +350,7 @@
           });
         }
       });
-    }, { threshold: 0.15 });
+    }, { threshold: 0.1, rootMargin: "0px 0px -10px 0px" });
     document.querySelectorAll('section').forEach(s => obs.observe(s));
 
     // Simulator
