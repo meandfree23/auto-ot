@@ -43,14 +43,16 @@ for SCRIPT in keep_alive.py poll_drive_to_tasks.py run_pipeline.py telegram_bot.
     fi
 done
 
-# Claude 컨텍스트에 주입할 요약 생성
-CONTEXT="[오티 자동화 프로젝트 현재 상태]
+# Claude 컨텍스트에 주입할 요약 생성 (하네스 최적화)
+CONTEXT="<harness_context>
+[오티 자동화 프로젝트 현재 상태]
 작업 큐: 대기 ${PENDING}건 / 처리중 ${PROCESSING}건 / 완료 ${DONE}건 / 실패 ${FAILED}건
 최근 이력:
 ${RECENT_HISTORY}
 서비스 상태:
 $(echo -e "$SVC_STATUS")
-핵심 스크립트: scripts/run_pipeline.py (파이프라인), scripts/brain_engine.py (AI분석), scripts/antigravity_bridge.py (브릿지), scripts/publish_to_docs.py (발행)"
+핵심 스크립트: scripts/run_pipeline.py (파이프라인), scripts/brain_engine.py (AI분석), scripts/antigravity_bridge.py (브릿지), scripts/publish_to_docs.py (발행)
+</harness_context>"
 
 # JSON 출력 (additionalContext로 모델에 주입)
 python3 -c "

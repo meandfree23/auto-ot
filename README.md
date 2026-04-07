@@ -1,37 +1,40 @@
-# 🚀 OT Automation Pipeline (V10.0 HTML-First)
+# 🚀 OT Automation Pipeline (V26.0 Strategic Intelligence)
 
-High-fidelity strategic intelligence engine for automated presentation and reporting.
+High-fidelity strategic intelligence engine for automated presentation and reporting. Optimized with **Harness Engineering** for premium AI performance and token efficiency.
 
 ## 🌟 Core Features
-- **NLM High-Density Analysis**: Processes document briefs into 20-page interactive strategic reports.
-- **HTML-First Delivery**: Premium, animated web-based reporting via GitHub Pages (Superceding static PPTX).
-- **GitHub Pages Integration**: Automated deployment and live-link sharing.
-- **Telegram Command Control**: Real-time interaction for deep analysis triggers.
+- **Deep Intelligence Analysis**: Multi-step strategic synthesis using `gemini-2.5-flash` and `Claude 3.5 Sonnet`.
+- **High-Density HTML-First**: Premium, animated web-based reporting via GitHub Pages (Superceding static PPTX).
+- **Harness Engineering**: Optimized context management with `.claudeignore` and `CLAUDE.md`.
+- **Telegram Bot v2**: Real-time interaction, feedback loop, and instant cloud deployment links.
 
-## 🏗️ System Architecture (V10.0)
+## 🏗️ System Architecture (V26.0)
 
-### 1. Reception & Basic Analysis
-- `scripts/telegram_bot.py`: Main entry point for file reception.
-- `scripts/run_pipeline.py`: Orchestrates the initial 3P 심층리포트 (Word) generation.
-- `scripts/generate_word.py`: Renders professional Word documents from markdown analysis.
+### 1. Reception & Brain Engine
+- `scripts/telegram_bot.py`: Main entry point for file reception and Telegram commands.
+- `scripts/run_pipeline.py`: Orchestrates the initial intelligence gathering and summary generation.
+- `scripts/brain_engine.py`: V25.0 Consultant Model for semantic extraction and intent identification.
 
 ### 2. High-Density Advancement ("고도화")
-- `scripts/advanced_analysis.py`: Advanced orchestrator triggered by "고도화 해줘".
-- `scripts/ppt_engine_v4.py`: **V10.0 Intelligence Engine**. Generates high-density, interactive HTML reports.
-- `scripts/publish_to_docs.py`: Synchronizes results to Google Drive and pushes to GitHub Pages for instant web availability.
+- `scripts/deep_intel_engine.py`: Advanced research orchestrator for multi-page deep reports.
+- `scripts/ppt_engine_v4.py`: V10.0 Intelligence Engine. Generates high-density, interactive HTML reports.
+- `scripts/publish_to_docs.py`: Synchronizes results to Google Drive and pushes to GitHub Pages.
 
 ### 3. Notification & UI
-- `scripts/send_telegram.py`: Handles rich HTML notifications and direct web links.
+- `scripts/send_telegram.py`: Rich HTML notifications with direct web dashboard links.
+- `scripts/antigravity_bridge.py`: Unified data bridge between AI analysis and output modules.
 
 ## 📦 Directory Structure
-- `/docs/reports/`: Publicly accessible HTML reports (GitHub Pages root).
-- `/outputs/`: Raw markdown, summaries, and final binary reports.
-- `/state/`: Process tracking and job history.
+- `/docs/`: Publicly accessible HTML reports (GitHub Pages root).
+- `/outputs/`: Structured strategic results (Summaries, Deep Analysis, Final Reports).
+- `/state/`: Process tracking, run history (Pruned for efficiency), and job status.
+- `/templates/`: Professional design templates for web and document generation.
+- `/skills/`: Modular agentic capabilities for specific consulting tasks.
 
-## 🛠️ Requirements
-- Google Drive API (Credentials/Token)
-- Telegram Bot API (Token/Chat ID)
-- GitHub Repository with Pages enabled (Serving from `/docs` folder on `main` branch).
+## 🛠️ Requirements & Setup
+- Environment: `.env` (API Keys for Gemini, Telegram, Google Drive).
+- Authentication: `credentials.json` & `token.json` (Google Workspace integration).
+- Harness: `CLAUDE.md` and `.claudeignore` must be present for optimal AI performance.
 
 ---
-© 2026 OT Automation Team. Optimized for Professional Strategic Consulting.
+© 2026 Antigravity | Optimized for Professional Strategic Consulting.
