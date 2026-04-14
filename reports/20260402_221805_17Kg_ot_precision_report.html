@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ko" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>광주 중앙공원_홍보 콘텐츠_기획안] OT 분석 기획안 (1차)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-accent': '#0071e3',
+                        'glass-bg': 'rgba(255, 255, 255, 0.05)',
+                        'glass-border': 'rgba(255, 255, 255, 0.1)',
+                    },
+                    fontFamily: { sans: ['Inter', 'Noto Sans KR', 'sans-serif'] },
+                    boxShadow: { 'glow': '0 0 40px -10px rgba(0, 113, 227, 0.3)' }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #000000;
+            color: #f5f5f7;
+            background-image: radial-gradient(circle at 15% 50%, rgba(0, 113, 227, 0.15), transparent 25%), radial-gradient(circle at 85% 30%, rgba(255, 255, 255, 0.05), transparent 25%);
+            background-attachment: fixed;
+            -webkit-font-smoothing: antialiased;
+        }
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 1.5rem;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .glass-card:hover {
+            transform: translateY(-5px) scale(1.01);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: var(--glow);
+        }
+        .hero-title {
+            font-size: clamp(3rem, 6vw, 5.5rem);
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            line-height: 1.1;
+            background: linear-gradient(180deg, #fff 0%, #a1a1a6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .bento-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+        @media (min-width: 1024px) { .bento-grid { grid-template-columns: repeat(3, 1fr); } .span-2 { grid-column: span 2; } .span-3 { grid-column: span 3; } }
+        .animated-entry { opacity: 0; transform: translateY(40px); filter: blur(10px); }
+        .visible { opacity: 1; transform: translateY(0); filter: blur(0); transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); }
+    </style>
+</head>
+<body class="antialiased min-h-screen">
+    <header class="fixed top-0 w-full p-6 flex justify-between items-center z-50 bg-black/50 backdrop-blur-xl border-b border-white/10">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-gradient-to-br from-gray-800 to-black rounded-xl border border-white/10 flex items-center justify-center text-white shadow-glow">
+                <i data-lucide="cpu" class="w-5 h-5 text-brand-accent"></i>
+            </div>
+            <div class="flex flex-col">
+                <span class="font-bold tracking-tight text-xl leading-none text-white">Antigravity</span>
+                <span class="text-[9px] font-medium text-gray-400 tracking-[0.2em] mt-1 uppercase">Strategic Intelligence V26.0</span>
+            </div>
+        </div>
+    </header>
+    <main class="pt-32 pb-24 px-6 md:px-12 lg:px-24 max-w-[1600px] mx-auto">
+        <section class="min-h-[70vh] flex flex-col justify-center mb-20">
+            <div class="inline-block mb-6 animated-entry">
+                <span class="px-3 py-1 rounded-full border border-brand-accent/30 bg-brand-accent/10 text-brand-accent text-xs font-bold tracking-widest uppercase">Job ID: 20260402_221805_17Kg_ot</span>
+            </div>
+            <h1 class="hero-title animated-entry mb-8">광주 중앙공원_홍보 콘텐츠_기획안] OT 분석 기획안 (1차)</h1>
+            <p class="text-xl md:text-2xl font-light text-gray-400 animated-entry max-w-4xl leading-relaxed tracking-tight">
+                Global market trends, gap-check risks, and high-fidelity creative blueprints synthesized for high-impact decision making.
+            </p>
+        </section>
+        
+        <section class="mb-32">
+            <div class="flex items-center gap-4 mb-12 animated-entry">
+                <div class="h-px bg-white/20 flex-1"></div>
+                <h2 class="text-2xl font-medium tracking-widest uppercase text-gray-500">Creative & Visual</h2>
+                <div class="h-px bg-white/20 flex-1"></div>
+            </div>
+            <div class="bento-grid">
+                <div class="glass-card  p-8 md:p-10 animated-entry flex flex-col">
+                    <div class="flex justify-between items-center mb-6">
+                        <span class="bg-brand-accent/20 text-brand-accent border border-brand-accent/30 px-3 py-1 rounded-md text-[10px] font-bold tracking-widest uppercase">INSIGHT</span>
+                        <i data-lucide="trending-up" class="text-gray-400 w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-6 tracking-tight text-white">Creative & Visual</h3>
+                    <ul class="flex-1 space-y-4"><li class="flex items-start gap-4 text-sm font-medium text-gray-200 mt-3"><span class="w-[3px] h-4 bg-brand-accent/50 mt-1 shrink-0 rounded-full"></span><span class="leading-relaxed">핵심 인플루언서 연계 숏폼 비주얼 기획안 도출.</span></li><p class="text-sm text-gray-400 mt-3 leading-relaxed">---</p><p class="text-sm text-gray-400 mt-3 leading-relaxed">© 2026 Antigravity | 1차 브리핑 데이터 추출 완료.</p><p class="text-sm text-gray-400 mt-3 leading-relaxed">(이 파일을 기반으로 2차 딥-리서치가 PPTX를 생성합니다.)</p></ul>
+                </div>
+                <div class="glass-card  p-8 md:p-10 animated-entry flex flex-col">
+                    <div class="flex justify-between items-center mb-6">
+                        <span class="bg-brand-accent/20 text-brand-accent border border-brand-accent/30 px-3 py-1 rounded-md text-[10px] font-bold tracking-widest uppercase">INSIGHT</span>
+                        <i data-lucide="trending-up" class="text-gray-400 w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-6 tracking-tight text-white">Creative & Visual</h3>
+                    <ul class="flex-1 space-y-4"><blockquote class="border-l-4 border-brand-accent/80 pl-5 py-3 my-5 bg-brand-accent/10 rounded-r-lg italic text-white text-sm font-semibold tracking-tight shadow-glow leading-relaxed">"단순한 풍경이 아닌, 이야기가 숨 쉬는 공간. 광주 중앙공원의 모든 순간을 15초 안에 담아내어, 잠재 방문객의 감성을 자극하고 즉각적인 행동을 유도한다."</blockquote><div class="my-5 rounded-xl overflow-hidden border border-brand-accent/20 shadow-[0_0_20px_rgba(0,113,227,0.15)] cursor-pointer transform hover:scale-[1.01] transition-all duration-300"><img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&q=80" alt="creative reference image" class="w-full object-cover max-h-56 opacity-90 hover:opacity-100 transition-opacity duration-500"></div><p class="text-sm text-gray-400 mt-3 leading-relaxed">광주 중앙공원의 홍보 콘텐츠는 '핵심 인플루언서 연계 숏폼 비주얼 기획'을 통해 생생하고 몰입감 있는 경험을 제공하는 데 집중한다. 주요 타겟층인 MZ세대의 '디토 소비' 트렌드를 고려하여, 공원의 특정 매력(예: 벽천의 시원함, 산수원의 고즈넉함, 황톳길의 건강함)을 자신만의 라이프스타일로 재해석하여 보여줄 수 있는 마이크로/나노 인플루언서를 섭외한다. 숏폼 콘텐츠는 15초에서 60초 내외의 짧은 시간 안에 강력한 스토리텔링과 고품질의 영상미를 담아내어, 시청자의 시선을 사로잡고 즉각적인 공유를 유도한다. 공원의 사계절 변화, 숨겨진 포토 스팟, 특별한 문화 행사 등을 테마로 한 챌린지 콘텐츠를 기획하고, 인플루언서들이 직접 참여하여 '나만의 중앙공원 즐기기'를 제안하도록 독려한다. 이는 단순한 홍보를 넘어, 방문객 스스로가 콘텐츠 생산자가 되어 공원의 매력을 확산시키는 선순환 구조를 구축할 것이다.</p><div class="overflow-x-auto my-5 w-full rounded-lg border border-brand-accent/30 bg-brand-accent/5 shadow-glow"><table class="w-full text-left border-collapse whitespace-nowrap"><tr class="hover:bg-brand-accent/20 transition-colors"><td class="px-5 py-3 border-b border-brand-accent/20 text-sm font-medium text-gray-200">장면(Scene)</td><td class="px-5 py-3 border-b border-brand-accent/20 text-sm font-medium text-gray-200">연출 의도</td><td class="px-5 py-3 border-b border-brand-accent/20 text-sm font-medium text-gray-200">시각적 톤앤매너</td></tr></table></div></ul>
+                </div>
+            </div>
+        </section>
+        <section class="mb-32">
+            <div class="flex items-center gap-4 mb-12 animated-entry">
+                <div class="h-px bg-white/20 flex-1"></div>
+                <h2 class="text-2xl font-medium tracking-widest uppercase text-gray-500">Market Intelligence</h2>
+                <div class="h-px bg-white/20 flex-1"></div>
+            </div>
+            <div class="bento-grid">
+                <div class="glass-card span-3 p-8 md:p-10 animated-entry flex flex-col">
+                    <div class="flex justify-between items-center mb-6">
+                        <span class="bg-brand-accent/20 text-brand-accent border border-brand-accent/30 px-3 py-1 rounded-md text-[10px] font-bold tracking-widest uppercase">INSIGHT</span>
+                        <i data-lucide="trending-up" class="text-gray-400 w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-6 tracking-tight text-white">1. 프로젝트 메타 인텔리전스</h3>
+                    <ul class="flex-1 space-y-4"><li class="flex items-start gap-4 text-sm font-medium text-gray-200 mt-3"><span class="w-[3px] h-4 bg-brand-accent/50 mt-1 shrink-0 rounded-full"></span><span class="leading-relaxed">**수집 ID**: `20260402_221805_17Kg_ot`</span></li><li class="flex items-start gap-4 text-sm font-medium text-gray-200 mt-3"><span class="w-[3px] h-4 bg-brand-accent/50 mt-1 shrink-0 rounded-full"></span><span class="leading-relaxed">**분석 코어**: Antigravity V25.0 (Consultant Model)</span></li><li class="flex items-start gap-4 text-sm font-medium text-gray-200 mt-3"><span class="w-[3px] h-4 bg-brand-accent/50 mt-1 shrink-0 rounded-full"></span><span class="leading-relaxed">**키 필터링**: 광주, 중앙공원, 홍보, 콘텐츠, 기획안</span></li></ul>
+                </div>
+                <div class="glass-card  p-8 md:p-10 animated-entry flex flex-col">
+                    <div class="flex justify-between items-center mb-6">
+                        <span class="bg-brand-accent/20 text-brand-accent border border-brand-accent/30 px-3 py-1 rounded-md text-[10px] font-bold tracking-widest uppercase">INSIGHT</span>
+                        <i data-lucide="trending-up" class="text-gray-400 w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-6 tracking-tight text-white">Market Intelligence</h3>
+                    <ul class="flex-1 space-y-4"><li class="flex items-start gap-4 text-sm font-medium text-gray-200 mt-3"><span class="w-[3px] h-4 bg-brand-accent/50 mt-1 shrink-0 rounded-full"></span><span class="leading-relaxed">시장 트렌드 변화 및 프리미엄 타겟 니즈 분석.</span></li></ul>
+                </div>
+                <div class="glass-card  p-8 md:p-10 animated-entry flex flex-col">
+                    <div class="flex justify-between items-center mb-6">
+                        <span class="bg-brand-accent/20 text-brand-accent border border-brand-accent/30 px-3 py-1 rounded-md text-[10px] font-bold tracking-widest uppercase">INSIGHT</span>
+                        <i data-lucide="trending-up" class="text-gray-400 w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-6 tracking-tight text-white">Strategic Logic</h3>
+                    <ul class="flex-1 space-y-4"><li class="flex items-start gap-4 text-sm font-medium text-gray-200 mt-3"><span class="w-[3px] h-4 bg-brand-accent/50 mt-1 shrink-0 rounded-full"></span><span class="leading-relaxed">데이터 기반 타겟팅 최적화 및 신규 어젠다 선점 전략.</span></li></ul>
+                </div>
+                <div class="glass-card  p-8 md:p-10 animated-entry flex flex-col">
+                    <div class="flex justify-between items-center mb-6">
+                        <span class="bg-brand-accent/20 text-brand-accent border border-brand-accent/30 px-3 py-1 rounded-md text-[10px] font-bold tracking-widest uppercase">INSIGHT</span>
+                        <i data-lucide="trending-up" class="text-gray-400 w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-6 tracking-tight text-white">Market Intelligence</h3>
+                    <ul class="flex-1 space-y-4"><blockquote class="border-l-4 border-brand-accent/80 pl-5 py-3 my-5 bg-brand-accent/10 rounded-r-lg italic text-white text-sm font-semibold tracking-tight shadow-glow leading-relaxed">"팬데믹 이후, 도시민들은 진정한 힐링과 특별한 경험을 찾아 자연으로 회귀하고 있으며, 이는 단순한 방문을 넘어 '나만의 이야기'를 만들고 공유하려는 프리미엄 니즈로 진화하고 있다."</blockquote><div class="my-5 rounded-xl overflow-hidden border border-brand-accent/20 shadow-[0_0_20px_rgba(0,113,227,0.15)] cursor-pointer transform hover:scale-[1.01] transition-all duration-300"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80" alt="market trend" class="w-full object-cover max-h-56 opacity-90 hover:opacity-100 transition-opacity duration-500"></div><p class="text-sm text-gray-400 mt-3 leading-relaxed">광주 중앙공원은 광주광역시 서구에 위치한 대규모 근린공원으로, 도시 숲을 보존하고 시민에게 휴식처를 제공하기 위해 조성되었다. 최근 도시공원은 단순한 녹지 공간을 넘어 시민의 일상과 정원이 함께하는 복합문화공간으로 진화하고 있다. 특히, 2025년 '정원 열풍'과 함께 도심 속 힐링 명소로서의 역할이 더욱 강조되고 있으며, 서울시를 비롯한 여러 지자체는 그린 디자인을 통한 지속 가능한 공공 공간 조성에 박차를 가하고 있다. 프리미엄 타겟은 이러한 변화 속에서 획일적인 경험이 아닌, 개인의 취향과 가치관에 부합하는 차별화된 자연 경험과 문화 콘텐츠를 적극적으로 소비하고 공유하는 경향을 보인다. 소셜 미디어는 이러한 트렌드를 증폭시키는 핵심 채널로, 특히 숏폼 콘텐츠와 인플루언서의 영향력이 더욱 커지고 있다.</p><div class="overflow-x-auto my-5 w-full rounded-lg border border-brand-accent/30 bg-brand-accent/5 shadow-glow"><table class="w-full text-left border-collapse whitespace-nowrap"><tr class="hover:bg-brand-accent/20 transition-colors"><td class="px-5 py-3 border-b border-brand-accent/20 text-sm font-medium text-gray-200">구분</td><td class="px-5 py-3 border-b border-brand-accent/20 text-sm font-medium text-gray-200">현황</td><td class="px-5 py-3 border-b border-brand-accent/20 text-sm font-medium text-gray-200">트렌드 지수</td></tr></table></div></ul>
+                </div>
+                <div class="glass-card  p-8 md:p-10 animated-entry flex flex-col">
+                    <div class="flex justify-between items-center mb-6">
+                        <span class="bg-brand-accent/20 text-brand-accent border border-brand-accent/30 px-3 py-1 rounded-md text-[10px] font-bold tracking-widest uppercase">INSIGHT</span>
+                        <i data-lucide="trending-up" class="text-gray-400 w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-6 tracking-tight text-white">Strategic Logic</h3>
+                    <ul class="flex-1 space-y-4"><blockquote class="border-l-4 border-brand-accent/80 pl-5 py-3 my-5 bg-brand-accent/10 rounded-r-lg italic text-white text-sm font-semibold tracking-tight shadow-glow leading-relaxed">"데이터는 더 이상 단순한 정보가 아니다. 이는 광주 중앙공원의 숨겨진 가치를 발굴하고, 미래 방문객의 마음을 움직일 초개인화된 경험을 설계하는 핵심 나침반이다."</blockquote><div class="my-5 rounded-xl overflow-hidden border border-brand-accent/20 shadow-[0_0_20px_rgba(0,113,227,0.15)] cursor-pointer transform hover:scale-[1.01] transition-all duration-300"><img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80" alt="strategy concept image" class="w-full object-cover max-h-56 opacity-90 hover:opacity-100 transition-opacity duration-500"></div><p class="text-sm text-gray-400 mt-3 leading-relaxed">광주 중앙공원의 홍보 전략은 데이터 기반의 타겟팅 최적화와 신규 어젠다 선점을 통해 초격차 경쟁력을 확보하는 데 중점을 둔다. 먼저, 공원 방문객 데이터, 소셜 미디어 언급량, 주변 상권 데이터 등을 종합적으로 분석하여 핵심 타겟 그룹의 행동 패턴과 숨겨진 니즈를 파악한다. 이를 통해 중앙공원 내 조성된 미래문화관, 독서쉼터, 글램핑장, 산수원, 벽천, 황톳길, 가족의 숲 등 다양한 시설의 잠재적 가치를 재조명하고, 각 시설이 제공할 수 있는 고유한 경험을 스토리텔링으로 엮어낸다. 특히, 광주 중앙공원이 국가도시공원 1호 지정을 목표로 하고 있다는 점을 적극 활용하여, '국내 최초 3대 국가공원 도시'라는 비전과 연계한 차별화된 어젠다를 선점한다. 이 과정에서 AI 기반의 개인화된 콘텐츠 추천 시스템을 도입, 잠재 방문객에게 최적화된 공원 체험 코스와 이벤트를 제안하여 방문 전환율을 극대화한다.</p><div class="overflow-x-auto my-5 w-full rounded-lg border border-brand-accent/30 bg-brand-accent/5 shadow-glow"><table class="w-full text-left border-collapse whitespace-nowrap"><tr class="hover:bg-brand-accent/20 transition-colors"><td class="px-5 py-3 border-b border-brand-accent/20 text-sm font-medium text-gray-200">전략 Phase</td><td class="px-5 py-3 border-b border-brand-accent/20 text-sm font-medium text-gray-200">세부 Action Plan</td><td class="px-5 py-3 border-b border-brand-accent/20 text-sm font-medium text-gray-200">핵심 KPI</td></tr></table></div></ul>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="py-12 border-t border-white/10 text-center text-gray-500 text-sm font-medium tracking-widest uppercase animated-entry">
+        CONFIDENTIAL & PROPRIETARY &copy; 2026 Antigravity Intelligence
+    </footer>
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+        }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+        document.querySelectorAll('.animated-entry').forEach((el, idx) => {
+            el.style.transitionDelay = `${(idx % 4) * 100}ms`;
+            observer.observe(el);
+        });
+        lucide.createIcons();
+    </script>
+</body>
+</html>

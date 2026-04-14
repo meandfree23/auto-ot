@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ko" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OT 분석 기획안 (1차)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-accent': '#8a2be2',
+                        'glass-bg': 'rgba(255, 255, 255, 0.05)',
+                        'glass-border': 'rgba(255, 255, 255, 0.1)',
+                    },
+                    fontFamily: { sans: ['Inter', 'Noto Sans KR', 'sans-serif'] },
+                    boxShadow: { 'glow': '0 0 40px -10px rgba(138, 43, 226, 0.3)' }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #000000;
+            color: #f5f5f7;
+            background-image: radial-gradient(circle at 15% 50%, rgba(138, 43, 226, 0.15), transparent 25%), radial-gradient(circle at 85% 30%, rgba(255, 255, 255, 0.05), transparent 25%);
+            background-attachment: fixed;
+            -webkit-font-smoothing: antialiased;
+        }
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 1.5rem;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .glass-card:hover {
+            transform: translateY(-5px) scale(1.01);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: var(--glow);
+        }
+        .hero-title {
+            font-size: clamp(3rem, 6vw, 5.5rem);
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            line-height: 1.1;
+            background: linear-gradient(180deg, #fff 0%, #a1a1a6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .bento-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+        @media (min-width: 1024px) { .bento-grid { grid-template-columns: repeat(3, 1fr); } .span-2 { grid-column: span 2; } .span-3 { grid-column: span 3; } }
+        .animated-entry { opacity: 0; transform: translateY(40px); filter: blur(10px); }
+        .visible { opacity: 1; transform: translateY(0); filter: blur(0); transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); }
+    </style>
+</head>
+<body class="antialiased min-h-screen">
+    <header class="fixed top-0 w-full p-6 flex justify-between items-center z-50 bg-black/50 backdrop-blur-xl border-b border-white/10">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-gradient-to-br from-gray-800 to-black rounded-xl border border-white/10 flex items-center justify-center text-white shadow-glow">
+                <i data-lucide="cpu" class="w-5 h-5 text-brand-accent"></i>
+            </div>
+            <div class="flex flex-col">
+                <span class="font-bold tracking-tight text-xl leading-none text-white">Antigravity</span>
+                <span class="text-[9px] font-medium text-gray-400 tracking-[0.2em] mt-1 uppercase">Strategic Intelligence V26.0</span>
+            </div>
+        </div>
+    </header>
+    <main class="pt-32 pb-24 px-6 md:px-12 lg:px-24 max-w-[1600px] mx-auto">
+        <section class="min-h-[70vh] flex flex-col justify-center mb-20">
+            <div class="inline-block mb-6 animated-entry">
+                <span class="px-3 py-1 rounded-full border border-brand-accent/30 bg-brand-accent/10 text-brand-accent text-xs font-bold tracking-widest uppercase">Job ID: 20260402_180643_1cuR_ot</span>
+            </div>
+            <h1 class="hero-title animated-entry mb-8">OT 분석 기획안 (1차)</h1>
+            <p class="text-xl md:text-2xl font-light text-gray-400 animated-entry max-w-4xl leading-relaxed tracking-tight">
+                Global market trends, gap-check risks, and high-fidelity creative blueprints synthesized for high-impact decision making.
+            </p>
+        </section>
+        
+        <section class="mb-32">
+            <div class="flex items-center gap-4 mb-12 animated-entry">
+                <div class="h-px bg-white/20 flex-1"></div>
+                <h2 class="text-2xl font-medium tracking-widest uppercase text-gray-500">Creative & Visual</h2>
+                <div class="h-px bg-white/20 flex-1"></div>
+            </div>
+            <div class="bento-grid">
+                <div class="glass-card  p-8 md:p-10 animated-entry flex flex-col">
+                    <div class="flex justify-between items-center mb-6">
+                        <span class="bg-brand-accent/20 text-brand-accent border border-brand-accent/30 px-3 py-1 rounded-md text-[10px] font-bold tracking-widest uppercase">INSIGHT</span>
+                        <i data-lucide="trending-up" class="text-gray-400 w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-6 tracking-tight text-white">Creative & Visual</h3>
+                    <ul class="flex-1 space-y-4"><li class="flex items-start gap-4 text-sm font-medium text-gray-200 mt-3"><span class="w-[3px] h-4 bg-brand-accent/50 mt-1 shrink-0 rounded-full"></span><span class="leading-relaxed">유명 셀렙과의 연출 경험이 있으신분. 또한 그 유명 셀렙의 캐릭터를 잘</span></li><li class="flex items-start gap-4 text-sm font-medium text-gray-200 mt-3"><span class="w-[3px] h-4 bg-brand-accent/50 mt-1 shrink-0 rounded-full"></span><span class="leading-relaxed">표현하여 연출 가능하신 분</span></li><li class="flex items-start gap-4 text-sm font-medium text-gray-200 mt-3"><span class="w-[3px] h-4 bg-brand-accent/50 mt-1 shrink-0 rounded-full"></span><span class="leading-relaxed">2) 현 스토리보드를 참고만 해주시고, 자유롭게 White Musk의 컨셉을 표현 부탁드립니다.</span></li><li class="flex items-start gap-4 text-sm font-medium text-gray-200 mt-3"><span class="w-[3px] h-4 bg-brand-accent/50 mt-1 shrink-0 rounded-full"></span><span class="leading-relaxed">현 스토리보르를 참고만 해주시고, White Musk컨셉을 자유롭게 표현부탁드립니다</span></li></ul>
+                </div>
+                <div class="glass-card  p-8 md:p-10 animated-entry flex flex-col">
+                    <div class="flex justify-between items-center mb-6">
+                        <span class="bg-brand-accent/20 text-brand-accent border border-brand-accent/30 px-3 py-1 rounded-md text-[10px] font-bold tracking-widest uppercase">INSIGHT</span>
+                        <i data-lucide="trending-up" class="text-gray-400 w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-6 tracking-tight text-white">Creative & Visual</h3>
+                    <ul class="flex-1 space-y-4"><blockquote class="border-l-4 border-brand-accent/80 pl-5 py-3 my-5 bg-brand-accent/10 rounded-r-lg italic text-white text-sm font-semibold tracking-tight shadow-glow leading-relaxed">"이번 크리에이티브는 'White Musk'의 본질적인 포근함과 순수함에 장원영의 신비롭고 우아한 아우라를 더하여, 시각적으로 압도적인 '궁극의 살냄새' 컨셉을 구현할 것입니다. 이는 단순한 향을 넘어, 그녀의 '럭키비키' 에너지처럼 긍정적이고 매력적인 라이프스타일을 제안합니다."</blockquote><div class="my-5 rounded-xl overflow-hidden border border-brand-accent/20 shadow-[0_0_20px_rgba(0,113,227,0.15)] cursor-pointer transform hover:scale-[1.01] transition-all duration-300"><img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&q=80" alt="creative reference image" class="w-full object-cover max-h-56 opacity-90 hover:opacity-100 transition-opacity duration-500"></div><li class="flex items-start gap-4 text-sm font-medium text-gray-200 mt-3"><span class="w-[3px] h-4 bg-brand-accent/50 mt-1 shrink-0 rounded-full"></span><span class="leading-relaxed">  유명 셀럽과의 연출 경험이 풍부한 감독님을 통해 장원영님의 캐릭터를 가장 잘 표현하는 연출을 구현할 것입니다. 그녀의 '비현실적 비율'과 '작은 얼굴, 또렷한 이목구비'를 부각하는 동시에, White Musk의 '포근하고 편안한' 이미지를 조화롭게 담아낼 수 있는 섬세한 디렉팅이 중요합니다.</span></li><li class="flex items-start gap-4 text-sm font-medium text-gray-200 mt-3"><span class="w-[3px] h-4 bg-brand-accent/50 mt-1 shrink-0 rounded-full"></span><span class="leading-relaxed">  현 스토리보드를 참고하되, White Musk의 컨셉을 자유롭게 표현하여 '순수한 화이트 머스크 향'의 본질과 장원영님의 브랜딩을 살리는 연출에 집중합니다. 이는 마치 '갓 샤워하고 나온 듯한 퓨어한 코튼 향'이나 '모달 이불을 덮었을 때의 포근한 느낌'을 시각적으로 구현하여, 소비자들이 향을 직접 경험하는 듯한 몰입감을 선사할 것입니다.</span></li></ul>
+                </div>
+            </div>
+        </section>
+        <section class="mb-32">
+            <div class="flex items-center gap-4 mb-12 animated-entry">
+                <div class="h-px bg-white/20 flex-1"></div>
+                <h2 class="text-2xl font-medium tracking-widest uppercase text-gray-500">Market Intelligence</h2>
+                <div class="h-px bg-white/20 flex-1"></div>
+            </div>
+            <div class="bento-grid">
+                <div class="glass-card span-3 p-8 md:p-10 animated-entry flex flex-col">
+                    <div class="flex justify-between items-center mb-6">
+                        <span class="bg-brand-accent/20 text-brand-accent border border-brand-accent/30 px-3 py-1 rounded-md text-[10px] font-bold tracking-widest uppercase">INSIGHT</span>
+                        <i data-lucide="trending-up" class="text-gray-400 w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-6 tracking-tight text-white">1. 프로젝트 메타 인텔리전스</h3>
+                    <ul class="flex-1 space-y-4"><li class="flex items-start gap-4 text-sm font-medium text-gray-200 mt-3"><span class="w-[3px] h-4 bg-brand-accent/50 mt-1 shrink-0 rounded-full"></span><span class="leading-relaxed">**수집 ID**: `20260402_180643_1cuR_ot`</span></li><li class="flex items-start gap-4 text-sm font-medium text-gray-200 mt-3"><span class="w-[3px] h-4 bg-brand-accent/50 mt-1 shrink-0 rounded-full"></span><span class="leading-relaxed">**분석 코어**: Antigravity V25.0 (Consultant Model)</span></li><li class="flex items-start gap-4 text-sm font-medium text-gray-200 mt-3"><span class="w-[3px] h-4 bg-brand-accent/50 mt-1 shrink-0 rounded-full"></span><span class="leading-relaxed">**키 필터링**: Malone, Leverage, Production, Bid, Brief</span></li></ul>
+                </div>
+                <div class="glass-card  p-8 md:p-10 animated-entry flex flex-col">
+                    <div class="flex justify-between items-center mb-6">
+                        <span class="bg-brand-accent/20 text-brand-accent border border-brand-accent/30 px-3 py-1 rounded-md text-[10px] font-bold tracking-widest uppercase">INSIGHT</span>
+                        <i data-lucide="trending-up" class="text-gray-400 w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-6 tracking-tight text-white">Market Intelligence</h3>
+                    <ul class="flex-1 space-y-4"><li class="flex items-start gap-4 text-sm font-medium text-gray-200 mt-3"><span class="w-[3px] h-4 bg-brand-accent/50 mt-1 shrink-0 rounded-full"></span><span class="leading-relaxed">시장 트렌드 변화 및 프리미엄 타겟 니즈 분석.</span></li></ul>
+                </div>
+                <div class="glass-card  p-8 md:p-10 animated-entry flex flex-col">
+                    <div class="flex justify-between items-center mb-6">
+                        <span class="bg-brand-accent/20 text-brand-accent border border-brand-accent/30 px-3 py-1 rounded-md text-[10px] font-bold tracking-widest uppercase">INSIGHT</span>
+                        <i data-lucide="trending-up" class="text-gray-400 w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-6 tracking-tight text-white">Strategic Logic</h3>
+                    <ul class="flex-1 space-y-4"><li class="flex items-start gap-4 text-sm font-medium text-gray-200 mt-3"><span class="w-[3px] h-4 bg-brand-accent/50 mt-1 shrink-0 rounded-full"></span><span class="leading-relaxed">브랜드의 커뮤니케이션 아이디어를 충분히 이해하고 최대치의 표현이</span></li><li class="flex items-start gap-4 text-sm font-medium text-gray-200 mt-3"><span class="w-[3px] h-4 bg-brand-accent/50 mt-1 shrink-0 rounded-full"></span><span class="leading-relaxed">확실히 전달하는 기획 (스토리보드)와 연출 아이디어 (Director’s Board)를 제시 부탁드립니다.</span></li><li class="flex items-start gap-4 text-sm font-medium text-gray-200 mt-3"><span class="w-[3px] h-4 bg-brand-accent/50 mt-1 shrink-0 rounded-full"></span><span class="leading-relaxed">└장원영님의 장점, 특징을 잘 끌어내는 아이디어 (앵글, 클로즈업등)</span></li></ul>
+                </div>
+                <div class="glass-card  p-8 md:p-10 animated-entry flex flex-col">
+                    <div class="flex justify-between items-center mb-6">
+                        <span class="bg-brand-accent/20 text-brand-accent border border-brand-accent/30 px-3 py-1 rounded-md text-[10px] font-bold tracking-widest uppercase">INSIGHT</span>
+                        <i data-lucide="trending-up" class="text-gray-400 w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-6 tracking-tight text-white">Market Intelligence</h3>
+                    <ul class="flex-1 space-y-4"><blockquote class="border-l-4 border-brand-accent/80 pl-5 py-3 my-5 bg-brand-accent/10 rounded-r-lg italic text-white text-sm font-semibold tracking-tight shadow-glow leading-relaxed">"향수는 이제 단순한 향을 넘어, '가성비 럭셔리'와 '정서적 웰빙'을 추구하는 Z세대의 강력한 자기표현 수단이자, 프리미엄 뷰티 시장의 핵심 성장 동력으로 부상하고 있습니다."</blockquote><div class="my-5 rounded-xl overflow-hidden border border-brand-accent/20 shadow-[0_0_20px_rgba(0,113,227,0.15)] cursor-pointer transform hover:scale-[1.01] transition-all duration-300"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80" alt="market trend" class="w-full object-cover max-h-56 opacity-90 hover:opacity-100 transition-opacity duration-500"></div><li class="flex items-start gap-4 text-sm font-medium text-gray-200 mt-3"><span class="w-[3px] h-4 bg-brand-accent/50 mt-1 shrink-0 rounded-full"></span><span class="leading-relaxed">  글로벌 뷰티 시장에서 향수는 2024년 5,900억 달러 규모를 기록했으며, 2029년에는 6,900억 달러에 이를 것으로 예상되며, 이 중 향수 카테고리가 전체 성장의 23%를 주도할 것으로 전망됩니다. 특히 고물가 시대에 '립스틱 효과'를 넘어 '향수 효과'가 나타나며, 접근 가능한 가격으로 작은 사치를 누리고자 하는 소비 심리가 프리미엄 향수 시장의 성장을 견인하고 있습니다.</span></li><li class="flex items-start gap-4 text-sm font-medium text-gray-200 mt-3"><span class="w-[3px] h-4 bg-brand-accent/50 mt-1 shrink-0 rounded-full"></span><span class="leading-relaxed">  한국 프리미엄 향수 시장은 2019년부터 2024년 연평균(CAGR) 12.6%의 꾸준한 두 자릿수 성장세를 보이고 있으며, 2025년에는 국내 향수 시장 규모가 1조 원에 이를 것으로 예측됩니다. 이는 소비자들의 개성 중시와 니치 향수에 대한 높은 관심 증가에 기인합니다.</span></li></ul>
+                </div>
+                <div class="glass-card  p-8 md:p-10 animated-entry flex flex-col">
+                    <div class="flex justify-between items-center mb-6">
+                        <span class="bg-brand-accent/20 text-brand-accent border border-brand-accent/30 px-3 py-1 rounded-md text-[10px] font-bold tracking-widest uppercase">INSIGHT</span>
+                        <i data-lucide="trending-up" class="text-gray-400 w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-6 tracking-tight text-white">Strategic Logic</h3>
+                    <ul class="flex-1 space-y-4"><blockquote class="border-l-4 border-brand-accent/80 pl-5 py-3 my-5 bg-brand-accent/10 rounded-r-lg italic text-white text-sm font-semibold tracking-tight shadow-glow leading-relaxed">"우리의 전략은 장원영이라는 '인간 브랜드'가 가진 독보적인 매력과 'White Musk'의 섬세한 컨셉을 완벽하게 융합하여, 감각적인 스토리텔링으로 소비자의 깊은 공감을 이끌어내고, 단순한 제품을 넘어선 라이프스타일 아이콘으로 자리매김하는 것입니다."</blockquote><div class="my-5 rounded-xl overflow-hidden border border-brand-accent/20 shadow-[0_0_20px_rgba(0,113,227,0.15)] cursor-pointer transform hover:scale-[1.01] transition-all duration-300"><img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80" alt="strategy concept image" class="w-full object-cover max-h-56 opacity-90 hover:opacity-100 transition-opacity duration-500"></div><li class="flex items-start gap-4 text-sm font-medium text-gray-200 mt-3"><span class="w-[3px] h-4 bg-brand-accent/50 mt-1 shrink-0 rounded-full"></span><span class="leading-relaxed">  브랜드 커뮤니케이션 아이디어를 최대한으로 표현하기 위해, 장원영님의 고급스럽고 아이코닉한 무드를 White Musk 컨셉에 맞춰 섬세하게 기획하고 연출할 것입니다. 그녀의 시원하게 트인 눈매, 곧고 정제된 콧대, 안정적인 중안면 비율, 슬림한 턱선이 조화를 이루는 세련된 인상과 더불어, '럭키비키', '원영적 사고'로 대표되는 긍정적이고 자신감 있는 이미지를 활용하여 White Musk의 순수함과 포근함에 매혹적인 깊이를 더할 것입니다.</span></li><li class="flex items-start gap-4 text-sm font-medium text-gray-200 mt-3"><span class="w-[3px] h-4 bg-brand-accent/50 mt-1 shrink-0 rounded-full"></span><span class="leading-relaxed">  장원영님의 장점과 특징을 극대화하는 연출 아이디어(Director's Board)를 통해, 그녀의 '비현실적 미모'와 '완성형 비주얼'을 다양한 앵글과 클로즈업으로 담아내어 제품의 프리미엄 가치를 시각적으로 전달할 것입니다. 특히, 그녀의 '동안 느낌'과 '귀여운 얼굴형'을 살리면서도 White Musk가 지닌 우아하고 포근한 분위기를 동시에 표현할 수 있는 연출에 집중합니다.</span></li></ul>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="py-12 border-t border-white/10 text-center text-gray-500 text-sm font-medium tracking-widest uppercase animated-entry">
+        CONFIDENTIAL & PROPRIETARY &copy; 2026 Antigravity Intelligence
+    </footer>
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+        }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+        document.querySelectorAll('.animated-entry').forEach((el, idx) => {
+            el.style.transitionDelay = `${(idx % 4) * 100}ms`;
+            observer.observe(el);
+        });
+        lucide.createIcons();
+    </script>
+</body>
+</html>
