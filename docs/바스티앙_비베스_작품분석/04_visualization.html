@@ -1,1157 +1,969 @@
 <!DOCTYPE html>
-<html lang="ko" class="theme-light">
+<html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>바스티앙 비베스 작품 분석 — 이야기를 그리는 연출가</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/html-to-image@1.11.11/dist/html-to-image.js"></script>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root { interpolate-size: allow-keywords; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>바스티앙 비베스 작품 분석 — 이야기를 그리는 연출가</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --accent: #e63946;
+  --accent-rgb: 230,57,70;
+  --bg: #030303;
+  --surface: rgba(255,255,255,0.035);
+  --surface-hov: rgba(255,255,255,0.06);
+  --border: rgba(255,255,255,0.07);
+  --border-hov: rgba(230,57,70,0.3);
+  --text-1: #f5f5f7;
+  --text-2: #a1a1a6;
+  --text-3: #6e6e73;
+  --r-card: 20px;
+  --glow: 0 20px 80px -20px rgba(230,57,70,.35), 0 0 0 1px rgba(230,57,70,.08);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter','Noto Sans KR',sans-serif;
+  background: var(--bg);
+  color: var(--text-1);
+  -webkit-font-smoothing: antialiased;
+  background-image:
+    radial-gradient(ellipse 90% 60% at 10% -10%, rgba(230,57,70,.1) 0%, transparent 60%),
+    radial-gradient(ellipse 70% 50% at 90% 110%, rgba(230,57,70,.06) 0%, transparent 60%);
+  background-attachment: fixed;
+}
 
-    html.theme-light {
-      --bg: #FAFAF8; --surface: #FFFFFF; --surface-hover: #F5F4F0;
-      --border: rgba(0,0,0,0.07);
-      --text: #1a1a2e; --text-secondary: #666;
-      --accent: #e63946; --accent-secondary: #c1121f;
-      --navy: #1a1a2e; --navy-light: #2d2d4e;
-      --positive: #2d6a4f; --negative: #e63946; --warning: #f4a261;
-      --card-bg: #F5F4F0; --title-bg: #1a1a2e;
-    }
-    html.theme-dark {
-      --bg: #0f0f1a; --surface: #1a1a2e; --surface-hover: #252540;
-      --border: rgba(255,255,255,0.07);
-      --text: #F0EEE8; --text-secondary: #9090a8;
-      --accent: #e63946; --accent-secondary: #ff6b6b;
-      --navy: #0f0f1a; --navy-light: #1a1a2e;
-      --positive: #52b788; --negative: #e63946; --warning: #f4a261;
-      --card-bg: #1f1f35; --title-bg: #0a0a14;
-    }
+/* ── Nav ──────────────────────────────── */
+.site-nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2rem; height: 60px;
+  background: rgba(3,3,3,.7);
+  backdrop-filter: blur(24px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-brand { display: flex; align-items: center; gap: .6rem; font-size: .85rem; font-weight: 700; letter-spacing: .08em; }
+.nav-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px rgba(230,57,70,.8); }
+.nav-meta { font-size: .72rem; color: var(--text-3); font-family: monospace; letter-spacing: .05em; }
 
-    body {
-      font-family: 'Noto Sans KR', 'Inter', sans-serif;
-      background: var(--bg); color: var(--text);
-      overflow: hidden; width: 100vw; height: 100vh;
-      -webkit-font-smoothing: antialiased;
-      transition: background 0.3s, color 0.3s;
-    }
+/* ── Scroll progress ──────────────────── */
+#scroll-progress {
+  position: fixed; top: 60px; left: 0; height: 2px; width: 0%;
+  background: linear-gradient(90deg, var(--accent), rgba(230,57,70,.3));
+  z-index: 200; transition: width .1s;
+}
 
-    /* ===== SLIDE ENGINE ===== */
-    .slides-wrapper {
-      width: 100vw; height: 100vh;
-      position: relative; overflow: hidden;
-    }
-    .slide {
-      position: absolute; top: 0; left: 0;
-      width: 100%; height: 100%;
-      display: flex; flex-direction: column;
-      justify-content: center; align-items: center;
-      padding: 64px 80px;
-      background: var(--bg);
-      transform: translateX(100%);
-      transition: transform 0.55s cubic-bezier(0.77, 0, 0.175, 1);
-      will-change: transform;
-    }
-    .slide.active { transform: translateX(0); }
-    .slide.prev { transform: translateX(-100%); }
+/* ── Hero ─────────────────────────────── */
+.hero {
+  min-height: 92vh; padding: 120px 5vw 80px;
+  display: grid; grid-template-columns: 1fr 360px; gap: 4rem; align-items: center;
+}
+@media(max-width:900px){ .hero { grid-template-columns: 1fr; padding: 100px 5vw 60px; } }
+.hero-badge {
+  display: inline-block; margin-bottom: 1.5rem;
+  padding: .3rem 1rem; border-radius: 999px;
+  border: 1px solid rgba(230,57,70,.3);
+  background: rgba(230,57,70,.08);
+  font-size: .72rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase;
+  color: var(--accent);
+}
+.hero-title {
+  font-size: clamp(2.4rem,5vw,4.5rem);
+  font-weight: 900; line-height: 1.08; letter-spacing: -.04em;
+  background: linear-gradient(160deg, #fff 30%, rgba(255,255,255,.45));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  margin-bottom: 1.5rem;
+}
+.hero-sub { font-size: 1.05rem; color: var(--text-2); line-height: 1.7; max-width: 560px; margin-bottom: 2.5rem; }
+.hero-chips { display: flex; flex-wrap: wrap; gap: .6rem; }
+.chip {
+  padding: .35rem .85rem; border-radius: 8px;
+  background: rgba(255,255,255,.05); border: 1px solid var(--border);
+  font-size: .75rem; color: var(--text-2); font-weight: 500; display: flex; align-items: center; gap: .4rem;
+}
+.chip-accent { color: var(--accent); border-color: rgba(230,57,70,.2); background: rgba(230,57,70,.06); }
 
-    /* ===== SLIDE TYPES ===== */
-    .slide-dark {
-      background: var(--title-bg) !important;
-      color: #F0EEE8;
-    }
-    .slide-dark .slide-unit-tag { color: rgba(255,255,255,0.4); }
+/* ── Hero visual card ─────────────────── */
+.hero-card {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 2.5rem 2rem; border-radius: 28px;
+  background: var(--surface); border: 1px solid var(--border);
+  backdrop-filter: blur(40px); gap: 1.5rem;
+}
+.hero-card-title {
+  font-size: 1.1rem; font-weight: 800; letter-spacing: -.02em;
+  text-align: center; color: var(--text-1);
+}
+.hero-keywords { display: flex; flex-direction: column; gap: .5rem; width: 100%; }
+.hero-kw {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: .6rem 1rem; border-radius: 10px;
+  background: rgba(255,255,255,.04); border: 1px solid var(--border);
+  font-size: .8rem;
+}
+.hero-kw-label { color: var(--text-3); font-size: .7rem; font-family: monospace; }
+.hero-kw-value { color: var(--text-1); font-weight: 600; font-size: .82rem; }
 
-    /* ===== PROGRESS BAR ===== */
-    .progress-bar {
-      position: fixed; top: 0; left: 0;
-      width: 100%; height: 3px;
-      background: var(--border); z-index: 1000;
-    }
-    .progress-fill {
-      height: 100%;
-      background: var(--accent);
-      transition: width 0.4s ease;
-    }
+/* ── Section layout ───────────────────── */
+.cat-section { margin-bottom: 6rem; padding: 0 5vw; }
+.cat-banner {
+  width: 100%; height: 220px; border-radius: 24px; overflow: hidden;
+  position: relative; margin-bottom: 3rem;
+  background-size: cover; background-position: center;
+}
+.cat-banner-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(120deg, rgba(3,3,3,.85) 0%, rgba(3,3,3,.4) 100%);
+}
+.cat-banner-content {
+  position: absolute; bottom: 2rem; left: 2.5rem;
+  display: flex; align-items: center; gap: 1rem;
+}
+.cat-emoji { font-size: 2.5rem; line-height: 1; }
+.cat-title {
+  font-size: 2rem; font-weight: 800; letter-spacing: -.03em;
+  background: linear-gradient(90deg, #fff, rgba(255,255,255,.7));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
 
-    /* ===== SLIDE NAV ===== */
-    .slide-nav {
-      position: fixed; bottom: 20px; left: 50%;
-      transform: translateX(-50%);
-      display: flex; align-items: center; gap: 12px;
-      z-index: 1000; background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 30px; padding: 8px 16px;
-      backdrop-filter: blur(12px);
-    }
-    .slide-nav button {
-      width: 32px; height: 32px; border: none;
-      background: transparent; color: var(--text-secondary);
-      cursor: pointer; border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-      transition: all 0.2s; font-size: 16px;
-    }
-    .slide-nav button:hover { background: var(--surface-hover); color: var(--accent); }
-    .slide-counter {
-      font-size: 12px; color: var(--text-secondary);
-      font-weight: 500; min-width: 48px; text-align: center;
-    }
+/* ── Cards grid ───────────────────────── */
+.cards-grid { display: flex; flex-direction: column; gap: 2rem; }
+.ot-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-card);
+  padding: 2.5rem;
+  backdrop-filter: blur(30px);
+  transition: transform .4s cubic-bezier(.16,1,.3,1), border-color .3s, box-shadow .3s;
+  animation: cardIn .7s cubic-bezier(.16,1,.3,1) both;
+}
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(24px); filter: blur(6px); }
+  to   { opacity: 1; transform: none; filter: none; }
+}
+.ot-card:hover {
+  border-color: var(--border-hov);
+  box-shadow: var(--glow);
+  transform: translateY(-6px);
+}
+.card-header { display: flex; align-items: center; gap: .6rem; margin-bottom: 1.5rem; }
+.card-tag {
+  font-size: .68rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+  padding: .25rem .7rem; border-radius: 6px;
+}
+.tag-insight { background: rgba(230,57,70,.12); color: var(--accent); border: 1px solid rgba(230,57,70,.25); }
+.tag-tech { background: rgba(255,200,0,.08); color: #ffd60a; border: 1px solid rgba(255,200,0,.2); }
+.tag-process { background: rgba(100,210,190,.08); color: #6fd6c9; border: 1px solid rgba(100,210,190,.2); }
+.card-body { display: flex; flex-direction: column; gap: 1.4rem; }
+.card-section-title {
+  font-size: 1.15rem; font-weight: 700; letter-spacing: -.02em;
+  color: var(--text-1); margin-bottom: .5rem;
+}
 
-    /* ===== CLICK ZONES ===== */
-    .slide-click-zone {
-      position: fixed; top: 0; bottom: 60px;
-      width: 50%; z-index: 10;
-      cursor: pointer; user-select: none;
-    }
-    .slide-click-zone.left { left: 0; cursor: w-resize; }
-    .slide-click-zone.right { right: 0; cursor: e-resize; }
+/* ── Text quality ─────────────────────── */
+p, li, td, blockquote {
+  word-break: keep-all; overflow-wrap: break-word;
+  text-rendering: optimizeLegibility;
+}
+strong { color: var(--text-1); font-weight: 700; }
 
-    /* ===== UNIT TAG ===== */
-    .slide-unit-tag {
-      position: absolute; bottom: 60px; left: 80px;
-      font-size: 11px; font-weight: 600;
-      color: var(--text-secondary);
-      text-transform: uppercase; letter-spacing: 0.12em;
-    }
+/* ── Blockquote ───────────────────────── */
+.ot-quote {
+  border-left: 2px solid var(--accent);
+  padding: .9rem 1.25rem;
+  border-radius: 0 10px 10px 0;
+  background: rgba(230,57,70,.05);
+}
+.ot-quote p {
+  font-size: .93rem; color: var(--text-1); line-height: 1.8;
+  letter-spacing: -.015em; font-style: italic;
+}
+.ot-quote-main {
+  font-size: clamp(1.1rem,2.2vw,1.6rem);
+  font-weight: 700; line-height: 1.45; letter-spacing: -.03em;
+  color: var(--text-1); margin-bottom: 1rem;
+}
+.ot-quote-sub {
+  font-size: .88rem; color: var(--text-2); line-height: 1.75;
+}
 
-    /* ===== VIZ MENU ===== */
-    .viz-menu { position: fixed; top: 16px; right: 16px; z-index: 9999; }
-    .viz-menu-toggle {
-      width: 40px; height: 40px; border-radius: 10px;
-      background: var(--surface); border: 1px solid var(--border);
-      color: var(--text); cursor: pointer; display: flex;
-      align-items: center; justify-content: center;
-      backdrop-filter: blur(12px); transition: all 0.2s;
-    }
-    .viz-menu-toggle:hover { background: var(--surface-hover); }
-    .viz-menu-dropdown {
-      position: absolute; top: 48px; right: 0; min-width: 180px;
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: 12px; padding: 6px;
-      opacity: 0; visibility: hidden; transform: translateY(-8px);
-      transition: all 0.2s; backdrop-filter: blur(16px); z-index: 9999;
-    }
-    .viz-menu-dropdown.open { opacity: 1; visibility: visible; transform: translateY(0); }
-    .viz-menu-dropdown button {
-      width: 100%; padding: 9px 12px; border: none; border-radius: 7px;
-      background: transparent; color: var(--text); font-size: 13px;
-      font-family: inherit; cursor: pointer; text-align: left;
-      display: flex; align-items: center; gap: 8px; transition: background 0.15s;
-    }
-    .viz-menu-dropdown button:hover { background: var(--surface-hover); }
+/* ── Bullets ──────────────────────────── */
+.ot-bullets {
+  list-style: none; padding: 0;
+  display: flex; flex-direction: column; gap: 0;
+  border: 1px solid var(--border); border-radius: 14px; overflow: hidden;
+}
+.ot-bullets li {
+  position: relative;
+  padding: .85rem 1rem .85rem 1.5rem;
+  font-size: .875rem; color: var(--text-2); line-height: 1.75;
+  letter-spacing: -.01em; word-break: keep-all;
+  border-bottom: 1px solid var(--border);
+  transition: background .2s;
+}
+.ot-bullets li:last-child { border-bottom: none; }
+.ot-bullets li:hover { background: rgba(255,255,255,.025); }
+.ot-bullets li::before {
+  content: '';
+  position: absolute; left: .7rem; top: 1.15rem;
+  width: 5px; height: 5px; border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 6px rgba(230,57,70,.6);
+}
+.ot-bullets li strong {
+  display: inline-block;
+  color: var(--text-1); font-weight: 700;
+  background: rgba(230,57,70,.1);
+  border: 1px solid rgba(230,57,70,.2);
+  padding: .02em .45em; border-radius: 5px;
+  font-size: .84em; letter-spacing: 0;
+  margin-right: .15em;
+}
+.ot-bullets li:first-child {
+  color: var(--text-1); font-weight: 500; font-size: .9rem;
+  background: rgba(230,57,70,.04);
+}
 
-    /* ===== SLIDE CONTENT STYLES ===== */
+/* ── Table ────────────────────────────── */
+.tbl-wrap {
+  overflow-x: auto; border-radius: 16px;
+  border: 1px solid var(--border); margin: .75rem 0;
+  box-shadow: 0 4px 24px rgba(0,0,0,.2);
+}
+.md-table { width: 100%; border-collapse: collapse; font-size: .84rem; min-width: 480px; }
+.md-table th {
+  padding: .75rem 1rem; text-align: left; font-weight: 700; font-size: .71rem;
+  letter-spacing: .08em; text-transform: uppercase; color: var(--accent);
+  background: rgba(230,57,70,.09); border-bottom: 1px solid rgba(230,57,70,.18);
+  word-break: keep-all; white-space: nowrap;
+}
+.md-table td {
+  padding: .9rem 1rem; color: var(--text-2); word-break: keep-all;
+  border-bottom: 1px solid rgba(255,255,255,.04); line-height: 1.7; vertical-align: top;
+  font-size: .83rem;
+}
+.md-table td:first-child {
+  color: var(--text-1); font-weight: 600; font-size: .8rem;
+  white-space: nowrap; max-width: 140px;
+}
+.md-table td strong { color: var(--accent); font-weight: 700; background: none; padding: 0; }
+.md-table tr:last-child td { border-bottom: none; }
+.md-table tr:nth-child(even) td { background: rgba(255,255,255,.015); }
+.md-table tr:hover td { background: rgba(230,57,70,.04); }
 
-    /* Title Slide */
-    .slide-title-content {
-      text-align: left; max-width: 900px; width: 100%;
-    }
-    .slide-title-eyebrow {
-      font-size: 12px; font-weight: 600; letter-spacing: 0.15em;
-      text-transform: uppercase; color: var(--accent);
-      margin-bottom: 24px;
-    }
-    .slide-title-h1 {
-      font-size: clamp(3rem, 6vw, 5rem);
-      font-weight: 900; line-height: 1.0;
-      color: #F0EEE8; letter-spacing: -0.04em;
-      margin-bottom: 20px;
-    }
-    .slide-title-h1 em { color: var(--accent); font-style: normal; }
-    .slide-title-sub {
-      font-size: clamp(1rem, 2vw, 1.3rem);
-      color: rgba(240,238,232,0.6); font-weight: 400;
-      margin-bottom: 40px; line-height: 1.5;
-    }
-    .slide-title-tags {
-      display: flex; gap: 12px; flex-wrap: wrap;
-    }
-    .slide-tag {
-      padding: 6px 14px; border-radius: 20px;
-      border: 1px solid rgba(255,255,255,0.15);
-      font-size: 12px; font-weight: 500;
-      color: rgba(240,238,232,0.6);
-    }
-    .slide-accent-bar {
-      width: 60px; height: 4px;
-      background: var(--accent);
-      border-radius: 2px; margin-bottom: 32px;
-    }
+/* ── Phase timeline ───────────────────── */
+.phase-timeline { display: flex; flex-direction: column; gap: 0; margin: .75rem 0; }
+.phase-step {
+  display: flex; gap: 1.1rem; position: relative; padding-bottom: 1.6rem;
+}
+.phase-step:last-child { padding-bottom: 0; }
+.phase-step::before {
+  content: ''; position: absolute; left: 15px; top: 34px; bottom: 0; width: 1px;
+  background: linear-gradient(to bottom, rgba(230,57,70,.5), transparent);
+}
+.phase-step:last-child::before { display: none; }
+.phase-num {
+  flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), rgba(230,57,70,.7));
+  color: #fff; font-size: .82rem; font-weight: 800;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 0 20px rgba(230,57,70,.5); z-index: 1;
+}
+.phase-body { flex: 1; padding-top: .2rem; }
+.phase-title {
+  font-size: .9rem; font-weight: 700; color: var(--text-1);
+  margin-bottom: .4rem; line-height: 1.4; word-break: keep-all;
+}
+.phase-action {
+  font-size: .84rem; color: var(--text-2); line-height: 1.7;
+  margin-bottom: .4rem; word-break: keep-all;
+}
+.phase-kpi {
+  font-size: .76rem; color: var(--accent);
+  background: rgba(230,57,70,.07); border: 1px solid rgba(230,57,70,.18);
+  border-radius: 6px; padding: .3rem .8rem; display: inline-block; margin-top: .3rem;
+  word-break: keep-all;
+}
 
-    /* Headings */
-    .slide-heading {
-      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-      font-weight: 800; letter-spacing: -0.03em;
-      color: var(--text); margin-bottom: 40px;
-      line-height: 1.1;
-    }
-    .slide-heading .accent { color: var(--accent); }
-    .slide-heading-small {
-      font-size: clamp(1.4rem, 2.5vw, 2rem);
-      font-weight: 700; letter-spacing: -0.02em;
-      color: var(--text); margin-bottom: 32px;
-    }
+/* ── Bento mini grid ──────────────────── */
+.mini-grid {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; margin: .75rem 0;
+}
+@media(max-width:700px){ .mini-grid { grid-template-columns: 1fr; } }
+.mini-grid-2 { grid-template-columns: repeat(2,1fr); }
+.mini-card {
+  background: rgba(255,255,255,.03); border: 1px solid var(--border);
+  border-radius: 14px; padding: 1.25rem 1rem;
+  transition: border-color .2s, background .2s;
+}
+.mini-card:hover { border-color: var(--border-hov); background: rgba(230,57,70,.04); }
+.mini-label {
+  font-size: .68rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: .5rem;
+}
+.mini-title { font-size: .9rem; font-weight: 700; color: var(--text-1); margin-bottom: .35rem; }
+.mini-text { font-size: .82rem; color: var(--text-2); line-height: 1.65; }
 
-    /* Bento Grid */
-    .bento-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px; width: 100%; max-width: 1000px;
-    }
-    .bento-2col { grid-template-columns: repeat(2, 1fr); }
-    .bento-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 16px; padding: 28px;
-      transition: box-shadow 0.2s;
-    }
-    .bento-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
-    .bento-card.span2 { grid-column: span 2; }
-    .bento-label {
-      font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
-      text-transform: uppercase; color: var(--accent);
-      margin-bottom: 10px;
-    }
-    .bento-text {
-      font-size: 15px; color: var(--text); line-height: 1.6;
-      font-weight: 400;
-    }
-    .bento-title { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+/* ── Keywords cloud ───────────────────── */
+.kw-cloud { display: flex; flex-wrap: wrap; gap: .6rem; margin: .75rem 0; }
+.kw-pill {
+  padding: .3rem .85rem; border-radius: 999px;
+  background: rgba(230,57,70,.07); border: 1px solid rgba(230,57,70,.2);
+  font-size: .78rem; color: var(--accent); font-weight: 600; font-style: italic;
+}
 
-    /* Quote Slide */
-    .quote-container {
-      max-width: 820px; width: 100%;
-      text-align: center;
-    }
-    .quote-mark {
-      font-size: 100px; line-height: 0.5;
-      color: var(--accent); font-family: Georgia, serif;
-      margin-bottom: 24px; display: block;
-      opacity: 0.8;
-    }
-    .quote-text {
-      font-size: clamp(1.4rem, 2.8vw, 2.2rem);
-      font-weight: 700; line-height: 1.4;
-      color: var(--text); letter-spacing: -0.02em;
-      margin-bottom: 32px;
-    }
-    .quote-sub {
-      font-size: 15px; color: var(--text-secondary);
-      line-height: 1.7; max-width: 600px; margin: 0 auto;
-    }
-    .quote-keywords {
-      display: flex; gap: 10px; justify-content: center;
-      flex-wrap: wrap; margin-top: 24px;
-    }
-    .kw-chip {
-      padding: 5px 12px; border-radius: 20px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      font-size: 12px; font-weight: 600;
-      color: var(--accent); font-style: italic;
-    }
+/* ── Paragraph ────────────────────────── */
+.ot-para {
+  font-size: .9rem; color: var(--text-2); line-height: 1.75;
+  letter-spacing: -.01em; word-break: keep-all;
+}
+.ot-para strong { color: var(--accent); background: rgba(230,57,70,.08); padding: .05em .3em; border-radius: 4px; }
 
-    /* Table Slide */
-    .slide-table {
-      width: 100%; max-width: 900px;
-      border-collapse: separate; border-spacing: 0 8px;
-    }
-    .slide-table th {
-      font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
-      text-transform: uppercase; color: var(--text-secondary);
-      padding: 10px 20px; text-align: left;
-    }
-    .slide-table td {
-      padding: 14px 20px; font-size: 15px;
-      color: var(--text); background: var(--card-bg);
-      border: 1px solid var(--border);
-      line-height: 1.5;
-    }
-    .slide-table tr td:first-child {
-      border-radius: 10px 0 0 10px;
-      font-weight: 600; color: var(--accent);
-    }
-    .slide-table tr td:last-child { border-radius: 0 10px 10px 0; }
-    .slide-table tr:hover td { background: var(--surface-hover); }
+/* ── Divider ──────────────────────────── */
+.ot-divider { border: none; border-top: 1px solid var(--border); margin: 1rem 0; }
 
-    /* Timeline Slide */
-    .timeline-container {
-      position: relative; max-width: 800px; width: 100%;
-      padding-left: 40px;
-    }
-    .timeline-line {
-      position: absolute; left: 8px; top: 8px; bottom: 8px;
-      width: 3px; background: linear-gradient(to bottom, var(--accent), transparent);
-      border-radius: 2px;
-    }
-    .timeline-item {
-      position: relative; margin-bottom: 28px;
-      padding-left: 32px;
-    }
-    .timeline-dot {
-      position: absolute; left: -36px; top: 6px;
-      width: 14px; height: 14px; border-radius: 50%;
-      background: var(--accent);
-      border: 3px solid var(--bg);
-      box-shadow: 0 0 0 2px var(--accent);
-    }
-    .timeline-year {
-      font-size: 12px; font-weight: 800; color: var(--accent);
-      letter-spacing: 0.05em; margin-bottom: 4px;
-    }
-    .timeline-desc {
-      font-size: 15px; color: var(--text); line-height: 1.5;
-    }
+/* ── Highlight box ────────────────────── */
+.hl-box {
+  padding: 1rem 1.25rem; border-radius: 12px;
+  background: rgba(230,57,70,.06); border: 1px solid rgba(230,57,70,.18);
+  font-size: .88rem; color: var(--text-2); line-height: 1.75;
+}
+.hl-box strong { color: var(--accent); background: none; }
 
-    /* TOC Slide */
-    .toc-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 20px; max-width: 1000px; width: 100%;
-    }
-    .toc-card {
-      background: var(--card-bg); border: 1px solid var(--border);
-      border-radius: 20px; padding: 32px;
-      transition: all 0.2s;
-    }
-    .toc-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.1); }
-    .toc-num {
-      font-size: 48px; font-weight: 900;
-      color: var(--accent); opacity: 0.15;
-      line-height: 1; margin-bottom: 16px;
-      letter-spacing: -0.04em;
-    }
-    .toc-title {
-      font-size: 16px; font-weight: 700;
-      color: var(--text); margin-bottom: 12px;
-    }
-    .toc-items { font-size: 13px; color: var(--text-secondary); line-height: 1.7; }
-
-    /* Bullet list */
-    .bullet-list { list-style: none; max-width: 800px; width: 100%; }
-    .bullet-list li {
-      display: flex; align-items: flex-start; gap: 14px;
-      padding: 14px 20px; margin-bottom: 10px;
-      background: var(--card-bg); border-radius: 12px;
-      border: 1px solid var(--border);
-      font-size: 15px; line-height: 1.5;
-    }
-    .bullet-list li::before {
-      content: '▸'; color: var(--accent);
-      font-size: 14px; margin-top: 1px; flex-shrink: 0;
-    }
-
-    /* Profile slide special */
-    .profile-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 16px; max-width: 900px; width: 100%;
-    }
-    .profile-name {
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 900; letter-spacing: -0.04em;
-      color: var(--text); margin-bottom: 8px;
-    }
-    .profile-name span { color: var(--accent); }
-
-    /* Keyword grid for slide 28 */
-    .keyword-grid {
-      display: grid; grid-template-columns: repeat(2, 1fr);
-      gap: 16px; max-width: 900px; width: 100%;
-    }
-    .kw-group-title {
-      font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
-      text-transform: uppercase; color: var(--accent);
-      margin-bottom: 12px;
-    }
-    .kw-tags { display: flex; flex-wrap: wrap; gap: 8px; }
-    .kw-tag {
-      padding: 5px 12px; border-radius: 20px;
-      background: var(--card-bg); border: 1px solid var(--border);
-      font-size: 13px; font-weight: 500; color: var(--text);
-    }
-
-    /* Closing slide */
-    .closing-content { text-align: center; }
-    .closing-h1 {
-      font-size: clamp(2.5rem, 5vw, 4rem);
-      font-weight: 900; color: #F0EEE8;
-      letter-spacing: -0.04em; margin-bottom: 24px;
-    }
-    .closing-quote {
-      font-size: clamp(1rem, 2vw, 1.4rem);
-      color: rgba(240,238,232,0.55);
-      margin-bottom: 40px; font-style: italic;
-    }
-    .closing-cta {
-      display: inline-block;
-      padding: 14px 32px; background: var(--accent);
-      color: white; border-radius: 30px;
-      font-size: 15px; font-weight: 700;
-      letter-spacing: 0.02em; margin-bottom: 32px;
-    }
-    .closing-source {
-      font-size: 12px; color: rgba(240,238,232,0.35);
-      letter-spacing: 0.05em;
-    }
-
-    /* Entrance animations */
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .slide.active .animate { animation: fadeInUp 0.5s ease-out both; }
-    .slide.active .delay-1 { animation-delay: 0.08s; }
-    .slide.active .delay-2 { animation-delay: 0.16s; }
-    .slide.active .delay-3 { animation-delay: 0.24s; }
-    .slide.active .delay-4 { animation-delay: 0.32s; }
-    .slide.active .delay-5 { animation-delay: 0.40s; }
-    .slide.active .delay-6 { animation-delay: 0.48s; }
-
-    @media (prefers-reduced-motion: reduce) {
-      .slide { transition: none; }
-      .slide.active .animate { animation: none; }
-    }
-
-    @media print {
-      .viz-menu, .slide-nav, .slide-click-zone, .progress-bar { display: none !important; }
-      .slide { position: relative; transform: none !important; break-inside: avoid; page-break-after: always; }
-      .slides-wrapper { overflow: visible; height: auto; }
-      body { overflow: visible; }
-    }
-
-    @media (max-width: 375px) { body { overflow-x: hidden; } }
-  </style>
+/* ── Footer ───────────────────────────── */
+.site-footer {
+  margin-top: 6rem; padding: 3rem 5vw;
+  border-top: 1px solid var(--border);
+  display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: space-between;
+}
+.footer-left { font-size: .75rem; color: var(--text-3); line-height: 1.8; }
+.footer-right { display: flex; gap: .5rem; }
+.footer-chip {
+  padding: .3rem .8rem; border-radius: 8px;
+  background: var(--surface); border: 1px solid var(--border);
+  font-size: .72rem; color: var(--text-3); font-family: monospace;
+}
+</style>
 </head>
 <body>
-<a href="#main-content" style="position:absolute;left:-9999px;z-index:10000;" onfocus="this.style.cssText='position:fixed;left:16px;top:16px;z-index:10000;padding:8px 16px;background:var(--accent);color:white;text-decoration:none;border-radius:4px;'">Skip to content</a>
 
-<!-- MENU -->
-<div class="viz-menu">
-  <button class="viz-menu-toggle" onclick="toggleMenu()" aria-label="메뉴">
-    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-      <line x1="2" y1="4" x2="16" y2="4"/><line x1="2" y1="9" x2="16" y2="9"/><line x1="2" y1="14" x2="16" y2="14"/>
-    </svg>
-  </button>
-  <div class="viz-menu-dropdown" id="vizMenuDropdown">
-    <button onclick="cycleTheme()"><span id="themeIcon">☀️</span><span id="themeLabel">라이트</span></button>
-    <button onclick="downloadImage()"><span>📥</span><span>PNG 저장</span></button>
-    <button onclick="window.print()"><span>🖨️</span><span>인쇄 / PDF</span></button>
+<div id="scroll-progress"></div>
+
+<nav class="site-nav">
+  <div class="nav-brand">
+    <div class="nav-dot"></div>
+    <span>Antigravity Intelligence</span>
   </div>
-</div>
-
-<!-- Progress Bar -->
-<div class="progress-bar" aria-hidden="true"><div class="progress-fill" id="progressFill" style="width:3.33%"></div></div>
-
-<!-- Click Zones -->
-<div class="slide-click-zone left" onclick="prevSlide()" aria-hidden="true"></div>
-<div class="slide-click-zone right" onclick="nextSlide()" aria-hidden="true"></div>
-
-<!-- Slide Nav -->
-<nav class="slide-nav" aria-label="슬라이드 탐색">
-  <button onclick="prevSlide()" aria-label="이전 슬라이드">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
-  </button>
-  <span class="slide-counter" id="slideCounter">1 / 30</span>
-  <button onclick="nextSlide()" aria-label="다음 슬라이드">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
-  </button>
+  <span class="nav-meta">바스티앙 비베스 작품 분석 · Artist Report</span>
 </nav>
 
-<main id="main-content">
-<div class="slides-wrapper" id="slidesWrapper">
-
-  <!-- SLIDE 1: 표지 -->
-  <section class="slide slide-dark active" id="slide-1" role="region" aria-label="표지">
-    <div class="slide-title-content">
-      <div class="slide-title-eyebrow animate">Bastien Vivès · Graphic Novel Analysis · 2026</div>
-      <div class="slide-accent-bar animate delay-1"></div>
-      <h1 class="slide-title-h1 animate delay-2">이야기를<br>그리는 <em>연출가</em></h1>
-      <p class="slide-title-sub animate delay-3">바스티앙 비베스 작품 분석 — 특징 · 포인트 · 테크닉</p>
-      <div class="slide-title-tags animate delay-4">
-        <span class="slide-tag">드로잉 스타일</span>
-        <span class="slide-tag">스토리텔링</span>
-        <span class="slide-tag">테크닉 접근법</span>
-        <span class="slide-tag">독학 가이드</span>
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-badge">Artist Intelligence Report</div>
+    <h1 class="hero-title">이야기를<br>그리는 연출가</h1>
+    <p class="hero-sub">바스티앙 비베스(1984~)의 드로잉 철학 · 서사 기법 · 컬러 언어 · 독학 전략을 3개 축으로 해체한 창작 분석 리포트.</p>
+    <div class="hero-chips">
+      <span class="chip chip-accent">✏️ 드로잉 스타일</span>
+      <span class="chip chip-accent">🎭 스토리텔링</span>
+      <span class="chip chip-accent">🎨 컬러 시스템</span>
+      <span class="chip chip-accent">📚 독학 가이드</span>
+      <span class="chip">📅 Bastien Vivès · 2026</span>
+    </div>
+  </div>
+  <div class="hero-card">
+    <div class="hero-card-title">핵심 키워드</div>
+    <div class="hero-keywords">
+      <div class="hero-kw">
+        <span class="hero-kw-label">LINE</span>
+        <span class="hero-kw-value">trait lâché</span>
+      </div>
+      <div class="hero-kw">
+        <span class="hero-kw-label">DIRECTION</span>
+        <span class="hero-kw-value">metteur en scène</span>
+      </div>
+      <div class="hero-kw">
+        <span class="hero-kw-label">NARRATIVE</span>
+        <span class="hero-kw-value">dessin narratif</span>
+      </div>
+      <div class="hero-kw">
+        <span class="hero-kw-label">SPACE</span>
+        <span class="hero-kw-value">huis clos</span>
+      </div>
+      <div class="hero-kw">
+        <span class="hero-kw-label">FORM</span>
+        <span class="hero-kw-value">réduction</span>
       </div>
     </div>
-    <span class="slide-unit-tag">바스티앙 비베스 작품 분석</span>
-  </section>
+  </div>
+</section>
 
-  <!-- SLIDE 2: 목차 -->
-  <section class="slide" id="slide-2" role="region" aria-label="목차">
-    <h2 class="slide-heading animate">목차</h2>
-    <div class="toc-grid animate delay-1">
-      <div class="toc-card">
-        <div class="toc-num">01</div>
-        <div class="toc-title">작가 소개 · 드로잉 스타일 · 선 표현</div>
-        <div class="toc-items">작가 프로필 · 작품 연보<br>핵심 철학 · trait lâché<br>디지털 워크플로우</div>
-      </div>
-      <div class="toc-card">
-        <div class="toc-num">02</div>
-        <div class="toc-title">감정 표현 · 스토리텔링 · 컬러 시스템</div>
-        <div class="toc-items">인물 연기 설계<br>공간·프레이밍 기법<br>서사 코드로서의 색채</div>
-      </div>
-      <div class="toc-card">
-        <div class="toc-num">03</div>
-        <div class="toc-title">테크닉 접근법 · 독학 가이드 · 정리</div>
-        <div class="toc-items">성장 6단계 가이드<br>디지털 워크플로우 구축<br>만화 창작 10원칙</div>
-      </div>
+<!-- ═══════════════════════════════════════════════════════
+     UNIT 1 — 작가 소개 · 드로잉 스타일
+════════════════════════════════════════════════════════ -->
+<section class="cat-section" id="unit1">
+  <div class="cat-banner" style="background-image:url('https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=1600&q=70&fm=webp&fit=crop')">
+    <div class="cat-banner-overlay"></div>
+    <div class="cat-banner-content">
+      <span class="cat-emoji">✏️</span>
+      <h2 class="cat-title">Unit 1 — 작가 소개 · 드로잉 스타일</h2>
     </div>
-    <span class="slide-unit-tag">목차</span>
-  </section>
+  </div>
+  <div class="cards-grid">
 
-  <!-- SLIDE 3: 작가 프로필 -->
-  <section class="slide" id="slide-3" role="region" aria-label="작가 프로필">
-    <div style="max-width:900px;width:100%">
-      <div class="animate" style="margin-bottom:8px;font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent)">Unit 1 · 작가 소개</div>
-      <div class="profile-name animate delay-1">바스티앙 비베스 <span>(1984~)</span></div>
-      <div class="profile-grid animate delay-2">
-        <div class="bento-card">
-          <div class="bento-label">출신 · 학력</div>
-          <div class="bento-text">파리 출신<br>그래픽 아트 & 애니메이션 전공</div>
+    <!-- 작가 프로필 -->
+    <div class="ot-card">
+      <div class="card-header">
+        <span class="card-tag tag-insight">👤 PROFILE</span>
+      </div>
+      <div class="card-body">
+        <div class="card-section-title">바스티앙 비베스 (1984~)</div>
+        <div class="mini-grid mini-grid-2">
+          <div class="mini-card">
+            <div class="mini-label">출신 · 학력</div>
+            <div class="mini-text">파리 출신<br>그래픽 아트 & 애니메이션 전공</div>
+          </div>
+          <div class="mini-card">
+            <div class="mini-label">데뷔</div>
+            <div class="mini-text">2008년 《염소의 맛》<br>앙굴렘 국제만화페스티벌 <strong>신인상</strong></div>
+          </div>
         </div>
-        <div class="bento-card">
-          <div class="bento-label">데뷔</div>
-          <div class="bento-text">2008년 《염소의 맛》<br>앙굴렘 국제만화페스티벌 <strong>신인상</strong></div>
+        <div class="hl-box">
+          "국제 만화계의 젊은 시인" — 대표작: 《폴리나》 · 《라스트맨》 · 《내 눈 안의 너》 · 《제국을 위하여》
         </div>
-        <div class="bento-card" style="grid-column:span 2">
-          <div class="bento-label">평가 & 대표작</div>
-          <div class="bento-text">"국제 만화계의 젊은 시인"<br>《폴리나》 · 《라스트맨》 · 《내 눈 안의 너》 · 《제국을 위하여》</div>
-        </div>
-      </div>
-    </div>
-    <span class="slide-unit-tag">Unit 1 — 작가 소개</span>
-  </section>
-
-  <!-- SLIDE 4: 작품 연보 -->
-  <section class="slide" id="slide-4" role="region" aria-label="주요 작품 연보">
-    <h2 class="slide-heading animate">주요 작품 연보</h2>
-    <div class="timeline-container animate delay-1">
-      <div class="timeline-line" aria-hidden="true"></div>
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-year">2008</div>
-        <div class="timeline-desc">《염소의 맛 (Le Goût du chlore)》— 앙굴렘 신인상 수상</div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-year">2011</div>
-        <div class="timeline-desc">《폴리나 (Polina)》— 올해의 그래픽노블 선정</div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-year">2013~</div>
-        <div class="timeline-desc">《라스트맨 (Lastman)》공동 연재 시작 (Balak, Sanlaville와 협업)</div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-year">이후</div>
-        <div class="timeline-desc">《내 눈 안의 너》 · 《제국을 위하여》 등 다수 발표</div>
-      </div>
-    </div>
-    <span class="slide-unit-tag">Unit 1 — 작가 소개</span>
-  </section>
-
-  <!-- SLIDE 5: 핵심 철학 -->
-  <section class="slide" id="slide-5" role="region" aria-label="핵심 철학">
-    <div class="quote-container">
-      <span class="quote-mark animate" aria-hidden="true">"</span>
-      <p class="quote-text animate delay-1">감정이 전달되는 순간,<br>과도한 디테일은 불필요하다</p>
-      <p class="quote-sub animate delay-2">스스로를 일러스트레이터가 아닌 <strong>연출가(metteur en scène)</strong>로 규정.<br>그림은 목적이 아니라 이야기 전달의 수단이다.</p>
-      <div class="quote-keywords animate delay-3">
-        <span class="kw-chip">metteur en scène</span>
-        <span class="kw-chip">dessin narratif</span>
-        <span class="kw-chip">서사 우선주의</span>
-      </div>
-    </div>
-    <span class="slide-unit-tag">Unit 1 — 핵심 철학</span>
-  </section>
-
-  <!-- SLIDE 6: 선의 특징 1 -->
-  <section class="slide" id="slide-6" role="region" aria-label="선의 특징 1">
-    <h2 class="slide-heading animate">선의 특징 1 — <span class="accent">느슨하고 흐르는 선</span></h2>
-    <div class="bento-grid animate delay-1">
-      <div class="bento-card">
-        <div class="bento-label">계보</div>
-        <div class="bento-title">Hugo Pratt · Milton Caniff</div>
-        <div class="bento-text">붓 터치 전통을 계승한 유럽 서사 만화의 선 언어</div>
-      </div>
-      <div class="bento-card">
-        <div class="bento-label">기법</div>
-        <div class="bento-title">masses de gris</div>
-        <div class="bento-text">붓 터치 + 회색 덩어리 조합으로 깊이감 표현</div>
-      </div>
-      <div class="bento-card">
-        <div class="bento-label">철학</div>
-        <div class="bento-title">trait lâché</div>
-        <div class="bento-text">윤곽선보다 움직임의 흐름을 포착하는 데 집중</div>
-      </div>
-    </div>
-    <span class="slide-unit-tag">Unit 1 — 드로잉 스타일</span>
-  </section>
-
-  <!-- SLIDE 7: 선의 특징 2 (테이블) -->
-  <section class="slide" id="slide-7" role="region" aria-label="표현 목적이 선 종류를 결정한다">
-    <h2 class="slide-heading animate">선의 특징 2 — <span class="accent">표현 목적이 선 종류를 결정한다</span></h2>
-    <div class="animate delay-1" style="width:100%;max-width:900px">
-      <table class="slide-table" role="table" aria-label="작품별 선 종류 비교">
-        <thead><tr>
-          <th>작품</th><th>장면</th><th>선 종류</th><th>효과</th>
-        </tr></thead>
-        <tbody>
-          <tr><td>《폴리나》</td><td>발레 장면</td><td>굵은 브러시</td><td>유연한 움직임</td></tr>
-          <tr><td>《제국을 위하여》</td><td>갑옷 장면</td><td>볼펜형 딱딱한 선</td><td>형태의 단단함</td></tr>
-        </tbody>
-      </table>
-      <div class="animate delay-2" style="margin-top:24px;padding:18px 24px;background:var(--card-bg);border-radius:12px;border-left:4px solid var(--accent);font-size:15px;color:var(--text-secondary)">
-        원칙: 같은 작가도 <strong style="color:var(--text)">장면의 목적</strong>에 따라 선 종류를 달리한다
-      </div>
-    </div>
-    <span class="slide-unit-tag">Unit 1 — 드로잉 스타일</span>
-  </section>
-
-  <!-- SLIDE 8: 디지털 작업 환경 -->
-  <section class="slide" id="slide-8" role="region" aria-label="100% 디지털 작업 환경">
-    <h2 class="slide-heading animate">100% 디지털 작업 환경</h2>
-    <div class="bento-grid bento-2col animate delay-1">
-      <div class="bento-card">
-        <div class="bento-label">도구</div>
-        <div class="bento-title">Photoshop + 그래픽 태블릿</div>
-        <div class="bento-text">인물 위치·크기를 자유롭게 이동·확대·축소하여 최적 미장센 탐색</div>
-      </div>
-      <div class="bento-card">
-        <div class="bento-label">특징</div>
-        <div class="bento-title">아날로그 원화 존재하지 않음</div>
-        <div class="bento-text">디지털이 곧 원본. 연출가적 시선으로 프레임을 자유롭게 재구성</div>
-      </div>
-    </div>
-    <span class="slide-unit-tag">Unit 1 — 디지털 워크플로우</span>
-  </section>
-
-  <!-- SLIDE 9: 작화 워크플로우 -->
-  <section class="slide" id="slide-9" role="region" aria-label="작화 워크플로우 4단계">
-    <h2 class="slide-heading animate">작화 워크플로우 4단계</h2>
-    <div class="timeline-container animate delay-1">
-      <div class="timeline-line" aria-hidden="true"></div>
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-year">Step 1 스토리보드</div>
-        <div class="timeline-desc">인물 위치·태도만 개략적으로 잡기 (표정·대사 없음)</div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-year">Step 2 구도 조율</div>
-        <div class="timeline-desc">포토샵 레이어·올가미 툴로 미장센 완성</div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-year">Step 3 선 작업</div>
-        <div class="timeline-desc">스케치 레이어 불투명도를 낮추고 최종 선 작업</div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-year">Step 4 검토</div>
-        <div class="timeline-desc">처음부터 통독 → 리듬·가독성 점검 → 세부 묘사 진입</div>
-      </div>
-    </div>
-    <span class="slide-unit-tag">Unit 1 — 워크플로우</span>
-  </section>
-
-  <!-- SLIDE 10: Unit 1 요약 -->
-  <section class="slide" id="slide-10" role="region" aria-label="Unit 1 핵심 요약">
-    <div class="quote-container">
-      <span class="quote-mark animate" aria-hidden="true">"</span>
-      <p class="quote-text animate delay-1">비베스의 선은<br>완성을 향하지 않는다 — <span style="color:var(--accent)">감정을 향한다</span></p>
-      <div class="quote-keywords animate delay-2">
-        <span class="kw-chip">trait lâché</span>
-        <span class="kw-chip">metteur en scène</span>
-        <span class="kw-chip">dessin narratif</span>
-      </div>
-      <p class="quote-sub animate delay-3" style="margin-top:24px">Unit 2: 이 철학이 감정 표현·공간 설계·컬러로 구현되는 방식 →</p>
-    </div>
-    <span class="slide-unit-tag">Unit 1 — 핵심 요약</span>
-  </section>
-
-  <!-- SLIDE 11: Unit 2 도입 -->
-  <section class="slide" id="slide-11" role="region" aria-label="연출가의 도구상자">
-    <div style="max-width:900px;width:100%">
-      <div class="animate" style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:8px">Unit 2 · 감정 표현</div>
-      <h2 class="slide-heading animate delay-1">연출가의 도구상자 —<br>감정을 설계하는 <span class="accent">세 가지 축</span></h2>
-      <div class="bento-grid animate delay-2">
-        <div class="bento-card">
-          <div class="bento-label">축 1</div>
-          <div class="bento-title">인물 연기 설계</div>
-          <div class="bento-text">캐릭터를 어떻게 '연기'시킬까</div>
-        </div>
-        <div class="bento-card">
-          <div class="bento-label">축 2</div>
-          <div class="bento-title">공간·프레이밍</div>
-          <div class="bento-text">어디에, 어떤 크기로 배치할까</div>
-        </div>
-        <div class="bento-card">
-          <div class="bento-label">축 3</div>
-          <div class="bento-title">컬러 시스템</div>
-          <div class="bento-text">색이 무엇을 말하는가</div>
+        <div class="phase-timeline">
+          <div class="phase-step">
+            <div class="phase-num">2008</div>
+            <div class="phase-body">
+              <div class="phase-title">《염소의 맛 (Le Goût du chlore)》</div>
+              <div class="phase-action">앙굴렘 신인상 수상 — 수영장 밀실이라는 제한된 공간으로 두 인물의 관계를 응축</div>
+            </div>
+          </div>
+          <div class="phase-step">
+            <div class="phase-num">2011</div>
+            <div class="phase-body">
+              <div class="phase-title">《폴리나 (Polina)》</div>
+              <div class="phase-action">올해의 그래픽노블 선정 — 발레리나의 성장 서사, 흑백 명암 코드의 완성</div>
+            </div>
+          </div>
+          <div class="phase-step">
+            <div class="phase-num">2013~</div>
+            <div class="phase-body">
+              <div class="phase-title">《라스트맨 (Lastman)》</div>
+              <div class="phase-action">Balak, Sanlaville와 공동 연재 — 독립적 실루엣 캐릭터 설계의 실험</div>
+            </div>
+          </div>
+          <div class="phase-step">
+            <div class="phase-num">이후</div>
+            <div class="phase-body">
+              <div class="phase-title">《내 눈 안의 너》 · 《제국을 위하여》</div>
+              <div class="phase-action">주관 시점 실험 및 협업 컬러리스트 도입 — 서사 도구로서의 색채 확장</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <span class="slide-unit-tag">Unit 2 — 감정 표현</span>
-  </section>
 
-  <!-- SLIDE 12: Vue subjective -->
-  <section class="slide" id="slide-12" role="region" aria-label="1인칭 주관 시점">
-    <h2 class="slide-heading animate">기법 1 — <span class="accent">1인칭 주관 시점</span> (Vue subjective)</h2>
-    <div class="bento-grid bento-2col animate delay-1">
-      <div class="bento-card" style="background:var(--accent);border-color:var(--accent)">
-        <div class="bento-label" style="color:rgba(255,255,255,0.7)">사례</div>
-        <div class="bento-title" style="color:white">《내 눈 안의 너》</div>
-        <div class="bento-text" style="color:rgba(255,255,255,0.85)">남성 주인공을 화면에서 완전히 배제하는 극단적 시점 실험</div>
+    <!-- 핵심 철학 -->
+    <div class="ot-card">
+      <div class="card-header">
+        <span class="card-tag tag-insight">💡 PHILOSOPHY</span>
       </div>
-      <div class="bento-card">
-        <div class="bento-label">효과</div>
-        <div class="bento-title">독자 = 화자</div>
-        <div class="bento-text">상대 여성의 미세한 반응·태도 변화에 독자가 완전히 집중. 완전한 몰입 유도</div>
-      </div>
-    </div>
-    <span class="slide-unit-tag">Unit 2 — 기법 1</span>
-  </section>
-
-  <!-- SLIDE 13: huis clos -->
-  <section class="slide" id="slide-13" role="region" aria-label="제한된 공간으로 인물 관계 부각">
-    <h2 class="slide-heading animate">기법 2 — <span class="accent">제한된 공간</span>으로 인물 관계 부각</h2>
-    <div class="bento-grid bento-2col animate delay-1">
-      <div class="bento-card">
-        <div class="bento-label">사례</div>
-        <div class="bento-title">《염소의 맛》의 수영장</div>
-        <div class="bento-text">사회적 코드와 낮밤 구분이 없는 밀실(huis clos) 설정</div>
-      </div>
-      <div class="bento-card">
-        <div class="bento-label">원리</div>
-        <div class="bento-title">공간의 폐쇄성 = 감정의 농도</div>
-        <div class="bento-text">제한된 공간이 두 인물 사이의 텐션에만 집중하게 만드는 서사 장치</div>
-      </div>
-    </div>
-    <div class="animate delay-2" style="margin-top:16px;padding:14px 20px;background:var(--card-bg);border-radius:12px;border-left:4px solid var(--accent);font-size:14px;color:var(--text-secondary);max-width:720px">
-      키워드: <strong style="color:var(--text)">huis clos</strong> (밀실극) — 공간을 서사 도구로 사용
-    </div>
-    <span class="slide-unit-tag">Unit 2 — 기법 2</span>
-  </section>
-
-  <!-- SLIDE 14: Morphologie -->
-  <section class="slide" id="slide-14" role="region" aria-label="형태적 특징으로 성격 표현">
-    <h2 class="slide-heading animate">기법 3 — <span class="accent">형태적 특징(Morphologie)</span>으로 성격 표현</h2>
-    <div class="bento-grid animate delay-1">
-      <div class="bento-card">
-        <div class="bento-label">방법</div>
-        <div class="bento-text">캐릭터별 고유 체형·눈썹·팔 길이 등을 부여</div>
-      </div>
-      <div class="bento-card">
-        <div class="bento-label">영감 출처</div>
-        <div class="bento-text">비디오 게임(스트리트 파이터 등)의 캐릭터 디자인</div>
-      </div>
-      <div class="bento-card">
-        <div class="bento-label">효과</div>
-        <div class="bento-text">다른 작가가 그려도 즉시 알아볼 수 있는 실루엣 (《라스트맨》)</div>
-      </div>
-    </div>
-    <span class="slide-unit-tag">Unit 2 — 기법 3</span>
-  </section>
-
-  <!-- SLIDE 15: 환원과 암시 -->
-  <section class="slide" id="slide-15" role="region" aria-label="환원과 암시의 미학">
-    <div class="quote-container">
-      <span class="quote-mark animate" aria-hidden="true">"</span>
-      <p class="quote-text animate delay-1">모든 것을 그리지 않는다 —<br>독자의 상상력이 빈 공간을 채운다</p>
-      <div class="quote-keywords animate delay-2">
-        <span class="kw-chip">réduction (환원)</span>
-        <span class="kw-chip">mise en scène</span>
-        <span class="kw-chip">암시의 미학</span>
-      </div>
-      <p class="quote-sub animate delay-3" style="margin-top:20px">배경 최소화, 캐릭터에 집중. 독자에게 공간을 비워준다.</p>
-    </div>
-    <span class="slide-unit-tag">Unit 2 — 스토리텔링</span>
-  </section>
-
-  <!-- SLIDE 16: 프레이밍 -->
-  <section class="slide" id="slide-16" role="region" aria-label="공간을 서사 도구로 활용하는 프레이밍">
-    <h2 class="slide-heading animate">공간을 서사 도구로 활용하는 <span class="accent">프레이밍</span></h2>
-    <ul class="bullet-list animate delay-1" aria-label="프레이밍 기법">
-      <li>중요 대사 장면: 인물을 프레임 안에서 멀리 배치 → 여운 강조</li>
-      <li>클라이맥스: 클로즈업으로 압박감 극대화</li>
-      <li>영화적 앵글: 마츠모토 타이요 《핑퐁》 · 일본 애니메이션 영향</li>
-    </ul>
-    <span class="slide-unit-tag">Unit 2 — 스토리텔링</span>
-  </section>
-
-  <!-- SLIDE 17: 페이지 호흡 -->
-  <section class="slide" id="slide-17" role="region" aria-label="페이지 호흡과 분량 철학">
-    <h2 class="slide-heading animate">페이지 호흡과 <span class="accent">분량 철학</span></h2>
-    <div class="bento-grid animate delay-1">
-      <div class="bento-card">
-        <div class="bento-label">선호 분량</div>
-        <div class="bento-title">200페이지 이상</div>
-        <div class="bento-text">전통 프랑스 단편 포맷 탈피 — 긴 분량이 서사 리듬을 살린다</div>
-      </div>
-      <div class="bento-card">
-        <div class="bento-label">이유</div>
-        <div class="bento-title">무리한 생략 없이</div>
-        <div class="bento-text">충분한 페이지가 있어야 서사의 리듬과 호흡을 자유롭게 조율할 수 있다</div>
-      </div>
-      <div class="bento-card">
-        <div class="bento-label">우선순위</div>
-        <div class="bento-title">리딩 플로우 점검 먼저</div>
-        <div class="bento-text">세부 묘사보다 처음부터 쭉 읽어보며 쾌적하게 읽히는지 먼저 확인</div>
-      </div>
-    </div>
-    <span class="slide-unit-tag">Unit 2 — 스토리텔링</span>
-  </section>
-
-  <!-- SLIDE 18: 컬러 시스템 (테이블) -->
-  <section class="slide" id="slide-18" role="region" aria-label="컬러 시스템">
-    <h2 class="slide-heading animate">컬러 시스템 — <span class="accent">《폴리나》 명암 코드</span></h2>
-    <div class="animate delay-1" style="width:100%;max-width:860px">
-      <table class="slide-table" role="table" aria-label="폴리나 명암 코드">
-        <thead><tr><th>색조</th><th>상황</th><th>의미</th></tr></thead>
-        <tbody>
-          <tr><td>회색 (masses de gris)</td><td>일상·옷차림</td><td>평범한 일상</td></tr>
-          <tr><td>흰색 (비워둠)</td><td>춤추는 순간·피부</td><td>움직임·순수함 강조</td></tr>
-          <tr><td>극단적 흑백 대비</td><td>무대 위 클라이맥스</td><td>극적 순간</td></tr>
-        </tbody>
-      </table>
-      <div class="animate delay-2" style="margin-top:20px;padding:14px 20px;background:var(--card-bg);border-radius:12px;border-left:4px solid var(--accent);font-size:14px;color:var(--text-secondary)">
-        핵심: 비베스에게 색채는 장식이 아니라 <strong style="color:var(--text)">서사 코드</strong>다
-      </div>
-    </div>
-    <span class="slide-unit-tag">Unit 2 — 컬러 시스템</span>
-  </section>
-
-  <!-- SLIDE 19: 색채 기법 -->
-  <section class="slide" id="slide-19" role="region" aria-label="시간·현실을 구분하는 색채 기법">
-    <h2 class="slide-heading animate">시간·현실을 구분하는 <span class="accent">색채 기법</span></h2>
-    <div class="bento-grid bento-2col animate delay-1">
-      <div class="bento-card">
-        <div class="bento-label">현실 장면</div>
-        <div class="bento-title">단색 평면 칠 (aplats)</div>
-        <div class="bento-text">단순한 색 블록으로 현재를 표현 — 명확하고 직접적</div>
-      </div>
-      <div class="bento-card">
-        <div class="bento-label">회상 장면</div>
-        <div class="bento-title">사진 색조 (teinte photographique)</div>
-        <div class="bento-text">사진과 같은 색조로 과거를 표현 — 흐릿한 기억의 질감</div>
-      </div>
-    </div>
-    <div class="animate delay-2" style="margin-top:16px;padding:14px 24px;background:var(--card-bg);border-radius:12px;font-size:14px;color:var(--text-secondary);max-width:720px">
-      사례: 《내 눈 안의 너》— 시공간을 시각 기호로 명확히 분리
-    </div>
-    <span class="slide-unit-tag">Unit 2 — 컬러 시스템</span>
-  </section>
-
-  <!-- SLIDE 20: 협업 색채 -->
-  <section class="slide" id="slide-20" role="region" aria-label="협업 시 색채로 통일감 확보">
-    <h2 class="slide-heading animate">협업 시 색채로 <span class="accent">통일감 확보</span></h2>
-    <ul class="bullet-list animate delay-1">
-      <li>사례: 《제국을 위하여》 — 작화를 여러 작가가 분담</li>
-      <li>컬러리스트(Sandra Desmazières)가 서로 다른 선 스타일 위에 색채를 덧입혀 통합</li>
-      <li>원칙: 컬러는 스타일 차이를 상쇄하는 통일 언어</li>
-    </ul>
-    <div class="animate delay-2" style="margin-top:20px;padding:14px 24px;background:var(--card-bg);border-radius:12px;border-left:4px solid var(--accent);font-size:14px;color:var(--text-secondary);max-width:720px">
-      Unit 3 → 이 모든 원리를 내 작업에 어떻게 적용할 것인가 — 독학 가이드
-    </div>
-    <span class="slide-unit-tag">Unit 2 — 컬러 시스템</span>
-  </section>
-
-  <!-- SLIDE 21: 독학 가이드 개요 -->
-  <section class="slide" id="slide-21" role="region" aria-label="독학 가이드 개요">
-    <div style="max-width:900px;width:100%">
-      <div class="animate" style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:8px">Unit 3 · 독학 가이드</div>
-      <h2 class="slide-heading animate delay-1">비베스가 직접 밝힌 <span class="accent">성장 6단계</span></h2>
-    </div>
-    <div class="timeline-container animate delay-2">
-      <div class="timeline-line" aria-hidden="true"></div>
-      <div class="timeline-item"><div class="timeline-dot"></div>
-        <div class="timeline-year">Step 1</div><div class="timeline-desc">스케치북으로 시각적 어휘 축적</div>
-      </div>
-      <div class="timeline-item"><div class="timeline-dot"></div>
-        <div class="timeline-year">Step 2</div><div class="timeline-desc">선택적 시각 기억 훈련 (생략의 기술)</div>
-      </div>
-      <div class="timeline-item"><div class="timeline-dot"></div>
-        <div class="timeline-year">Step 3</div><div class="timeline-desc">팬아트·모작으로 캐릭터 디자인 원리 연구</div>
-      </div>
-      <div class="timeline-item"><div class="timeline-dot"></div>
-        <div class="timeline-year">Step 4</div><div class="timeline-desc">디지털 워크플로우 구축</div>
-      </div>
-      <div class="timeline-item"><div class="timeline-dot"></div>
-        <div class="timeline-year">Step 5</div><div class="timeline-desc">서사 우선 마인드셋으로 전환</div>
-      </div>
-      <div class="timeline-item"><div class="timeline-dot"></div>
-        <div class="timeline-year">Step 6</div><div class="timeline-desc">커뮤니티 참여로 시야 확장</div>
-      </div>
-    </div>
-    <span class="slide-unit-tag">Unit 3 — 독학 가이드 개요</span>
-  </section>
-
-  <!-- SLIDE 22: Step 1 -->
-  <section class="slide" id="slide-22" role="region" aria-label="Step 1 시각적 어휘 축적">
-    <h2 class="slide-heading animate">Step 1 — <span class="accent">시각적 어휘 축적</span></h2>
-    <div class="bento-grid animate delay-1">
-      <div class="bento-card">
-        <div class="bento-label">방법</div>
-        <div class="bento-text">카페·공원 등 일상 공간에서 사람들의 움직임·형태 관찰 및 스케치</div>
-      </div>
-      <div class="bento-card">
-        <div class="bento-label">모작</div>
-        <div class="bento-text">TV 인물(예: 프레디 머큐리) 및 마음에 드는 사진을 모작</div>
-      </div>
-      <div class="bento-card">
-        <div class="bento-label">핵심 마인드</div>
-        <div class="bento-text">작가는 마음에 드는 시각 요소를 저장하는 <strong>'하드 디스크'</strong>다</div>
-      </div>
-    </div>
-    <span class="slide-unit-tag">Unit 3 — Step 1</span>
-  </section>
-
-  <!-- SLIDE 23: Step 2 -->
-  <section class="slide" id="slide-23" role="region" aria-label="Step 2 생략의 기술">
-    <div class="quote-container">
-      <span class="quote-mark animate" aria-hidden="true">"</span>
-      <p class="quote-text animate delay-1">무엇을 생략할지가<br>비베스 선 표현의 <span style="color:var(--accent)">핵심</span>이다</p>
-      <p class="quote-sub animate delay-2">기억할 때 가장 인상적인 특징 하나만 포착하고 나머지를 버리는 훈련.<br>완벽하게 기억하려는 욕심이 오히려 핵심을 흐린다.</p>
-      <div class="quote-keywords animate delay-3">
-        <span class="kw-chip">Step 2 — 생략의 기술</span>
-      </div>
-    </div>
-    <span class="slide-unit-tag">Unit 3 — Step 2</span>
-  </section>
-
-  <!-- SLIDE 24: Step 3 -->
-  <section class="slide" id="slide-24" role="region" aria-label="Step 3 팬아트·모작">
-    <h2 class="slide-heading animate">Step 3 — <span class="accent">팬아트·모작</span>으로 캐릭터 디자인 연구</h2>
-    <ul class="bullet-list animate delay-1">
-      <li>좋아하는 게임·애니 캐릭터를 수백 장 모작</li>
-      <li>분석 질문: <strong>"왜 이 캐릭터는 한눈에 알아볼 수 있는가?"</strong></li>
-      <li>실루엣·체형·눈썹·의상 디테일 등 아이코닉한 특징을 분해 → 자신의 캐릭터에 응용</li>
-    </ul>
-    <span class="slide-unit-tag">Unit 3 — Step 3</span>
-  </section>
-
-  <!-- SLIDE 25: Step 4 (테이블) -->
-  <section class="slide" id="slide-25" role="region" aria-label="Step 4 디지털 워크플로우">
-    <h2 class="slide-heading animate">Step 4 — <span class="accent">디지털 워크플로우</span> & 브러시 선택</h2>
-    <div class="animate delay-1" style="width:100%;max-width:860px">
-      <table class="slide-table" role="table" aria-label="장면별 브러시 선택">
-        <thead><tr><th>장면 유형</th><th>브러시 종류</th><th>효과</th></tr></thead>
-        <tbody>
-          <tr><td>유연한 움직임·댄스</td><td>굵고 부드러운 브러시</td><td>흐름·생동감</td></tr>
-          <tr><td>갑옷·건축·직선 형태</td><td>딱딱한 볼펜형 브러시</td><td>단단함·정밀</td></tr>
-        </tbody>
-      </table>
-      <div class="animate delay-2" style="margin-top:20px;padding:14px 20px;background:var(--card-bg);border-radius:12px;font-size:14px;color:var(--text-secondary)">
-        도구: 그래픽 태블릿 + <strong style="color:var(--text)">Photoshop</strong> / Clip Studio Paint 대안 가능<br>
-        <span style="margin-top:6px;display:block">구도 우선: 인물 그리기 전 프레임 내 위치·크기부터 잡기</span>
-      </div>
-    </div>
-    <span class="slide-unit-tag">Unit 3 — Step 4</span>
-  </section>
-
-  <!-- SLIDE 26: Step 5 -->
-  <section class="slide" id="slide-26" role="region" aria-label="Step 5 서사 우선 마인드셋">
-    <div class="quote-container">
-      <span class="quote-mark animate" aria-hidden="true">"</span>
-      <p class="quote-text animate delay-1">독자는 한 컷을<br><span style="color:var(--accent)">1초도 보지 않는다</span></p>
-      <p class="quote-sub animate delay-2">디테일보다 "이 컷이 감정을 전달하는가"에 집중하라.<br>완벽함에 막혀 속도가 떨어지면 서사 전체 완성도가 낮아진다 — 과감히 다음 컷으로.</p>
-      <div class="quote-keywords animate delay-3">
-        <span class="kw-chip">Step 5 — 서사 우선</span>
-      </div>
-    </div>
-    <span class="slide-unit-tag">Unit 3 — Step 5</span>
-  </section>
-
-  <!-- SLIDE 27: Step 6 -->
-  <section class="slide" id="slide-27" role="region" aria-label="Step 6 커뮤니티 참여">
-    <h2 class="slide-heading animate">Step 6 — <span class="accent">커뮤니티</span> 참여로 시야 확장</h2>
-    <ul class="bullet-list animate delay-1">
-      <li>비베스의 성장 배경: 학생 시절 Catsuka 등의 드로잉 포럼 참여</li>
-      <li>독학이라도 SNS·커뮤니티에 작업을 공개하고 타인의 작업을 꾸준히 관찰</li>
-      <li><strong>"혼자 그리면 결국 제자리걸음이다"</strong> — 비베스의 경고</li>
-    </ul>
-    <span class="slide-unit-tag">Unit 3 — Step 6</span>
-  </section>
-
-  <!-- SLIDE 28: 핵심 키워드 총정리 -->
-  <section class="slide" id="slide-28" role="region" aria-label="핵심 키워드 총정리">
-    <h2 class="slide-heading animate">비베스 스타일 <span class="accent">핵심 키워드</span> 총정리</h2>
-    <div class="keyword-grid animate delay-1">
-      <div class="bento-card">
-        <div class="kw-group-title">선 표현</div>
-        <div class="kw-tags">
-          <span class="kw-tag">trait lâché</span>
-          <span class="kw-tag">masses de gris</span>
-          <span class="kw-tag">Hugo Pratt 계보</span>
+      <div class="card-body">
+        <div class="ot-quote">
+          <p class="ot-quote-main">감정이 전달되는 순간,<br>과도한 디테일은 불필요하다</p>
+          <p class="ot-quote-sub">스스로를 일러스트레이터가 아닌 <strong>연출가(metteur en scène)</strong>로 규정.<br>그림은 목적이 아니라 이야기 전달의 수단이다.</p>
         </div>
-      </div>
-      <div class="bento-card">
-        <div class="kw-group-title">연출</div>
-        <div class="kw-tags">
-          <span class="kw-tag">metteur en scène</span>
-          <span class="kw-tag">mise en scène</span>
-          <span class="kw-tag">réduction</span>
-          <span class="kw-tag">huis clos</span>
-        </div>
-      </div>
-      <div class="bento-card">
-        <div class="kw-group-title">인물</div>
-        <div class="kw-tags">
-          <span class="kw-tag">morphologie</span>
-          <span class="kw-tag">Characterization</span>
-          <span class="kw-tag">생략의 미학</span>
-        </div>
-      </div>
-      <div class="bento-card">
-        <div class="kw-group-title">프로세스</div>
-        <div class="kw-tags">
-          <span class="kw-tag">dessin narratif</span>
-          <span class="kw-tag">서사 우선주의</span>
-          <span class="kw-tag">디지털 워크플로우</span>
+        <div class="kw-cloud">
+          <span class="kw-pill">metteur en scène</span>
+          <span class="kw-pill">dessin narratif</span>
+          <span class="kw-pill">서사 우선주의</span>
         </div>
       </div>
     </div>
-    <span class="slide-unit-tag">Unit 3 — 키워드 총정리</span>
-  </section>
 
-  <!-- SLIDE 29: 10가지 원칙 -->
-  <section class="slide" id="slide-29" role="region" aria-label="만화 창작 10가지 원칙">
-    <h2 class="slide-heading animate">비베스에게 배우는 <span class="accent">만화 창작 10원칙</span></h2>
-    <div class="animate delay-1" style="width:100%;max-width:900px">
-      <table class="slide-table" role="table" aria-label="만화 창작 10가지 원칙">
-        <tbody>
-          <tr><td>01</td><td>그림은 감정 전달의 도구다</td></tr>
-          <tr><td>02</td><td>선의 종류는 표현 목적이 결정한다</td></tr>
-          <tr><td>03</td><td>스토리보드 → 구도 → 선 순서로 작업한다</td></tr>
-          <tr><td>04</td><td>인물을 연기하게 하라 (연출가 마인드)</td></tr>
-          <tr><td>05</td><td>제한된 공간이 긴장감을 만든다</td></tr>
-          <tr><td>06</td><td>모든 것을 그리지 마라 — 암시하라</td></tr>
-          <tr><td>07</td><td>컬러는 서사 코드다</td></tr>
-          <tr><td>08</td><td>리딩 플로우 점검이 항상 우선이다</td></tr>
-          <tr><td>09</td><td>시각적 어휘는 일상 관찰로 축적된다</td></tr>
-          <tr><td>10</td><td>커뮤니티에서 배워라</td></tr>
-        </tbody>
-      </table>
+    <!-- 선의 특징 -->
+    <div class="ot-card">
+      <div class="card-header">
+        <span class="card-tag tag-tech">✏️ LINE STYLE</span>
+      </div>
+      <div class="card-body">
+        <div class="card-section-title">선의 특징 1 — 느슨하고 흐르는 선</div>
+        <div class="mini-grid">
+          <div class="mini-card">
+            <div class="mini-label">계보</div>
+            <div class="mini-title">Hugo Pratt · Milton Caniff</div>
+            <div class="mini-text">붓 터치 전통을 계승한 유럽 서사 만화의 선 언어</div>
+          </div>
+          <div class="mini-card">
+            <div class="mini-label">기법</div>
+            <div class="mini-title">masses de gris</div>
+            <div class="mini-text">붓 터치 + 회색 덩어리 조합으로 깊이감 표현</div>
+          </div>
+          <div class="mini-card">
+            <div class="mini-label">철학</div>
+            <div class="mini-title">trait lâché</div>
+            <div class="mini-text">윤곽선보다 움직임의 흐름을 포착하는 데 집중</div>
+          </div>
+        </div>
+        <hr class="ot-divider">
+        <div class="card-section-title">선의 특징 2 — 표현 목적이 선 종류를 결정한다</div>
+        <div class="tbl-wrap">
+          <table class="md-table">
+            <thead><tr><th>작품</th><th>장면</th><th>선 종류</th><th>효과</th></tr></thead>
+            <tbody>
+              <tr><td>《폴리나》</td><td>발레 장면</td><td>굵은 브러시</td><td>유연한 움직임</td></tr>
+              <tr><td>《제국을 위하여》</td><td>갑옷 장면</td><td>볼펜형 딱딱한 선</td><td>형태의 단단함</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="hl-box">원칙: 같은 작가도 <strong>장면의 목적</strong>에 따라 선 종류를 달리한다</div>
+      </div>
     </div>
-    <span class="slide-unit-tag">Unit 3 — 10가지 원칙</span>
-  </section>
 
-  <!-- SLIDE 30: 클로징 -->
-  <section class="slide slide-dark" id="slide-30" role="region" aria-label="마무리">
-    <div class="closing-content">
-      <div class="slide-accent-bar animate" style="margin:0 auto 32px"></div>
-      <h2 class="closing-h1 animate delay-1">이야기가 먼저,<br>그림은 그다음</h2>
-      <p class="closing-quote animate delay-2">"비베스의 모든 기법은 서사를 위해 존재한다"</p>
-      <div class="closing-cta animate delay-3">→ 스케치북 들고 카페로 가자</div>
-      <p class="closing-source animate delay-4">YouTube 인터뷰 5편 · NotebookLM 분석 · Bastien Vivès</p>
+    <!-- 디지털 워크플로우 -->
+    <div class="ot-card">
+      <div class="card-header">
+        <span class="card-tag tag-process">⚙️ WORKFLOW</span>
+      </div>
+      <div class="card-body">
+        <div class="card-section-title">100% 디지털 작업 환경</div>
+        <div class="mini-grid mini-grid-2">
+          <div class="mini-card">
+            <div class="mini-label">도구</div>
+            <div class="mini-title">Photoshop + 그래픽 태블릿</div>
+            <div class="mini-text">인물 위치·크기를 자유롭게 이동·확대·축소하여 최적 미장센 탐색</div>
+          </div>
+          <div class="mini-card">
+            <div class="mini-label">특징</div>
+            <div class="mini-title">아날로그 원화 없음</div>
+            <div class="mini-text">디지털이 곧 원본. 연출가적 시선으로 프레임을 자유롭게 재구성</div>
+          </div>
+        </div>
+        <div class="phase-timeline">
+          <div class="phase-step">
+            <div class="phase-num">1</div>
+            <div class="phase-body">
+              <div class="phase-title">스토리보드</div>
+              <div class="phase-action">인물 위치·태도만 개략적으로 잡기 (표정·대사 없음)</div>
+            </div>
+          </div>
+          <div class="phase-step">
+            <div class="phase-num">2</div>
+            <div class="phase-body">
+              <div class="phase-title">구도 조율</div>
+              <div class="phase-action">포토샵 레이어·올가미 툴로 미장센 완성</div>
+            </div>
+          </div>
+          <div class="phase-step">
+            <div class="phase-num">3</div>
+            <div class="phase-body">
+              <div class="phase-title">선 작업</div>
+              <div class="phase-action">스케치 레이어 불투명도를 낮추고 최종 선 작업</div>
+            </div>
+          </div>
+          <div class="phase-step">
+            <div class="phase-num">4</div>
+            <div class="phase-body">
+              <div class="phase-title">검토</div>
+              <div class="phase-action">처음부터 통독 → 리듬·가독성 점검 → 세부 묘사 진입</div>
+              <div class="phase-kpi">🎯 리딩 플로우 점검이 세부 묘사보다 항상 우선</div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <span class="slide-unit-tag">바스티앙 비베스 작품 분석</span>
-  </section>
 
-</div><!-- /slides-wrapper -->
-</main>
+    <!-- Unit 1 요약 -->
+    <div class="ot-card">
+      <div class="card-header">
+        <span class="card-tag tag-insight">💡 UNIT 1 SUMMARY</span>
+      </div>
+      <div class="card-body">
+        <div class="ot-quote">
+          <p class="ot-quote-main">비베스의 선은 완성을 향하지 않는다 — 감정을 향한다</p>
+          <p class="ot-quote-sub">Unit 2에서는 이 철학이 감정 표현·공간 설계·컬러로 구현되는 방식을 해체한다.</p>
+        </div>
+        <div class="kw-cloud">
+          <span class="kw-pill">trait lâché</span>
+          <span class="kw-pill">metteur en scène</span>
+          <span class="kw-pill">dessin narratif</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     UNIT 2 — 감정 표현 · 스토리텔링 · 컬러
+════════════════════════════════════════════════════════ -->
+<section class="cat-section" id="unit2">
+  <div class="cat-banner" style="background-image:url('https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=1600&q=70&fm=webp&fit=crop')">
+    <div class="cat-banner-overlay"></div>
+    <div class="cat-banner-content">
+      <span class="cat-emoji">🎭</span>
+      <h2 class="cat-title">Unit 2 — 감정 표현 · 스토리텔링 · 컬러</h2>
+    </div>
+  </div>
+  <div class="cards-grid">
+
+    <!-- 연출가의 도구상자 -->
+    <div class="ot-card">
+      <div class="card-header">
+        <span class="card-tag tag-insight">🎭 EMOTION DESIGN</span>
+      </div>
+      <div class="card-body">
+        <div class="card-section-title">연출가의 도구상자 — 감정을 설계하는 세 가지 축</div>
+        <div class="mini-grid">
+          <div class="mini-card">
+            <div class="mini-label">축 1</div>
+            <div class="mini-title">인물 연기 설계</div>
+            <div class="mini-text">캐릭터를 어떻게 '연기'시킬까 — 체형·눈썹·자세로 성격을 각인</div>
+          </div>
+          <div class="mini-card">
+            <div class="mini-label">축 2</div>
+            <div class="mini-title">공간·프레이밍</div>
+            <div class="mini-text">어디에, 어떤 크기로 배치할까 — 클로즈업과 롱샷의 리듬</div>
+          </div>
+          <div class="mini-card">
+            <div class="mini-label">축 3</div>
+            <div class="mini-title">컬러 시스템</div>
+            <div class="mini-text">색이 무엇을 말하는가 — 장식이 아닌 서사 코드</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 기법 1~3 -->
+    <div class="ot-card">
+      <div class="card-header">
+        <span class="card-tag tag-tech">🔍 TECHNIQUE</span>
+      </div>
+      <div class="card-body">
+        <div class="card-section-title">기법 1 — 1인칭 주관 시점 (Vue subjective)</div>
+        <div class="mini-grid mini-grid-2">
+          <div class="mini-card" style="background:rgba(230,57,70,.1);border-color:rgba(230,57,70,.3)">
+            <div class="mini-label" style="color:rgba(255,255,255,.7)">사례</div>
+            <div class="mini-title">《내 눈 안의 너》</div>
+            <div class="mini-text" style="color:var(--text-2)">남성 주인공을 화면에서 완전히 배제하는 극단적 시점 실험</div>
+          </div>
+          <div class="mini-card">
+            <div class="mini-label">효과</div>
+            <div class="mini-title">독자 = 화자</div>
+            <div class="mini-text">상대 여성의 미세한 반응·태도 변화에 독자가 완전히 집중. 완전한 몰입 유도</div>
+          </div>
+        </div>
+        <hr class="ot-divider">
+        <div class="card-section-title">기법 2 — 제한된 공간으로 인물 관계 부각</div>
+        <div class="mini-grid mini-grid-2">
+          <div class="mini-card">
+            <div class="mini-label">사례</div>
+            <div class="mini-title">《염소의 맛》의 수영장</div>
+            <div class="mini-text">사회적 코드와 낮밤 구분이 없는 밀실(huis clos) 설정</div>
+          </div>
+          <div class="mini-card">
+            <div class="mini-label">원리</div>
+            <div class="mini-title">공간의 폐쇄성 = 감정의 농도</div>
+            <div class="mini-text">제한된 공간이 두 인물 사이의 텐션에만 집중하게 만드는 서사 장치</div>
+          </div>
+        </div>
+        <div class="hl-box">키워드: <strong>huis clos</strong> (밀실극) — 공간을 서사 도구로 사용</div>
+        <hr class="ot-divider">
+        <div class="card-section-title">기법 3 — 형태적 특징(Morphologie)으로 성격 표현</div>
+        <div class="mini-grid">
+          <div class="mini-card">
+            <div class="mini-label">방법</div>
+            <div class="mini-text">캐릭터별 고유 체형·눈썹·팔 길이 등을 부여</div>
+          </div>
+          <div class="mini-card">
+            <div class="mini-label">영감 출처</div>
+            <div class="mini-text">비디오 게임(스트리트 파이터 등)의 캐릭터 디자인</div>
+          </div>
+          <div class="mini-card">
+            <div class="mini-label">효과</div>
+            <div class="mini-text">다른 작가가 그려도 즉시 알아볼 수 있는 실루엣 — 《라스트맨》</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 스토리텔링 철학 -->
+    <div class="ot-card">
+      <div class="card-header">
+        <span class="card-tag tag-insight">📖 STORYTELLING</span>
+      </div>
+      <div class="card-body">
+        <div class="ot-quote">
+          <p class="ot-quote-main">모든 것을 그리지 않는다 —<br>독자의 상상력이 빈 공간을 채운다</p>
+          <p class="ot-quote-sub">배경 최소화, 캐릭터에 집중. 독자에게 공간을 비워준다.</p>
+        </div>
+        <div class="kw-cloud">
+          <span class="kw-pill">réduction (환원)</span>
+          <span class="kw-pill">mise en scène</span>
+          <span class="kw-pill">암시의 미학</span>
+        </div>
+        <hr class="ot-divider">
+        <div class="card-section-title">공간을 서사 도구로 활용하는 프레이밍</div>
+        <ul class="ot-bullets">
+          <li><strong>중요 대사 장면:</strong> 인물을 프레임 안에서 멀리 배치 → 여운 강조</li>
+          <li><strong>클라이맥스:</strong> 클로즈업으로 압박감 극대화</li>
+          <li><strong>영화적 앵글:</strong> 마츠모토 타이요 《핑퐁》 · 일본 애니메이션 영향</li>
+        </ul>
+        <hr class="ot-divider">
+        <div class="card-section-title">페이지 호흡과 분량 철학</div>
+        <div class="mini-grid">
+          <div class="mini-card">
+            <div class="mini-label">선호 분량</div>
+            <div class="mini-title">200페이지 이상</div>
+            <div class="mini-text">전통 프랑스 단편 포맷 탈피 — 긴 분량이 서사 리듬을 살린다</div>
+          </div>
+          <div class="mini-card">
+            <div class="mini-label">이유</div>
+            <div class="mini-title">무리한 생략 없이</div>
+            <div class="mini-text">충분한 페이지가 있어야 서사의 리듬과 호흡을 자유롭게 조율할 수 있다</div>
+          </div>
+          <div class="mini-card">
+            <div class="mini-label">우선순위</div>
+            <div class="mini-title">리딩 플로우 점검 먼저</div>
+            <div class="mini-text">세부 묘사보다 처음부터 쭉 읽어보며 쾌적하게 읽히는지 먼저 확인</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 컬러 시스템 -->
+    <div class="ot-card">
+      <div class="card-header">
+        <span class="card-tag tag-tech">🎨 COLOR SYSTEM</span>
+      </div>
+      <div class="card-body">
+        <div class="card-section-title">컬러 시스템 — 《폴리나》 명암 코드</div>
+        <div class="tbl-wrap">
+          <table class="md-table">
+            <thead><tr><th>색조</th><th>상황</th><th>의미</th></tr></thead>
+            <tbody>
+              <tr><td>회색 (masses de gris)</td><td>일상·옷차림</td><td>평범한 일상</td></tr>
+              <tr><td>흰색 (비워둠)</td><td>춤추는 순간·피부</td><td>움직임·순수함 강조</td></tr>
+              <tr><td>극단적 흑백 대비</td><td>무대 위 클라이맥스</td><td>극적 순간</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="hl-box">핵심: 비베스에게 색채는 장식이 아니라 <strong>서사 코드</strong>다</div>
+        <hr class="ot-divider">
+        <div class="card-section-title">시간·현실을 구분하는 색채 기법</div>
+        <div class="mini-grid mini-grid-2">
+          <div class="mini-card">
+            <div class="mini-label">현실 장면</div>
+            <div class="mini-title">단색 평면 칠 (aplats)</div>
+            <div class="mini-text">단순한 색 블록으로 현재를 표현 — 명확하고 직접적</div>
+          </div>
+          <div class="mini-card">
+            <div class="mini-label">회상 장면</div>
+            <div class="mini-title">사진 색조 (teinte photographique)</div>
+            <div class="mini-text">사진과 같은 색조로 과거를 표현 — 흐릿한 기억의 질감</div>
+          </div>
+        </div>
+        <div class="hl-box">사례: 《내 눈 안의 너》 — 시공간을 시각 기호로 명확히 분리</div>
+        <hr class="ot-divider">
+        <div class="card-section-title">협업 시 색채로 통일감 확보</div>
+        <ul class="ot-bullets">
+          <li><strong>사례:</strong> 《제국을 위하여》 — 작화를 여러 작가가 분담</li>
+          <li><strong>컬러리스트:</strong> Sandra Desmazières가 서로 다른 선 스타일 위에 색채를 덧입혀 통합</li>
+          <li><strong>원칙:</strong> 컬러는 스타일 차이를 상쇄하는 통일 언어</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     UNIT 3 — 독학 가이드 · 창작 원칙
+════════════════════════════════════════════════════════ -->
+<section class="cat-section" id="unit3">
+  <div class="cat-banner" style="background-image:url('https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=1600&q=70&fm=webp&fit=crop')">
+    <div class="cat-banner-overlay"></div>
+    <div class="cat-banner-content">
+      <span class="cat-emoji">📚</span>
+      <h2 class="cat-title">Unit 3 — 독학 가이드 · 창작 원칙</h2>
+    </div>
+  </div>
+  <div class="cards-grid">
+
+    <!-- 성장 6단계 -->
+    <div class="ot-card">
+      <div class="card-header">
+        <span class="card-tag tag-process">🚀 GROWTH GUIDE</span>
+      </div>
+      <div class="card-body">
+        <div class="card-section-title">비베스가 직접 밝힌 성장 6단계</div>
+        <div class="phase-timeline">
+          <div class="phase-step">
+            <div class="phase-num">1</div>
+            <div class="phase-body">
+              <div class="phase-title">시각적 어휘 축적</div>
+              <div class="phase-action">카페·공원 등 일상 공간에서 사람들의 움직임·형태 관찰 및 스케치. TV 인물(예: 프레디 머큐리) 및 마음에 드는 사진을 모작.</div>
+              <div class="phase-kpi">💡 작가는 마음에 드는 시각 요소를 저장하는 '하드 디스크'다</div>
+            </div>
+          </div>
+          <div class="phase-step">
+            <div class="phase-num">2</div>
+            <div class="phase-body">
+              <div class="phase-title">생략의 기술 훈련</div>
+              <div class="phase-action">기억할 때 가장 인상적인 특징 하나만 포착하고 나머지를 버리는 훈련. 완벽하게 기억하려는 욕심이 오히려 핵심을 흐린다.</div>
+              <div class="phase-kpi">💡 무엇을 생략할지가 비베스 선 표현의 핵심이다</div>
+            </div>
+          </div>
+          <div class="phase-step">
+            <div class="phase-num">3</div>
+            <div class="phase-body">
+              <div class="phase-title">팬아트·모작으로 캐릭터 디자인 연구</div>
+              <div class="phase-action">좋아하는 게임·애니 캐릭터를 수백 장 모작. 분석 질문: "왜 이 캐릭터는 한눈에 알아볼 수 있는가?" — 실루엣·체형·눈썹·의상 디테일 분해 후 자신의 캐릭터에 응용</div>
+            </div>
+          </div>
+          <div class="phase-step">
+            <div class="phase-num">4</div>
+            <div class="phase-body">
+              <div class="phase-title">디지털 워크플로우 구축</div>
+              <div class="phase-action">그래픽 태블릿 + Photoshop (또는 Clip Studio Paint). 구도 우선: 인물 그리기 전 프레임 내 위치·크기부터 잡기.</div>
+              <div class="phase-kpi">유연한 움직임 → 굵고 부드러운 브러시 / 갑옷·건축 → 딱딱한 볼펜형 브러시</div>
+            </div>
+          </div>
+          <div class="phase-step">
+            <div class="phase-num">5</div>
+            <div class="phase-body">
+              <div class="phase-title">서사 우선 마인드셋으로 전환</div>
+              <div class="phase-action">독자는 한 컷을 1초도 보지 않는다. 디테일보다 "이 컷이 감정을 전달하는가"에 집중. 완벽함에 막혀 속도가 떨어지면 서사 전체 완성도가 낮아진다 — 과감히 다음 컷으로.</div>
+            </div>
+          </div>
+          <div class="phase-step">
+            <div class="phase-num">6</div>
+            <div class="phase-body">
+              <div class="phase-title">커뮤니티 참여로 시야 확장</div>
+              <div class="phase-action">비베스의 성장 배경: 학생 시절 Catsuka 등의 드로잉 포럼 참여. 독학이라도 SNS·커뮤니티에 작업을 공개하고 타인의 작업을 꾸준히 관찰.</div>
+              <div class="phase-kpi">⚠️ "혼자 그리면 결국 제자리걸음이다" — 비베스의 경고</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 핵심 키워드 총정리 -->
+    <div class="ot-card">
+      <div class="card-header">
+        <span class="card-tag tag-insight">🗝️ KEY CONCEPTS</span>
+      </div>
+      <div class="card-body">
+        <div class="card-section-title">비베스 스타일 핵심 키워드 총정리</div>
+        <div class="mini-grid mini-grid-2">
+          <div class="mini-card">
+            <div class="mini-label">선 표현</div>
+            <div class="kw-cloud" style="margin:0">
+              <span class="kw-pill">trait lâché</span>
+              <span class="kw-pill">masses de gris</span>
+              <span class="kw-pill">Hugo Pratt 계보</span>
+            </div>
+          </div>
+          <div class="mini-card">
+            <div class="mini-label">연출</div>
+            <div class="kw-cloud" style="margin:0">
+              <span class="kw-pill">metteur en scène</span>
+              <span class="kw-pill">mise en scène</span>
+              <span class="kw-pill">réduction</span>
+              <span class="kw-pill">huis clos</span>
+            </div>
+          </div>
+          <div class="mini-card">
+            <div class="mini-label">인물</div>
+            <div class="kw-cloud" style="margin:0">
+              <span class="kw-pill">morphologie</span>
+              <span class="kw-pill">Characterization</span>
+              <span class="kw-pill">생략의 미학</span>
+            </div>
+          </div>
+          <div class="mini-card">
+            <div class="mini-label">프로세스</div>
+            <div class="kw-cloud" style="margin:0">
+              <span class="kw-pill">dessin narratif</span>
+              <span class="kw-pill">서사 우선주의</span>
+              <span class="kw-pill">디지털 워크플로우</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 만화 창작 10원칙 -->
+    <div class="ot-card">
+      <div class="card-header">
+        <span class="card-tag tag-insight">📜 10 PRINCIPLES</span>
+      </div>
+      <div class="card-body">
+        <div class="card-section-title">비베스에게 배우는 만화 창작 10원칙</div>
+        <div class="tbl-wrap">
+          <table class="md-table">
+            <tbody>
+              <tr><td>01</td><td>그림은 감정 전달의 도구다</td></tr>
+              <tr><td>02</td><td>선의 종류는 표현 목적이 결정한다</td></tr>
+              <tr><td>03</td><td>스토리보드 → 구도 → 선 순서로 작업한다</td></tr>
+              <tr><td>04</td><td>인물을 연기하게 하라 (연출가 마인드)</td></tr>
+              <tr><td>05</td><td>제한된 공간이 긴장감을 만든다</td></tr>
+              <tr><td>06</td><td>모든 것을 그리지 마라 — 암시하라</td></tr>
+              <tr><td>07</td><td>컬러는 서사 코드다</td></tr>
+              <tr><td>08</td><td>리딩 플로우 점검이 항상 우선이다</td></tr>
+              <tr><td>09</td><td>시각적 어휘는 일상 관찰로 축적된다</td></tr>
+              <tr><td>10</td><td>커뮤니티에서 배워라</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- 클로징 -->
+    <div class="ot-card" style="background:rgba(230,57,70,.06);border-color:rgba(230,57,70,.2)">
+      <div class="card-header">
+        <span class="card-tag tag-insight">🔴 CLOSING</span>
+      </div>
+      <div class="card-body">
+        <div class="ot-quote">
+          <p class="ot-quote-main">이야기가 먼저, 그림은 그다음</p>
+          <p class="ot-quote-sub">"비베스의 모든 기법은 서사를 위해 존재한다" — 선·공간·컬러·실루엣 모두 감정을 전달하기 위한 수단.</p>
+        </div>
+        <div class="hl-box">
+          → 스케치북 들고 카페로 가자. 오늘 본 것 중 가장 인상적인 특징 하나만 포착하고 나머지를 버려라.
+        </div>
+        <p class="ot-para" style="margin-top:.75rem;font-size:.78rem;color:var(--text-3)">
+          출처: YouTube 인터뷰 5편 · NotebookLM 분석 · Bastien Vivès 공식 인터뷰 자료
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-left">
+    Antigravity Intelligence · 바스티앙 비베스 작품 분석<br>
+    Artist Intelligence Report · 2026
+  </div>
+  <div class="footer-right">
+    <span class="footer-chip">Artist Report</span>
+    <span class="footer-chip">v2.0</span>
+  </div>
+</footer>
 
 <script>
-  var TOTAL = 30;
-  var current = 1;
-
-  function goToSlide(n) {
-    if (n < 1 || n > TOTAL) return;
-    var prev = document.getElementById('slide-' + current);
-    var next = document.getElementById('slide-' + n);
-    if (!prev || !next) return;
-
-    if (n > current) {
-      prev.classList.remove('active');
-      prev.classList.add('prev');
-      next.classList.remove('prev');
-      next.classList.add('active');
-    } else {
-      prev.classList.remove('active');
-      prev.classList.remove('prev');
-      next.classList.add('active');
-      // restore prev class for animation direction
-      setTimeout(function() { prev.classList.add('prev'); }, 10);
-    }
-
-    current = n;
-    document.getElementById('slideCounter').textContent = current + ' / ' + TOTAL;
-    document.getElementById('progressFill').style.width = ((current / TOTAL) * 100).toFixed(2) + '%';
-  }
-
-  function nextSlide() { goToSlide(current + 1); }
-  function prevSlide() { goToSlide(current - 1); }
-
-  // Keyboard navigation
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') { e.preventDefault(); nextSlide(); }
-    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); prevSlide(); }
-    if (e.key === 'Escape') {
-      var dropdown = document.getElementById('vizMenuDropdown');
-      if (dropdown) dropdown.classList.remove('open');
-    }
-  });
-
-  // Initialize first slide
-  document.getElementById('slide-1').classList.add('active');
-
-  // === Menu ===
-  function toggleMenu() {
-    var d = document.getElementById('vizMenuDropdown');
-    if (d) d.classList.toggle('open');
-  }
-  document.addEventListener('click', function(e) {
-    if (!e.target.closest('.viz-menu')) {
-      var d = document.getElementById('vizMenuDropdown');
-      if (d) d.classList.remove('open');
-    }
-  });
-
-  // === Theme ===
-  var savedTheme = localStorage.getItem('viz-theme');
-  var currentTheme = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-  function applyTheme(t) {
-    document.documentElement.className = 'theme-' + t;
-    var icon = document.getElementById('themeIcon');
-    var label = document.getElementById('themeLabel');
-    if (icon) icon.textContent = t === 'dark' ? '🌙' : '☀️';
-    if (label) label.textContent = t === 'dark' ? '다크' : '라이트';
-    localStorage.setItem('viz-theme', t);
-    currentTheme = t;
-  }
-  function cycleTheme() { applyTheme(currentTheme === 'dark' ? 'light' : 'dark'); }
-  applyTheme(currentTheme);
-
-  // === Download PNG ===
-  async function downloadImage() {
-    var menu = document.querySelector('.viz-menu');
-    var nav = document.querySelector('.slide-nav');
-    var zones = document.querySelectorAll('.slide-click-zone');
-    var pb = document.querySelector('.progress-bar');
-    if (menu) menu.style.display = 'none';
-    if (nav) nav.style.display = 'none';
-    zones.forEach(function(z) { z.style.display = 'none'; });
-    if (pb) pb.style.display = 'none';
-    try {
-      var slide = document.getElementById('slide-' + current);
-      var url = await htmlToImage.toPng(slide, { quality: 1, pixelRatio: 2 });
-      var a = document.createElement('a');
-      a.href = url;
-      a.download = 'vivès-slide-' + current + '.png';
-      a.click();
-    } catch(e) { console.error('Download failed:', e); }
-    if (menu) menu.style.display = '';
-    if (nav) nav.style.display = '';
-    zones.forEach(function(z) { z.style.display = ''; });
-    if (pb) pb.style.display = '';
-  }
-
-  function onThemeChange() {}
+window.addEventListener('scroll', function() {
+  var el = document.getElementById('scroll-progress');
+  if (!el) return;
+  var scrollTop = window.scrollY || document.documentElement.scrollTop;
+  var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  var pct = docHeight > 0 ? (scrollTop / docHeight * 100).toFixed(2) : 0;
+  el.style.width = pct + '%';
+});
 </script>
 </body>
 </html>
