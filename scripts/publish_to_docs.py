@@ -327,68 +327,19 @@ def upload_binary_file(drive_service, file_path: Path, folder_id: str | None, mi
         "local_path": str(file_path)
     }
 
-def prepare_gh_pages_branch():
-    """Commit docs/reports/ on master first, then sync to gh-pages-live branch.
-
-    Steps:
-    1. Stage & commit docs/reports/ on master (so the files exist in git history).
-    2. Checkout or create gh-pages-live.
-    3. Reset the branch, copy docs/ from master.
-    4. Set the latest precision report as docs/index.html.
-    5. Commit and force-push to origin, then return to master.
-    """
-    docs_report_dir = ROOT / "docs" / "reports"
-    docs_report_dir.mkdir(parents=True, exist_ok=True)
-
-    # 1️⃣ Commit new HTML files to master so they're available for branch checkout
-    subprocess.run(["git", "add", "docs/"], cwd=ROOT, check=False)
-    staged = subprocess.run(["git", "diff", "--cached", "--quiet"], cwd=ROOT)
-    if staged.returncode != 0:  # there are staged changes
-        subprocess.run(
-            ["git", "commit", "-m", f"chore: add report HTML to docs/"],
-            cwd=ROOT, check=False
-        )
-        print("[Git] Committed new report HTML to master")
-
-    # 2️⃣ Ensure gh-pages-live branch exists
-    branch_exists = subprocess.run(
-        ["git", "rev-parse", "--verify", "gh-pages-live"],
-        cwd=ROOT, capture_output=True
-    )
-    if branch_exists.returncode != 0:
-        subprocess.run(["git", "checkout", "--orphan", "gh-pages-live"], cwd=ROOT, check=True)
-        subprocess.run(["git", "reset"], cwd=ROOT, check=True)
-    else:
-        subprocess.run(["git", "checkout", "gh-pages-live"], cwd=ROOT, check=True)
-
-    # 3️⃣ Clean branch and restore docs/ from master
-    subprocess.run(["git", "rm", "-rf", "*", "--ignore-unmatch"], cwd=ROOT, check=False)
-    subprocess.run(["git", "checkout", "master", "--", "docs/"], cwd=ROOT, check=True)
-
-    # 4️⃣ Set latest precision report as docs/index.html
-    html_files = sorted(list(docs_report_dir.glob("*_precision_report.html")), reverse=True)
-    if html_files:
-        shutil.copy2(html_files[0], ROOT / "docs" / "index.html")
-        print(f"[Git] Set {html_files[0].name} as docs/index.html")
-
-    # 5️⃣ Add, commit, and push gh-pages-live
-    subprocess.run(["git", "add", "docs"], cwd=ROOT, check=True)
-    subprocess.run(
-        ["git", "commit", "-m", "Auto-deploy: update reports on gh-pages-live"],
-        cwd=ROOT, check=False
-    )
-    subprocess.run(["git", "push", "origin", "gh-pages-live", "--force"], cwd=ROOT, check=True)
-
-    # Return to master
-    subprocess.run(["git", "checkout", "master"], cwd=ROOT, check=True)
-
 def git_sync_reports(job_id: str) -> bool:
-    """Commit and push new reports to GitHub for Pages deployment."""
+    """Commit docs/reports/ to master and push — GitHub Pages serves from master /docs."""
     try:
         print(f"[Git] Syncing reports for job {job_id}...")
-        
-        # 1. Prepare and push to gh-pages-live branch
-        prepare_gh_pages_branch()
+        subprocess.run(["git", "add", "docs/"], cwd=ROOT, check=False)
+        staged = subprocess.run(["git", "diff", "--cached", "--quiet"], cwd=ROOT)
+        if staged.returncode != 0:
+            subprocess.run(
+                ["git", "commit", "-m", f"chore: deploy report {job_id}"],
+                cwd=ROOT, check=False
+            )
+        subprocess.run(["git", "push", "origin", "master"], cwd=ROOT, check=True)
+        print(f"[Git] Pushed to master successfully.")
         return True
     except Exception as e:
         print(f"[Git Error] Failed to sync reports: {e}")

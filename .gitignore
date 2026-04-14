@@ -14,6 +14,12 @@ __pycache__/
 outputs/
 state/
 temp/
+reports/
+
+# Sensitive credentials (never commit)
+.env
+token.json
+credentials.json
 
 # OS specific
 .DS_Store
