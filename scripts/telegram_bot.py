@@ -201,23 +201,16 @@ def process_callback(cb_id, cid, data):
                 )
 
                 # 업로드 상태 확인
-                status = check_upload_status(job_id)
-                if status["hub"] and status["archive"]:
-                    send_telegram_direct("✅ 이미 마스터 허브 & 리서치 아카이브에 등록되어 있습니다.")
-                else:
-                    where = []
-                    if not status["hub"]:     where.append("안티그래비티 마스터 허브")
-                    if not status["archive"]: where.append("Strategic Research Archive")
-                    send_telegram_direct(
-                        f"📁 <b>업로드 확인</b>\n\n"
-                        f"{'·'.join(where)}에 아직 등록되지 않았습니다.\n업로드하시겠습니까?",
-                        reply_markup={
-                            "inline_keyboard": [
-                                [{"text": "✅ 업로드 승인", "callback_data": f"publish_archive|{job_id}|standard"}],
-                                [{"text": "❌ 건너뜀",    "callback_data": f"skip_publish|{job_id}"}],
-                            ]
-                        }
-                    )
+                send_telegram_direct(
+                    f"📁 <b>웹 허브 배포 확인</b>\n\n"
+                    f"안티그래비티 마스터 허브(Web)에 배포하시겠습니까?",
+                    reply_markup={
+                        "inline_keyboard": [
+                            [{"text": "🚀 웹 사이트 즉시 배포", "callback_data": f"publish_archive|{job_id}|standard"}],
+                            [{"text": "❌ 건너뜀",    "callback_data": f"skip_publish|{job_id}"}],
+                        ]
+                    }
+                )
             except Exception as e:
                 send_telegram_direct(f"❌ Claude 고도화 오류: {e}")
 
@@ -245,43 +238,27 @@ def process_callback(cb_id, cid, data):
     # ── 아카이브 업로드 승인 ─────────────────────────────────────
     elif action == "publish_archive":
         report_type = data.split("|")[2] if data.count("|") >= 2 else "standard"
-        answer_callback(cb_id, "⏳ 업로드 중...")
-        send_telegram_direct(f"⏳ <b>업로드 중...</b>\n🆔 <code>{job_id}</code>")
+        answer_callback(cb_id, "⏳ 웹 허브 배포 중...")
+        send_telegram_direct(f"⏳ <b>웹 허브 배포 중...</b>\n🆔 <code>{job_id}</code>")
         try:
             import subprocess as _sp, threading as _th
 
             def _do_publish():
-                # 1. GitHub Pages (마스터 허브)
+                # GitHub Pages 배포 (Drive 업로드는 스크립트 내부에서 이미 제거됨)
                 pub = ROOT_DIR / "scripts" / "publish_to_docs.py"
                 _sp.run([sys.executable, str(pub), job_id],
                         cwd=str(ROOT_DIR), capture_output=True)
 
-                # 2. Strategic Research Archive 카드 추가
-                # job_id 기반으로 타이틀 추출
-                deep_path = ROOT_DIR / "outputs" / "02_deep_analysis" / f"{job_id}_deep_report.md"
-                intel_path = ROOT_DIR / "outputs" / "04_deep_intel" / f"{job_id}_deep_intel_report.md"
-                src = intel_path if report_type == "deep-intel" else deep_path
-                title = job_id
-                if src.exists():
-                    import re as _re
-                    m = _re.search(r'^#\s+(.+)', src.read_text(encoding="utf-8"), _re.MULTILINE)
-                    if m:
-                        title = m.group(1).strip()
-
-                archive_ok = add_to_research_archive(job_id, report_type, title)
-
                 label = "딥 인텔 리포트" if report_type == "deep-intel" else "Claude 리포트"
-                archive_status = "✅ 리서치 아카이브 등록 완료" if archive_ok else "⚠️ 리서치 아카이브 파일 없음 (수동 등록 필요)"
                 send_telegram_direct(
-                    f"✅ <b>업로드 완료</b>\n\n"
+                    f"✅ <b>배포 완료</b>\n\n"
                     f"📌 {label}: <code>{job_id}</code>\n"
-                    f"🌐 안티그래비티 마스터 허브: GitHub Pages 배포 완료\n"
-                    f"📁 {archive_status}"
+                    f"🌐 <b>마스터 허브:</b> GitHub Pages 배포 완료"
                 )
 
             _th.Thread(target=_do_publish, daemon=True).start()
         except Exception as e:
-            send_telegram_direct(f"❌ 업로드 오류: {e}")
+            send_telegram_direct(f"❌ 배포 오류: {e}")
 
     # ── 업로드 건너뜀 ────────────────────────────────────────────
     elif action == "skip_publish":

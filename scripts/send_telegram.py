@@ -43,33 +43,11 @@ def format_notification(job_id: str, log_path: Path, status: str = "finished", f
             f"문서를 정상적으로 수락했습니다. 현재 3페이지 분량의 <b>전략 심층 보고서</b>를 생성 중입니다. 잠시만 기다려 주세요!"
         )
 
-    if status == "finished":
-        word_link = ""
-        if log_path.exists():
-            try:
-                log_data = json.loads(log_path.read_text(encoding="utf-8"))
-                docs = log_data.get("published_docs", [])
-                for d in docs:
-                    if d.get('local_path') and d['local_path'].endswith('.docx'):
-                        word_link = d['url']
-                        break
-                if not word_link:
-                    for d in docs:
-                        if "심층리포트" in d['title']:
-                            word_link = d['url']
-                            break
-            except: pass
-
         msg = f"<b>✅ 전략 심층 보고서(3P) 분석 완료!</b>\n\n"
         msg += f"📄 <b>파일명:</b> {html.escape(display_name)}\n"
         msg += f"📌 <b>작업 ID:</b> <code>{job_id}</code>\n\n"
-        msg += "프로젝트의 핵심 목표와 전문 전략을 담은 3페이지 분량의 심층 보고서가 완성되었습니다.\n\n"
+        msg += "프로젝트의 핵심 목표와 전문 전략을 담은 심층 보고서 분석이 완료되었습니다.\n\n"
         
-        if word_link:
-            msg += f"📊 <b>심층 보고서 (Word):</b> <a href='{word_link}'>다운로드 및 확인</a>\n\n"
-        else:
-            msg += "⚠️ 보고서 생성 중 문제가 발생하여 링크를 생성하지 못했습니다.\n\n"
-            
         msg += "💡 <b>추가 작업 안내:</b>\n"
         msg += "20페이지 분량의 <b>프리젠테이션 슬라이드 리포트</b>가 필요하시다면 <b>'고도화 해줘'</b>라고 메시지를 보내주세요."
         return msg

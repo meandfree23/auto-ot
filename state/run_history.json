@@ -1402,5 +1402,37 @@
       }
     ],
     "failures": []
+  },
+  {
+    "job_id": "20260414_183925_12U5_ot",
+    "source_file_id": "12U5-c6np0F9HKlJQu91TqxwEE9Cuv5IU",
+    "source_file_link": "https://drive.google.com/file/d/12U5-c6np0F9HKlJQu91TqxwEE9Cuv5IU/view?usp=drivesdk",
+    "published_at": "2026-04-14T09:55:50.113319+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "20260414_183925_12U5_ot_precision_report.html",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/03_final_reports/20260414_183925_12U5_ot_precision_report.html",
+        "direct_url": "https://meandfree23.github.io/auto-ot/reports/20260414_183925_12U5_ot_precision_report.html",
+        "url": "https://meandfree23.github.io/auto-ot/reports/20260414_183925_12U5_ot_precision_report.html"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260414_183925_12U5_ot",
+    "source_file_id": "12U5-c6np0F9HKlJQu91TqxwEE9Cuv5IU",
+    "source_file_link": "https://drive.google.com/file/d/12U5-c6np0F9HKlJQu91TqxwEE9Cuv5IU/view?usp=drivesdk",
+    "published_at": "2026-04-14T10:29:34.947001+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "20260414_183925_12U5_ot_precision_report.html",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/03_final_reports/20260414_183925_12U5_ot_precision_report.html",
+        "direct_url": "https://meandfree23.github.io/auto-ot/reports/20260414_183925_12U5_ot_precision_report.html",
+        "url": "https://meandfree23.github.io/auto-ot/reports/20260414_183925_12U5_ot_precision_report.html"
+      }
+    ],
+    "failures": []
   }
 ]

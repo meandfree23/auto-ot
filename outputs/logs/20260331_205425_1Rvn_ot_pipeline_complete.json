@@ -1,7 +1,0 @@
-{
-  "job_id": "20260331_205425_1Rvn_ot",
-  "completed_at": "2026-03-31T11:54:26.731017+00:00",
-  "status": "failed",
-  "error": "Analysis step failed: Traceback (most recent call last):\n  File \"/Users/kk/Desktop/오티 자동화/scripts/antigravity_bridge.py\", line 52, in process_task\n    from scripts.brain_engine import generate_reports\n  File \"/Users/kk/Desktop/오티 자동화/scripts/brain_engine.py\", line 88\n    \"\"\"\n       ^\nSyntaxError: f-string expression part cannot include a backslash",
-  "final_task_path": "/Users/kk/Desktop/오티 자동화/state/failed/20260331_205425_1Rvn_ot.json"
-}
