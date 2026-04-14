@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>바스티앙 비베스: 육체의 언어와 랏슈 트레의 미학</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f8f9fa;
+            --text: #1a1a1a;
+            --accent: #2c3e50;
+            --pool-teal: #007788;
+        }
+        body {
+            font-family: 'Inter', 'Noto Serif KR', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 80px 40px;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 100px;
+        }
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: -0.05em;
+        }
+        .subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            font-weight: 300;
+        }
+        .section {
+            margin-bottom: 120px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .image-box {
+            width: 100%;
+            margin-bottom: 40px;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .image-box img {
+            width: 100%;
+            display: block;
+            transition: transform 0.5s;
+        }
+        .image-box:hover img {
+            transform: scale(1.02);
+        }
+        .caption {
+            font-size: 0.9rem;
+            color: #888;
+            margin-top: 15px;
+            border-left: 2px solid #ddd;
+            padding-left: 15px;
+        }
+        .content {
+            font-size: 1.1rem;
+            color: #333;
+        }
+        .highlight {
+            font-weight: 600;
+            color: var(--accent);
+        }
+        footer {
+            text-align: center;
+            padding: 100px 0;
+            border-top: 1px solid #eee;
+            color: #aaa;
+            font-size: 0.8rem;
+        }
+        .back-link {
+            position: fixed;
+            top: 40px;
+            left: 40px;
+            text-decoration: none;
+            color: var(--accent);
+            font-size: 0.9rem;
+            font-weight: 600;
+            z-index: 100;
+        }
+    </style>
+</head>
+<body>
+
+<a href="../index.html" class="back-link">← DASHBOARD</a>
+
+<div class="container">
+    <header>
+        <div class="subtitle">Bastien Vivès: Analysis Report</div>
+        <h1>육체의 언어와<br>랏슈 트레(Trait Lâché)</h1>
+    </header>
+
+    <div class="section" id="section1">
+        <div class="image-box">
+            <img src="assets/pool.png" alt="염소 수영장">
+        </div>
+        <div class="content">
+            <h2 class="highlight">01. 정적인 역동성: 수영장의 미학</h2>
+            <p>비베스의 걸작 [염소 수영장]에서 보여지는 푸른색 톤과 수면의 일렁임은 단순히 장소를 묘사하는 것을 넘어, 등장인물 간의 <span class="highlight">미세한 감정적 긴장</span>을 시각화합니다. 굵은 선과 절제된 디테일은 독자로 하여금 인물의 표정보다 '태도'와 '공기'에 집중하게 만듭니다.</p>
+        </div>
+        <div class="caption">Source: Image inspired by Bastien Vivès' "Le Goût du Chlore"</div>
+    </div>
+
+    <div class="section" id="section2">
+        <div class="image-box">
+            <img src="assets/ballet.png" alt="폴리나 발레">
+        </div>
+        <div class="content">
+            <h2 class="highlight">02. 해방된 선: 랏슈 트레(Trait Lâché)</h2>
+            <p>[폴리나]와 [라스트 맨]에서 극대화되는 <span class="highlight">랏슈 트레(거칠고 해방된 선)</span> 기법은 데생의 완벽함보다 움직임의 에너지를 포착하는 데 주력합니다. 무용수의 발끝이 지면에 닿는 찰나의 순간을 날선 획으로 표현함으로써, 육체가 가진 물리적인 무게감을 예술적 자유로 변환합니다.</p>
+        </div>
+        <div class="caption">Analysis: Kinetic energy captured through minimalist strokes</div>
+    </div>
+
+    <div class="section" id="section3">
+        <div class="image-box">
+            <img src="assets/trait.png" alt="미니멀리즘 일러스트">
+        </div>
+        <div class="content">
+            <h2 class="highlight">03. 미니멀리즘과 감정의 전이</h2>
+            <p>비베스는 배경을 과감히 생략하거나 인물의 눈을 점 하나로 표현함에도 불구하고, 관객은 그 안에서 비극과 희극을 동시에 읽어냅니다. 이는 정보의 결핍이 아니라, <span class="highlight">의미의 응축</span>입니다. 그의 화풍은 현대 그래픽 노블이 도달할 수 있는 가장 우아한 경제성을 보여줍니다.</p>
+        </div>
+        <div class="caption">Strategic Insight: Emotional resonance through visual economy</div>
+    </div>
+
+    <footer>
+        © 2026 Antigravity | Strategic Design Analysis Module
+    </footer>
+</div>
+
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.section').forEach(section => {
+        observer.observe(section);
+    });
+</script>
+
+</body>
+</html>
