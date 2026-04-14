@@ -1260,5 +1260,147 @@
       }
     ],
     "failures": []
+  },
+  {
+    "job_id": "20260414_142246_12U5_ot",
+    "source_file_id": "12U5-c6np0F9HKlJQu91TqxwEE9Cuv5IU",
+    "source_file_link": "https://drive.google.com/file/d/12U5-c6np0F9HKlJQu91TqxwEE9Cuv5IU/view?usp=drivesdk",
+    "published_at": "2026-04-14T05:25:42.354742+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[츄립 제안 0702]_02_OT_심층리포트",
+        "document_id": "1O1i_XM7iCG_gf78AcNIFb-ZnIWEDMpwybqGL2hdNcsw",
+        "url": "https://docs.google.com/document/d/1O1i_XM7iCG_gf78AcNIFb-ZnIWEDMpwybqGL2hdNcsw/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/02_deep_analysis/20260414_142246_12U5_ot_deep_report.md"
+      },
+      {
+        "title": "20260414_142246_12U5_ot_precision_report.html",
+        "document_id": "1PJYaO1PHUE1xjvfhDQTP9TTaE-S3z-kx",
+        "url": "https://drive.google.com/file/d/1PJYaO1PHUE1xjvfhDQTP9TTaE-S3z-kx/view?usp=drivesdk",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/03_final_reports/20260414_142246_12U5_ot_precision_report.html",
+        "direct_url": "https://meandfree23.github.io/auto-ot/reports/20260414_142246_12U5_ot_precision_report.html"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260414_142246_12U5_ot",
+    "source_file_id": "12U5-c6np0F9HKlJQu91TqxwEE9Cuv5IU",
+    "source_file_link": "https://drive.google.com/file/d/12U5-c6np0F9HKlJQu91TqxwEE9Cuv5IU/view?usp=drivesdk",
+    "published_at": "2026-04-14T05:25:54.226048+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[츄립 제안 0702]_02_OT_심층리포트",
+        "document_id": "1I37-Ew26T2qclW6COX7EXiV1V4A5eBTbTxZWmOxq3Oo",
+        "url": "https://docs.google.com/document/d/1I37-Ew26T2qclW6COX7EXiV1V4A5eBTbTxZWmOxq3Oo/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/02_deep_analysis/20260414_142246_12U5_ot_deep_report.md"
+      },
+      {
+        "title": "20260414_142246_12U5_ot_precision_report.html",
+        "document_id": "1JrbSUFGX2syi8xwETFr4EiiJkTrciX27",
+        "url": "https://drive.google.com/file/d/1JrbSUFGX2syi8xwETFr4EiiJkTrciX27/view?usp=drivesdk",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/03_final_reports/20260414_142246_12U5_ot_precision_report.html",
+        "direct_url": "https://meandfree23.github.io/auto-ot/reports/20260414_142246_12U5_ot_precision_report.html"
+      },
+      {
+        "title": "20260414_142246_12U5_ot_exec_summary_3p.docx",
+        "document_id": "1He-imLCRQzaz2lmzGlhiNZSOiGA93h1zVip7BNNd3M8",
+        "url": "https://docs.google.com/document/d/1He-imLCRQzaz2lmzGlhiNZSOiGA93h1zVip7BNNd3M8/edit?usp=drivesdk",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/03_final_reports/20260414_142246_12U5_ot_exec_summary_3p.docx"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260414_173550_1aMj_ot",
+    "source_file_id": "1aMj144iTnJPqCej7MQxHpkd96qeYtxBq",
+    "source_file_link": "https://drive.google.com/file/d/1aMj144iTnJPqCej7MQxHpkd96qeYtxBq/view?usp=drivesdk",
+    "published_at": "2026-04-14T08:38:03.982034+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "[김경진 감독님께_Malone Lev_Production Bid_Brief_fin_KR]_02_OT_심층리포트",
+        "document_id": "1LkmtjdC1wb0uqIJVcdNwTwoJdZn1HlBYdwg8QRIsRRs",
+        "url": "https://docs.google.com/document/d/1LkmtjdC1wb0uqIJVcdNwTwoJdZn1HlBYdwg8QRIsRRs/edit",
+        "source_markdown": "/Users/kk/Desktop/오티 자동화/outputs/02_deep_analysis/20260414_173550_1aMj_ot_deep_report.md"
+      },
+      {
+        "title": "20260414_173550_1aMj_ot_precision_report.html",
+        "document_id": "1MCtfs7rY6AocJenFT21eeiuSWGBwFO2f",
+        "url": "https://drive.google.com/file/d/1MCtfs7rY6AocJenFT21eeiuSWGBwFO2f/view?usp=drivesdk",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/03_final_reports/20260414_173550_1aMj_ot_precision_report.html",
+        "direct_url": "https://meandfree23.github.io/auto-ot/reports/20260414_173550_1aMj_ot_precision_report.html"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260414_183925_12U5_ot",
+    "source_file_id": "12U5-c6np0F9HKlJQu91TqxwEE9Cuv5IU",
+    "source_file_link": "https://drive.google.com/file/d/12U5-c6np0F9HKlJQu91TqxwEE9Cuv5IU/view?usp=drivesdk",
+    "published_at": "2026-04-14T09:52:27.666058+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "20260414_183925_12U5_ot_precision_report.html",
+        "document_id": "1i3Wx9Izvr9Q0ahhVFeJBjcCGCx_NfqGj",
+        "url": "https://drive.google.com/file/d/1i3Wx9Izvr9Q0ahhVFeJBjcCGCx_NfqGj/view?usp=drivesdk",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/03_final_reports/20260414_183925_12U5_ot_precision_report.html",
+        "direct_url": "https://meandfree23.github.io/auto-ot/reports/20260414_183925_12U5_ot_precision_report.html"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260414_183925_12U5_ot",
+    "source_file_id": "12U5-c6np0F9HKlJQu91TqxwEE9Cuv5IU",
+    "source_file_link": "https://drive.google.com/file/d/12U5-c6np0F9HKlJQu91TqxwEE9Cuv5IU/view?usp=drivesdk",
+    "published_at": "2026-04-14T09:53:46.705630+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "20260414_183925_12U5_ot_precision_report.html",
+        "document_id": "1tE0fcGyjF74TV_JpwcydlR0TfMwQGcTg",
+        "url": "https://drive.google.com/file/d/1tE0fcGyjF74TV_JpwcydlR0TfMwQGcTg/view?usp=drivesdk",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/03_final_reports/20260414_183925_12U5_ot_precision_report.html",
+        "direct_url": "https://meandfree23.github.io/auto-ot/reports/20260414_183925_12U5_ot_precision_report.html"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260414_183925_12U5_ot",
+    "source_file_id": "12U5-c6np0F9HKlJQu91TqxwEE9Cuv5IU",
+    "source_file_link": "https://drive.google.com/file/d/12U5-c6np0F9HKlJQu91TqxwEE9Cuv5IU/view?usp=drivesdk",
+    "published_at": "2026-04-14T09:53:56.958865+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "20260414_183925_12U5_ot_precision_report.html",
+        "document_id": "1ZHPji5gqBAObQB0Z5KVBfUStCOW2nbnE",
+        "url": "https://drive.google.com/file/d/1ZHPji5gqBAObQB0Z5KVBfUStCOW2nbnE/view?usp=drivesdk",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/03_final_reports/20260414_183925_12U5_ot_precision_report.html",
+        "direct_url": "https://meandfree23.github.io/auto-ot/reports/20260414_183925_12U5_ot_precision_report.html"
+      }
+    ],
+    "failures": []
+  },
+  {
+    "job_id": "20260414_183925_12U5_ot",
+    "source_file_id": "12U5-c6np0F9HKlJQu91TqxwEE9Cuv5IU",
+    "source_file_link": "https://drive.google.com/file/d/12U5-c6np0F9HKlJQu91TqxwEE9Cuv5IU/view?usp=drivesdk",
+    "published_at": "2026-04-14T09:55:28.968506+00:00",
+    "status": "success",
+    "published_docs": [
+      {
+        "title": "20260414_183925_12U5_ot_precision_report.html",
+        "local_path": "/Users/kk/Desktop/오티 자동화/outputs/03_final_reports/20260414_183925_12U5_ot_precision_report.html",
+        "direct_url": "https://meandfree23.github.io/auto-ot/reports/20260414_183925_12U5_ot_precision_report.html",
+        "url": "https://meandfree23.github.io/auto-ot/reports/20260414_183925_12U5_ot_precision_report.html"
+      }
+    ],
+    "failures": []
   }
 ]

@@ -125,67 +125,61 @@ def run_orchestrator(job_id: str):
     notify_telegram(f"🔍 <b>'{job_id}' 딥 리서치 시작</b>\nGemini 2.5가 글로벌 트렌드 및 지시사항을 분석하여 3페이지 덱을 쓰는 중입니다.")
     deep_report_md = generate_deep_report(summary or "")
     
-    # 3. Create Strategic Package & Deep Report MD
-    DEEP_DIR = ROOT / "outputs" / "02_deep_analysis"
-    DEEP_DIR.mkdir(parents=True, exist_ok=True)
-    deep_path = DEEP_DIR / f"{job_id}_deep_report.md"
-    
-    # Prepend Title back for parsing compat
+    # 3. Save Deep Intel Report to its own directory (never overwrites brain_engine output)
+    RESEARCH_DIR.mkdir(parents=True, exist_ok=True)
+    deep_intel_path = RESEARCH_DIR / f"{job_id}_deep_intel_report.md"
+
     final_md = f"# [{job_id}] 초격차 딥-리포트\n\n{deep_report_md}"
-    deep_path.write_text(final_md, encoding="utf-8")
+    deep_intel_path.write_text(final_md, encoding="utf-8")
     
-    # 4. Trigger Visual Presentation (PPT/HTML)
+    # 4. Generate Deep Intel HTML report
     try:
         ppt_script = ROOT / "scripts" / "ppt_engine_v4.py"
         if ppt_script.exists():
-            subprocess.run([sys.executable, str(ppt_script), "--job-id", job_id, "--mode", "advanced"], cwd=str(ROOT))
-        
-        # 5. Auto-Publish & Grab Links
-        notify_telegram(f"🌐 <b>결과물 클라우드 배포 중...</b>\n웹 대시보드와 PPTX를 연동하고 있습니다.")
-        
+            subprocess.run(
+                [sys.executable, str(ppt_script), "--job-id", job_id, "--report-type", "deep-intel"],
+                cwd=str(ROOT), capture_output=True
+            )
+
+        # 5. Publish to GitHub Pages
+        notify_telegram(f"🌐 <b>리포트 2 배포 중...</b>")
         publish_script = ROOT / "scripts" / "publish_to_docs.py"
-        html_link = "생성 중 오류 발생"
-        pptx_link = "생성 중 오류 발생"
-        
         if publish_script.exists():
-            # Run the publish script and capture stdout
-            pub_res = subprocess.run([sys.executable, str(publish_script), job_id], cwd=str(ROOT), capture_output=True, text=True)
-            try:
-                # Parse JSON output from the script (it prints formatted json at the end)
-                # Find the last valid JSON block
-                output_str = pub_res.stdout.strip()
-                # Find the start of the JSON block (usually {)
-                start_idx = output_str.find('{')
-                if start_idx != -1:
-                    json_str = output_str[start_idx:]
-                    pub_data = json.loads(json_str)
-                    
-                    if "published_docs" in pub_data:
-                        for doc in pub_data["published_docs"]:
-                            if doc["title"].endswith(".html") and "direct_url" in doc:
-                                html_link = doc["direct_url"]
-                            elif doc["title"].endswith(".pptx"):
-                                pptx_link = doc["url"]
-            except Exception as e:
-                print(f"[Deep Intel] Publish JSON parse error: {e}\nRaw output: {pub_res.stdout}")
+            subprocess.run(
+                [sys.executable, str(publish_script), job_id],
+                cwd=str(ROOT), capture_output=True
+            )
+
+        # 6. Construct URL directly and ask for archive upload approval
+        base_url = os.environ.get("GITHUB_PAGES_URL", "").rstrip("/")
+        if base_url:
+            deep_intel_url = f"{base_url}/reports/{job_id}_deep_intel_report.html"
+            report_link = f"\n🌐 <a href='{deep_intel_url}'>딥 인텔 리포트 바로보기</a>"
+        else:
+            report_link = ""
 
         final_msg = (
-            f"🏆 <b>딥 리서치 패키지 완성!</b>\n\n"
-            f"🆔 <code>{job_id}</code>\n\n"
-            f"<b>[결과물 바로보기 링크]</b>\n"
-            f"🌐 <a href='{html_link}'>1. 최고급 웹 대시보드 (스마트폰 즉시 열람)</a>\n\n"
-            f"📊 <a href='{pptx_link}'>2. 동시 편집 구글 슬라이드 보드 (Google Slides)</a>\n\n"
-            f"<i>* 아래 버튼을 눌러 언제든 즉시 수정을 지시할 수 있습니다.</i>"
+            f"🏆 <b>딥 인텔 리포트 완성 — 리포트 2</b>\n\n"
+            f"🆔 <code>{job_id}</code>"
+            f"{report_link}\n\n"
+            f"<i>Gemini 2.5 + Google Search 기반 글로벌 확장 분석</i>"
         )
-        
+        notify_telegram(final_msg)
+
+        # 7. Ask for archive upload approval
+        archive_msg = (
+            f"📁 <b>Strategic Research Archive 업로드</b>\n\n"
+            f"안티그래비티 마스터 허브 및 리서치 아카이브에\n"
+            f"딥 인텔 리포트를 등록하시겠습니까?"
+        )
         reply_markup = {
             "inline_keyboard": [
-                [{"text": "📝 피드백/수정 지시 추가하기", "callback_data": f"request_edit|{job_id}"}]
+                [{"text": "✅ 업로드 승인", "callback_data": f"publish_archive|{job_id}|deep-intel"}],
+                [{"text": "❌ 건너뜀", "callback_data": f"skip_publish|{job_id}"}],
             ]
         }
-        
-        notify_telegram(final_msg, reply_markup=reply_markup)
-        print(f"🏆 [Deep Intel] DONE: Full package delivered with URLs for {job_id}")
+        notify_telegram(archive_msg, reply_markup=reply_markup)
+        print(f"🏆 [Deep Intel] DONE for {job_id}")
     except Exception as e:
         print(f"❌ [Deep Intel Error] {e}")
 

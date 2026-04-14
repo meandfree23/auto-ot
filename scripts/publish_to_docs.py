@@ -38,7 +38,7 @@ OUTPUT_FOLDER_ID = os.environ.get("OUTPUT_FOLDER_ID")
 
 # Specification for documents to publish: (category, search_dir, title_suffix, is_required)
 DOC_SPECS = [
-    ("deep_report", OUTPUTS_DIR / "02_deep_analysis", "02_OT_심층리포트", True),
+    ("deep_report", OUTPUTS_DIR / "02_deep_analysis", "02_OT_심층리포트", False),
     ("summary", OUTPUTS_DIR / "summaries", "01_OT_한장요약", False),
     ("questions", OUTPUTS_DIR / "questions", "02_OT_핵심질문", False),
     ("research", OUTPUTS_DIR / "research", "03_OT_리서치팩", False),
@@ -328,44 +328,58 @@ def upload_binary_file(drive_service, file_path: Path, folder_id: str | None, mi
     }
 
 def prepare_gh_pages_branch():
-    """Create or update the gh-pages-live branch with the latest reports.
+    """Commit docs/reports/ on master first, then sync to gh-pages-live branch.
 
     Steps:
-    1. Ensure the branch exists (or create an orphan branch).
-    2. Clean the branch content.
-    3. Pull latest reports from master: docs/reports/
-    4. Set the latest precision report as docs/index.html for GitHub Pages.
-    5. Commit and force‑push to origin.
+    1. Stage & commit docs/reports/ on master (so the files exist in git history).
+    2. Checkout or create gh-pages-live.
+    3. Reset the branch, copy docs/ from master.
+    4. Set the latest precision report as docs/index.html.
+    5. Commit and force-push to origin, then return to master.
     """
-    # 1️⃣ Ensure branch exists locally (or create orphan)
-    result = subprocess.run(["git", "rev-parse", "--verify", "gh-pages-live"], cwd=ROOT, capture_output=True)
-    if result.returncode != 0:
+    docs_report_dir = ROOT / "docs" / "reports"
+    docs_report_dir.mkdir(parents=True, exist_ok=True)
+
+    # 1️⃣ Commit new HTML files to master so they're available for branch checkout
+    subprocess.run(["git", "add", "docs/"], cwd=ROOT, check=False)
+    staged = subprocess.run(["git", "diff", "--cached", "--quiet"], cwd=ROOT)
+    if staged.returncode != 0:  # there are staged changes
+        subprocess.run(
+            ["git", "commit", "-m", f"chore: add report HTML to docs/"],
+            cwd=ROOT, check=False
+        )
+        print("[Git] Committed new report HTML to master")
+
+    # 2️⃣ Ensure gh-pages-live branch exists
+    branch_exists = subprocess.run(
+        ["git", "rev-parse", "--verify", "gh-pages-live"],
+        cwd=ROOT, capture_output=True
+    )
+    if branch_exists.returncode != 0:
         subprocess.run(["git", "checkout", "--orphan", "gh-pages-live"], cwd=ROOT, check=True)
         subprocess.run(["git", "reset"], cwd=ROOT, check=True)
     else:
         subprocess.run(["git", "checkout", "gh-pages-live"], cwd=ROOT, check=True)
 
-    # 2️⃣ Clean working tree
+    # 3️⃣ Clean branch and restore docs/ from master
     subprocess.run(["git", "rm", "-rf", "*", "--ignore-unmatch"], cwd=ROOT, check=False)
-    
-    # 3️⃣ Pull latest reports from master branch directly into doc structure
-    # This ensures we have the latest files in gh-pages-live:docs/reports/
-    subprocess.run(["git", "checkout", "master", "--", "docs/reports/"], cwd=ROOT, check=True)
-                
-    # 4️⃣ Create docs/index.html (Latest Preview)
-    # Find the latest precision report in the repo
-    deploy_reports = ROOT / "docs" / "reports"
-    html_files = sorted(list(deploy_reports.glob("*_precision_report.html")), reverse=True)
+    subprocess.run(["git", "checkout", "master", "--", "docs/"], cwd=ROOT, check=True)
+
+    # 4️⃣ Set latest precision report as docs/index.html
+    html_files = sorted(list(docs_report_dir.glob("*_precision_report.html")), reverse=True)
     if html_files:
         shutil.copy2(html_files[0], ROOT / "docs" / "index.html")
-        print(f"[Git] Set {html_files[0].name} as docs/index.html (Dashboard)")
+        print(f"[Git] Set {html_files[0].name} as docs/index.html")
 
-    # 5️⃣ Add, commit, and push
+    # 5️⃣ Add, commit, and push gh-pages-live
     subprocess.run(["git", "add", "docs"], cwd=ROOT, check=True)
-    subprocess.run(["git", "commit", "-m", "Auto-deploy dashboard into /docs folder (V33.0)"], cwd=ROOT, check=False)
+    subprocess.run(
+        ["git", "commit", "-m", "Auto-deploy: update reports on gh-pages-live"],
+        cwd=ROOT, check=False
+    )
     subprocess.run(["git", "push", "origin", "gh-pages-live", "--force"], cwd=ROOT, check=True)
-    
-    # Switch back to master
+
+    # Return to master
     subprocess.run(["git", "checkout", "master"], cwd=ROOT, check=True)
 
 def git_sync_reports(job_id: str) -> bool:
@@ -393,32 +407,11 @@ def publish_job(job_id: str) -> dict[str, Any]:
     published_docs: list[dict[str, str]] = []
     failures: list[dict[str, str]] = []
 
-    # 1. Publish standard Markdown to Google Docs
-    for category, base_dir, title_suffix, is_required in DOC_SPECS:
-        try:
-            md_path = source_markdown_path(job_id, category, base_dir)
-            if not md_path:
-                if is_required:
-                    raise FileNotFoundError(f"Missing REQUIRED markdown for {category} in {base_dir}")
-                else:
-                    print(f"[Publish] Skipping optional category: {category} (File not found)")
-                    continue
-
-            doc_info = publish_one(
-                docs_service=docs_service,
-                drive_service=drive_service,
-                job_id=job_id,
-                title_suffix=title_suffix,
-                md_path=md_path,
-                source_file_name=source_file_name,
-                source_file_link=source_file_link,
-            )
-            published_docs.append(doc_info)
-        except Exception as e:
-            if is_required:
-                failures.append({"category": category, "error": str(e)})
-            else:
-                print(f"[Publish] Warning: Failed to publish optional {category}: {e}")
+    # 1. Publish standard Markdown to Google Docs (DISABLED)
+    # for category, base_dir, title_suffix, is_required in DOC_SPECS:
+    #     try:
+    #         md_path = source_markdown_path(job_id, category, base_dir)
+    #         ...
 
     # 2. Upload any .docx or .html reports from outputs/03_final_reports/
     report_dir = OUTPUTS_DIR / "03_final_reports"
@@ -427,47 +420,31 @@ def publish_job(job_id: str) -> dict[str, Any]:
     
     if report_dir.exists():
         for file in report_dir.glob(f"{job_id}_*"):
-            if file.suffix.lower() in [".docx", ".html", ".pptx"]:
+            if file.suffix.lower() in [".html"]:
                 try:
                     # [V6.4] Copy to docs/ for GitHub Pages
                     import shutil
                     shutil.copy2(file, docs_report_dir / file.name)
                     
-                    target_mime = None
-                    if file.suffix == ".docx":
-                        mime = "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-                        target_mime = "application/vnd.google-apps.document"
-                    elif file.suffix == ".pptx":
-                        mime = "application/vnd.openxmlformats-officedocument.presentationml.presentation"
-                        target_mime = "application/vnd.google-apps.presentation" # Smart Google Slides Conversion
-                    else:
-                        mime = "text/html"
-                    
-                    print(f"[Publish] Uploading binary report to Drive: {file.name}")
-                    info = upload_binary_file(drive_service, file, OUTPUT_FOLDER_ID, mime, target_mime)
+                    # [V25.0] Drive Upload Disabled as per User Request
+                    print(f"[Publish] Drive upload disabled. Generating link only.")
+                    info = {
+                        "title": file.name,
+                        "local_path": str(file)
+                    }
                     
                     # [V6.4] Add Direct GitHub Pages Link if HTML
                     if file.suffix == ".html":
                         direct_url = f"https://meandfree23.github.io/auto-ot/reports/{file.name}"
                         info["direct_url"] = direct_url
+                        info["url"] = direct_url # User requested no Drive link, so we use direct URL as primary
                         print(f"[Publish] Direct URL generated: {direct_url}")
                     
                     published_docs.append(info)
                 except Exception as e:
                     failures.append({"file": file.name, "error": str(e)})
 
-    # [V30.0/V31.0] Generate 3-page Word Summary and Strategic Sheets
-    try:
-        print(f"[Publish] Generating 3-page Word strategy summary...")
-        subprocess.run([sys.executable, str(ROOT / "scripts" / "generate_3page_doc.py"), job_id], cwd=ROOT)
-        # Note: generate_3page_doc handles uploading to Drive internally? 
-        # No, generate_3page_doc just saves to file, publish_job below will pick it up.
-        
-        print(f"[Publish] Generating Strategic Google Sheets board...")
-        subprocess.run([sys.executable, str(ROOT / "scripts" / "generate_strategy_sheet.py"), job_id], cwd=ROOT)
-        # Note: generate_strategy_sheet creates sheet directly on Drive.
-    except Exception as e:
-        print(f"[Publish Warning] Failed to generate Sheet/Word summaries: {e}")
+    # Word/Sheet 생성 제거됨
 
     # [V16.0] New: Sync changes to GitHub for Pages deployment
     git_sync_reports(job_id)

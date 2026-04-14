@@ -118,25 +118,31 @@ def run_antigravity(task_path: Path, job_id: str) -> dict[str, Any]:
 
 
 def send_telegram_notification(job_id: str, file_name: str):
-    """Send a completion notification to Telegram."""
+    """OT 원문 분석 완료 알림 — 고도화 방식 선택 버튼 제공."""
     if not TELEGRAM_BOT_TOKEN or not TELEGRAM_CHAT_ID:
         return
-    
+
     url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
-    msg = f"✅ <b>1차 OT 분석 완료 (브레인 엔진)</b>\n\n📄 <b>파일명</b>: {file_name}\n🆔 <b>작업 ID</b>: <code>{job_id}</code>\n\n문맥 파악 및 기본 전략 도출이 완료되었습니다. 다음 조작을 선택해주세요."
-    
+    msg = (
+        f"✅ <b>OT 원문 분석 완료</b>\n\n"
+        f"📄 <b>파일</b>: {file_name}\n"
+        f"🆔 <b>Job ID</b>: <code>{job_id}</code>\n\n"
+        f"고도화 방식을 선택해주세요."
+    )
+
     reply_markup = {
         "inline_keyboard": [
-            [{"text": "🚀 심층 리서치 고도화 시작 (20P 리포트)", "callback_data": f"deep_research|{job_id}"}],
-            [{"text": "📝 피드백/수정 지시 추가하기", "callback_data": f"request_edit|{job_id}"}]
+            [{"text": "📊 Claude 고도화 해줘", "callback_data": f"claude_upgrade|{job_id}"}],
+            [{"text": "🔬 딥 인텔 고도화 해줘", "callback_data": f"deep_research|{job_id}"}],
         ]
     }
-    
+
     payload = {
-        "chat_id": TELEGRAM_CHAT_ID, 
-        "text": msg, 
+        "chat_id": TELEGRAM_CHAT_ID,
+        "text": msg,
         "parse_mode": "HTML",
-        "reply_markup": reply_markup
+        "reply_markup": reply_markup,
+        "disable_web_page_preview": False,
     }
     try:
         import requests

@@ -60,10 +60,12 @@ def process_task(job_id: str, task_path_str: str):
     
     try:
         # 1. Load Task Data
-        task_path = Path(task_path_str)
+        # unicodedata.normalize 로 macOS NFD/NFC 경로 충돌 방지
+        import unicodedata
+        task_path = Path(unicodedata.normalize("NFC", task_path_str))
         if not task_path.is_absolute():
-            task_path = ROOT / task_path_str
-            
+            task_path = ROOT / unicodedata.normalize("NFC", task_path_str)
+
         task_data = json.loads(task_path.read_text(encoding="utf-8"))
         file_id = task_data.get("source", {}).get("file_id")
         file_name = task_data.get("source", {}).get("file_name", "document.pdf")
@@ -90,12 +92,12 @@ def process_task(job_id: str, task_path_str: str):
 
         # 4. Generate Reports
         if generate_reports(job_id, content, file_name):
-            print(f"[Bridge] High-fidelity V22.0 reports generated successfully.")
-            # Cleanup
+            print(f"[Bridge] Reports generated successfully.")
             if local_path.exists(): local_path.unlink()
+
+            # HTML 생성은 Telegram 버튼(고도화 해줘)으로 수동 트리거됨
             return True
-            
-        # Cleanup on failure too
+
         if local_path.exists(): local_path.unlink()
         return False
         

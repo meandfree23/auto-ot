@@ -1,8 +1,0 @@
-{
-  "job_id": "dummy_test_job",
-  "source": {
-    "file_name": "test_source.docx",
-    "web_view_link": "https://example.com/test",
-    "file_id": "test_id_123"
-  }
-}
