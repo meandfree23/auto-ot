@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>츄립 제안 0702</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<style>
+:root {
+  --accent: #8b5cf6;
+  --accent-rgb: 139,92,246;
+  --bg: #030303;
+  --surface: rgba(255,255,255,0.035);
+  --surface-hov: rgba(255,255,255,0.06);
+  --border: rgba(255,255,255,0.07);
+  --border-hov: rgba(139,92,246,0.3);
+  --text-1: #f5f5f7;
+  --text-2: #a1a1a6;
+  --text-3: #6e6e73;
+  --r-card: 20px;
+  --glow: 0 20px 80px -20px rgba(139,92,246,.35), 0 0 0 1px rgba(139,92,246,.08);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter','Noto Sans KR',sans-serif;
+  background: var(--bg);
+  color: var(--text-1);
+  -webkit-font-smoothing: antialiased;
+  background-image:
+    radial-gradient(ellipse 90% 60% at 10% -10%, rgba(139,92,246,.13) 0%, transparent 60%),
+    radial-gradient(ellipse 70% 50% at 90% 110%, rgba(139,92,246,.07) 0%, transparent 60%);
+  background-attachment: fixed;
+}
+/* ── Nav ────────────────────────────── */
+.site-nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2rem; height: 60px;
+  background: rgba(3,3,3,.7);
+  backdrop-filter: blur(24px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-brand { display: flex; align-items: center; gap: .6rem; font-size: .85rem; font-weight: 700; letter-spacing: .08em; }
+.nav-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px rgba(139,92,246,.8); }
+.nav-meta { font-size: .72rem; color: var(--text-3); font-family: monospace; letter-spacing: .05em; }
+/* ── Hero ───────────────────────────── */
+.hero {
+  min-height: 92vh; padding: 120px 5vw 80px;
+  display: grid; grid-template-columns: 1fr 380px; gap: 4rem; align-items: center;
+}
+@media(max-width:900px){ .hero { grid-template-columns: 1fr; padding: 100px 5vw 60px; } }
+.hero-badge {
+  display: inline-block; margin-bottom: 1.5rem;
+  padding: .3rem 1rem; border-radius: 999px;
+  border: 1px solid rgba(139,92,246,.3);
+  background: rgba(139,92,246,.08);
+  font-size: .72rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase;
+  color: var(--accent);
+}
+.hero-title {
+  font-size: clamp(2.4rem,5vw,4.5rem);
+  font-weight: 900; line-height: 1.08; letter-spacing: -.04em;
+  background: linear-gradient(160deg, #fff 30%, rgba(255,255,255,.45));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  margin-bottom: 1.5rem;
+}
+.hero-sub { font-size: 1.05rem; color: var(--text-2); line-height: 1.7; max-width: 560px; margin-bottom: 2.5rem; }
+.hero-chips { display: flex; flex-wrap: wrap; gap: .6rem; }
+.chip {
+  padding: .35rem .85rem; border-radius: 8px;
+  background: rgba(255,255,255,.05); border: 1px solid var(--border);
+  font-size: .75rem; color: var(--text-2); font-weight: 500; display: flex; align-items: center; gap: .4rem;
+}
+.chip-accent { color: var(--accent); border-color: rgba(139,92,246,.2); background: rgba(139,92,246,.06); }
+/* ── Radar chart container ──────────── */
+.radar-wrap {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 2rem; border-radius: 28px;
+  background: var(--surface); border: 1px solid var(--border);
+  backdrop-filter: blur(40px);
+}
+.radar-wrap canvas { max-width: 300px; max-height: 300px; }
+.radar-label { font-size: .72rem; color: var(--text-3); margin-top: 1rem; text-align: center; letter-spacing: .1em; text-transform: uppercase; }
+/* ── Section banner ─────────────────── */
+.cat-section { margin-bottom: 6rem; padding: 0 5vw; }
+.cat-banner {
+  width: 100%; height: 220px; border-radius: 24px; overflow: hidden;
+  position: relative; margin-bottom: 3rem;
+  background-size: cover; background-position: center;
+}
+.cat-banner-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(120deg, rgba(3,3,3,.85) 0%, rgba(3,3,3,.4) 100%);
+}
+.cat-banner-content {
+  position: absolute; bottom: 2rem; left: 2.5rem;
+  display: flex; align-items: center; gap: 1rem;
+}
+.cat-emoji { font-size: 2.5rem; line-height: 1; }
+.cat-title {
+  font-size: 2rem; font-weight: 800; letter-spacing: -.03em;
+  background: linear-gradient(90deg, #fff, rgba(255,255,255,.7));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+/* ── Cards grid ─────────────────────── */
+.cards-grid {
+  display: flex; flex-direction: column; gap: 2rem;
+}
+.ot-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-card);
+  padding: 2.5rem;
+  backdrop-filter: blur(30px);
+  transition: transform .4s cubic-bezier(.16,1,.3,1), border-color .3s, box-shadow .3s;
+  animation: cardIn .7s cubic-bezier(.16,1,.3,1) both;
+}
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(24px); filter: blur(6px); }
+  to   { opacity: 1; transform: none; filter: none; }
+}
+.ot-card:hover {
+  border-color: var(--border-hov);
+  box-shadow: var(--glow);
+  transform: translateY(-6px);
+}
+.card-header { display: flex; align-items: center; gap: .6rem; margin-bottom: 1.5rem; }
+.card-tag {
+  font-size: .68rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+  padding: .25rem .7rem; border-radius: 6px;
+}
+.tag-insight { background: rgba(139,92,246,.12); color: var(--accent); border: 1px solid rgba(139,92,246,.25); }
+.tag-risk { background: rgba(244,63,94,.1); color: #f87171; border: 1px solid rgba(244,63,94,.25); }
+.card-title { font-size: 1rem; font-weight: 600; line-height: 1.35; letter-spacing: -.015em; margin-bottom: 1.4rem; color: var(--text-1); display: none; }
+.card-body { display: flex; flex-direction: column; gap: 1.4rem; }
+/* ── Global text quality ────────────── */
+p, li, td, blockquote {
+  word-break: keep-all; overflow-wrap: break-word;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: 'kern' 1, 'liga' 1;
+}
+strong { color: var(--text-1); font-weight: 700; }
+
+/* ── Blockquote ─────────────────────── */
+.ot-quote {
+  border-left: 2px solid var(--accent);
+  padding: .9rem 1.25rem;
+  border-radius: 0 10px 10px 0;
+  background: rgba(139,92,246,.05);
+}
+.ot-quote p {
+  font-size: .93rem;
+  color: var(--text-1); line-height: 1.8;
+  letter-spacing: -.015em; font-style: italic;
+}
+
+/* ── Bullets ────────────────────────── */
+.ot-bullets {
+  list-style: none; padding: 0;
+  display: flex; flex-direction: column; gap: 0;
+  border: 1px solid var(--border); border-radius: 14px; overflow: hidden;
+}
+.ot-bullets li {
+  position: relative;
+  padding: .85rem 1rem .85rem 1.5rem;
+  font-size: .875rem; color: var(--text-2); line-height: 1.75;
+  letter-spacing: -.01em; word-break: keep-all;
+  border-bottom: 1px solid var(--border);
+  transition: background .2s;
+}
+.ot-bullets li:last-child { border-bottom: none; }
+.ot-bullets li:hover { background: rgba(255,255,255,.025); }
+.ot-bullets li::before {
+  content: '';
+  position: absolute; left: .7rem; top: 1.15rem;
+  width: 5px; height: 5px; border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 6px rgba(139,92,246,.6);
+}
+/* strong inside bullets: accent label style */
+.ot-bullets li strong {
+  display: inline-block;
+  color: var(--text-1); font-weight: 700;
+  background: rgba(139,92,246,.1);
+  border: 1px solid rgba(139,92,246,.2);
+  padding: .02em .45em; border-radius: 5px;
+  font-size: .84em; letter-spacing: 0;
+  margin-right: .15em;
+}
+/* First bullet: lead emphasis */
+.ot-bullets li:first-child {
+  color: var(--text-1); font-weight: 500; font-size: .9rem;
+  background: rgba(139,92,246,.04);
+}
+
+/* ── Table ──────────────────────────── */
+.tbl-wrap {
+  overflow-x: auto; border-radius: 16px;
+  border: 1px solid var(--border); margin: .75rem 0;
+  box-shadow: 0 4px 24px rgba(0,0,0,.2);
+}
+.md-table { width: 100%; border-collapse: collapse; font-size: .84rem; min-width: 480px; }
+.md-table th {
+  padding: .75rem 1rem; text-align: left; font-weight: 700; font-size: .71rem;
+  letter-spacing: .08em; text-transform: uppercase; color: var(--accent);
+  background: rgba(139,92,246,.09); border-bottom: 1px solid rgba(139,92,246,.18);
+  word-break: keep-all; white-space: nowrap;
+}
+.md-table td {
+  padding: .9rem 1rem; color: var(--text-2); word-break: keep-all;
+  border-bottom: 1px solid rgba(255,255,255,.04); line-height: 1.7; vertical-align: top;
+  font-size: .83rem;
+}
+.md-table td:first-child {
+  color: var(--text-1); font-weight: 600; font-size: .8rem;
+  white-space: nowrap; max-width: 140px;
+}
+.md-table td strong { color: var(--accent); font-weight: 700; background: none; padding: 0; }
+.md-table tr:last-child td { border-bottom: none; }
+.md-table tr:nth-child(even) td { background: rgba(255,255,255,.015); }
+.md-table tr:hover td { background: rgba(139,92,246,.04); }
+
+/* ── Phase timeline ─────────────────── */
+.phase-timeline { display: flex; flex-direction: column; gap: 0; margin: .75rem 0; }
+.phase-step {
+  display: flex; gap: 1.1rem; position: relative; padding-bottom: 1.6rem;
+}
+.phase-step:last-child { padding-bottom: 0; }
+.phase-step::before {
+  content: ''; position: absolute; left: 15px; top: 34px; bottom: 0; width: 1px;
+  background: linear-gradient(to bottom, rgba(139,92,246,.5), transparent);
+}
+.phase-step:last-child::before { display: none; }
+.phase-num {
+  flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), rgba(139,92,246,.7));
+  color: #fff; font-size: .82rem; font-weight: 800;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 0 20px rgba(139,92,246,.5); z-index: 1;
+}
+.phase-body { flex: 1; padding-top: .2rem; }
+.phase-title {
+  font-size: .9rem; font-weight: 700; color: var(--text-1);
+  margin-bottom: .4rem; line-height: 1.4; word-break: keep-all;
+}
+.phase-title strong { color: var(--accent); background: none; padding: 0; }
+.phase-action {
+  font-size: .84rem; color: var(--text-2); line-height: 1.7;
+  margin-bottom: .4rem; word-break: keep-all;
+}
+.phase-kpi {
+  font-size: .76rem; color: var(--accent);
+  background: rgba(139,92,246,.07); border: 1px solid rgba(139,92,246,.18);
+  border-radius: 6px; padding: .3rem .8rem; display: inline-block; margin-top: .3rem;
+  word-break: keep-all;
+}
+
+/* ── Image block ────────────────────── */
+.img-block { border-radius: 16px; overflow: hidden; margin: .75rem 0; position: relative; }
+.img-block img {
+  width: 100%; max-height: 240px; object-fit: cover; display: block;
+  transition: transform .7s cubic-bezier(.16,1,.3,1);
+}
+.img-block:hover img { transform: scale(1.04); }
+.img-label {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  background: linear-gradient(to top, rgba(0,0,0,.75), transparent);
+  padding: 1.8rem .9rem .6rem; font-size: .72rem; color: rgba(255,255,255,.65);
+  letter-spacing: .04em;
+}
+
+/* ── Paragraph ──────────────────────── */
+.ot-para {
+  font-size: .9rem; color: var(--text-2); line-height: 1.75;
+  letter-spacing: -.01em; word-break: keep-all;
+}
+.ot-para strong { color: var(--accent); background: rgba(139,92,246,.08); padding: .05em .3em; border-radius: 4px; }
+
+/* ── Divider ─────────────────────────── */
+.ot-divider { border: none; border-top: 1px solid var(--border); margin: 1rem 0; }
+/* ── Footer ─────────────────────────── */
+.site-footer {
+  margin-top: 6rem; padding: 3rem 5vw;
+  border-top: 1px solid var(--border);
+  display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: space-between;
+}
+.footer-left { font-size: .75rem; color: var(--text-3); line-height: 1.8; }
+.footer-right { display: flex; gap: .5rem; }
+.footer-chip {
+  padding: .3rem .8rem; border-radius: 8px;
+  background: var(--surface); border: 1px solid var(--border);
+  font-size: .72rem; color: var(--text-3); font-family: monospace;
+}
+/* ── Scroll progress ────────────────── */
+#scroll-progress {
+  position: fixed; top: 60px; left: 0; height: 2px; width: 0%;
+  background: linear-gradient(90deg, var(--accent), rgba(139,92,246,.3));
+  z-index: 200; transition: width .1s;
+}
+</style>
+</head>
+<body>
+<!-- Scroll progress bar -->
+<div id="scroll-progress"></div>
+
+<!-- Nav -->
+<nav class="site-nav">
+  <div class="nav-brand">
+    <div class="nav-dot"></div>
+    <span>Antigravity Intelligence</span>
+  </div>
+  <span class="nav-meta">20260414_183925_12U5_ot</span>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-badge">Strategic Intelligence Report</div>
+    <h1 class="hero-title">츄립 제안 0702</h1>
+    <p class="hero-sub">AI 분석 엔진이 원문 OT를 해체하여 시장·전략·크리에이티브·리스크의 4개 축으로 재구성한 기획 브리핑입니다.</p>
+    <div class="hero-chips">
+      <span class="chip chip-accent">📊 시장 분석</span>
+      <span class="chip chip-accent">🎯 전략 논리</span>
+      <span class="chip chip-accent">🎨 크리에이티브</span>
+      <span class="chip chip-accent">⚠️ 리스크 점검</span>
+      <span class="chip">🆔 20260414_183925_12U5_ot</span>
+      <span class="chip">📅 2026.04.14</span>
+    </div>
+  </div>
+  <div class="radar-wrap">
+    <canvas id="radarChart" width="300" height="300"></canvas>
+    <div class="radar-label">분석 커버리지 — 4개 축</div>
+  </div>
+</section>
+
+<!-- Content sections -->
+
+<section class="cat-section" id="cat-market-intelligence">
+  <div class="cat-banner" style="background-image:url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1600&q=70&fm=webp&fit=crop&auto=format')">
+    <div class="cat-banner-overlay"></div>
+    <div class="cat-banner-content">
+      <span class="cat-emoji">📊</span>
+      <h2 class="cat-title">Market Intelligence</h2>
+    </div>
+  </div>
+  <div class="cards-grid">
+    
+<div class="ot-card">
+  <div class="card-header">
+    <span class="card-tag tag-insight">💡 INSIGHT</span>
+  </div>
+  <h3 class="card-title">Market Intelligence</h3>
+  <div class="card-body"><blockquote class="ot-quote"><p>수의사 직접 설계 + 무첨가 기능성 간식이라는 희소한 포지션이 처방식과 일반 간식 사이의 공백을 정확히 겨냥한다</p></blockquote><ul class="ot-bullets"><li><strong>경쟁 환경:</strong> Royal Canin·Hill's Science Diet는 수의사 처방 후 급여하는 임상식 포지션이며, Lucy Lickies·지노베타는 기능성을 일부 갖추나 개발 주체가 일반 식품팀 또는 바이오 벤처 수준에 머문다. CHOOLIP은 "처방식 수준의 고기능 제품이지만 일반 구매 가능"이라는 포지션으로 두 영역의 경계를 점유한다.</li><li><strong>타겟 소비자 Pain-point:</strong> 기존 브랜드들은 보존제·향료·캐러기난 등 첨가물 정보가 불명확하거나(국내 일반 브랜드), 성분 정보 자체가 제한적(Lucy Lickies)이다. 반려동물 보호자는 성분 투명성을 요구하지만 처방식처럼 병원을 거치지 않아도 되는 편의성을 동시에 원한다.</li><li><strong>주목해야 할 기회:</strong> 아마존·코스트코·자사몰 등 온라인 채널이 메인 유통 무대이며, "Farm-To-Plate 방식의 청정 원료"와 "1회용 스틱 패키징"은 글로벌 프리미엄 펫 시장에서 비주얼 콘텐츠로 즉각 전환 가능한 구체적 차별 요소다.</li></ul><div class="tbl-wrap"><table class="md-table"><tr><th>구분</th><th>현황 (원문 근거)</th><th>전략적 시사점</th></tr><tr><td>제품 전문성</td><td>한국 수의사 Dr. Eric이 자신의 반려동물을 위해 직접 레시피 설계 — "대부분 간식 브랜드는 수의사 자문만 받고 주도적 설계는 하지 않음"</td><td>수의사 개발이라는 팩트를 크리에이티브의 중심 신뢰 축으로 배치</td></tr><tr><td>성분 정책</td><td>무곡물/무글루텐/무소금/무MSG/캐러기난·잔탄검·구아검 미사용/착색료·인공향료·방부제 없음</td><td>경쟁사 대비 '없는 것'의 목록이 명확 → 네거티브 클린 메시지로 가시화</td></tr><tr><td>유통 채널</td><td>아마존, 코스트코, 자사몰 메인 영상으로 활용 — 소셜 콘텐츠 방향성과 의도적으로 차별화</td><td>소셜 감성이 아닌 프리미엄 브랜드 필름 문법 적용 필요</td></tr><tr><td>제품 형태</td><td>스틱 타입 1회용 패키징 — 산책·외출·여행 등 하루 루틴에 적용 가능, 보호자 손에서 직접 섭취로 유대감 강화</td><td>'루틴 속 의식(ritual)'으로서의 간식 장면을 핵심 시각 언어로 활용</td></tr><tr><td>기능성 범위</td><td>관절·간·심장·신장·눈·피부 등 7가지 건강 기능으로 세분화</td><td>7가지 기능 = 7가지 삶의 장면으로 스토리 구조화 가능</td></tr></table></div></div>
+</div>
+  </div>
+</section>
+<section class="cat-section" id="cat-strategic-logic">
+  <div class="cat-banner" style="background-image:url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=1600&q=70&fm=webp&fit=crop&auto=format')">
+    <div class="cat-banner-overlay"></div>
+    <div class="cat-banner-content">
+      <span class="cat-emoji">🎯</span>
+      <h2 class="cat-title">Strategic Logic</h2>
+    </div>
+  </div>
+  <div class="cards-grid">
+    
+<div class="ot-card">
+  <div class="card-header">
+    <span class="card-tag tag-insight">💡 INSIGHT</span>
+  </div>
+  <h3 class="card-title">Strategic Logic</h3>
+  <div class="card-body"><blockquote class="ot-quote"><p>"처방식의 과학적 근거, 간식의 일상적 접근성"이라는 모순 해소가 CHOOLIP 브랜드 비디오의 유일한 전략 명제다</p></blockquote><ul class="ot-bullets"><li><strong>전략 1 — 수의사 개발 팩트를 감성 서사의 출발점으로 전환:</strong> Dr. Eric이 "자신의 반려동물을 위해" 직접 레시피를 설계했다는 원점 스토리를 브랜드 비디오의 내러티브 뼈대로 사용한다. 제품 스펙 나열이 아니라 "왜 만들었는가"라는 동기를 전면에 놓음으로써 프리미엄 전문성과 감정적 진정성을 동시에 확보한다.</li><li><strong>전략 2 — 7가지 기능성을 7가지 삶의 장면으로 구조화 (안 A-1 직접 반영):</strong> 관절·간·심장·피부 등 각 기능을 "산책 전/식사 후/외출 준비 등 하루 루틴"과 1:1 대응시켜, 기능성 정보가 제품 설명이 아닌 보호자-반려동물의 실제 일상 장면으로 소비되게 한다. 경쟁사(ANF·제일사료 등)가 "명확한 기능성 없이 기호성 중심"인 것과 정반대 포지션.</li><li><strong>전략 3 — 소셜 콘텐츠와 의도적 문법 분리로 프리미엄 포지셔닝 고착화:</strong> OT 원문이 "소셜 콘텐츠 방향성과 다르게 프리미엄 브랜드로 자리매김"을 명시한 만큼, 브랜드 비디오는 시즐 영상(안 A) + 라이프스타일 필름(안 B)의 문법을 혼합하되 감각적 완성도를 최우선으로 한다. 아마존·코스트코 채널에서 제품 상세 영상이 아닌 브랜드 자산으로 기능하도록 설계.</li></ul><div class="phase-timeline">
+<div class="phase-step">
+  <div class="phase-num">1</div>
+  <div class="phase-body">
+    <div class="phase-title">1단계: 브랜드 비디오 제작</div>
+    <div class="phase-action">Dr. Eric 개발 스토리 + 7가지 기능 장면 + Farm-To-Plate 원료 시즐을 하나의 필름으로 통합, 60~90초 메인 컷 완성</div>
+    <div class="phase-kpi">🎯 아마존·코스트코·자사몰 메인 영상 교체 완료, 영상 체류 시간</div>
+  </div>
+</div>
+<div class="phase-step">
+  <div class="phase-num">2</div>
+  <div class="phase-body">
+    <div class="phase-title">2단계: 채널별 커스터마이징</div>
+    <div class="phase-action">메인 필름을 15초(시즐 집중)·30초(기능성 장면 중심)·세로형(자사몰/모바일) 등으로 컷 다운</div>
+    <div class="phase-kpi">🎯 자사몰 제품 페이지 전환율, 아마존 A+ 콘텐츠 클릭률</div>
+  </div>
+</div></div></div>
+</div>
+  </div>
+</section>
+<section class="cat-section" id="cat-creative-&-visual">
+  <div class="cat-banner" style="background-image:url('https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1600&q=70&fm=webp&fit=crop&auto=format')">
+    <div class="cat-banner-overlay"></div>
+    <div class="cat-banner-content">
+      <span class="cat-emoji">🎨</span>
+      <h2 class="cat-title">Creative & Visual</h2>
+    </div>
+  </div>
+  <div class="cards-grid">
+    
+<div class="ot-card">
+  <div class="card-header">
+    <span class="card-tag tag-insight">💡 INSIGHT</span>
+  </div>
+  <h3 class="card-title">Creative & Visual</h3>
+  <div class="card-body"><blockquote class="ot-quote"><p>보호자의 손끝에서 시작되는 7개의 건강한 순간 — CHOOLIP은 간식이 아니라 하루의 의식(ritual)이다</p></blockquote><ul class="ot-bullets"><li><strong>크리에이티브 방향 1 — 시즐 + 루틴 하이브리드 필름 (안 A + A-1 통합):</strong> 제품의 부드러운 스틱 텍스처와 청정 원료(Farm-To-Plate)를 클로즈업 시즐로 표현한 뒤, 산책 전·식사 후·외출 준비 등 OT에 명시된 7가지 하루 루틴 장면으로 전환하는 구성. 아마존 제품 영상 포맷(가로 16:9, 60~90초)에 최적화.</li><li><strong>크리에이티브 방향 2 — 핵심 카피 방향 "처방전 없이 처방식처럼":</strong> 무첨가(무곡물/무소금/무MSG/방부제 없음) 팩트와 수의사 직접 설계를 압축하는 카피 라인. "단순한 간식이 아닌 과학적 근거 기반의 건강 보조식품"이라는 OT 문구를 소비자 언어로 번역. 강아지·고양이 모두 대상임을 시각적으로 병렬 배치.</li><li><strong>크리에이티브 방향 3 — 비주얼 톤앤매너: 클린 내추럴 + 하이엔드 푸드 필름 문법:</strong> 과도한 그래픽·자막 없이 자연광 기반 클린 화이트~웜 베이지 톤. Lucy Lickies의 "재미있고 즐거운" 비비드 톤과 명확히 구분되며, Royal Canin의 차갑고 기능적인 의료 톤도 아닌 "프리미엄 식품 브랜드(프리미엄 올리브오일·유기농 식품 필름)" 미학 차용. 안 B의 "아름다운 인생 최고의 순간"이라는 레퍼런스 방향과 정렬.</li></ul><div class="tbl-wrap"><table class="md-table"><tr><th>포맷</th><th>연출 의도</th><th>톤앤매너</th></tr><tr><td>메인 브랜드 필름 60~90초 (16:9)</td><td>Farm-To-Plate 원료 시즐 → Dr. Eric 개발 스토리 → 7가지 루틴 장면 → 강아지·고양이 동반 등장 순서로 전개</td><td>자연광·클린 화이트·웜 베이지, 하이엔드 푸드 필름 질감</td></tr><tr><td>기능성 쇼트컷 30초 (16:9)</td><td>7가지 기능(관절·간·심장·신장·눈·피부) 각 장면을 리듬감 있게 편집, 제품 스틱 클로즈업 반복 노출</td><td>절제된 타이포·미니멀 그래픽, 군더더기 없는 컷 전환</td></tr><tr><td>세로형 15초 (9:16, 자사몰·모바일)</td><td>보호자 손에서 반려동물이 직접 섭취하는 유대감 장면 단독 집중, 1회용 패키징 편의성 시각화</td><td>따뜻하고 친밀한 온도감, 소셜과 구분되는 절제된 감성</td></tr></table></div></div>
+</div>
+  </div>
+</section>
+<section class="cat-section" id="cat-gap-check-&-risks">
+  <div class="cat-banner" style="background-image:url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1600&q=70&fm=webp&fit=crop&auto=format')">
+    <div class="cat-banner-overlay"></div>
+    <div class="cat-banner-content">
+      <span class="cat-emoji">⚠️</span>
+      <h2 class="cat-title">Gap Check & Risks</h2>
+    </div>
+  </div>
+  <div class="cards-grid">
+    
+<div class="ot-card">
+  <div class="card-header">
+    <span class="card-tag tag-risk">⚠️ RISK</span>
+  </div>
+  <h3 class="card-title">Gap Check</h3>
+  <div class="card-body"><ul class="ot-bullets"><li><strong>제품 라인업 범위 미확인:</strong> OT에 관절·간·심장·신장·눈·피부 등 6~7가지 기능성이 언급되나, 현재 출시된 SKU(스틱 제품 종류, 강아지용/고양이용 구분 여부)가 명시되지 않았다. 영상 내 제품 노출 범위와 순서를 확정하려면 실제 라인업 리스트 확인이 선행되어야 한다.</li><li><strong>Dr. Eric의 온스크린 등장 여부 미결:</strong> "수의사 Dr. Eric 직접 설계"가 핵심 신뢰 자산으로 명시되어 있으나, 브랜드 비디오에 Dr. Eric이 직접 출연하는지 여부가 OT에 없다. 출연 시 촬영 방향·언어(한국어/영어)·분량이 달라지므로 조기 컨펌 필요.</li><li><strong>잠재적 리스크 — "방부제 없어 불량 발생" 이슈:</strong> OT 원문에 "실제로 방부제가 없어 불량인 경우 있음"이 경쟁사(특정 브랜드) 단점으로 기재되어 있으나, CHOOLIP 역시 무방부제를 표방하는 만큼 유통기한·보관 조건·불량률에 대한 품질관리 메시지를 영상 또는 랜딩 페이지 내 어디선가 선제적으로 다뤄야 한다. 무첨가 강조가 오히려 품질 신뢰 리스크로 역전될 수 있는 포인트다.</li></ul></div>
+</div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="footer-left">
+    <div style="color:var(--text-2);font-weight:600;margin-bottom:.3rem">Antigravity Strategic Intelligence</div>
+    <div>원본 파일: — · 생성일: 2026.04.14</div>
+    <div style="margin-top:.5rem;color:var(--accent);font-size:.7rem">CONFIDENTIAL & PROPRIETARY</div>
+  </div>
+  <div class="footer-right">
+    <span class="footer-chip">Claude Sonnet</span>
+    <span class="footer-chip">v5.0</span>
+  </div>
+</footer>
+
+<script>
+// ── Scroll progress ────────────────────────
+const bar = document.getElementById('scroll-progress');
+window.addEventListener('scroll', () => {
+  const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
+  bar.style.width = Math.min(pct, 100) + '%';
+}, { passive: true });
+
+// ── Intersection Observer ──────────────────
+const io = new IntersectionObserver((entries) => {
+  entries.forEach((e, idx) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), idx * 80);
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.ot-card').forEach(el => io.observe(el));
+
+// ── Radar chart ────────────────────────────
+const radarCtx = document.getElementById('radarChart').getContext('2d');
+Chart.defaults.color = '#6e6e73';
+Chart.defaults.font.family = "'Inter','Noto Sans KR',sans-serif";
+new Chart(radarCtx, {
+  type: 'radar',
+  data: {
+    labels: ['📊 시장 분석','🎯 전략 논리','🎨 크리에이티브','⚠️ 리스크'],
+    datasets: [{
+      label: '분석 완성도',
+      data: 98, 76, 86, 38,
+      backgroundColor: 'rgba(139,92,246,.15)',
+      borderColor: 'rgba(139,92,246,.8)',
+      pointBackgroundColor: 'rgba(139,92,246,1)',
+      pointBorderColor: '#030303',
+      pointBorderWidth: 2,
+      pointRadius: 5,
+      borderWidth: 2
+    }]
+  },
+  options: {
+    animation: { duration: 1200, easing: 'easeOutQuart' },
+    scales: {
+      r: {
+        min: 0, max: 100,
+        ticks: { display: false, stepSize: 25 },
+        grid: { color: 'rgba(255,255,255,.06)' },
+        angleLines: { color: 'rgba(255,255,255,.06)' },
+        pointLabels: { font: { size: 11, weight: '500' }, color: '#a1a1a6', padding: 10 }
+      }
+    },
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        backgroundColor: '#111',
+        borderColor: 'rgba(139,92,246,.3)',
+        borderWidth: 1,
+        callbacks: { label: ctx => ` ${ctx.raw}점` }
+      }
+    }
+  }
+});
+
+// ── Lucide icons ───────────────────────────
+if (typeof lucide !== 'undefined') lucide.createIcons();
+</script>
+</body>
+</html>
