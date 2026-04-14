@@ -216,25 +216,6 @@ def process_callback(cb_id, cid, data):
 
         _th.Thread(target=_run_claude, daemon=True).start()
 
-    # ── 딥 인텔 고도화 ──────────────────────────────────────────
-    elif action == "deep_research":
-        answer_callback(cb_id, "🔍 딥 인텔 리포트 생성을 시작합니다 (약 2~3분 소요)")
-        send_telegram_direct(
-            f"🔍 <b>딥 인텔 리포트 생성 시작 — 리포트 2</b>\n\n"
-            f"🆔 <code>{job_id}</code>\n\n"
-            f"Gemini 2.5 + Google Search 기반으로 글로벌 시장 트렌드를 확장 분석합니다.\n"
-            f"완성되면 별도 알림으로 링크를 전달드립니다."
-        )
-        try:
-            cmd_dir = ROOT_DIR / "state" / "commands"
-            cmd_dir.mkdir(parents=True, exist_ok=True)
-            cmd_file = cmd_dir / f"cmd_{job_id}_{int(time.time())}.json"
-            
-            cmd_payload = {"command": "deep_research", "job_id": job_id, "timestamp": time.time()}
-            cmd_file.write_text(json.dumps(cmd_payload), encoding="utf-8")
-        except Exception as e:
-            send_telegram_direct(f"❌ 작업 요청 중 파일 시스템 오류 발생: {e}")
-            
     # ── 아카이브 업로드 승인 ─────────────────────────────────────
     elif action == "publish_archive":
         report_type = data.split("|")[2] if data.count("|") >= 2 else "standard"
@@ -282,57 +263,16 @@ def process_command(text: str, cid: str):
         feedback_path.write_text(text, encoding="utf-8")
         
         clear_state(cid)
-        reply_markup = {
-            "inline_keyboard": [
-                [{"text": f"🚀 피드백({job_id}) 반영 딥-리서치 강제 트리거", "callback_data": f"deep_research|{job_id}"}]
-            ]
-        }
-        send_telegram_direct(f"✅ <b>피드백이 안전하게 저장되었습니다.</b>\n\n내용: <i>{text}</i>\n해당 피드백을 반영하여 심층 분석을 이어서 진행하시겠습니까?", reply_markup)
+        send_telegram_direct(f"✅ <b>피드백이 저장되었습니다.</b>\n\n내용: <i>{text}</i>\n다음 리포트 생성 시 자동 반영됩니다.")
         return
         
-    # 1. '고도화 해줘' / '딥 인텔' - Trigger Deep Intel Engine (Report 2)
-    if any(k in text for k in ["고도화", "딥 인텔", "딥인텔", "리포트 2"]):
-        job_id = get_last_job_id()
-        send_telegram_direct(
-            f"🔍 <b>딥 인텔 리포트 생성 시작 — 리포트 2</b>\n\n"
-            f"🆔 <code>{job_id or '탐색 중'}</code>\n\n"
-            f"Gemini 2.5 + Google Search 기반으로 글로벌 시장 트렌드를 확장 분석합니다.\n"
-            f"완성되면 별도 알림으로 링크를 전달드립니다."
-        )
-        
-        job_id = get_last_job_id()
-        if not job_id:
-            send_telegram_direct("❌ 최근 작업 기록을 찾을 수 없습니다.")
-            return
-            
-        try:
-            # Issue a deep_research command to the pipeline
-            cmd_dir = ROOT_DIR / "state" / "commands"
-            cmd_dir.mkdir(parents=True, exist_ok=True)
-            cmd_file = cmd_dir / f"cmd_{job_id}_{int(time.time())}.json"
-            
-            cmd_payload = {
-                "command": "deep_research",
-                "job_id": job_id,
-                "timestamp": time.time()
-            }
-            cmd_file.write_text(json.dumps(cmd_payload), encoding="utf-8")
-            print(f"[Bot] Successfully issued deep_research command for {job_id}")
-            # Verification: ensure file exists
-            if cmd_file.exists():
-                print(f"[Bot] Command file verified: {cmd_file.name}")
-        except Exception as e:
-            error_msg = f"❌ 작업 요청 중 파일 시스템 오류 발생: {e}"
-            print(f"[Bot Error] {error_msg}")
-            send_telegram_direct(error_msg)
-
-    # 2. '수정' 또는 '보완' 요청
-    elif "수정" in text or "보완" in text:
+    # 1. '수정' 또는 '보완' 요청
+    if "수정" in text or "보완" in text:
         feedback_path = ROOT_DIR / "state" / "last_feedback.txt"
         feedback_path.parent.mkdir(parents=True, exist_ok=True)
         feedback_path.write_text(text, encoding="utf-8")
         
-        send_telegram_direct(f"📝 <b>수정 요청이 접수되었습니다.</b>\n내용: <i>{text}</i>\n다음 '고도화' 시 이 내용을 반영하여 분석을 강화합니다.")
+        send_telegram_direct(f"📝 <b>수정 요청이 접수되었습니다.</b>\n내용: <i>{text}</i>\n다음 리포트 생성 시 이 내용을 반영하여 분석을 강화합니다.")
         
         # Auto-trigger if urgent keywords present
         if any(k in text for k in ["다시", "하면", "직후", "바로", "해줘"]):
@@ -344,9 +284,8 @@ def process_command(text: str, cid: str):
         send_telegram_direct(
             "✅ <b>메시지를 확인했습니다.</b>\n\n"
             "💡 <b>명령어 가이드</b>\n"
-            "• <b>고도화 해줘</b> — 딥 인텔 리포트 생성 (리포트 2)\n"
             "• <b>[내용] 보완해줘</b> — 피드백 반영 후 재분석\n\n"
-            "리포트 1(Claude)은 OT 업로드 시 자동 생성됩니다."
+            "리포트(Claude)는 OT 업로드 시 자동 생성됩니다."
         )
 
 def run_bot_listener():

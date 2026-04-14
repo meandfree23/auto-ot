@@ -786,23 +786,27 @@ if __name__ == "__main__":
 
     try:
         data = generate_strategic_base_inline(args.job_id, report_type=args.report_type)
+
+        # Guard: if no content was found, do not overwrite an existing HTML file
+        has_content = any(data.get("categories", {}).values())
+        if not has_content:
+            if args.report_type == "deep-intel":
+                existing = Path(args.output) / f"{args.job_id}_deep_intel_report.html"
+            else:
+                existing = Path(args.output) / f"{args.job_id}_precision_report.html"
+            if existing.exists():
+                print(f"[v5.0] No source markdown found — keeping existing HTML: {existing.name}")
+                sys.exit(0)
+            else:
+                print(f"[v5.0] ERROR: No source markdown found for {args.job_id}. Cannot generate HTML.")
+                sys.exit(1)
+
         label = "Deep Intel" if args.report_type == "deep-intel" else "Standard"
         print(f"[v5.0] Generating HTML ({label}) for {args.job_id}...")
         html_out = generate_html(data, args.output, args.job_id, report_type=args.report_type)
         print(f"DONE (HTML): {html_out}")
 
-        # --- Cleanup intermediate markdown files ---
-        try:
-            summary_path = ROOT / "outputs" / "01_summaries" / f"{args.job_id}_summary.md"
-            deep_path = ROOT / "outputs" / "02_deep_analysis" / f"{args.job_id}_deep_report.md"
-            if summary_path.exists():
-                summary_path.unlink()
-                print(f"[Cleanup] Deleted: {summary_path.name}")
-            if deep_path.exists():
-                deep_path.unlink()
-                print(f"[Cleanup] Deleted: {deep_path.name}")
-        except Exception as cleanup_err:
-            print(f"[Cleanup Error] {cleanup_err}")
+        # Markdown files are kept (not deleted) so deep_intel_engine can use them as source
     except Exception as e:
         import traceback; traceback.print_exc()
         sys.exit(1)

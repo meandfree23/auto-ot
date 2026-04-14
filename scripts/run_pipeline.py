@@ -118,7 +118,7 @@ def run_antigravity(task_path: Path, job_id: str) -> dict[str, Any]:
 
 
 def send_telegram_notification(job_id: str, file_name: str):
-    """OT 원문 분석 완료 알림 — 고도화 방식 선택 버튼 제공."""
+    """OT 원문 분석 완료 알림 — 리포트 생성 버튼 제공."""
     if not TELEGRAM_BOT_TOKEN or not TELEGRAM_CHAT_ID:
         return
 
@@ -126,14 +126,12 @@ def send_telegram_notification(job_id: str, file_name: str):
     msg = (
         f"✅ <b>OT 원문 분석 완료</b>\n\n"
         f"📄 <b>파일</b>: {file_name}\n"
-        f"🆔 <b>Job ID</b>: <code>{job_id}</code>\n\n"
-        f"고도화 방식을 선택해주세요."
+        f"🆔 <b>Job ID</b>: <code>{job_id}</code>"
     )
 
     reply_markup = {
         "inline_keyboard": [
-            [{"text": "📊 Claude 고도화 해줘", "callback_data": f"claude_upgrade|{job_id}"}],
-            [{"text": "🔬 딥 인텔 고도화 해줘", "callback_data": f"deep_research|{job_id}"}],
+            [{"text": "📊 리포트 생성", "callback_data": f"claude_upgrade|{job_id}"}],
         ]
     }
 
@@ -201,24 +199,6 @@ def run_all() -> None:
     
     while True:
         try:
-            # 0. Check for commands (Deep Research)
-            command_dir = ROOT / "state" / "commands"
-            if command_dir.exists():
-                for cmd_file in command_dir.glob("*.json"):
-                    try:
-                        cmd_data = json.loads(cmd_file.read_text(encoding="utf-8"))
-                        if cmd_data.get("command") == "deep_research":
-                            jid = cmd_data.get("job_id")
-                            if jid:
-                                engine = ROOT / "scripts" / "deep_intel_engine.py"
-                                # ASYNC Dispatch
-                                subprocess.Popen([sys.executable, str(engine), jid], 
-                                               stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, 
-                                               start_new_session=True)
-                                print(f"[Pipeline] Deep Intel dispatched in background for {jid}")
-                        cmd_file.unlink()
-                    except: pass
-
             # 1. Poll Drive
             print("\n--- Checking Drive ---")
             run_subprocess(f'{sys.executable} "{drive_script}" --once', cwd=ROOT)

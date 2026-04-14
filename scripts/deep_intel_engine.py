@@ -129,28 +129,25 @@ def run_orchestrator(job_id: str):
     RESEARCH_DIR.mkdir(parents=True, exist_ok=True)
     deep_intel_path = RESEARCH_DIR / f"{job_id}_deep_intel_report.md"
 
-    final_md = f"# [{job_id}] 초격차 딥-리포트\n\n{deep_report_md}"
-    deep_intel_path.write_text(final_md, encoding="utf-8")
-    
+    # Save markdown without garbage job_id header — Gemini writes its own title
+    deep_intel_path.write_text(deep_report_md, encoding="utf-8")
+
     # 4. Generate Deep Intel HTML report
     try:
         ppt_script = ROOT / "scripts" / "ppt_engine_v4.py"
-        if ppt_script.exists():
-            subprocess.run(
-                [sys.executable, str(ppt_script), "--job-id", job_id, "--report-type", "deep-intel"],
-                cwd=str(ROOT), capture_output=True
-            )
+        out_dir = ROOT / "outputs" / "03_final_reports"
+        out_dir.mkdir(parents=True, exist_ok=True)
+        r = subprocess.run(
+            [sys.executable, str(ppt_script),
+             "--job-id", job_id,
+             "--output", str(out_dir),
+             "--report-type", "deep-intel"],
+            cwd=str(ROOT), capture_output=True, text=True
+        )
+        if r.returncode != 0:
+            print(f"[Deep Intel] ppt_engine error: {r.stderr[:200]}")
 
-        # 5. Publish to GitHub Pages
-        notify_telegram(f"🌐 <b>리포트 2 배포 중...</b>")
-        publish_script = ROOT / "scripts" / "publish_to_docs.py"
-        if publish_script.exists():
-            subprocess.run(
-                [sys.executable, str(publish_script), job_id],
-                cwd=str(ROOT), capture_output=True
-            )
-
-        # 6. Construct URL directly and ask for archive upload approval
+        # 5. Construct report URL and send link
         base_url = os.environ.get("GITHUB_PAGES_URL", "").rstrip("/")
         if base_url:
             deep_intel_url = f"{base_url}/reports/{job_id}_deep_intel_report.html"
@@ -166,19 +163,18 @@ def run_orchestrator(job_id: str):
         )
         notify_telegram(final_msg)
 
-        # 7. Ask for archive upload approval
-        archive_msg = (
-            f"📁 <b>Strategic Research Archive 업로드</b>\n\n"
-            f"안티그래비티 마스터 허브 및 리서치 아카이브에\n"
-            f"딥 인텔 리포트를 등록하시겠습니까?"
-        )
+        # 6. Ask for deploy approval (user must confirm — no auto-deploy)
         reply_markup = {
             "inline_keyboard": [
-                [{"text": "✅ 업로드 승인", "callback_data": f"publish_archive|{job_id}|deep-intel"}],
-                [{"text": "❌ 건너뜀", "callback_data": f"skip_publish|{job_id}"}],
+                [{"text": "🚀 웹 허브에 배포", "callback_data": f"publish_archive|{job_id}|deep-intel"}],
+                [{"text": "❌ 건너뜀",         "callback_data": f"skip_publish|{job_id}"}],
             ]
         }
-        notify_telegram(archive_msg, reply_markup=reply_markup)
+        notify_telegram(
+            f"📁 <b>웹 허브 배포 확인</b>\n\n"
+            f"안티그래비티 마스터 허브(Web)에 배포하시겠습니까?",
+            reply_markup=reply_markup
+        )
         print(f"🏆 [Deep Intel] DONE for {job_id}")
     except Exception as e:
         print(f"❌ [Deep Intel Error] {e}")
