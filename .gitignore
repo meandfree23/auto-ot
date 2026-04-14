@@ -10,10 +10,10 @@ credentials.json
 __pycache__/
 *.pyc
 
-# Local state
-state/processing/
-state/commands/
-state/backup_reanalysis/
+# Local state & Outputs
+outputs/
+state/
+temp/
 
 # OS specific
 .DS_Store
