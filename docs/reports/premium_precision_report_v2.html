@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHOOLIP Precision Strategic Report | Premium Intelligence</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-main: #0F172A;
+            --bg-card: #1E293B;
+            --bg-hover: #334155;
+            --border: rgba(255, 255, 255, 0.08);
+            --text-primary: #F8FAFC;
+            --text-secondary: #94A3B8;
+            --accent-primary: #6366F1;
+            --accent-secondary: #8B5CF6;
+            --accent-success: #10B981;
+            --accent-warning: #F59E0B;
+            --accent-danger: #EF4444;
+            --glass: rgba(255, 255, 255, 0.03);
+            --radius-md: 16px;
+            --radius-lg: 32px;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container { max-width: 1400px; margin: 0 auto; padding: 60px 40px; }
+        
+        /* Hero Section */
+        .hero {
+            padding: 100px 0 60px;
+            background: radial-gradient(circle at top right, rgba(99, 102, 241, 0.1), transparent 40%);
+        }
+        .job-badge {
+            display: inline-block;
+            padding: 6px 14px;
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 50px;
+            font-size: 11px;
+            font-weight: 800;
+            color: var(--accent-primary);
+            margin-bottom: 32px;
+            letter-spacing: 1px;
+        }
+        .hero h1 {
+            font-size: 4.5rem;
+            font-weight: 900;
+            letter-spacing: -0.05em;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            background: linear-gradient(to bottom right, #fff, #94A3B8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero p {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            max-width: 800px;
+            font-weight: 300;
+        }
+
+        /* Bento Grid */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: minmax(200px, auto);
+            gap: 24px;
+            margin-top: 60px;
+        }
+        .span-2 { grid-column: span 2; }
+        .span-4 { grid-column: span 4; }
+        .row-2 { grid-row: span 2; }
+
+        .card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 32px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent-primary);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+        }
+        .tag {
+            font-size: 10px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent-secondary);
+            margin-bottom: 16px;
+            display: block;
+        }
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        /* Tables */
+        .table-container {
+            width: 100%;
+            overflow-x: auto;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            margin-top: 24px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.9rem;
+        }
+        th {
+            background: rgba(255,255,255,0.05);
+            padding: 20px;
+            color: var(--text-secondary);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: 1px;
+        }
+        td {
+            padding: 20px;
+            border-bottom: 1px solid var(--border);
+            vertical-align: top;
+        }
+        .status-badge {
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+        .status-danger { background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3); }
+        .status-success { background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
+
+        /* Graphics */
+        .chart-mock {
+            height: 180px;
+            display: flex;
+            align-items: flex-end;
+            gap: 12px;
+            margin-top: 40px;
+        }
+        .bar {
+            flex: 1;
+            background: linear-gradient(to top, var(--accent-primary), var(--accent-secondary));
+            border-radius: 6px 6px 0 0;
+            position: relative;
+        }
+        .bar::after {
+            content: attr(data-label);
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 9px;
+            color: var(--text-secondary);
+            white-space: nowrap;
+        }
+
+        /* Animations */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 1024px) {
+            .bento-grid { grid-template-columns: repeat(2, 1fr); }
+            .hero h1 { font-size: 3rem; }
+        }
+        @media (max-width: 640px) {
+            .bento-grid { grid-template-columns: 1fr; }
+            .span-2, .span-4 { grid-column: span 1; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header class="hero reveal">
+        <div class="job-badge">JOB ID: 20260414_151310_XNMI_OT</div>
+        <h1>Topic-First<br>Intelligence: CHOOLIP</h1>
+        <p>Global market trends, gap-check risks, and high-fidelity creative blueprints synthesized for high-impact decision making.</p>
+    </header>
+
+    <section class="bento-grid">
+        <!-- Gap Check Table (Span 4) -->
+        <div class="card span-4 reveal">
+            <span class="tag" style="color: var(--accent-danger);">Strategic Gap-Check</span>
+            <div class="card-title">Critical Strategic Risks Identified</div>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 25%;">Category</th>
+                            <th>Identified Gap & Impact</th>
+                            <th style="width: 15%;">Severity</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Market Localization</td>
+                            <td>**타겟 국가 및 언어 버전 불명확**: 아마존·코스트코 판매 채널은 명시되었으나, 영상 언어 구성 및 모델의 다양성 기준이 OT에 부재함.</td>
+                            <td><span class="status-badge status-danger">Critical</span></td>
+                        </tr>
+                        <tr>
+                            <td>Aesthetic IP</td>
+                            <td>**Dr. Eric의 영상 직접 출연 여부**: "수의사 직접 설계"가 핵심임에도 출연 여부 및 범위가 불명확함. 크리에이티브 구조의 근본적 변수.</td>
+                            <td><span class="status-badge status-danger">Critical</span></td>
+                        </tr>
+                        <tr>
+                            <td>Product Liability</td>
+                            <td>**잠재 리스크 — 무방부제 이슈**: 실제 방부제가 없어 발생하는 불량 이슈가 마케팅 강점(무방부제)과 충돌하여 브랜드 신뢰 역풍 가능성 존재.</td>
+                            <td><span class="status-badge status-warning">Warning</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Creative Direction (Span 2) -->
+        <div class="card span-2 reveal">
+            <span class="tag">Creative Vision</span>
+            <div class="card-title">The "Sizzle" & Routine Junction</div>
+            <p style="color: var(--text-secondary); margin-bottom: 24px;">수의사가 설계한 성분이 보호자의 손을 통해 반려동물의 하루에 스며드는 순간을 시각화합니다.</p>
+            <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 12px; border-left: 4px solid var(--accent-primary);">
+                <p style="font-size: 0.9rem; font-style: italic; color: #fff;">"처방식의 기준으로, 일상의 방식으로"</p>
+            </div>
+        </div>
+
+        <!-- Image Card (Span 2) -->
+        <div class="card span-2 row-2 reveal" style="padding: 0;">
+            <img src="assets/pet_food.png" style="width: 100%; height: 100%; object-fit: cover;" alt="Premium Pet Food">
+            <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 32px; background: linear-gradient(transparent, rgba(15,23,42,0.9));">
+                <div class="tag" style="color: #fff;">Texture & Quality</div>
+                <h3 style="font-size: 1.25rem; font-weight: 800;">High-Fidelity Sizzle</h3>
+            </div>
+        </div>
+
+        <!-- Market Intelligence Mock Chart (Span 2) -->
+        <div class="card span-2 reveal">
+            <span class="tag">Market Position</span>
+            <div class="card-title">Competitive Gap Analysis</div>
+            <div class="chart-mock">
+                <div class="bar" style="height: 90%;" data-label="CHOOLIP"></div>
+                <div class="bar" style="height: 40%; opacity: 0.5;" data-label="Prescription"></div>
+                <div class="bar" style="height: 60%; opacity: 0.5;" data-label="Commercial"></div>
+                <div class="bar" style="height: 30%; opacity: 0.3;" data-label="General"></div>
+            </div>
+            <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 40px;">"처방식 수준의 기능성 + 일반 구매 가능"의 공백 점유</p>
+        </div>
+
+        <!-- Strategic Logic (Span 4) -->
+        <div class="card span-4 reveal">
+            <span class="tag">Strategic Roadmap</span>
+            <div class="card-title">7 Functions x 7 Daily Routines</div>
+            <div class="bento-grid" style="grid-template-columns: repeat(3, 1fr); margin-top: 24px; gap: 16px;">
+                <div style="background: rgba(255,255,255,0.03); padding: 20px; border-radius: 12px;">
+                    <h4 style="font-size: 0.9rem; margin-bottom: 8px; color: var(--accent-primary);">01. Narrative</h4>
+                    <p style="font-size: 0.8rem; color: var(--text-secondary);">'수의사 자문'을 넘어선 '수의사 설계'의 실제적 서사화</p>
+                </div>
+                <div style="background: rgba(255,255,255,0.03); padding: 20px; border-radius: 12px;">
+                    <h4 style="font-size: 0.9rem; margin-bottom: 8px; color: var(--accent-primary);">02. Mapping</h4>
+                    <p style="font-size: 0.8rem; color: var(--text-secondary);">산책 전, 식사 후 등 보호자의 실제 라이프 루틴과 매핑</p>
+                </div>
+                <div style="background: rgba(255,255,255,0.03); padding: 20px; border-radius: 12px;">
+                    <h4 style="font-size: 0.9rem; margin-bottom: 8px; color: var(--accent-primary);">03. Premium Anchor</h4>
+                    <p style="font-size: 0.8rem; color: var(--text-secondary);">소셜 콘텐츠와 분리된 고품격 브랜드 앵커 영상 확립</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Analysis Image Card (Span 2) -->
+        <div class="card span-2 reveal" style="padding: 0;">
+            <img src="assets/analysis.png" style="width: 100%; height: 100%; object-fit: cover;" alt="Strategic Analysis">
+        </div>
+
+        <!-- Market Context (Span 2) -->
+        <div class="card span-2 reveal">
+            <span class="tag">Opportunity</span>
+            <div class="card-title">Consumer Pain-Points</div>
+            <ul style="font-size: 0.85rem; color: var(--text-secondary); list-style: none;">
+                <li style="margin-bottom: 12px;">✅ 처방식의 낮은 접근성(병원 방문 필수) 해결</li>
+                <li style="margin-bottom: 12px;">✅ 일반 간식의 성분 불신 리스크 제거</li>
+                <li>✅ 유대감 강화를 위한 '직접 급여' 방식 활용</li>
+            </ul>
+        </div>
+    </section>
+
+    <footer class="reveal" style="margin-top: 80px; padding: 40px 0; border-top: 1px solid var(--border); text-align: center; color: var(--text-secondary); font-size: 0.75rem;">
+        CONFIDENTIAL & PROPRIETARY &copy; 2026 ANTIGRAVITY INTELLIGENCE | PRECISION MODULE V2
+    </footer>
+</div>
+
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

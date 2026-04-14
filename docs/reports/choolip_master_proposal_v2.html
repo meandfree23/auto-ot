@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHOOLIP Master Strategic Creative Proposal V2 | Antigravity Intelligence</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-main: #0B0E14;
+            --bg-card: #141A23;
+            --bg-hover: #1D2531;
+            --border: rgba(255, 255, 255, 0.05);
+            --text-primary: #F0F4F8;
+            --text-secondary: #8E9BAE;
+            --accent-primary: #6366F1;
+            --accent-secondary: #C084FC;
+            --accent-accent: #F59E0B;
+            --glass: rgba(255, 255, 255, 0.02);
+            --radius-md: 20px;
+            --radius-lg: 40px;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container { max-width: 1400px; margin: 0 auto; padding: 80px 40px; }
+        
+        /* Hero Section */
+        .hero {
+            padding-bottom: 80px;
+            position: relative;
+        }
+        .agency-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 50px;
+            font-size: 11px;
+            font-weight: 800;
+            color: var(--accent-primary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 40px;
+        }
+        .hero h1 {
+            font-size: 5rem;
+            font-weight: 900;
+            letter-spacing: -0.06em;
+            line-height: 1;
+            margin-bottom: 32px;
+            background: linear-gradient(135deg, #fff 0%, #64748B 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero p {
+            font-size: 1.75rem;
+            color: var(--text-secondary);
+            max-width: 900px;
+            font-weight: 300;
+            line-height: 1.4;
+        }
+
+        /* Bento Grid */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            grid-auto-rows: minmax(220px, auto);
+            gap: 24px;
+        }
+        .span-2 { grid-column: span 2; }
+        .span-3 { grid-column: span 3; }
+        .span-4 { grid-column: span 4; }
+        .span-6 { grid-column: span 6; }
+        .row-2 { grid-row: span 2; }
+
+        .card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 40px;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(99, 102, 241, 0.4);
+            box-shadow: 0 40px 80px rgba(0,0,0,0.6);
+        }
+        .tag {
+            font-size: 10px;
+            font-weight: 900;
+            color: var(--accent-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 20px;
+        }
+        .card-title {
+            font-size: 1.75rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+        .card-content {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            flex: 1;
+        }
+
+        /* Narrative Block */
+        .narrative-quote {
+            padding: 24px;
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 4px solid var(--accent-primary);
+            border-radius: 0 12px 12px 0;
+            margin: 24px 0;
+            font-style: italic;
+            color: #fff;
+        }
+
+        /* Routine Matrix Table */
+        .routine-map {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 32px;
+        }
+        .routine-map th, .routine-map td {
+            padding: 20px;
+            border: 1px solid var(--border);
+            text-align: left;
+            font-size: 0.85rem;
+        }
+        .routine-map th {
+            background: rgba(255,255,255,0.03);
+            color: var(--accent-primary);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .moment-badge {
+            padding: 4px 8px;
+            background: rgba(99, 102, 241, 0.15);
+            color: var(--accent-primary);
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 10px;
+        }
+
+        /* Charts */
+        .impact-chart {
+            display: flex;
+            align-items: flex-end;
+            gap: 16px;
+            height: 150px;
+            margin-top: 40px;
+        }
+        .impact-bar {
+            flex: 1;
+            background: linear-gradient(to top, var(--accent-primary), var(--accent-secondary));
+            border-radius: 4px 4px 0 0;
+            position: relative;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .impact-bar:hover { filter: brightness(1.2); }
+        .impact-bar::after {
+            content: attr(data-label);
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 9px;
+            color: var(--text-secondary);
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        /* Utility */
+        .text-accent { color: var(--accent-accent); }
+        .img-cover { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; opacity: 0.5; }
+        .overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, transparent, #141A23); z-index: 1; }
+        .content-up { position: relative; z-index: 2; }
+
+        /* Animations */
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header class="hero reveal">
+        <div class="agency-badge">Antigravity Strategic Blueprint | 2026-CHOOLIP</div>
+        <h1>THE CHOOLIP<br>MASTER STRATEGY</h1>
+        <p>단순한 영양제를 넘어, 보호자의 일상 속에 '과학적 진심'을 스며들게 하는 프리미엄 브랜드 시퀀스를 제안합니다.</p>
+    </header>
+
+    <div class="bento-grid">
+        <!-- Executive Summary (Span 4) -->
+        <div class="card span-4 reveal">
+            <span class="tag">01. Strategic Gap</span>
+            <div class="card-title">The "Professional Daily" Gap</div>
+            <div class="card-content">
+                현재 시장은 '병원에서만 살 수 있는 따분한 처방식'과 '어디서나 살 수 있지만 성분이 의심스러운 일반 간식'으로 양분되어 있습니다. 
+                <span class="text-accent">CHOOLIP은 이 거대한 공백을 메우는 '제3의 길' — 전문적인 기능을 일상의 즐거움으로 제공하는 유일한 브랜드가 됩니다.</span>
+                <div class="impact-chart">
+                    <div class="impact-bar" style="height: 95%;" data-label="CHOOLIP (High Function + High Access)"></div>
+                    <div class="impact-bar" style="height: 40%; opacity: 0.4;" data-label="Prescription (Low Access)"></div>
+                    <div class="impact-bar" style="height: 55%; opacity: 0.4;" data-label="Commercial (Low Reliability)"></div>
+                    <div class="impact-bar" style="height: 20%; opacity: 0.2;" data-label="General Treats"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hero Image Narrative (Span 2 Row 2) -->
+        <div class="card span-2 row-2 reveal" style="padding: 0;">
+            <img src="assets/hero_vet.png" class="img-cover" alt="The Veterinarian's Promise">
+            <div class="overlay"></div>
+            <div class="content-up" style="padding: 40px; margin-top: auto;">
+                <span class="tag" style="color: #fff;">Brand Narrative</span>
+                <h3 class="card-title">The Scientist's Heart</h3>
+                <p style="font-size: 0.9rem; color: #CBD5E1;">"내 아이에게 먹일 수 없다면, 세상에 내놓지 않겠다." — Dr. Eric의 개인적 약속에서 시작된 레시피.</p>
+            </div>
+        </div>
+
+        <!-- 7x7 Routine Matrix (Span 6) -->
+        <div class="card span-6 reveal">
+            <span class="tag">02. Operational Intelligence</span>
+            <div class="card-title">7 Functions x 7 Daily Rituals Matrix</div>
+            <div class="card-content">
+                CHOOLIP은 단순한 간식이 아닙니다. 반려동물의 하루 24시간 중 특정 순간(Moment)과 기능을 1:1로 매핑하여 '필수 루틴'으로 정의합니다.
+                <table class="routine-map">
+                    <thead>
+                        <tr>
+                            <th>Moments (반려동물의 시간)</th>
+                            <th>Functional Benefit (기능성)</th>
+                            <th>Core Visual Vibe (시즐 연출)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="moment-badge">MORNING WALK</span> 산책 전 준비</td>
+                            <td>관절 (Joints/Bones)</td>
+                            <td>활기찬 발걸음, 탄력 있는 연골 텍스처</td>
+                        </tr>
+                        <tr>
+                            <td><span class="moment-badge">POST-MEAL</span> 식사 후 디저트</td>
+                            <td>심장 & 간 (Heart/Liver)</td>
+                            <td>만족스러운 눈빛, 맑은 숨소리</td>
+                        </tr>
+                        <tr>
+                            <td><span class="moment-badge">GROOMING TIME</span> 털 빗기 전후</td>
+                            <td>피부 & 모질 (Skin/Coat)</td>
+                            <td>윤기 나는 피코트, 부드러운 핸들링 테두리</td>
+                        </tr>
+                        <tr>
+                            <td><span class="moment-badge">NIGHT RELAX</span> 취침 전 안성무</td>
+                            <td>신장 & 면역 (Kidney/Immunity)</td>
+                            <td>편안한 호흡, 깊은 수면의 평화로움</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Strategy for Risk (Span 3) -->
+        <div class="card span-3 reveal">
+            <span class="tag">03. Risk-to-Opportunity</span>
+            <div class="card-title">"The Freshness Date" Strategy</div>
+            <div class="card-content">
+                "방부제가 없어 발생할 수 있는 불량" 리스크를 역설적으로 <span class="text-accent">'살아있는 신선함의 증거'</span>로 브랜딩합니다. 
+                <div class="narrative-quote">
+                    "방부제를 넣지 않았기에, 우리는 더 까다롭습니다. 가장 신선한 batch만을 배송하는 CHOOLIP의 FRESH-SEAL."
+                </div>
+                영문 아마존 채널에서는 'Bio-Active Freshness'를 강조하여 화학 보존제에 민감한 서구권 유저를 공략합니다.
+            </div>
+        </div>
+
+        <!-- Global Deployment (Span 3) -->
+        <div class="card span-3 reveal">
+            <span class="tag">04. Global Content Map</span>
+            <div class="card-title">Amazon US vs Costco KR</div>
+            <div class="card-content">
+                <ul style="list-style: none; font-size: 0.9rem;">
+                    <li style="margin-bottom: 12px;">🇺🇸 **Amazon US**: 'Clean Label'과 'Veterinary Evidence'를 1:1로 매칭. 6초 시즐 범퍼를 활용한 빠른 체류 시간 최적화.</li>
+                    <li style="margin-bottom: 12px;">🇰🇷 **Costco KR**: '대용량 루틴의 가성비'와 '수의사의 권위'를 결합한 정보 중심 인포그래픽 영상 배치.</li>
+                    <li>🌍 **Common**: Dr. Eric의 작업 장면을 '프리미엄 앵커'로 사용하여 국적에 관계없는 신뢰 구축.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Visual Skill Showcase (Span 6) -->
+        <div class="card span-6 reveal" style="padding: 0; min-height: 400px;">
+            <img src="assets/lifestyle.png" class="img-cover" alt="Lifestyle Vibe">
+            <div class="overlay" style="background: linear-gradient(to right, #0B0E14 40%, transparent);"></div>
+            <div class="content-up" style="padding: 60px; max-width: 50%;">
+                <span class="tag">05. Creative Execution</span>
+                <h3 class="card-title">Visual Language: The Sizzle Reveal</h3>
+                <p style="color: var(--text-secondary); margin-bottom: 24px;">초고속 촬영된 원재료의 질감과, 반려동물의 촉촉한 코 끝이 만나는 찰나의 순간을 통해 '건강한 즐거움'을 시각적으로 각인시킵니다.</p>
+                <div style="display: flex; gap: 12px;">
+                    <div style="padding: 12px 20px; background: var(--accent-primary); border-radius: 12px; font-size: 11px; font-weight: 800;">60s MASTER FILM</div>
+                    <div style="padding: 12px 20px; background: rgba(255,255,255,0.05); border: 1px solid var(--border); border-radius: 12px; font-size: 11px; font-weight: 800;">15s ROUTINE CLIPS</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="reveal" style="margin-top: 100px; padding: 60px 0; border-top: 1px solid var(--border); text-align: center; color: var(--text-secondary); font-size: 0.7rem; letter-spacing: 2px;">
+        © 2026 ANTIGRAVITY STRATEGIC INTELLIGENCE | PROJECT CHOOLIP | CONFIDENTIAL
+    </footer>
+</div>
+
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

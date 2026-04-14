@@ -15,6 +15,7 @@ outputs/
 state/
 temp/
 reports/
+!docs/reports/
 
 # Sensitive credentials (never commit)
 .env
