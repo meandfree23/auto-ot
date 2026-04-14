@@ -1,0 +1,58 @@
+{
+  "topic": "2026 AI 에이전트 트렌드",
+  "timestamp": "2026-03-25T13:59:16.153862",
+  "sources": {
+    "youtube": [
+      {
+        "title": "모르면 뒤쳐지는 겁니다. 2026년 꼭 알아야 할 AI 필수 스킬 총정리",
+        "url": "https://youtube.com/watch?v=OMipHEychrA",
+        "description": "*⬇️ 왕초보에서 일주일만에 AI 마스터하는 법 ⬇️*\n\n*전 강의 특별 할인 중!*\n👉https://www.alinn.co.kr\n\n*강의 소개 영상*\nhttps://youtu.be/evdMhRCFe_w\n\n*🎁수강후기 이벤트*\n\n매주 월요일 수강 후 후기를 작성해주신 모든 분께 알린의 노하우가 담긴 특별 강의 교안 PDF 증정 및 수강생 단톡방 초대\n\n강연"
+      },
+      {
+        "title": "[25/12/27 Weekly IT News] 구글의 2026 AI 에이전트 트렌드 보고서 외",
+        "url": "https://youtube.com/watch?v=4bAw6mygc5g",
+        "description": "IT Professional Expert Channel\n인공지능 엔지니어\n정보관리기술사 / 데이터거래사 / 정보보안기사 / PMP / ITIL / CFPS / OCP / AICE\n\n블로그:\nhttps://orangeday77.tistory.com\n\nIT 오픈 톡방:\nhttps://open.kakao.com/o/gARsg1re\n\n스레드:\nhttps://www"
+      },
+      {
+        "title": "김지현의 ‘2026년 AI트렌드 강좌’ 미리보기",
+        "url": "https://youtube.com/watch?v=S4L4oJyhYVM",
+        "description": "티타임즈가 김지현의 ‘2026년 AI트렌드 강좌’를 오픈했습니다.\n\n내년 트렌드 전망이 기술트렌드 전망, 그중에서도 AI트렌드 전망이 된 시대입니다. 내년 AI 기술의 좌표는 어떻게 이동할까요? AI 비즈니스는 어떻게 소용돌이칠까요?\n\n김지현 SK경영경제연구소 부사장은 이 세가지 키워드에 주목해야 한다고 합니다. 1. 에이전트이코노미 본격화 2. 메타버스의"
+      },
+      {
+        "title": "2026년 AI 트렌드, 이 영상 하나면 끝납니다 (『AI 2026』 김덕진 소장)",
+        "url": "https://youtube.com/watch?v=aQgq68k7ExA",
+        "description": "2026년, 당신은 AI의 보스가 될 것인가? 간택당할 것인가?\n\n이제 혼자서도 20명 규모의 팀을 운영하는 시대가 옵니다. \n2026년, AI 트렌드의 거대한 물결 속에서 '살아남는 사람'과 '앞서가는 사람'의 차이는 무엇일까요?\n\n뉴즈 김가현 대표가 국내 최고의 IT 커뮤니케이터 김덕진 소장님을 모시고, \n2026년을 지배할 AI 4대 핵심 트렌드를 분"
+      },
+      {
+        "title": "2026년 일하는 방식의 대변혁, AI 에이전트란 과연 무엇인가?",
+        "url": "https://youtube.com/watch?v=aBqNYB4OXLA",
+        "description": "#AI에이전트 #AI트렌드 #멀티에이전트\n\n단순한 답변을 넘어 스스로 생각하고 실행하는 'AI 에이전트(AI Agent)'의 모든 것을 정리해 드립니다! 이번 영상에서는 AI 에이전트의 기본 개념부터 5단계 진화 과정, 그리고 2026년 현재 가장 주목받는 최신 서비스와 국내외 실무 적용 사례까지 핵심만 쏙쏙 골라 담았습니다. 다가올 '멀티 에이전트' 시대"
+      }
+    ],
+    "web": [
+      {
+        "title": "2026 AI 에이전트 트렌드 연구 보고서",
+        "url": "https://aliz.ai",
+        "snippet": "2026년 기업 애플리케이션의 40%가 AI 에이전트 통합 전망 (Gartner). Agentic AI 워크플로우로의 진화."
+      },
+      {
+        "title": "멀티 에이전트 시스템 협업 트렌드",
+        "url": "https://skax.co.kr",
+        "snippet": "단일 에이전트가 아닌 여러 에이전트가 협업하는 멀티 에이전트 워크플로우가 핵심."
+      }
+    ],
+    "sns": [
+      {
+        "title": "Reddit r/AI_Agents 반응",
+        "url": "https://reddit.com/r/AI_Agents",
+        "snippet": "LangGraph, CrewAI 등 에이전트 빌더에 대한 관심 급증. 단순 챗봇 이상의 자율성 요구."
+      },
+      {
+        "title": "X(Twitter) AI 에이전트 트렌드",
+        "url": "https://x.com",
+        "snippet": "AI 코딩 에이전트 및 백엔드 자동화에 대한 개발자 커뮤니티의 실질적 변화 논의."
+      }
+    ]
+  },
+  "analysis": {}
+}
