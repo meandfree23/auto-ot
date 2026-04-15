@@ -28,7 +28,7 @@ def send_telegram_direct(msg: str, reply_markup: dict = None):
         print(f"[Bot Error] Failed to send message: {e}")
 
 BOT_MEMORY_FILE  = ROOT_DIR / "state" / "bot_memory.json"
-RESEARCH_ARCHIVE = Path(os.environ.get("RESEARCH_ARCHIVE_PATH", "/Users/kk/research-output/index.html"))
+RESEARCH_ARCHIVE = ROOT_DIR / "docs" / "index.html"
 GITHUB_PAGES_URL = os.environ.get("GITHUB_PAGES_URL", "").rstrip("/")
 if not GITHUB_PAGES_URL:
     print("[Bot] WARNING: GITHUB_PAGES_URL is not set — report links will not be generated.")
@@ -46,54 +46,33 @@ def check_upload_status(job_id: str) -> dict:
 
 
 def add_to_research_archive(job_id: str, report_type: str, title: str) -> bool:
-    """research-output/index.html에 OT 리포트 카드 삽입."""
+    """docs/index.html 마스터 허브에 OT 리포트 카드 삽입."""
     if not RESEARCH_ARCHIVE.exists():
         return False
     if report_type == "deep-intel":
         filename  = f"{job_id}_deep_intel_report.html"
-        badge_txt = "딥 인텔"
         emoji     = "🔬"
-        grad      = "linear-gradient(135deg,#1e3a5f 0%,#0ea5e9 60%,#38bdf8 100%)"
     else:
         filename  = f"{job_id}_precision_report.html"
-        badge_txt = "전략 분석"
         emoji     = "📊"
-        grad      = "linear-gradient(135deg,#14532d 0%,#10b981 60%,#6ee7b7 100%)"
 
-    report_url = f"{GITHUB_PAGES_URL}/reports/{filename}" if GITHUB_PAGES_URL else f"#{filename}"
+    report_url = f"./reports/{filename}"
     from datetime import datetime
     date_str = datetime.now().strftime("%Y년 %-m월 %-d일")
     card_html = f"""
-<!-- CARD: {title} ({badge_txt}) -->
-<a class="project-card animate"
-   href="{report_url}"
-   target="_blank"
-   data-category="report"
-   data-tags="OT분석,전략,{badge_txt}"
-   data-title="{title}"
-   aria-label="{title} 열기">
-  <div class="card-thumb" style="background:{grad}">
-    <div class="card-thumb-inner">{emoji}</div>
-    <span class="card-thumb-label">OT 리포트</span>
-  </div>
-  <div class="card-body">
-    <div class="card-tags">
-      <span class="tag blue">OT분석</span>
-      <span class="tag purple">{badge_txt}</span>
-    </div>
-    <h3 class="card-title">{title}</h3>
-    <p class="card-desc">AI 전략 분석 리포트 — {badge_txt}</p>
-    <div class="card-footer">
-      <span class="card-date">{date_str} · v1.0</span>
-      <div style="display:flex;align-items:center;gap:8px;">
-        <span class="card-status status-done">완료</span>
-        <div class="card-arrow" aria-hidden="true">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--text-secondary)" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+<!-- CARD: {title} (OT 전략 분석) -->
+<div class="card">
+    <div class="card-visual">{emoji}</div>
+    <div class="card-body">
+        <div class="card-tag" style="color:var(--accent-report);">OT 전략 분석</div>
+        <h3 class="card-title">{title}</h3>
+        <p class="card-desc">AI 파이프라인이 생성한 OT 전략 분석 리포트.</p>
+        <div class="card-footer">
+            <span style="font-size:11px; color:var(--text-secondary);">{date_str} · v1.0</span>
+            <a href="{report_url}" class="btn btn-p" target="_blank">리포트 열기</a>
         </div>
-      </div>
     </div>
-  </div>
-</a>"""
+</div>"""
 
     content = RESEARCH_ARCHIVE.read_text(encoding="utf-8")
     hint = "<!-- 리포트 추가 힌트 -->"
@@ -106,9 +85,9 @@ def add_to_research_archive(job_id: str, report_type: str, title: str) -> bool:
     # 카운트 +1
     import re
     def inc_count(m):
-        n = int(m.group(1))
-        return m.group(0).replace(str(n), str(n + 1))
-    content = re.sub(r'(<span class="section-meta" id="reportMeta">)(\d+)(개</span>)', inc_count, content)
+        n = int(m.group(2))
+        return m.group(1) + str(n + 1) + m.group(3)
+    content = re.sub(r'(<span class="section-count" id="reportMeta">)(\d+)( REPORTS</span>)', inc_count, content)
 
     RESEARCH_ARCHIVE.write_text(content, encoding="utf-8")
     return True
@@ -193,21 +172,21 @@ def process_callback(cb_id, cid, data):
                     send_telegram_direct(f"❌ Claude 리포트 생성 실패\n<code>{r.stderr[:200]}</code>")
                     return
 
-                base = os.environ.get("GITHUB_PAGES_URL", "").rstrip("/")
-                link = f"\n🌐 <a href='{base}/reports/{job_id}_precision_report.html'>Claude 리포트 바로보기</a>" if base else ""
-                send_telegram_direct(
-                    f"📊 <b>Claude 리포트 완성 — 리포트 1</b>\n\n"
-                    f"🆔 <code>{job_id}</code>{link}"
-                )
+                # 리포트 생성 직후 즉시 GitHub Pages 배포
+                pub = ROOT_DIR / "scripts" / "publish_to_docs.py"
+                _sp.run([sys.executable, str(pub), job_id], cwd=str(ROOT_DIR), capture_output=True)
 
-                # 업로드 상태 확인
+                base = os.environ.get("GITHUB_PAGES_URL", "").rstrip("/")
+                filename = f"{job_id}_precision_report.html"
+                report_url = f"{base}/reports/{filename}" if base else ""
+                link = f"\n🌐 <a href='{report_url}'>Claude 리포트 바로보기</a>" if report_url else ""
                 send_telegram_direct(
-                    f"📁 <b>웹 허브 배포 확인</b>\n\n"
-                    f"안티그래비티 마스터 허브(Web)에 배포하시겠습니까?",
+                    f"📊 <b>Claude 리포트 완성 — 배포 완료</b>\n\n"
+                    f"🆔 <code>{job_id}</code>{link}",
                     reply_markup={
                         "inline_keyboard": [
-                            [{"text": "🚀 웹 사이트 즉시 배포", "callback_data": f"publish_archive|{job_id}|standard"}],
-                            [{"text": "❌ 건너뜀",    "callback_data": f"skip_publish|{job_id}"}],
+                            [{"text": "🚀 마스터 허브에 추가", "callback_data": f"publish_archive|{job_id}|standard"}],
+                            [{"text": "❌ 건너뜀", "callback_data": f"skip_publish|{job_id}"}],
                         ]
                     }
                 )
@@ -219,27 +198,60 @@ def process_callback(cb_id, cid, data):
     # ── 아카이브 업로드 승인 ─────────────────────────────────────
     elif action == "publish_archive":
         report_type = data.split("|")[2] if data.count("|") >= 2 else "standard"
-        answer_callback(cb_id, "⏳ 웹 허브 배포 중...")
-        send_telegram_direct(f"⏳ <b>웹 허브 배포 중...</b>\n🆔 <code>{job_id}</code>")
+        answer_callback(cb_id, "⏳ 마스터 허브 추가 중...")
+        send_telegram_direct(f"⏳ <b>안티그래비티 마스터 허브에 추가 중...</b>\n🆔 <code>{job_id}</code>")
         try:
             import subprocess as _sp, threading as _th
 
             def _do_publish():
-                # GitHub Pages 배포 (Drive 업로드는 스크립트 내부에서 이미 제거됨)
-                pub = ROOT_DIR / "scripts" / "publish_to_docs.py"
-                _sp.run([sys.executable, str(pub), job_id],
-                        cwd=str(ROOT_DIR), capture_output=True)
+                # 리포트 제목 추출
+                try:
+                    import json as _json
+                    task_paths = [
+                        ROOT_DIR / "incoming_tasks" / "tasks" / f"{job_id}.json",
+                        ROOT_DIR / "state" / "done" / f"{job_id}.json",
+                        ROOT_DIR / "state" / "processing" / f"{job_id}.json",
+                        ROOT_DIR / "state" / "failed" / f"{job_id}.json",
+                    ]
+                    title = job_id
+                    for p in task_paths:
+                        if p.exists():
+                            d = _json.loads(p.read_text(encoding="utf-8"))
+                            raw = d.get("source", {}).get("file_name", job_id)
+                            title = raw.rsplit(".", 1)[0] if "." in raw else raw
+                            break
+                except Exception:
+                    title = job_id
 
-                label = "딥 인텔 리포트" if report_type == "deep-intel" else "Claude 리포트"
-                send_telegram_direct(
-                    f"✅ <b>배포 완료</b>\n\n"
-                    f"📌 {label}: <code>{job_id}</code>\n"
-                    f"🌐 <b>마스터 허브:</b> GitHub Pages 배포 완료"
-                )
+                # 마스터 허브(docs/index.html)에 카드 추가
+                added = add_to_research_archive(job_id, report_type, title)
+
+                base = os.environ.get("GITHUB_PAGES_URL", "").rstrip("/")
+                filename = f"{job_id}_precision_report.html"
+                report_url = f"{base}/reports/{filename}" if base else ""
+                hub_url = base if base else ""
+                link = f"\n🌐 <a href='{report_url}'>리포트 바로보기</a>" if report_url else ""
+                hub_link = f"\n🏠 <a href='{hub_url}'>마스터 허브 열기</a>" if hub_url else ""
+
+                if added:
+                    # docs/index.html 변경사항 GitHub Pages에 배포
+                    _sp.run(["git", "add", "docs/index.html"], cwd=str(ROOT_DIR), check=False)
+                    _sp.run(["git", "commit", "-m", f"chore: add OT report card {job_id}"],
+                            cwd=str(ROOT_DIR), check=False)
+                    _sp.run(["git", "push", "origin", "master"], cwd=str(ROOT_DIR), check=False)
+                    send_telegram_direct(
+                        f"✅ <b>마스터 허브 추가 완료</b>\n\n"
+                        f"📌 <b>{title}</b> 카드가 등록되었습니다.{link}{hub_link}"
+                    )
+                else:
+                    send_telegram_direct(
+                        f"⚠️ <b>마스터 허브 추가 실패</b>\n\n"
+                        f"아카이브 파일을 찾을 수 없거나 힌트 주석이 없습니다.{link}"
+                    )
 
             _th.Thread(target=_do_publish, daemon=True).start()
         except Exception as e:
-            send_telegram_direct(f"❌ 배포 오류: {e}")
+            send_telegram_direct(f"❌ 마스터 허브 추가 오류: {e}")
 
     # ── 업로드 건너뜀 ────────────────────────────────────────────
     elif action == "skip_publish":
