@@ -572,7 +572,25 @@
                 document.getElementById('tid').innerText = currentTid;
                 appendLog(`🚀 Execution started (Task: ${d.task_id})`);
                 await pollLogs(d.task_id, 10000); // 10초간 로그 확인
-                
+
+                // YouTube stats: 로그에서 JSON 파싱 후 DOM 즉시 업데이트
+                if (isYt) {
+                    var logText = document.getElementById('logs').textContent;
+                    var jsonMatch = logText.match(/\{[\s\S]*?"my_channel"[\s\S]*?\}/);
+                    if (jsonMatch) {
+                        try {
+                            var parsed = JSON.parse(jsonMatch[0]);
+                            var ch = parsed.my_channel;
+                            if (ch) {
+                                document.getElementById('yt-subs').textContent   = Number(ch.subs   || 0).toLocaleString();
+                                document.getElementById('yt-views').textContent  = Number(ch.views  || 0).toLocaleString();
+                                document.getElementById('yt-videos').textContent = Number(ch.videos || 0).toLocaleString();
+                                appendLog('📊 수치 실시간 반영 완료: ' + ch.subs + ' subs / ' + ch.views + ' views / ' + ch.videos + ' videos');
+                            }
+                        } catch(pe) { /* JSON 파싱 실패 시 무시 */ }
+                    }
+                }
+
                 if (statusEl) {
                     statusEl.textContent = '✅ 업데이트 명령 전달 완료';
                     statusEl.style.color = '#10b981';
