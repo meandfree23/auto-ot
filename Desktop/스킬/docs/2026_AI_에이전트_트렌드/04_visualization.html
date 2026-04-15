@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026 AI 에이전트 트렌드 — Antigravity Research</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #06090f;
+    --surface: #0d1320;
+    --surface-hover: #131c2e;
+    --border: rgba(99,179,237,0.15);
+    --text: #e8f0fe;
+    --text-secondary: #8ba3c7;
+    --accent: #38bdf8;
+    --accent-secondary: #818cf8;
+    --positive: #34d399;
+    --negative: #f87171;
+    --warning: #fbbf24;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', 'Noto Sans KR', sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* Hero */
+  .hero {
+    position: relative;
+    min-height: 420px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    background:
+      linear-gradient(rgba(6,9,15,0.72), rgba(6,9,15,0.85)),
+      url('https://source.unsplash.com/featured/?artificial+intelligence+network&w=1400') center/cover no-repeat;
+    border-bottom: 1px solid var(--border);
+    padding: 80px 24px 60px;
+  }
+  .hero-tag {
+    display: inline-block;
+    padding: 6px 16px;
+    border: 1px solid var(--accent);
+    border-radius: 99px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 16px;
+    background: linear-gradient(135deg, #e8f0fe 0%, var(--accent) 60%, var(--accent-secondary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .hero p {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto 28px;
+  }
+  .hero-meta { font-size: 11px; color: #4a6480; letter-spacing: 0.05em; }
+
+  /* Node network background animation */
+  .node-canvas { position: absolute; inset: 0; opacity: 0.25; pointer-events: none; }
+
+  /* Layout */
+  main { max-width: 1100px; margin: 0 auto; padding: 60px 24px 100px; }
+  section { margin-bottom: 72px; }
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+  h2 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 600;
+    margin-bottom: 32px;
+    color: var(--text);
+  }
+
+  /* Cards grid */
+  .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+  .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 20px; }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .card:hover { background: var(--surface-hover); border-color: rgba(99,179,237,0.3); }
+
+  .card-icon {
+    font-size: 2rem;
+    margin-bottom: 14px;
+    display: block;
+  }
+  .card h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 8px; }
+  .card p { font-size: 0.875rem; color: var(--text-secondary); line-height: 1.65; }
+
+  /* Stat highlight */
+  .stat-big {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 6px;
+    font-variant-numeric: tabular-nums;
+  }
+  .stat-label { font-size: 0.8rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.08em; }
+
+  /* Market chart */
+  .chart-wrap {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+    min-height: 360px;
+  }
+  .chart-wrap h3 { font-size: 1rem; font-weight: 600; margin-bottom: 20px; color: var(--text-secondary); }
+
+  /* Timeline */
+  .timeline { display: flex; flex-direction: column; gap: 0; }
+  .tl-item {
+    display: flex;
+    gap: 20px;
+    position: relative;
+    padding-bottom: 32px;
+  }
+  .tl-item:last-child { padding-bottom: 0; }
+  .tl-left { min-width: 80px; text-align: right; }
+  .tl-year { font-size: 0.85rem; font-weight: 700; color: var(--accent); }
+  .tl-line {
+    width: 1px;
+    background: var(--border);
+    position: relative;
+    flex-shrink: 0;
+  }
+  .tl-dot {
+    width: 10px; height: 10px;
+    background: var(--accent);
+    border-radius: 50%;
+    position: absolute;
+    top: 4px;
+    left: -4px;
+    box-shadow: 0 0 10px var(--accent);
+  }
+  .tl-content h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 4px; }
+  .tl-content p { font-size: 0.83rem; color: var(--text-secondary); }
+
+  /* Quote */
+  .quote-block {
+    border-left: 3px solid var(--accent-secondary);
+    padding: 20px 24px;
+    background: rgba(129,140,248,0.06);
+    border-radius: 0 12px 12px 0;
+    margin: 32px 0;
+  }
+  .quote-block p { font-size: 1.05rem; font-style: italic; color: var(--text); margin-bottom: 8px; }
+  .quote-block cite { font-size: 0.8rem; color: var(--text-secondary); }
+
+  /* Tag pills */
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+  .tag {
+    padding: 4px 12px;
+    border-radius: 99px;
+    font-size: 11px;
+    font-weight: 600;
+    border: 1px solid;
+  }
+  .tag-blue  { color: var(--accent); border-color: rgba(56,189,248,0.3); background: rgba(56,189,248,0.07); }
+  .tag-purple{ color: var(--accent-secondary); border-color: rgba(129,140,248,0.3); background: rgba(129,140,248,0.07); }
+  .tag-green { color: var(--positive); border-color: rgba(52,211,153,0.3); background: rgba(52,211,153,0.07); }
+  .tag-yellow{ color: var(--warning); border-color: rgba(251,191,36,0.3); background: rgba(251,191,36,0.07); }
+
+  /* Framework table */
+  .fw-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+  .fw-table th {
+    text-align: left; padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-secondary); font-weight: 600; font-size: 11px;
+    text-transform: uppercase; letter-spacing: 0.06em;
+  }
+  .fw-table td { padding: 12px 14px; border-bottom: 1px solid rgba(99,179,237,0.06); }
+  .fw-table tr:last-child td { border-bottom: none; }
+  .fw-table tr:hover td { background: rgba(56,189,248,0.04); }
+
+  /* Back link */
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    margin-bottom: 48px;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .back-link:hover { color: var(--text); border-color: var(--accent); }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .fade-up { animation: fadeUp 0.5s ease both; }
+  .fade-up:nth-child(2) { animation-delay: 0.1s; }
+  .fade-up:nth-child(3) { animation-delay: 0.2s; }
+</style>
+</head>
+<body>
+
+<!-- Hero -->
+<div class="hero">
+  <div>
+    <div class="hero-tag">Antigravity Research · 2026-03-25</div>
+    <h1 class="fade-up">2026 AI 에이전트 트렌드</h1>
+    <p class="fade-up">자율 에이전트 시대의 도래 — 멀티 에이전트 협업 시스템이 생산성 혁신의 핵심 동력이 되다</p>
+    <div class="hero-meta">Research Scope: YouTube · Gartner/Google · Reddit · Developer Community</div>
+  </div>
+</div>
+
+<main>
+  <a href="../index.html" class="back-link">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    마스터 허브로 돌아가기
+  </a>
+
+  <!-- KPI Row -->
+  <section>
+    <div class="section-label">Market Overview</div>
+    <h2>핵심 수치</h2>
+    <div class="grid-3">
+      <div class="card fade-up">
+        <span class="card-icon">💰</span>
+        <div class="stat-big">$41.8B</div>
+        <div class="stat-label">2030 시장 규모 예측</div>
+        <p style="margin-top:12px;">2025년 $1.5B에서 연평균 <strong style="color:var(--positive);">175%</strong> 성장 전망 (Gartner)</p>
+      </div>
+      <div class="card fade-up">
+        <span class="card-icon">🏢</span>
+        <div class="stat-big">40%</div>
+        <div class="stat-label">기업 앱 에이전트 통합 예측</div>
+        <p style="margin-top:12px;">2026년까지 기업 애플리케이션의 40%가 AI 에이전트를 통합할 것으로 예측 (Gartner)</p>
+      </div>
+      <div class="card fade-up">
+        <span class="card-icon">🔄</span>
+        <div class="stat-big">Multi</div>
+        <div class="stat-label">에이전트 협업 시스템</div>
+        <p style="margin-top:12px;">단일 에이전트에서 <strong style="color:var(--accent);">멀티 에이전트 협업 아키텍처</strong>로 패러다임 전환 진행 중</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Market Growth Chart -->
+  <section>
+    <div class="section-label">Market Projection</div>
+    <h2>시장 성장 전망 ($B)</h2>
+    <div class="grid-2">
+      <div class="chart-wrap">
+        <h3>AI 에이전트 글로벌 시장 규모 (2025–2030)</h3>
+        <canvas id="marketChart" role="img" aria-label="AI 에이전트 시장 성장 차트"></canvas>
+      </div>
+      <div class="chart-wrap">
+        <h3>에이전트 유형별 성숙도 (2026 기준)</h3>
+        <canvas id="maturityChart" role="img" aria-label="에이전트 유형별 성숙도 레이더 차트"></canvas>
+      </div>
+    </div>
+  </section>
+
+  <!-- Agentic Workflow -->
+  <section>
+    <div class="section-label">Deep Dive</div>
+    <h2>에이전틱 워크플로우의 진화</h2>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-left"><span class="tl-year">2023</span></div>
+        <div class="tl-line"><div class="tl-dot"></div></div>
+        <div class="tl-content">
+          <h4>단순 Q&A 챗봇 시대</h4>
+          <p>단일 턴 응답 중심. 외부 도구 연동 없음. "도구"로서의 AI.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-left"><span class="tl-year">2024</span></div>
+        <div class="tl-line"><div class="tl-dot"></div></div>
+        <div class="tl-content">
+          <h4>Tool-Use & RAG 에이전트 확산</h4>
+          <p>웹 검색, 코드 실행, 파일 시스템 접근 가능. 멀티 스텝 태스크 처리 시작.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-left"><span class="tl-year">2025</span></div>
+        <div class="tl-line"><div class="tl-dot"></div></div>
+        <div class="tl-content">
+          <h4>자율 계획·실행 에이전트</h4>
+          <p>다단계 계획 수립 + 실행 + 자기 수정 루프. LangGraph, CrewAI 등 오케스트레이션 프레임워크 성숙.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-left"><span class="tl-year" style="color:var(--positive);">2026</span></div>
+        <div class="tl-line"><div class="tl-dot" style="background:var(--positive); box-shadow:0 0 10px var(--positive);"></div></div>
+        <div class="tl-content">
+          <h4>멀티 에이전트 협업 시스템 — <span style="color:var(--positive);">현재</span></h4>
+          <p>전문화된 에이전트들이 역할 분담 후 협업. 기업 워크플로우에 완전 통합. 직원은 '오케스트레이터'로 역할 전환.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Community Signals -->
+  <section>
+    <div class="section-label">Community Signals</div>
+    <h2>개발자 커뮤니티 반응</h2>
+
+    <div class="quote-block">
+      <p>"2026년, 당신은 AI의 보스가 될 것인가, 아니면 AI에게 지휘당할 것인가?"</p>
+      <cite>— 김덕진 소장 인사이트</cite>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <h3 style="color:var(--positive); margin-bottom:16px;">✅ 긍정적 반응</h3>
+        <p>백엔드 자동화 및 코딩 에이전트의 실질적 생산성 기여. 반복 작업 90% 이상 자동화 사례 증가. Claude Code, Cursor 등 AI 코딩 에이전트 실무 정착.</p>
+        <div class="tags">
+          <span class="tag tag-green">코딩 자동화</span>
+          <span class="tag tag-green">생산성 향상</span>
+          <span class="tag tag-green">반복 작업 제거</span>
+        </div>
+      </div>
+      <div class="card">
+        <h3 style="color:var(--warning); margin-bottom:16px;">⚠️ 우려 사항</h3>
+        <p>"단순한 챗봇인가, 진짜 에이전트인가"에 대한 비판적 시각. 인프라 준비 부재와 거버넌스 부재에 대한 우려. 환각(Hallucination) 및 신뢰성 문제 지속.</p>
+        <div class="tags">
+          <span class="tag tag-yellow">거버넌스 부재</span>
+          <span class="tag tag-yellow">인프라 미비</span>
+          <span class="tag tag-yellow">신뢰성</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Frameworks -->
+  <section>
+    <div class="section-label">Ecosystem</div>
+    <h2>주요 에이전트 프레임워크</h2>
+    <div class="card" style="padding: 0; overflow: hidden;">
+      <table class="fw-table">
+        <thead>
+          <tr>
+            <th>프레임워크</th>
+            <th>특징</th>
+            <th>적합 용도</th>
+            <th>성숙도</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>LangGraph</strong></td>
+            <td>그래프 기반 상태 머신, 순환 흐름 지원</td>
+            <td>복잡한 멀티스텝 워크플로우</td>
+            <td><span class="tag tag-green" style="font-size:10px;">High</span></td>
+          </tr>
+          <tr>
+            <td><strong>CrewAI</strong></td>
+            <td>역할 기반 에이전트 팀 오케스트레이션</td>
+            <td>팀 협업형 자율 태스크</td>
+            <td><span class="tag tag-green" style="font-size:10px;">High</span></td>
+          </tr>
+          <tr>
+            <td><strong>AutoGen</strong></td>
+            <td>Microsoft, 에이전트 간 대화 기반</td>
+            <td>코드 생성 및 검증 루프</td>
+            <td><span class="tag tag-blue" style="font-size:10px;">Medium</span></td>
+          </tr>
+          <tr>
+            <td><strong>Claude Agents SDK</strong></td>
+            <td>Anthropic, 서브에이전트·병렬 실행</td>
+            <td>엔터프라이즈 에이전트 팀</td>
+            <td><span class="tag tag-green" style="font-size:10px;">High</span></td>
+          </tr>
+          <tr>
+            <td><strong>Google ADK</strong></td>
+            <td>멀티모달, Gemini 기반</td>
+            <td>비전·음성 통합 에이전트</td>
+            <td><span class="tag tag-blue" style="font-size:10px;">Medium</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Design Direction -->
+  <section>
+    <div class="section-label">Design Direction</div>
+    <h2>콘텐츠·기획 적용 방향</h2>
+    <div class="grid-3">
+      <div class="card">
+        <span class="card-icon">🎨</span>
+        <h3>비주얼 메타포</h3>
+        <p>개미 군집, 오케스트라 지휘, 노드-링크 네트워크. 멀티 에이전트 협업의 복잡한 연결망을 시각화.</p>
+        <div class="tags" style="margin-top:14px;">
+          <span class="tag tag-blue">노드-링크</span>
+          <span class="tag tag-blue">군집 지능</span>
+        </div>
+      </div>
+      <div class="card">
+        <span class="card-icon">🎭</span>
+        <h3>톤앤매너</h3>
+        <p>Glassmorphism + Deep Blue/Cyan 조합. 자율성과 신뢰를 상징하는 차가운 미래지향적 팔레트.</p>
+        <div class="tags" style="margin-top:14px;">
+          <span class="tag tag-blue">Glassmorphism</span>
+          <span class="tag tag-purple">Deep Blue</span>
+        </div>
+      </div>
+      <div class="card">
+        <span class="card-icon">💬</span>
+        <h3>내러티브 훅</h3>
+        <p>"당신은 AI의 보스가 될 것인가?" — 직무 전환의 긴박감을 자극하는 도발적 질문으로 시청자 관여도 극대화.</p>
+        <div class="tags" style="margin-top:14px;">
+          <span class="tag tag-yellow">긴박감</span>
+          <span class="tag tag-yellow">행동 촉구</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script>
+Chart.defaults.animation = false;
+
+// Market Growth Bar Chart
+var ctx1 = document.getElementById('marketChart').getContext('2d');
+new Chart(ctx1, {
+  type: 'bar',
+  data: {
+    labels: ['2025', '2026', '2027', '2028', '2029', '2030'],
+    datasets: [{
+      label: '시장 규모 ($B)',
+      data: [1.5, 4.1, 8.7, 16.2, 27.4, 41.8],
+      backgroundColor: [
+        'rgba(56,189,248,0.3)',
+        'rgba(56,189,248,0.4)',
+        'rgba(56,189,248,0.5)',
+        'rgba(56,189,248,0.6)',
+        'rgba(56,189,248,0.75)',
+        'rgba(56,189,248,0.9)',
+      ],
+      borderColor: 'rgba(56,189,248,0.8)',
+      borderWidth: 1,
+      borderRadius: 6,
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: function(ctx) { return ' $' + ctx.parsed.y + 'B'; }
+        }
+      }
+    },
+    scales: {
+      x: { grid: { color: 'rgba(99,179,237,0.08)' }, ticks: { color: '#8ba3c7' } },
+      y: {
+        grid: { color: 'rgba(99,179,237,0.08)' },
+        ticks: { color: '#8ba3c7', callback: function(v) { return '$' + v + 'B'; } }
+      }
+    }
+  }
+});
+
+// Maturity Radar Chart
+var ctx2 = document.getElementById('maturityChart').getContext('2d');
+new Chart(ctx2, {
+  type: 'radar',
+  data: {
+    labels: ['코딩 에이전트', '리서치 에이전트', '업무 자동화', '고객 서비스', '창작 에이전트', '데이터 분석'],
+    datasets: [{
+      label: '성숙도 (2026)',
+      data: [90, 75, 80, 70, 60, 78],
+      fill: true,
+      backgroundColor: 'rgba(56,189,248,0.12)',
+      borderColor: 'rgba(56,189,248,0.7)',
+      pointBackgroundColor: 'rgba(56,189,248,1)',
+      pointBorderColor: '#0d1320',
+      pointRadius: 4,
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: {
+      r: {
+        min: 0, max: 100,
+        grid: { color: 'rgba(99,179,237,0.12)' },
+        angleLines: { color: 'rgba(99,179,237,0.12)' },
+        ticks: { display: false },
+        pointLabels: { color: '#8ba3c7', font: { size: 11 } }
+      }
+    }
+  }
+});
+</script>
+</body>
+</html>
