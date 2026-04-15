@@ -563,7 +563,7 @@
             btnEl.style.opacity = '0.6';
         }
 
-        const cmd = isYt ? `python3 projects/youtube-manager/engine.py stats` : `python3 run.py --project ${p} --auto`;
+        const cmd = isYt ? `python3 /Users/kk/Desktop/스킬/projects/youtube-manager/engine.py stats` : `python3 run.py --project ${p} --auto`;
         try {
             const r = await fetch(`${API}/execute?cmd_str=${encodeURIComponent(cmd)}`, {method:'POST'});
             const d = await r.json();
