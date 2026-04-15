@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>안얼음 Ice Report — 얼음의 연대기</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html-to-image/1.11.11/html-to-image.js"></script>
+<style>
+/* ─── CSS Custom Properties ─── */
+:root {
+  --bg: #030c17;
+  --surface: #071524;
+  --surface-hover: #0c1f30;
+  --border: rgba(125,211,252,0.1);
+  --text: #e0f2fe;
+  --text-secondary: #7ea8c4;
+  --accent: #38bdf8;
+  --accent-secondary: #818cf8;
+  --positive: #34d399;
+  --negative: #f87171;
+  --warning: #fbbf24;
+}
+html.theme-light {
+  --bg: #f0f9ff;
+  --surface: #ffffff;
+  --surface-hover: #e0f2fe;
+  --border: rgba(14,165,233,0.15);
+  --text: #0c1929;
+  --text-secondary: #4e7a97;
+  --accent: #0284c7;
+  --accent-secondary: #6366f1;
+  --positive: #059669;
+  --negative: #dc2626;
+  --warning: #d97706;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', 'Noto Sans KR', sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ─── Utility Menu ─── */
+.viz-menu { position: fixed; top: 20px; right: 20px; z-index: 1000; }
+.viz-menu-toggle {
+  background: rgba(7,21,36,0.9);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 9px 16px;
+  font-size: 13px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  backdrop-filter: blur(12px);
+  display: flex; align-items: center; gap: 8px;
+}
+.viz-menu-toggle:hover { border-color: var(--accent); color: var(--text); }
+.viz-menu-dropdown {
+  display: none;
+  position: absolute;
+  right: 0; top: calc(100% + 8px);
+  background: rgba(7,21,36,0.95);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 8px;
+  min-width: 180px;
+  backdrop-filter: blur(16px);
+}
+.viz-menu-dropdown.open { display: block; }
+.viz-menu-dropdown button {
+  display: block; width: 100%;
+  padding: 8px 12px;
+  background: none; border: none;
+  color: var(--text-secondary);
+  font-size: 12px; text-align: left;
+  cursor: pointer; border-radius: 8px;
+}
+.viz-menu-dropdown button:hover { background: var(--surface-hover); color: var(--text); }
+
+/* ─── Skip link (a11y) ─── */
+.skip-link {
+  position: absolute; top: -40px; left: 16px;
+  background: var(--accent); color: #fff;
+  padding: 8px 16px; border-radius: 6px;
+  font-size: 13px; text-decoration: none;
+  transition: top 0.2s;
+}
+.skip-link:focus { top: 16px; }
+
+/* ─── Hero ─── */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  text-align: center;
+  background:
+    linear-gradient(to bottom, rgba(3,12,23,0.55) 0%, rgba(3,12,23,0.75) 60%, rgba(3,12,23,1) 100%),
+    url('https://source.unsplash.com/featured/?glacier+arctic+ice&w=1600') center/cover no-repeat;
+  padding: 80px 24px;
+}
+.hero-inner { max-width: 800px; animation: fadeUp 0.8s ease both; }
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 18px;
+  border: 1px solid rgba(56,189,248,0.4);
+  border-radius: 99px;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 28px;
+  background: rgba(56,189,248,0.06);
+}
+.hero h1 {
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 800;
+  line-height: 1.05;
+  color: #fff;
+  margin-bottom: 8px;
+}
+.hero h1 em {
+  font-style: normal;
+  color: var(--accent);
+}
+.hero-subtitle {
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  color: rgba(224,242,254,0.7);
+  font-weight: 300;
+  margin-bottom: 48px;
+  letter-spacing: 0.02em;
+}
+.hero-stats {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 32px;
+  padding: 28px 32px;
+  background: rgba(7,21,36,0.6);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  backdrop-filter: blur(16px);
+}
+.h-stat { text-align: center; }
+.h-stat-val {
+  font-size: 2rem; font-weight: 700;
+  color: var(--accent);
+  display: block;
+  font-variant-numeric: tabular-nums;
+}
+.h-stat-lbl { font-size: 11px; color: var(--text-secondary); letter-spacing: 0.06em; }
+.scroll-hint {
+  position: absolute; bottom: 36px; left: 50%;
+  transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  color: rgba(224,242,254,0.4); font-size: 11px; letter-spacing: 0.1em;
+  animation: bounce 2s infinite;
+}
+.scroll-arrow { width: 20px; height: 20px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(45deg); }
+
+/* ─── Layout ─── */
+main { max-width: 1140px; margin: 0 auto; padding: 80px 24px 120px; }
+section { margin-bottom: 100px; }
+.section-label {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--accent);
+  margin-bottom: 10px;
+  display: flex; align-items: center; gap: 10px;
+}
+.section-label::before {
+  content: ''; display: inline-block;
+  width: 32px; height: 1px; background: var(--accent); opacity: 0.5;
+}
+h2 {
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  font-weight: 700; line-height: 1.2;
+  margin-bottom: 40px; color: var(--text);
+}
+h2 span { color: var(--accent); }
+
+/* ─── Grid ─── */
+.grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
+.grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 20px; }
+
+/* ─── Cards ─── */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 32px;
+  transition: border-color 0.2s, background 0.2s;
+}
+.card:hover { background: var(--surface-hover); border-color: rgba(56,189,248,0.25); }
+.card-icon { font-size: 2.2rem; margin-bottom: 16px; display: block; }
+.card h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 10px; }
+.card p { font-size: 0.875rem; color: var(--text-secondary); line-height: 1.7; }
+
+/* ─── Image card ─── */
+.img-card {
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  min-height: 260px;
+  background: var(--surface);
+}
+.img-card img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  opacity: 0.85;
+  loading: lazy;
+}
+.img-card-body {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(3,12,23,0.92) 40%, transparent 100%);
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 28px;
+}
+.img-card h3 { font-size: 1.15rem; font-weight: 700; color: #fff; margin-bottom: 6px; }
+.img-card p { font-size: 0.82rem; color: rgba(224,242,254,0.75); line-height: 1.6; }
+
+/* ─── Stat blocks ─── */
+.stat-big {
+  font-size: 3.5rem; font-weight: 800;
+  color: var(--accent); line-height: 1;
+  margin-bottom: 6px;
+  font-variant-numeric: tabular-nums;
+}
+.stat-unit { font-size: 1.4rem; font-weight: 500; }
+.stat-lbl { font-size: 0.8rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.07em; margin-top: 4px; }
+.stat-desc { font-size: 0.875rem; color: var(--text-secondary); margin-top: 14px; line-height: 1.65; }
+
+/* ─── Chart containers ─── */
+.chart-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 28px;
+  min-height: 360px;
+}
+.chart-box h3 { font-size: 0.9rem; font-weight: 600; color: var(--text-secondary); margin-bottom: 20px; }
+
+/* ─── Timeline ─── */
+.timeline { position: relative; padding-left: 32px; }
+.timeline::before {
+  content: ''; position: absolute; left: 7px; top: 0; bottom: 0;
+  width: 1px; background: var(--border);
+}
+.tl-item { position: relative; padding-bottom: 40px; }
+.tl-item:last-child { padding-bottom: 0; }
+.tl-dot {
+  position: absolute; left: -27px; top: 4px;
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 3px solid var(--bg);
+  box-shadow: 0 0 12px rgba(56,189,248,0.5);
+}
+.tl-item.dim .tl-dot { background: var(--text-secondary); box-shadow: none; }
+.tl-year { font-size: 11px; font-weight: 700; color: var(--accent); letter-spacing: 0.06em; margin-bottom: 4px; }
+.tl-item.dim .tl-year { color: var(--text-secondary); }
+.tl-item h4 { font-size: 1rem; font-weight: 600; margin-bottom: 6px; }
+.tl-item p { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.65; }
+
+/* ─── Pill tags ─── */
+.tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.tag {
+  padding: 4px 12px; border-radius: 99px;
+  font-size: 11px; font-weight: 600; border: 1px solid;
+}
+.tag-blue { color: var(--accent); border-color: rgba(56,189,248,0.3); background: rgba(56,189,248,0.07); }
+.tag-purple { color: var(--accent-secondary); border-color: rgba(129,140,248,0.3); background: rgba(129,140,248,0.07); }
+.tag-green { color: var(--positive); border-color: rgba(52,211,153,0.3); background: rgba(52,211,153,0.07); }
+.tag-yellow { color: var(--warning); border-color: rgba(251,191,36,0.3); background: rgba(251,191,36,0.07); }
+.tag-red { color: var(--negative); border-color: rgba(248,113,113,0.3); background: rgba(248,113,113,0.07); }
+
+/* ─── Quote ─── */
+.quote {
+  border-left: 3px solid var(--accent);
+  padding: 20px 28px;
+  background: rgba(56,189,248,0.05);
+  border-radius: 0 16px 16px 0;
+  margin: 40px 0;
+}
+.quote p { font-size: 1.15rem; font-style: italic; color: var(--text); margin-bottom: 8px; line-height: 1.65; }
+.quote cite { font-size: 0.8rem; color: var(--text-secondary); }
+
+/* ─── Data table ─── */
+.data-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+.data-table th {
+  text-align: left; padding: 10px 16px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-secondary); font-weight: 600; font-size: 11px;
+  text-transform: uppercase; letter-spacing: 0.07em;
+}
+.data-table td { padding: 13px 16px; border-bottom: 1px solid rgba(125,211,252,0.05); }
+.data-table tr:last-child td { border-bottom: none; }
+.data-table tr:hover td { background: var(--surface-hover); }
+
+/* ─── Full-bleed image section ─── */
+.bleed-section {
+  position: relative; border-radius: 24px; overflow: hidden;
+  min-height: 420px;
+  display: flex; align-items: flex-end;
+  margin-bottom: 100px;
+}
+.bleed-section img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%; object-fit: cover;
+  loading: lazy;
+}
+.bleed-overlay {
+  position: relative;
+  width: 100%;
+  background: linear-gradient(to top, rgba(3,12,23,0.95) 0%, rgba(3,12,23,0.6) 60%, transparent 100%);
+  padding: 48px 48px 40px;
+}
+.bleed-overlay h2 { margin-bottom: 16px; font-size: clamp(1.6rem, 3vw, 2.4rem); }
+.bleed-overlay p { font-size: 1rem; color: rgba(224,242,254,0.8); max-width: 640px; line-height: 1.7; }
+
+/* ─── Divider ─── */
+.divider {
+  height: 1px; background: var(--border);
+  margin: 80px 0;
+}
+
+/* ─── Nav breadcrumb ─── */
+.breadcrumb {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 12px; color: var(--text-secondary);
+  margin-bottom: 64px;
+}
+.breadcrumb a { color: var(--accent); text-decoration: none; }
+.breadcrumb a:hover { text-decoration: underline; }
+.breadcrumb span { opacity: 0.4; }
+
+/* ─── Animations ─── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50%       { transform: translateX(-50%) translateY(8px); }
+}
+.reveal {
+  opacity: 0; transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ─── Responsive ─── */
+@media (max-width: 640px) {
+  .grid-2, .grid-3 { grid-template-columns: 1fr; }
+  .bleed-overlay { padding: 28px 24px; }
+  .hero h1 { font-size: 3rem; }
+  main { padding: 60px 16px 80px; }
+}
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">본문으로 이동</a>
+
+<!-- Utility Menu -->
+<div class="viz-menu">
+  <button class="viz-menu-toggle" onclick="toggleMenu()">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
+    메뉴
+  </button>
+  <div class="viz-menu-dropdown" id="viz-dropdown">
+    <button onclick="cycleTheme()">🌓 테마 전환</button>
+    <button onclick="downloadPng()">⬇️ PNG 저장</button>
+    <button onclick="window.print()">🖨️ 인쇄</button>
+    <button onclick="window.history.back()">← 허브로 돌아가기</button>
+  </div>
+</div>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">
+      <span>❄️</span>
+      Antigravity Research · 안얼음 Ice Report
+    </div>
+    <h1>얼음의<br><em>연대기</em></h1>
+    <p class="hero-subtitle">물이 건네는 고체의 철학과 과학</p>
+    <div class="hero-stats">
+      <div class="h-stat">
+        <span class="h-stat-val">22</span>
+        <span class="h-stat-lbl">결정질 동소체</span>
+      </div>
+      <div class="h-stat">
+        <span class="h-stat-val">90%</span>
+        <span class="h-stat-lbl">알베도 반사율</span>
+      </div>
+      <div class="h-stat">
+        <span class="h-stat-val">65m</span>
+        <span class="h-stat-lbl">빙상 전부 녹으면 해수면 상승</span>
+      </div>
+      <div class="h-stat">
+        <span class="h-stat-val">5.9mm</span>
+        <span class="h-stat-lbl">2024 연간 해수면 상승</span>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <span>SCROLL</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</div>
+
+<!-- Main Content -->
+<main id="main-content">
+  <nav class="breadcrumb">
+    <a href="../index.html">마스터 허브</a>
+    <span>/</span>
+    <span>안얼음 Ice Report</span>
+  </nav>
+
+  <!-- 01 Physics -->
+  <section class="reveal">
+    <div class="section-label">01 · 물리화학</div>
+    <h2>단순한 얼음은 없다<br><span>22종의 결정 우주</span></h2>
+    <div class="grid-3">
+      <div class="card">
+        <span class="card-icon">🔬</span>
+        <div class="stat-big">22<span class="stat-unit">종</span></div>
+        <div class="stat-lbl">결정질 얼음 동소체</div>
+        <p class="stat-desc">단일 분자 화합물 중 가장 다양한 고체 동소체. 2025년 딥러닝 탐색으로 <strong style="color:var(--accent)">34개</strong> 추가 후보 예측.</p>
+        <div class="tags">
+          <span class="tag tag-blue">얼음 Ih~XXI</span>
+          <span class="tag tag-purple">수소 결합</span>
+        </div>
+      </div>
+      <div class="card">
+        <span class="card-icon">⚖️</span>
+        <div class="stat-big">0.917</div>
+        <div class="stat-lbl">얼음 밀도 (g/cm³)</div>
+        <p class="stat-desc">액체 물(1.00 g/cm³)보다 가벼워 수면에 뜬다. 수생 생물이 겨울을 살아남는 <strong style="color:var(--positive)">생명의 역설</strong>.</p>
+        <div class="tags">
+          <span class="tag tag-green">밀도 역전</span>
+          <span class="tag tag-green">생태계 보호</span>
+        </div>
+      </div>
+      <div class="card">
+        <span class="card-icon">🌡️</span>
+        <div class="stat-big">−40<span class="stat-unit">°C</span></div>
+        <div class="stat-lbl">사파이어급 경도 온도</div>
+        <p class="stat-desc">온도 하락할수록 수소 결합이 강해져 보석에 가까운 강도. 과냉각 순수 물은 −40°C까지 액체 유지.</p>
+        <div class="tags">
+          <span class="tag tag-yellow">과냉각</span>
+          <span class="tag tag-yellow">초강도</span>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:20px;" class="grid-2">
+      <div class="chart-box">
+        <h3>물의 상태별 밀도 비교 (g/cm³)</h3>
+        <canvas id="densityChart" role="img" aria-label="물의 상태별 밀도 차트" style="max-height:280px;"></canvas>
+      </div>
+      <div class="chart-box">
+        <h3>얼음 동소체 발견 연대기</h3>
+        <canvas id="polymorphChart" role="img" aria-label="얼음 동소체 발견 수 차트" style="max-height:280px;"></canvas>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 Cryosphere -->
+  <div class="bleed-section reveal">
+    <img
+      src="https://source.unsplash.com/featured/?cryosphere+iceberg+ocean&w=1400"
+      alt="극지방 빙하와 해양"
+      onerror="this.style.display='none'"
+      loading="lazy"
+    >
+    <div class="bleed-overlay">
+      <div class="section-label" style="color:rgba(56,189,248,0.9);">02 · 지구과학</div>
+      <h2 style="color:#fff;">크리오스피어<br>지구의 항온 장치</h2>
+      <p>빙하·빙상·해빙이 태양에너지의 최대 90%를 반사한다. 이 메커니즘의 붕괴가 가속적 온난화의 핵심 피드백이다.</p>
+    </div>
+  </div>
+
+  <section class="reveal">
+    <div class="grid-2">
+      <div>
+        <div class="section-label">크리오스피어 구성</div>
+        <h2>지구를 <span>냉각하는</span><br>얼음의 규모</h2>
+        <div style="margin-top: 0;">
+          <div class="card" style="margin-bottom:16px;">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>구성 요소</th>
+                  <th>면적/규모</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>남극 빙상</td><td>~14 × 10⁶ km²</td></tr>
+                <tr><td>그린란드 빙상</td><td>~1.8 × 10⁶ km²</td></tr>
+                <tr><td>전 세계 빙하</td><td>~700,000 km²</td></tr>
+                <tr><td>북극 해빙 (최대)</td><td>~15 × 10⁶ km²</td></tr>
+                <tr><td>영구동토층</td><td>북반구 육지의 약 25%</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="quote">
+            <p>"2024년 해수면 상승률 5.9mm/yr — 예측값(4.3mm)을 초과하며 1993년 이래 연간 상승률이 2배 이상 증가했다."</p>
+            <cite>— NASA 분석 2024</cite>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="section-label">해빙 소멸 추세</div>
+        <h2>북극이 <span>사라지는</span><br>속도</h2>
+        <div class="chart-box" style="min-height:320px;">
+          <h3>북극 해빙 면적 소멸률 (%) 예측</h3>
+          <canvas id="seaIceChart" role="img" aria-label="북극 해빙 소멸 예측 차트"></canvas>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 History -->
+  <section class="reveal">
+    <div class="section-label">03 · 역사</div>
+    <h2>권력의 상징에서<br><span>산업의 기원</span>으로</h2>
+    <div class="grid-2">
+      <div>
+        <div class="timeline">
+          <div class="tl-item dim">
+            <div class="tl-dot"></div>
+            <div class="tl-year">514년 · 신라 지증왕</div>
+            <h4>국가 빙고(氷庫) 운영 개시</h4>
+            <p>삼국사기 기록. 겨울 얼음 채취·보관 국가 시스템. 행정력과 기술력의 상징.</p>
+          </div>
+          <div class="tl-item dim">
+            <div class="tl-dot"></div>
+            <div class="tl-year">조선 시대</div>
+            <h4>서빙고·동빙고·내빙고 삼원 체계</h4>
+            <p>관리 식용(서빙고) / 국가 제사(동빙고) / 왕실 전용(내빙고). 빙표(氷票)는 임금이 신하에게 하사하는 최고 선물.</p>
+          </div>
+          <div class="tl-item dim">
+            <div class="tl-dot"></div>
+            <div class="tl-year">석빙고(石氷庫)</div>
+            <h4>제로 에너지 냉동고</h4>
+            <p>배수구·환기구·짚+흙 단열 삼중 구조. 외부 고온에도 내부 0°C 유지. 현대 콜드체인 기술과 동급 개념.</p>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-year">1806 · Frederic Tudor</div>
+            <h4>얼음 무역의 탄생</h4>
+            <p>보스턴 → 카리브해 얼음 수출 실험. 냉장·신선식품 유통·에어컨 산업 전체의 기원.</p>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-year">2025</div>
+            <h4>AI로 34개 신규 얼음 동소체 예측</h4>
+            <p>딥러닝+분자동역학 시뮬레이션으로 131,481개 구조 탐색. 얼음 L 등 완전 새 상(phase) 발견.</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="img-card" style="min-height: 300px; margin-bottom: 20px;">
+          <img
+            src="https://source.unsplash.com/featured/?traditional+korean+architecture+stone&w=800"
+            alt="석빙고 전통 한국 건축"
+            loading="lazy"
+            onerror="this.style.display='none'"
+          >
+          <div class="img-card-body">
+            <h3>석빙고 — 1,500년 전의 냉동 공학</h3>
+            <p>빗물 배수 + 열기 환기 + 짚·흙 단열. 자연 법칙을 활용한 지혜의 정점.</p>
+          </div>
+        </div>
+        <div class="card">
+          <h3 style="margin-bottom:16px;">채빙(採氷)의 경제학</h3>
+          <p>엄동설한 한강 얼음을 톱으로 썰어 운반하는 노동. 여름의 시원함 이면에 숨은 겨울의 사투. 얼음 1덩이는 서민이 평생 구경하기 힘든 <strong style="color:var(--warning)">귀족의 희소 자원</strong>이었다.</p>
+          <div class="tags" style="margin-top:16px;">
+            <span class="tag tag-yellow">권력의 상징</span>
+            <span class="tag tag-yellow">희소 자원</span>
+            <span class="tag tag-blue">노동 역사</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 Space -->
+  <section class="reveal">
+    <div class="section-label">04 · 우주</div>
+    <h2>얼음은 <span>지구 밖</span>에도 있다</h2>
+    <div class="grid-3">
+      <div class="img-card">
+        <img
+          src="https://source.unsplash.com/featured/?moon+crater+space&w=600"
+          alt="달 표면 크레이터"
+          loading="lazy"
+          onerror="this.style.display='none'"
+        >
+        <div class="img-card-body">
+          <h3>🌙 달 남극의 얼음</h3>
+          <p>영구 음영 지역의 얼음 = 우주 기지의 물·산소 공급원. 인류의 첫 번째 우주 티켓.</p>
+        </div>
+      </div>
+      <div class="img-card">
+        <img
+          src="https://source.unsplash.com/featured/?jupiter+moon+ocean&w=600"
+          alt="목성 위성 에우로파"
+          loading="lazy"
+          onerror="this.style.display='none'"
+        >
+        <div class="img-card-body">
+          <h3>🪐 에우로파의 지각 아래</h3>
+          <p>수십 km 얼음층 아래 거대한 바다. 우주에서 가장 유력한 외계 생명체 서식 후보.</p>
+        </div>
+      </div>
+      <div class="img-card">
+        <img
+          src="https://source.unsplash.com/featured/?comet+space+stars&w=600"
+          alt="혜성과 우주"
+          loading="lazy"
+          onerror="this.style.display='none'"
+        >
+        <div class="img-card-body">
+          <h3>☄️ 혜성 — 더러운 눈덩이</h3>
+          <p>얼음+먼지의 원시 태양계 냉동 보관함. 지구 바다의 기원이 혜성의 얼음이라는 가설.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 Culture & Sound -->
+  <section class="reveal">
+    <div class="section-label">05 · 문화·음향</div>
+    <h2>얼음은 <span>소리를 내고</span><br>은유를 만든다</h2>
+    <div class="grid-2">
+      <div class="card">
+        <span class="card-icon">🔊</span>
+        <h3>얼음의 소리 — 기후 청진기</h3>
+        <p>해빙 균열 시 발생하는 200~5,000Hz 음향 신호는 기후 모니터링의 수동 음향 지표. 빙하 하부 생태계의 음향 환경을 결정짓는 살아있는 데이터.</p>
+        <div class="tags" style="margin-top:16px;">
+          <span class="tag tag-blue">200–5,000 Hz</span>
+          <span class="tag tag-blue">수동 음향 감시</span>
+        </div>
+      </div>
+      <div class="card">
+        <span class="card-icon">📖</span>
+        <h3>얼음의 문화적 은유</h3>
+        <p>정지·순수·보존·감정 억제의 상징. Robert Frost부터 Ursula K. LeGuin까지 문학 전반에서 동서양 공통적으로 <strong style="color:var(--accent)">'시간을 멈추는 물질'</strong>로 인식.</p>
+        <div class="tags" style="margin-top:16px;">
+          <span class="tag tag-purple">정지의 상징</span>
+          <span class="tag tag-purple">감정 억제</span>
+          <span class="tag tag-purple">보존</span>
+        </div>
+      </div>
+      <div class="card" style="grid-column: 1 / -1;">
+        <span class="card-icon">🏗️</span>
+        <h3>얼음 건축 — 재료공학의 실험실</h3>
+        <p>셀룰로오스 강화 얼음(CR-ice)과 파이크리트(pykrete)가 군사 차량을 지지하는 구조체로 실증됐다. TU Munich 팀은 여름에도 −5°C를 유지하는 영구 얼음 구조물을 개발. 빙하는 수만 년의 시간을 압축한 <strong style="color:var(--positive)">지구의 블랙박스</strong> — 미세 공기방울이 과거 대기를 원형 보존한다.</p>
+        <div class="tags" style="margin-top:16px;">
+          <span class="tag tag-green">파이크리트</span>
+          <span class="tag tag-green">영구 구조체</span>
+          <span class="tag tag-yellow">기후 기록 장치</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Closing -->
+  <section class="reveal" style="text-align:center; margin-bottom:0;">
+    <div class="section-label" style="justify-content:center;">안얼음 채널 철학</div>
+    <h2 style="max-width:700px; margin:0 auto 24px;">기후 변화를<br><span>감각의 장면</span>으로 번역한다</h2>
+    <p style="max-width:580px; margin:0 auto 40px; color:var(--text-secondary); font-size:1.05rem; line-height:1.8;">
+      얼음은 녹지 않는 한 결코 거짓말을 하지 않는 기록 장치다.<br>
+      안얼음은 그 기록을 당신의 감각으로 번역한다.
+    </p>
+    <div style="display:flex; justify-content:center; gap:12px; flex-wrap:wrap;">
+      <a href="../index.html" style="display:inline-flex; align-items:center; gap:8px; padding:14px 28px; background:var(--accent); color:#fff; border-radius:12px; font-weight:600; font-size:0.9rem; text-decoration:none;">
+        ← 마스터 허브
+      </a>
+      <a href="https://youtube.com/@aneoreum" target="_blank" style="display:inline-flex; align-items:center; gap:8px; padding:14px 28px; background:var(--surface); border:1px solid var(--border); color:var(--text); border-radius:12px; font-weight:600; font-size:0.9rem; text-decoration:none;">
+        채널 방문 ↗
+      </a>
+    </div>
+  </section>
+</main>
+
+<script>
+Chart.defaults.animation = false;
+
+/* ─── Theme ─── */
+var _themes = ['', 'theme-light'];
+var _ti = 0;
+function cycleTheme() {
+  document.documentElement.classList.remove(_themes[_ti]);
+  _ti = (_ti + 1) % _themes.length;
+  document.documentElement.classList.add(_themes[_ti]);
+}
+function onThemeChange() {}
+
+/* ─── Menu ─── */
+function toggleMenu() {
+  document.getElementById('viz-dropdown').classList.toggle('open');
+}
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.viz-menu')) {
+    document.getElementById('viz-dropdown').classList.remove('open');
+  }
+});
+
+/* ─── PNG Download ─── */
+function downloadPng() {
+  htmlToImage.toPng(document.body).then(function(dataUrl) {
+    var a = document.createElement('a');
+    a.download = 'ice-report-antigravity.png';
+    a.href = dataUrl;
+    a.click();
+  });
+}
+
+/* ─── Scroll reveal ─── */
+var revealEls = document.querySelectorAll('.reveal');
+var observer = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08 });
+revealEls.forEach(function(el) { observer.observe(el); });
+
+/* ─── Chart 1: Density ─── */
+var ctx1 = document.getElementById('densityChart').getContext('2d');
+new Chart(ctx1, {
+  type: 'bar',
+  data: {
+    labels: ['수증기\n(기체)', '얼음\n(0°C)', '물\n(4°C)'],
+    datasets: [{
+      label: 'g/cm³',
+      data: [0.0006, 0.917, 1.000],
+      backgroundColor: ['rgba(129,140,248,0.5)', 'rgba(56,189,248,0.6)', 'rgba(52,211,153,0.5)'],
+      borderColor: ['rgba(129,140,248,0.8)', 'rgba(56,189,248,0.9)', 'rgba(52,211,153,0.8)'],
+      borderWidth: 1, borderRadius: 8,
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: { callbacks: { label: function(c) { return ' ' + c.parsed.y + ' g/cm³'; } } }
+    },
+    scales: {
+      x: { grid: { color: 'rgba(125,211,252,0.06)' }, ticks: { color: '#7ea8c4', font: { size: 11 } } },
+      y: { grid: { color: 'rgba(125,211,252,0.06)' }, ticks: { color: '#7ea8c4', font: { size: 11 } } }
+    }
+  }
+});
+
+/* ─── Chart 2: Polymorph discovery ─── */
+var ctx2 = document.getElementById('polymorphChart').getContext('2d');
+new Chart(ctx2, {
+  type: 'line',
+  data: {
+    labels: ['1900s', '1930s', '1960s', '1990s', '2010s', '2025'],
+    datasets: [{
+      label: '누적 발견 동소체 수',
+      data: [1, 3, 9, 13, 17, 22],
+      fill: true,
+      backgroundColor: 'rgba(56,189,248,0.08)',
+      borderColor: 'rgba(56,189,248,0.8)',
+      borderWidth: 2,
+      pointBackgroundColor: 'rgba(56,189,248,1)',
+      pointBorderColor: '#030c17',
+      pointRadius: 5, tension: 0.4,
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: { callbacks: { label: function(c) { return ' ' + c.parsed.y + '종 발견'; } } }
+    },
+    scales: {
+      x: { grid: { color: 'rgba(125,211,252,0.06)' }, ticks: { color: '#7ea8c4', font: { size: 11 } } },
+      y: { grid: { color: 'rgba(125,211,252,0.06)' }, ticks: { color: '#7ea8c4', font: { size: 11 } }, min: 0, max: 26 }
+    }
+  }
+});
+
+/* ─── Chart 3: Sea Ice ─── */
+var ctx3 = document.getElementById('seaIceChart').getContext('2d');
+new Chart(ctx3, {
+  type: 'bar',
+  data: {
+    labels: ['1980s', '2000s', '2020s', '2040s\n(예측)', '2060s\n(예측)'],
+    datasets: [{
+      label: '해빙 소멸률 (%)',
+      data: [0, 25, 50, 80, 95],
+      backgroundColor: [
+        'rgba(52,211,153,0.5)', 'rgba(251,191,36,0.5)',
+        'rgba(251,191,36,0.7)', 'rgba(248,113,113,0.6)',
+        'rgba(248,113,113,0.8)'
+      ],
+      borderColor: [
+        'rgba(52,211,153,0.9)', 'rgba(251,191,36,0.9)',
+        'rgba(251,191,36,1)', 'rgba(248,113,113,0.9)',
+        'rgba(248,113,113,1)'
+      ],
+      borderWidth: 1, borderRadius: 6,
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: { callbacks: { label: function(c) { return ' ' + c.parsed.y + '% 소멸'; } } }
+    },
+    scales: {
+      x: { grid: { color: 'rgba(125,211,252,0.06)' }, ticks: { color: '#7ea8c4', font: { size: 11 } } },
+      y: { grid: { color: 'rgba(125,211,252,0.06)' }, ticks: { color: '#7ea8c4', callback: function(v) { return v + '%'; }, font: { size: 11 } }, min: 0, max: 100 }
+    }
+  }
+});
+</script>
+</body>
+</html>
