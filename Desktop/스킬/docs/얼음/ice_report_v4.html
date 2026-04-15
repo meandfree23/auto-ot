@@ -531,10 +531,10 @@ h2 span { color: var(--accent); }
       <div>
         <div class="section-label">해빙 소멸 추세</div>
         <h2>북극이 <span>사라지는</span><br>속도</h2>
-        <div class="chart-box" style="min-height:320px;">
-          <h3>북극 해빙 면적 소멸률 (%)</h3>
-          <canvas id="seaIceChart" role="img" aria-label="북극 해빙 소멸 예측 차트"></canvas>
-          <p class="chart-note">† RCP 8.5 시나리오 기반 예측값</p>
+        <div class="chart-box" style="min-height:400px;">
+          <h3>북극 해빙 면적 실측 & 예측 (단위: 백만 km²)</h3>
+          <canvas id="seaIceChart" role="img" aria-label="북극 9월 최소 해빙 면적 실측 및 예측 추이" style="max-height:340px;"></canvas>
+          <p class="chart-note">실측: NSIDC 9월 최솟값 · † RCP 8.5 기후 모델 예측 · 점선(1.0M km²) = IPCC 사실상 빙하 소멸 기준</p>
         </div>
       </div>
     </div>
@@ -720,40 +720,60 @@ h2 span { color: var(--accent); }
 <script>
 Chart.defaults.animation = false;
 
-/* ─── ChartManager ─── */
+/* ─── Chart helpers ─── */
+function tickColor()  { return document.documentElement.classList.contains('theme-dark') ? '#8b9ab0' : '#374151'; }
+function gridColor()  { return document.documentElement.classList.contains('theme-dark') ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.1)'; }
+function ptBorder()   { return document.documentElement.classList.contains('theme-dark') ? '#0A0A0A' : '#FAFAF9'; }
+function isDark()     { return document.documentElement.classList.contains('theme-dark'); }
+
+/* ─── ChartManager (ID 기반) ─── */
 var ChartManager = {
   instances: [],
-  add: function(chart) { this.instances.push(chart); },
+  add: function(chart, id) { chart._cmId = id; this.instances.push(chart); },
   updateTheme: function() {
-    var isDark = document.documentElement.classList.contains('theme-dark');
-    var tc = isDark ? '#8b9ab0' : '#374151';
-    var gc = isDark ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.1)';
-    var pb = isDark ? '#0A0A0A' : '#FAFAF9';
-    var lineColor  = isDark ? 'rgba(56,189,248,0.9)' : 'rgba(2,132,199,0.9)';
-    var linePt     = isDark ? '#38bdf8' : '#0284c7';
-    this.instances.forEach(function(c, idx) {
-      /* axis colors */
-      ['x','y','r'].forEach(function(axis) {
+    var dark = isDark();
+    var tc = dark ? '#8b9ab0' : '#374151';
+    var gc = dark ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.1)';
+    var pb = dark ? '#0A0A0A' : '#FAFAF9';
+
+    this.instances.forEach(function(c) {
+      /* 공통: 축 색상 */
+      ['x','y'].forEach(function(axis) {
         if (!c.options.scales || !c.options.scales[axis]) return;
         var sc = c.options.scales[axis];
         if (sc.ticks) sc.ticks.color = tc;
         if (sc.grid && sc.grid.display !== false) sc.grid.color = gc;
         if (sc.title) sc.title.color = tc;
       });
-      /* dataset colors */
-      c.data.datasets.forEach(function(ds) {
-        if (ds.pointBorderColor !== undefined) ds.pointBorderColor = pb;
-        /* line chart (chart2 = index 1) */
-        if (idx === 1) {
-          ds.borderColor = lineColor;
-          ds.pointBackgroundColor = linePt;
-          /* rebuild gradient */
-          var grad = c.ctx.createLinearGradient(0, 0, 0, 260);
-          grad.addColorStop(0, isDark ? 'rgba(56,189,248,0.22)' : 'rgba(2,132,199,0.18)');
-          grad.addColorStop(1, 'rgba(56,189,248,0)');
-          ds.backgroundColor = grad;
-        }
-      });
+
+      /* 동소체 라인 차트 */
+      if (c._cmId === 'polymorph') {
+        var ds = c.data.datasets[0];
+        ds.borderColor = dark ? 'rgba(56,189,248,0.9)' : 'rgba(2,132,199,0.9)';
+        ds.pointBackgroundColor = dark ? '#38bdf8' : '#0284c7';
+        ds.pointBorderColor = pb;
+        var h = c.chartArea ? c.chartArea.height : 240;
+        var grad = c.ctx.createLinearGradient(0, 0, 0, h);
+        grad.addColorStop(0, dark ? 'rgba(56,189,248,0.2)' : 'rgba(2,132,199,0.14)');
+        grad.addColorStop(1, 'rgba(56,189,248,0)');
+        ds.backgroundColor = grad;
+      }
+
+      /* 해빙 라인 차트 */
+      if (c._cmId === 'seaice') {
+        /* legend 색 */
+        if (c.options.plugins.legend && c.options.plugins.legend.labels)
+          c.options.plugins.legend.labels.color = tc;
+        /* dataset 0: 실측 — gradient 재빌드 */
+        var h2 = c.chartArea ? c.chartArea.height : 300;
+        var iceGrad2 = c.ctx.createLinearGradient(0, 0, 0, h2);
+        iceGrad2.addColorStop(0, dark ? 'rgba(56,189,248,0.28)' : 'rgba(56,189,248,0.2)');
+        iceGrad2.addColorStop(1, 'rgba(56,189,248,0.02)');
+        c.data.datasets[0].backgroundColor = iceGrad2;
+        c.data.datasets[0].pointBorderColor = pb;
+        c.data.datasets[1].pointBorderColor = pb;
+      }
+
       c.update('none');
     });
   }
@@ -802,26 +822,20 @@ var revealObserver = new IntersectionObserver(function(entries) {
 }, { threshold: 0.07 });
 revealEls.forEach(function(el) { revealObserver.observe(el); });
 
-/* ─── Chart helpers ─── */
-function tickColor()  { return document.documentElement.classList.contains('theme-dark') ? '#8b9ab0' : '#374151'; }
-function gridColor()  { return document.documentElement.classList.contains('theme-dark') ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.1)'; }
-function ptBorder()   { return document.documentElement.classList.contains('theme-dark') ? '#0A0A0A' : '#FAFAF9'; }
-function fillAlpha()  { return document.documentElement.classList.contains('theme-dark') ? 0.1 : 0.15; }
-
-/* ─── Chart 1: Density (수증기 제외 — 스케일 왜곡 방지) ─── */
-/* 수증기(0.0006)는 얼음/물(0.917~1.31)과 스케일 차이 1,500배 → 수평 비교로 전환 */
+/* ─── Chart 1: Density ─── */
 var ctx1 = document.getElementById('densityChart').getContext('2d');
 var chart1 = new Chart(ctx1, {
   type: 'bar',
   data: {
-    labels: ['얼음 Ih\n(일반)', '순수 물\n(4°C)', '바닷물', '얼음 VI\n(고압)'],
+    /* 배열 형식으로 멀티라인 라벨 (Chart.js 4 지원) */
+    labels: [['얼음 Ih', '(일반)'], ['순수 물', '(4°C)'], '바닷물', ['얼음 VI', '(고압)']],
     datasets: [{
       label: 'g/cm³',
       data: [0.917, 1.000, 1.025, 1.310],
       backgroundColor: [
         'rgba(56,189,248,0.7)',
         'rgba(52,211,153,0.7)',
-        'rgba(52,211,153,0.45)',
+        'rgba(52,211,153,0.5)',
         'rgba(129,140,248,0.7)'
       ],
       borderColor: [
@@ -861,10 +875,14 @@ var chart1 = new Chart(ctx1, {
     }
   }
 });
-ChartManager.add(chart1);
+ChartManager.add(chart1, 'density');
 
 /* ─── Chart 2: Polymorph ─── */
 var ctx2 = document.getElementById('polymorphChart').getContext('2d');
+/* 초기 그라디언트 빌드 (라이트 모드 기준) */
+var polyGrad = ctx2.createLinearGradient(0, 0, 0, 240);
+polyGrad.addColorStop(0, 'rgba(2,132,199,0.15)');
+polyGrad.addColorStop(1, 'rgba(2,132,199,0)');
 var chart2 = new Chart(ctx2, {
   type: 'line',
   data: {
@@ -873,16 +891,10 @@ var chart2 = new Chart(ctx2, {
       label: '누적 발견 동소체 수',
       data: [1, 3, 9, 13, 17, 22],
       fill: true,
-      backgroundColor: function(ctx) {
-        var grad = ctx.chart.ctx.createLinearGradient(0, 0, 0, 260);
-        var isDark = document.documentElement.classList.contains('theme-dark');
-        grad.addColorStop(0, isDark ? 'rgba(56,189,248,0.22)' : 'rgba(2,132,199,0.18)');
-        grad.addColorStop(1, 'rgba(56,189,248,0)');
-        return grad;
-      },
-      borderColor: document.documentElement.classList.contains('theme-dark') ? 'rgba(56,189,248,0.9)' : 'rgba(2,132,199,0.9)',
+      backgroundColor: polyGrad,
+      borderColor: 'rgba(2,132,199,0.9)',
       borderWidth: 2.5,
-      pointBackgroundColor: document.documentElement.classList.contains('theme-dark') ? '#38bdf8' : '#0284c7',
+      pointBackgroundColor: '#0284c7',
       pointBorderColor: ptBorder(),
       pointBorderWidth: 2,
       pointRadius: 6, tension: 0.35,
@@ -915,62 +927,123 @@ var chart2 = new Chart(ctx2, {
     }
   }
 });
-ChartManager.add(chart2);
+ChartManager.add(chart2, 'polymorph');
 
-/* ─── Chart 3: Sea Ice ─── */
+/* ─── Chart 3: Sea Ice (redesigned — 실측 면적 + 예측 + 임계선) ─── */
 var ctx3 = document.getElementById('seaIceChart').getContext('2d');
+/* 실측 영역 그라디언트 */
+var iceGrad = ctx3.createLinearGradient(0, 0, 0, 300);
+iceGrad.addColorStop(0, 'rgba(56,189,248,0.22)');
+iceGrad.addColorStop(1, 'rgba(56,189,248,0.02)');
 var chart3 = new Chart(ctx3, {
-  type: 'bar',
+  type: 'line',
   data: {
-    labels: ['1980s', '2000s', '2020s', '2040s†', '2060s†'],
-    datasets: [{
-      label: '해빙 소멸률',
-      data: [5, 25, 50, 80, 95],
-      backgroundColor: [
-        'rgba(52,211,153,0.75)',
-        'rgba(251,191,36,0.65)',
-        'rgba(251,191,36,0.85)',
-        'rgba(248,113,113,0.75)',
-        'rgba(248,113,113,0.92)'
-      ],
-      borderColor: [
-        'rgba(52,211,153,1)',
-        'rgba(251,191,36,1)',
-        'rgba(251,191,36,1)',
-        'rgba(248,113,113,1)',
-        'rgba(248,113,113,1)'
-      ],
-      borderWidth: 2, borderRadius: 6,
-    }]
+    /* x축: 연도 (1979~2024 실측, 2035~2060 예측) */
+    labels: ['1979', '1990', '2000', '2007', '2012', '2020', '2024', '2035†', '2050†', '2060†'],
+    datasets: [
+      {
+        /* 실측: NSIDC 9월 최솟값 (백만 km²) */
+        label: '실측 해빙 면적',
+        data: [7.05, 6.20, 6.32, 4.30, 3.41, 3.74, 4.28, null, null, null],
+        borderColor: 'rgba(56,189,248,0.9)',
+        backgroundColor: iceGrad,
+        fill: true,
+        borderWidth: 2.5,
+        pointBackgroundColor: ['#38bdf8','#38bdf8','#38bdf8','#fbbf24','#f87171','#38bdf8','#38bdf8','transparent','transparent','transparent'],
+        pointBorderColor: ptBorder(),
+        pointBorderWidth: 2,
+        pointRadius: [4, 4, 4, 6, 8, 4, 4, 0, 0, 0],
+        tension: 0.3, spanGaps: false,
+      },
+      {
+        /* 기후 모델 예측 (RCP 8.5) */
+        label: '기후 모델 예측',
+        data: [null, null, null, null, null, null, 4.28, 2.8, 1.0, 0.3],
+        borderColor: 'rgba(248,113,113,0.85)',
+        borderDash: [6, 4],
+        backgroundColor: 'rgba(248,113,113,0.07)',
+        fill: true,
+        borderWidth: 2,
+        pointBackgroundColor: 'rgba(248,113,113,1)',
+        pointBorderColor: ptBorder(),
+        pointBorderWidth: 2,
+        pointRadius: [0,0,0,0,0,0,0,5,5,6],
+        tension: 0.3, spanGaps: false,
+      },
+      {
+        /* IPCC 사실상 빙하 소멸 기준선 (1.0 M km²) */
+        label: '빙하 소멸 기준 (1.0M)',
+        data: [1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0],
+        borderColor: 'rgba(251,191,36,0.8)',
+        borderDash: [4, 4],
+        borderWidth: 1.5,
+        backgroundColor: 'transparent',
+        fill: false,
+        pointRadius: 0,
+        tension: 0,
+      }
+    ]
   },
   options: {
     responsive: true, maintainAspectRatio: false,
-    layout: { padding: { top: 20, right: 8 } },
+    layout: { padding: { top: 16, right: 12 } },
     plugins: {
-      legend: { display: false },
+      legend: {
+        display: true,
+        position: 'bottom',
+        labels: {
+          color: tickColor(), font: { size: 11 },
+          boxWidth: 20, boxHeight: 2, padding: 14,
+          generateLabels: function(chart) {
+            /* 커스텀 범례: 박스 대신 선 스타일로 표현 */
+            return chart.data.datasets.map(function(ds, i) {
+              return {
+                text: ds.label,
+                strokeStyle: ds.borderColor,
+                lineDash: ds.borderDash || [],
+                fillStyle: 'transparent',
+                lineWidth: ds.borderWidth,
+                hidden: false,
+                datasetIndex: i,
+                fontColor: tickColor(),
+              };
+            });
+          }
+        }
+      },
       tooltip: {
         padding: 10,
-        callbacks: { label: function(c) { return '  소멸률: ' + c.parsed.y + '%'; } }
+        callbacks: {
+          label: function(c) {
+            if (c.parsed.y === null) return null;
+            if (c.datasetIndex === 2) return '  기준: ' + c.parsed.y.toFixed(1) + ' M km²';
+            return '  ' + c.dataset.label + ': ' + c.parsed.y.toFixed(2) + ' M km²';
+          }
+        }
       }
     },
     scales: {
       x: {
         grid: { display: false },
-        ticks: { color: tickColor(), font: { size: 12, weight: '500' }, padding: 6 }
+        ticks: { color: tickColor(), font: { size: 11 }, padding: 6, maxRotation: 0 }
       },
       y: {
         grid: { color: gridColor() },
         ticks: {
           color: tickColor(), font: { size: 12 }, padding: 8,
-          stepSize: 25, maxTicksLimit: 5,
-          callback: function(v) { return v + '%'; }
+          stepSize: 2, maxTicksLimit: 5,
+          callback: function(v) { return v + 'M'; }
         },
-        min: 0, max: 100
+        min: 0, max: 8,
+        title: {
+          display: true, text: '백만 km²',
+          color: tickColor(), font: { size: 11 }
+        }
       }
     }
   }
 });
-ChartManager.add(chart3);
+ChartManager.add(chart3, 'seaice');
 </script>
 </body>
 </html>
