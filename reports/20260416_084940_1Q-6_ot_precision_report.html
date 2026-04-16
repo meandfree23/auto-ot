@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Audi Brand in Space — 전략 리포트</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<style>
+:root {
+  --accent: #ec4899;
+  --accent-rgb: 236,72,153;
+  --bg: #030303;
+  --surface: rgba(255,255,255,0.035);
+  --surface-hov: rgba(255,255,255,0.06);
+  --border: rgba(255,255,255,0.07);
+  --border-hov: rgba(236,72,153,0.3);
+  --text-1: #f5f5f7;
+  --text-2: #a1a1a6;
+  --text-3: #6e6e73;
+  --r-card: 20px;
+  --glow: 0 20px 80px -20px rgba(236,72,153,.35), 0 0 0 1px rgba(236,72,153,.08);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter','Noto Sans KR',sans-serif;
+  background: var(--bg);
+  color: var(--text-1);
+  -webkit-font-smoothing: antialiased;
+  background-image:
+    radial-gradient(ellipse 90% 60% at 10% -10%, rgba(236,72,153,.13) 0%, transparent 60%),
+    radial-gradient(ellipse 70% 50% at 90% 110%, rgba(236,72,153,.07) 0%, transparent 60%);
+  background-attachment: fixed;
+}
+.site-nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2rem; height: 60px;
+  background: rgba(3,3,3,.7);
+  backdrop-filter: blur(24px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-brand { display: flex; align-items: center; gap: .6rem; font-size: .85rem; font-weight: 700; letter-spacing: .08em; }
+.nav-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px rgba(236,72,153,.8); }
+.nav-meta { font-size: .72rem; color: var(--text-3); font-family: monospace; letter-spacing: .05em; }
+.hero {
+  min-height: 92vh; padding: 120px 5vw 80px;
+  display: grid; grid-template-columns: 1fr 380px; gap: 4rem; align-items: center;
+}
+@media(max-width:900px){ .hero { grid-template-columns: 1fr; padding: 100px 5vw 60px; } }
+.hero-badge {
+  display: inline-block; margin-bottom: 1.5rem;
+  padding: .3rem 1rem; border-radius: 999px;
+  border: 1px solid rgba(236,72,153,.3);
+  background: rgba(236,72,153,.08);
+  font-size: .72rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase;
+  color: var(--accent);
+}
+.hero-title {
+  font-size: clamp(2.4rem,5vw,4.5rem);
+  font-weight: 900; line-height: 1.08; letter-spacing: -.04em;
+  background: linear-gradient(160deg, #fff 30%, rgba(255,255,255,.45));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  margin-bottom: 1.5rem;
+}
+.hero-sub { font-size: 1.05rem; color: var(--text-2); line-height: 1.7; max-width: 560px; margin-bottom: 2.5rem; }
+.hero-chips { display: flex; flex-wrap: wrap; gap: .6rem; }
+.chip {
+  padding: .35rem .85rem; border-radius: 8px;
+  background: rgba(255,255,255,.05); border: 1px solid var(--border);
+  font-size: .75rem; color: var(--text-2); font-weight: 500; display: flex; align-items: center; gap: .4rem;
+}
+.chip-accent { color: var(--accent); border-color: rgba(236,72,153,.2); background: rgba(236,72,153,.06); }
+.radar-wrap {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 2rem; border-radius: 28px;
+  background: var(--surface); border: 1px solid var(--border);
+  backdrop-filter: blur(40px);
+}
+.radar-wrap canvas { max-width: 300px; max-height: 300px; }
+.radar-label { font-size: .72rem; color: var(--text-3); margin-top: 1rem; text-align: center; letter-spacing: .1em; text-transform: uppercase; }
+.cat-section { margin-bottom: 6rem; padding: 0 5vw; }
+.cat-banner {
+  width: 100%; height: 220px; border-radius: 24px; overflow: hidden;
+  position: relative; margin-bottom: 3rem;
+  background-size: cover; background-position: center;
+}
+.cat-banner-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(120deg, rgba(3,3,3,.85) 0%, rgba(3,3,3,.4) 100%);
+}
+.cat-banner-content {
+  position: absolute; bottom: 2rem; left: 2.5rem;
+  display: flex; align-items: center; gap: 1rem;
+}
+.cat-emoji { font-size: 2.5rem; line-height: 1; }
+.cat-title {
+  font-size: 2rem; font-weight: 800; letter-spacing: -.03em;
+  background: linear-gradient(90deg, #fff, rgba(255,255,255,.7));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.cards-grid { display: flex; flex-direction: column; gap: 2rem; }
+.ot-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-card);
+  padding: 2.5rem;
+  backdrop-filter: blur(30px);
+  transition: transform .4s cubic-bezier(.16,1,.3,1), border-color .3s, box-shadow .3s;
+  animation: cardIn .7s cubic-bezier(.16,1,.3,1) both;
+}
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(24px); filter: blur(6px); }
+  to   { opacity: 1; transform: none; filter: none; }
+}
+.ot-card:hover {
+  border-color: var(--border-hov);
+  box-shadow: var(--glow);
+  transform: translateY(-6px);
+}
+.card-header { display: flex; align-items: center; gap: .6rem; margin-bottom: 1.5rem; }
+.card-tag {
+  font-size: .68rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+  padding: .25rem .7rem; border-radius: 6px;
+}
+.tag-insight { background: rgba(236,72,153,.12); color: var(--accent); border: 1px solid rgba(236,72,153,.25); }
+.card-title { font-size: 1rem; font-weight: 600; line-height: 1.35; letter-spacing: -.015em; margin-bottom: 1.4rem; color: var(--text-1); display: none; }
+.card-body { display: flex; flex-direction: column; gap: 1.4rem; }
+p, li, td, blockquote {
+  word-break: keep-all; overflow-wrap: break-word;
+  text-rendering: optimizeLegibility;
+}
+strong { color: var(--text-1); font-weight: 700; }
+.ot-quote {
+  border-left: 2px solid var(--accent);
+  padding: .9rem 1.25rem;
+  border-radius: 0 10px 10px 0;
+  background: rgba(236,72,153,.05);
+}
+.ot-quote p {
+  font-size: .93rem;
+  color: var(--text-1); line-height: 1.8;
+  letter-spacing: -.015em; font-style: italic;
+}
+.ot-bullets {
+  list-style: none; padding: 0;
+  display: flex; flex-direction: column; gap: 0;
+  border: 1px solid var(--border); border-radius: 14px; overflow: hidden;
+}
+.ot-bullets li {
+  position: relative;
+  padding: .85rem 1rem .85rem 1.5rem;
+  font-size: .875rem; color: var(--text-2); line-height: 1.75;
+  letter-spacing: -.01em; word-break: keep-all;
+  border-bottom: 1px solid var(--border);
+  transition: background .2s;
+}
+.ot-bullets li:last-child { border-bottom: none; }
+.ot-bullets li:hover { background: rgba(255,255,255,.025); }
+.ot-bullets li::before {
+  content: '';
+  position: absolute; left: .7rem; top: 1.15rem;
+  width: 5px; height: 5px; border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 6px rgba(236,72,153,.6);
+}
+.ot-bullets li strong {
+  display: inline-block;
+  color: var(--text-1); font-weight: 700;
+  background: rgba(236,72,153,.1);
+  border: 1px solid rgba(236,72,153,.2);
+  padding: .02em .45em; border-radius: 5px;
+  font-size: .84em; letter-spacing: 0;
+  margin-right: .15em;
+}
+.ot-bullets li:first-child {
+  color: var(--text-1); font-weight: 500; font-size: .9rem;
+  background: rgba(236,72,153,.04);
+}
+.tbl-wrap {
+  overflow-x: auto; border-radius: 16px;
+  border: 1px solid var(--border); margin: .75rem 0;
+  box-shadow: 0 4px 24px rgba(0,0,0,.2);
+}
+.md-table { width: 100%; border-collapse: collapse; font-size: .84rem; min-width: 480px; }
+.md-table th {
+  padding: .75rem 1rem; text-align: left; font-weight: 700; font-size: .71rem;
+  letter-spacing: .08em; text-transform: uppercase; color: var(--accent);
+  background: rgba(236,72,153,.09); border-bottom: 1px solid rgba(236,72,153,.18);
+  word-break: keep-all; white-space: nowrap;
+}
+.md-table td {
+  padding: .9rem 1rem; color: var(--text-2); word-break: keep-all;
+  border-bottom: 1px solid rgba(255,255,255,.04); line-height: 1.7; vertical-align: top;
+  font-size: .83rem;
+}
+.md-table td:first-child {
+  color: var(--text-1); font-weight: 600; font-size: .8rem;
+  white-space: nowrap; max-width: 140px;
+}
+.md-table td strong { color: var(--accent); font-weight: 700; background: none; padding: 0; }
+.md-table tr:last-child td { border-bottom: none; }
+.md-table tr:nth-child(even) td { background: rgba(255,255,255,.015); }
+.md-table tr:hover td { background: rgba(236,72,153,.04); }
+.phase-timeline { display: flex; flex-direction: column; gap: 0; margin: .75rem 0; }
+.phase-step {
+  display: flex; gap: 1.1rem; position: relative; padding-bottom: 1.6rem;
+}
+.phase-step:last-child { padding-bottom: 0; }
+.phase-step::before {
+  content: ''; position: absolute; left: 15px; top: 34px; bottom: 0; width: 1px;
+  background: linear-gradient(to bottom, rgba(236,72,153,.5), transparent);
+}
+.phase-step:last-child::before { display: none; }
+.phase-num {
+  flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), rgba(236,72,153,.7));
+  color: #fff; font-size: .82rem; font-weight: 800;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 0 20px rgba(236,72,153,.5); z-index: 1;
+}
+.phase-body { flex: 1; padding-top: .2rem; }
+.phase-title {
+  font-size: .9rem; font-weight: 700; color: var(--text-1);
+  margin-bottom: .4rem; line-height: 1.4; word-break: keep-all;
+}
+.phase-action {
+  font-size: .84rem; color: var(--text-2); line-height: 1.7;
+  margin-bottom: .4rem; word-break: keep-all;
+}
+.phase-kpi {
+  font-size: .76rem; color: var(--accent);
+  background: rgba(236,72,153,.07); border: 1px solid rgba(236,72,153,.18);
+  border-radius: 6px; padding: .3rem .8rem; display: inline-block; margin-top: .3rem;
+  word-break: keep-all;
+}
+.ot-para {
+  font-size: .9rem; color: var(--text-2); line-height: 1.75;
+  letter-spacing: -.01em; word-break: keep-all;
+}
+.ot-para strong { color: var(--accent); background: rgba(236,72,153,.08); padding: .05em .3em; border-radius: 4px; }
+.ot-divider { border: none; border-top: 1px solid var(--border); margin: 1rem 0; }
+.site-footer {
+  margin-top: 6rem; padding: 3rem 5vw;
+  border-top: 1px solid var(--border);
+  display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: space-between;
+}
+.footer-left { font-size: .75rem; color: var(--text-3); line-height: 1.8; }
+.footer-right { display: flex; gap: .5rem; }
+.footer-chip {
+  padding: .3rem .8rem; border-radius: 8px;
+  background: var(--surface); border: 1px solid var(--border);
+  font-size: .72rem; color: var(--text-3); font-family: monospace;
+}
+#scroll-progress {
+  position: fixed; top: 60px; left: 0; height: 2px; width: 0%;
+  background: linear-gradient(90deg, var(--accent), rgba(236,72,153,.3));
+  z-index: 200; transition: width .1s;
+}
+</style>
+</head>
+<body>
+<div id="scroll-progress"></div>
+<nav class="site-nav">
+  <div class="nav-brand">
+    <div class="nav-dot"></div>
+    <span>Antigravity Intelligence</span>
+  </div>
+  <span class="nav-meta">20260416_084940_1Q-6_ot</span>
+</nav>
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-badge">Strategic Intelligence Report</div>
+    <h1 class="hero-title">Audi Brand in Space — 전략 리포트</h1>
+    <p class="hero-sub">AI 분석 엔진이 원문 OT를 해체하여 시장·전략·크리에이티브·리스크의 4개 축으로 재구성한 기획 브리핑입니다.</p>
+    <div class="hero-chips">
+      <span class="chip chip-accent">📊 시장 분석</span>
+      <span class="chip chip-accent">🎯 전략 논리</span>
+      <span class="chip chip-accent">🎨 크리에이티브</span>
+      <span class="chip chip-accent">⚠️ 리스크 점검</span>
+      <span class="chip">🆔 20260416_084940_1Q-6_ot</span>
+      <span class="chip">📅 2026.04.16</span>
+    </div>
+  </div>
+  <div class="radar-wrap">
+    <canvas id="radarChart" width="300" height="300"></canvas>
+    <div class="radar-label">분석 커버리지 — 4개 축</div>
+  </div>
+</section>
+
+<!-- Content sections -->
+
+<section class="cat-section" id="cat-market-intelligence">
+  <div class="cat-banner" style="background-image:url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1600&q=70&fm=webp&fit=crop&auto=format')">
+    <div class="cat-banner-overlay"></div>
+    <div class="cat-banner-content">
+      <span class="cat-emoji">📊</span>
+      <h2 class="cat-title">Market Intelligence</h2>
+    </div>
+  </div>
+  <div class="cards-grid">
+
+<div class="ot-card">
+  <div class="card-header">
+    <span class="card-tag tag-insight">💡 INSIGHT</span>
+  </div>
+  <h3 class="card-title">Market Intelligence</h3>
+  <div class="card-body"><blockquote class="ot-quote"><p>아우디는 디지털·물리 공간의 경계 소멸에 대응해 통합 브랜드 경험 언어를 체계화하고 있다.</p></blockquote>
+<ul class="ot-bullets"><li><strong>브랜드 경험의 다차원화:</strong> 원문은 "branded experiences touch many levels of communication at the same time, whether they are digital, physical, or a mix of both"라고 명시하며, 단일 터치포인트 중심의 전통적 접근을 탈피해 Shape·Space·Material·Interaction·Stories·Tone of Voice·Look &amp; Feel·Cooperations 등 8개 경험 차원을 통합적으로 설계해야 함을 강조한다.</li><li><strong>프리미엄 브랜드의 자기정체성 수호:</strong> Look &amp; Feel 원칙에서 "As a premium brand we do not follow every trend but remain true to ourselves"라고 선언하며, 트렌드 추종이 아닌 브랜드 고유의 감성(unmistakable, confident, tasteful)을 유지하는 것이 프리미엄 포지셔닝의 핵심 조건임을 명확히 한다.</li><li><strong>소셜·인스타그래머블 공간의 부상:</strong> IAA 2019 프랑크푸르트 모터쇼 사례에서 "All frames were designed to create an instagrammable moment and motivate visitors to share pictures in their social media"라고 기록하며, 물리 공간이 곧 소셜 미디어 콘텐츠 생산 장치로 기능해야 하는 현실을 직접 보여준다.</li></ul>
+<div class="tbl-wrap"><table class="md-table"><tr><th>구분</th><th>현황 (원문 근거)</th><th>전략적 시사점</th></tr><tr><td>브랜드 경험 구조</td><td>8개 차원(Shape, Space, Material, Interaction 등)으로 경험 설계 체계화</td><td>터치포인트별 단발 기획이 아닌 차원 통합형 경험 설계 필요</td></tr><tr><td>공간 전략</td><td>Space: "rooms in which people feel comfortable… arouse curiosity and invite to stay"</td><td>체류 유도·감성적 편안함을 동시에 달성하는 공간 연출 요구</td></tr><tr><td>디지털·물리 융합</td><td>"Don't differentiate digital and physical dimensions, as the two are growing together"</td><td>옴니채널 경험 설계 시 디지털·오프라인 분리 기획 지양</td></tr><tr><td>파트너십 기준</td><td>Cooperations: "choose partners who share same values, progressive image, comparable customer groups"</td><td>브랜드 가치 정합성이 협업 파트너 선정의 제1 기준</td></tr><tr><td>모터쇼 실행 사례</td><td>IAA 2019: e-tron, Audi Sport, A5, A1 4개 하이라이트 프레임 운영</td><td>모델별 서사 분리 + SNS 공유 유도라는 이중 목표 실현</td></tr></table></div>
+<hr class="ot-divider"></div>
+</div>
+  </div>
+</section>
+<section class="cat-section" id="cat-strategic-logic">
+  <div class="cat-banner" style="background-image:url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=1600&q=70&fm=webp&fit=crop&auto=format')">
+    <div class="cat-banner-overlay"></div>
+    <div class="cat-banner-content">
+      <span class="cat-emoji">🎯</span>
+      <h2 class="cat-title">Strategic Logic</h2>
+    </div>
+  </div>
+  <div class="cards-grid">
+
+<div class="ot-card">
+  <div class="card-header">
+    <span class="card-tag tag-insight">💡 INSIGHT</span>
+  </div>
+  <h3 class="card-title">Strategic Logic</h3>
+  <div class="card-body"><blockquote class="ot-quote"><p>4대 브랜드 원칙을 공간·소재·상호작용 전 차원에 일관 적용해 통합 브랜드 경험을 구축한다.</p></blockquote>
+<ul class="ot-bullets"><li><strong>전략 1 — 브랜드 코어의 공간 언어 전환:</strong> 원문 21페이지 "Transferring our brand core into space" 섹션은 Emotional Esthetics(Valuable·Refined·Genuine), Intelligent Performance(Brave &amp; Dynamic·Exciting), Modern Sophistication(Elegant·Elaborated·Harmonious), Personal Technology(Human·Approachable·Intuitive), Living Progress(Meaningful·Future-oriented) 등 5개 클러스터를 공간 연출 언어로 직접 매핑하며, 포맷과 타깃에 따라 강조점을 유동적으로 조정("According to the format and the target group the focus can be shifted")할 것을 지시한다.</li><li><strong>전략 2 — 모노리식(Monolithic) 브랜드 관리:</strong> Cooperations 원칙에서 "everything we do must contribute to strengthening our brand"라고 선언하며, 모든 협업·라이선스·스폰서십이 브랜드 자산을 강화하는 방향으로만 허용된다. 단기 트렌드 브랜드와의 협업, 제품 위에 협업 로고 노출, 과다 협업은 명시적 금지(Don'ts) 사항이다.</li><li><strong>전략 3 — 고객 중심 개인화 상호작용 설계:</strong> Interaction 원칙은 "seamless omni-channel experiences across the customer journey"와 "personalize services to provide each customer with a unique user experience that proactively guides to the next best choice"를 핵심 목표로 제시하며, 획일적 one-size-fits-all 방식과 기계적 대화를 명확히 배제한다.</li></ul>
+<div class="phase-timeline">
+<div class="phase-step">
+  <div class="phase-num">1</div>
+  <div class="phase-body">
+    <div class="phase-title">브랜드 원칙 내재화</div>
+    <div class="phase-action">4대 Experience Principles(Emotional Esthetics·Intelligent Performance·Modern Sophistication·Personal Technology)를 전 팀·터치포인트에 적용</div>
+    <div class="phase-kpi">🎯 브랜드 일관성 지수 향상</div>
+  </div>
+</div><div class="phase-step">
+  <div class="phase-num">2</div>
+  <div class="phase-body">
+    <div class="phase-title">공간 경험 설계</div>
+    <div class="phase-action">Space·Shape·Material 3개 차원 우선 통합, IAA 모델의 인스타그래머블 프레임 구조 적용</div>
+    <div class="phase-kpi">🎯 공간 체류시간 증가, SNS 공유 콘텐츠 생성량</div>
+  </div>
+</div><div class="phase-step">
+  <div class="phase-num">3</div>
+  <div class="phase-body">
+    <div class="phase-title">디지털·물리 통합</div>
+    <div class="phase-action">Interaction 차원에서 옴니채널 여정 매핑 및 개인화 서비스 고도화</div>
+    <div class="phase-kpi">🎯 고객 여정 전환율, 채널 간 이탈률 감소</div>
+  </div>
+</div><div class="phase-step">
+  <div class="phase-num">4</div>
+  <div class="phase-body">
+    <div class="phase-title">협업 파트너 선정</div>
+    <div class="phase-action">Cooperations 원칙(가치 정합·프로그레시브 이미지·CSR 준수) 기반 파트너 스크리닝</div>
+    <div class="phase-kpi">🎯 브랜드 세이프티 지수, 파트너 브랜드 리프트</div>
+  </div>
+</div></div>
+<hr class="ot-divider"></div>
+</div>
+  </div>
+</section>
+<section class="cat-section" id="cat-creative-visual">
+  <div class="cat-banner" style="background-image:url('https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1600&q=70&fm=webp&fit=crop&auto=format')">
+    <div class="cat-banner-overlay"></div>
+    <div class="cat-banner-content">
+      <span class="cat-emoji">🎨</span>
+      <h2 class="cat-title">Creative &amp; Visual</h2>
+    </div>
+  </div>
+  <div class="cards-grid">
+
+<div class="ot-card">
+  <div class="card-header">
+    <span class="card-tag tag-insight">💡 INSIGHT</span>
+  </div>
+  <h3 class="card-title">Creative &amp; Visual</h3>
+  <div class="card-body"><blockquote class="ot-quote"><p>대비의 균형 위에서 절제된 정교함으로 감각을 자극하는 공간·소재·시각 언어를 구현한다.</p></blockquote>
+<ul class="ot-bullets"><li><strong>크리에이티브 방향 1 — 대비와 균형의 조형 언어:</strong> Material 원칙의 "Contrasting combinations of natural and artificial materials stimulate the senses, both haptically and visually"와 Shape 원칙의 "function-oriented and at the same time of the highest elegance"가 핵심 조형 원리다. 자연 소재와 인공 소재의 바이폴라리티(bipolarity)를 의도적으로 활용하되, 과잉 장식(ornaments, decorations)과 가짜 소재(fake materials)는 엄격히 배제한다.</li><li><strong>크리에이티브 방향 2 — 절제된 Look &amp; Feel로 제품을 말하게 하기:</strong> "let our products speak for themselves"가 핵심 지침이며, 시각적으로는 "calm tonality," "generous design that allows room for products and messages," "unfamiliar visualizations and compositions within a human and authentic context"를 추구한다. 과부하된 구성·플래시 컬러·인공적 환경 설정은 금지(Don'ts)다.</li><li><strong>크리에이티브 방향 3 — 감정을 유발하는 공간 스토리텔링:</strong> Stories 원칙의 "emotional, provocative and authentic, always have a logical connection to our products"와 Space 원칙의 "play with spatial contrasts that evoke emotions and a sense of well-being"을 결합하여, 공간 자체가 내러티브가 되는 경험을 설계한다. Tone of Voice는 "intelligently provocative &amp; witty, at eye level"로 유지하며 과장·설교·기계적 언어는 배제한다.</li></ul>
+<div class="tbl-wrap"><table class="md-table"><tr><th>포맷</th><th>연출 의도</th><th>톤앤매너</th></tr><tr><td>모터쇼 공간 (IAA 2019 사례)</td><td>모델별 하이라이트 프레임으로 인스타그래머블 순간 창출, 체류·공유 동시 유도</td><td>Warm &amp; Harmonious, 감각적 대비, 비어있는 여백의 관대함</td></tr><tr><td>브랜드 아키텍처 공간</td><td>명확한 조닝(clear zoning)으로 동선과 서사를 동시에 설계, 호기심 유발</td><td>Elegant &amp; Understated, 기능 지향적 우아함</td></tr><tr><td>디지털 Interaction</td><td>직관적·자연스러운 인터페이스, 개인화된 컨텍스트 정보만 제공</td><td>Smart &amp; Intuitive, 인간적 대화체, 맥락 민감</td></tr><tr><td>소재·오브젝트 연출</td><td>자연 소재와 인공 소재의 촉각·시각 대비로 크래프트맨십 감각 구현</td><td>Pure &amp; Precise, 다감각적(multi-sensual), 진정성 우선</td></tr><tr><td>스토리 콘텐츠</td><td>제품을 더 큰 사회적 담론 속에 위치시켜 브랜드 관련성 확장</td><td>Confidently provocative, 직접적·감성적, 고객 참여형</td></tr></table></div></div>
+</div>
+  </div>
+</section>
+<footer class="site-footer">
+  <div class="footer-left">
+    <div style="color:var(--text-2);font-weight:600;margin-bottom:.3rem">Antigravity Strategic Intelligence</div>
+    <div>원본 파일: 200910_Brand in Space.pdf · 생성일: 2026.04.16</div>
+    <div style="margin-top:.5rem;color:var(--accent);font-size:.7rem">CONFIDENTIAL &amp; PROPRIETARY</div>
+  </div>
+  <div class="footer-right">
+    <span class="footer-chip">Claude Sonnet</span>
+    <span class="footer-chip">v5.0</span>
+  </div>
+</footer>
+<script>
+const bar = document.getElementById('scroll-progress');
+window.addEventListener('scroll', () => {
+  const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
+  bar.style.width = Math.min(pct, 100) + '%';
+}, { passive: true });
+const io = new IntersectionObserver((entries) => {
+  entries.forEach((e, idx) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), idx * 80);
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.ot-card').forEach(el => io.observe(el));
+const radarCtx = document.getElementById('radarChart').getContext('2d');
+Chart.defaults.color = '#6e6e73';
+Chart.defaults.font.family = "'Inter','Noto Sans KR',sans-serif";
+new Chart(radarCtx, {
+  type: 'radar',
+  data: {
+    labels: ['📊 시장 분석','🎯 전략 논리','🎨 크리에이티브','⚠️ 리스크'],
+    datasets: [{
+      label: '분석 완성도',
+      data: [95, 90, 88, 25],
+      backgroundColor: 'rgba(236,72,153,.15)',
+      borderColor: 'rgba(236,72,153,.8)',
+      pointBackgroundColor: 'rgba(236,72,153,1)',
+      pointBorderColor: '#030303',
+      pointBorderWidth: 2,
+      pointRadius: 5,
+      borderWidth: 2
+    }]
+  },
+  options: {
+    animation: { duration: 1200, easing: 'easeOutQuart' },
+    scales: {
+      r: {
+        min: 0, max: 100,
+        ticks: { display: false, stepSize: 25 },
+        grid: { color: 'rgba(255,255,255,.06)' },
+        angleLines: { color: 'rgba(255,255,255,.06)' },
+        pointLabels: { font: { size: 11, weight: '500' }, color: '#a1a1a6', padding: 10 }
+      }
+    },
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        backgroundColor: '#111',
+        borderColor: 'rgba(236,72,153,.3)',
+        borderWidth: 1,
+        callbacks: { label: ctx => ` ${ctx.raw}점` }
+      }
+    }
+  }
+});
+</script>
+</body>
+</html>

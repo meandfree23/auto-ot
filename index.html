@@ -170,9 +170,9 @@
                         <p class="card-desc">기후 변화를 감각의 장면으로 번역하는 안티그래비티 공식 채널.</p>
                         <div id="yt-status" style="display:none; margin-bottom:12px; padding:10px 14px; background:rgba(16,185,129,0.1); border:1px solid rgba(16,185,129,0.3); border-radius:10px; font-size:11px; color:var(--positive); font-weight:700;">🔄 지표 업데이트 중...</div>
                         <div class="stats-bar">
-                            <div class="stat-item"><span class="stat-val" id="yt-subs">2</span><span class="stat-lbl">Subs</span></div>
-                            <div class="stat-item"><span class="stat-val" id="yt-views" style="color:var(--positive);">118</span><span class="stat-lbl">Live Views</span></div>
-                            <div class="stat-item"><span class="stat-val" id="yt-videos">2</span><span class="stat-lbl">Videos</span></div>
+                            <div class="stat-item"><span class="stat-val" id="yt-subs">5</span><span class="stat-lbl">Subs</span></div>
+                            <div class="stat-item"><span class="stat-val" id="yt-views" style="color:var(--positive);">129</span><span class="stat-lbl">Live Views</span></div>
+                            <div class="stat-item"><span class="stat-val" id="yt-videos">3</span><span class="stat-lbl">Videos</span></div>
                         </div>
                         <div class="card-footer" style="margin-top:24px;">
                             <button class="btn btn-p" id="yt-btn" onclick="run('youtube', 'stats')">전략 지표 업데이트</button>
@@ -183,10 +183,49 @@
             </div>
         </section>
 
-        <!-- STRATEGIC REPORTS (FULL 5 CARDS RESTORED WITH HIGH FIDELITY) -->
+        <!-- STRATEGIC REPORTS -->
         <section class="section-block" id="reports-section">
-            <div class="section-header"><h2>📊 Strategic Research Archive <span class="section-count">7 REPORTS</span></h2></div>
+            <div class="section-header"><h2>📊 Strategic Research Archive <span class="section-count" id="reportMeta">10 REPORTS</span></h2></div>
             <div class="grid">
+                <!-- CARD: Brand in Space 26년 수입 프로젝트 -->
+                <div class="card">
+                    <div class="card-visual">🌌</div>
+                    <div class="card-body">
+                        <div class="card-tag" style="color:var(--accent-report);">OT 전략 분석</div>
+                        <h3 class="card-title">Brand in Space (2026) — 정밀 분석</h3>
+                        <p class="card-desc">Brand in Space 26년 수입 캠페인에 대한 다각도 마켓, 전략, 크리에이티브 시사점 리포트.</p>
+                        <div class="card-footer">
+                            <span style="font-size:11px; color:var(--text-secondary);">2026-04-16 · v1.0</span>
+                            <a href="./reports/20260416_084940_1Q-6_ot_precision_report.html" class="btn btn-p" target="_blank">리포트 열기</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- CARD: Downy White Musk — 전략 리포트 (OT 전략 분석) -->
+                <div class="card">
+                    <div class="card-visual">🌸</div>
+                    <div class="card-body">
+                        <div class="card-tag" style="color:var(--accent-report);">OT 전략 분석</div>
+                        <h3 class="card-title">Downy White Musk — 전략 리포트</h3>
+                        <p class="card-desc">Malone Lev 프로덕션 입찰 및 다우니 화이트 머스크 프리미엄 포지셔닝을 위한 정밀 전략 리포트.</p>
+                        <div class="card-footer">
+                            <span style="font-size:11px; color:var(--text-secondary);">2026-04-15 · v1.0</span>
+                            <a href="./reports/20260415_075019_1aMj_ot_precision_report.html" class="btn btn-p" target="_blank">리포트 열기</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- CARD: [아폴로] 광주 중앙공원_홍보 콘텐츠_기획안 (OT 전략 분석) -->
+                <div class="card">
+                    <div class="card-visual">🏞️</div>
+                    <div class="card-body">
+                        <div class="card-tag" style="color:var(--accent-report);">OT 전략 분석</div>
+                        <h3 class="card-title">[아폴로] 광주 중앙공원_홍보 콘텐츠_기획안</h3>
+                        <p class="card-desc">광주 중앙공원 홍보 및 타겟 맞춤형 콘텐츠 기획안에 대한 OT 분석 엔진 결과 보고서.</p>
+                        <div class="card-footer">
+                            <span style="font-size:11px; color:var(--text-secondary);">2026-04-15 · v1.0</span>
+                            <a href="./reports/20260414_223223_15L0_ot_precision_report.html" class="btn btn-p" target="_blank">리포트 열기</a>
+                        </div>
+                    </div>
+                </div>
                 <!-- CHOOLIP Master Proposal -->
                 <div class="card" style="border-color: var(--accent-secondary);">
                     <div class="card-visual">💎</div>
@@ -195,7 +234,7 @@
                         <h3 class="card-title">CHOOLIP 마스터 전략 V2</h3>
                         <p class="card-desc">7x7 루틴 매트릭스와 글로벌 아마존/코스트코 채널 배포를 위한 최상위 전략 기획서.</p>
                         <div class="card-footer">
-                            <a href="./docs/reports/choolip_master_proposal_v2.html" class="btn btn-p" style="background: var(--accent-secondary); border-color: var(--accent-secondary);">기획서 열기</a>
+                            <a href="./Desktop/%EC%8A%A4%ED%82%AC/docs/reports/choolip_master_proposal_v2.html" class="btn btn-p" style="background: var(--accent-secondary); border-color: var(--accent-secondary);">기획서 열기</a>
                         </div>
                     </div>
                 </div>
@@ -207,7 +246,7 @@
                         <h3 class="card-title">CHOOLIP 정밀 전략 리포트</h3>
                         <p class="card-desc">시장 포지셔닝 분석 및 크리티컬 리스크 대안을 담은 정밀 분석 리포트 V2.</p>
                         <div class="card-footer">
-                            <a href="./docs/reports/premium_precision_report_v2.html" class="btn btn-p">리포트 열기</a>
+                            <a href="./Desktop/%EC%8A%A4%ED%82%AC/docs/reports/premium_precision_report_v2.html" class="btn btn-p">리포트 열기</a>
                         </div>
                     </div>
                 </div>
@@ -255,7 +294,7 @@
                         <h3 class="card-title">안얼음 Ice Report</h3>
                         <p class="card-desc">채널 정체성 확립과 시그니처 비주얼 톤앤매너 시스템 구축을 위한 전략 보고서.</p>
                         <div class="card-footer">
-                            <a href="./얼음/08_ice_report_visualized_v3.html" class="btn btn-p">리포트 열기</a>
+                            <a href="./얼음/ice_report_v4.html" class="btn btn-p">리포트 열기</a>
                         </div>
                     </div>
                 </div>
@@ -278,15 +317,27 @@
         <section class="section-block">
             <div class="section-header"><h2>✏️ Artist Intelligence Center <span class="section-count">1 ANALYSIS</span></h2></div>
             <div class="grid">
-                <!-- Bastien -->
+                <!-- Bastien Deep Dossier (30P) -->
+                <div class="card" style="border: 2px solid var(--accent-artist);">
+                    <div class="card-visual">📓</div>
+                    <div class="card-body">
+                        <div class="card-tag" style="color:var(--accent-artist);">SPECIAL DOSSIER (30P)</div>
+                        <h3 class="card-title">비베스: 얼티밋 모노그래프 (60P)</h3>
+                        <p class="card-desc">바스티앙 비베스의 예술 세계를 30페이지 분량의 정보량으로 압축 분석한 최상위 비주얼 페이퍼.</p>
+                        <div class="card-footer">
+                            <a href="./bastien-vives-analysis/bastien_vives_deep_dossier.html">도시에 열기</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Bastien V2 -->
                 <div class="card">
                     <div class="card-visual">🏊</div>
                     <div class="card-body">
-                        <div class="card-tag" style="color:var(--accent-artist);">Artist Hub</div>
-                        <h3 class="card-title">바스티앙 비베스 분석</h3>
-                        <p class="card-desc">육체의 언어와 랏슈 트레(Trait Lâché)의 미학을 담은 바스티앙 비베스 작품 정밀 분석 보고서.</p>
+                        <div class="card-tag" style="color:var(--accent-artist);">Artist Analysis</div>
+                        <h3 class="card-title">바스티앙 비베스 분석 V2</h3>
+                        <p class="card-desc">육체의 언어와 랏슈 트레(Trait Lâché)의 미학을 담은 정밀 분석 보고서.</p>
                         <div class="card-footer">
-                            <a href="./bastien-vives-analysis/04_visualization_v2.html" class="btn btn-p">리포트 열기</a>
+                            <a href="./bastien-vives-analysis/bastien_vives_deep_dossier.html">리포트 열기</a>
                         </div>
                     </div>
                 </div>
@@ -304,7 +355,7 @@
                         <h3 class="card-title">Premium Report System</h3>
                         <p class="card-desc">Bento-grid 레이아웃과 고해상도 시각화 모듈이 집약된 새로운 리포트 디자인 시스템.</p>
                         <div class="card-footer">
-                            <a href="./docs/premium_report_showcase.html" class="btn btn-p">쇼케이스 열기</a>
+                            <a href="./premium_report_showcase.html" class="btn btn-p">쇼케이스 열기</a>
                         </div>
                     </div>
                 </div>
@@ -551,7 +602,7 @@
             btnEl.style.opacity = '0.6';
         }
 
-        const cmd = isYt ? `python3 projects/youtube-manager/engine.py stats` : `python3 run.py --project ${p} --auto`;
+        const cmd = isYt ? `python3 /Users/kk/Desktop/스킬/projects/youtube-manager/engine.py stats` : `python3 run.py --project ${p} --auto`;
         try {
             const r = await fetch(`${API}/execute?cmd_str=${encodeURIComponent(cmd)}`, {method:'POST'});
             const d = await r.json();
@@ -560,7 +611,25 @@
                 document.getElementById('tid').innerText = currentTid;
                 appendLog(`🚀 Execution started (Task: ${d.task_id})`);
                 await pollLogs(d.task_id, 10000); // 10초간 로그 확인
-                
+
+                // YouTube stats: 로그에서 JSON 파싱 후 DOM 즉시 업데이트
+                if (isYt) {
+                    var logText = document.getElementById('logs').textContent;
+                    var jsonMatch = logText.match(/\{[\s\S]*?"my_channel"[\s\S]*?\}/);
+                    if (jsonMatch) {
+                        try {
+                            var parsed = JSON.parse(jsonMatch[0]);
+                            var ch = parsed.my_channel;
+                            if (ch) {
+                                document.getElementById('yt-subs').textContent   = Number(ch.subs   || 0).toLocaleString();
+                                document.getElementById('yt-views').textContent  = Number(ch.views  || 0).toLocaleString();
+                                document.getElementById('yt-videos').textContent = Number(ch.videos || 0).toLocaleString();
+                                appendLog('📊 수치 실시간 반영 완료: ' + ch.subs + ' subs / ' + ch.views + ' views / ' + ch.videos + ' videos');
+                            }
+                        } catch(pe) { /* JSON 파싱 실패 시 무시 */ }
+                    }
+                }
+
                 if (statusEl) {
                     statusEl.textContent = '✅ 업데이트 명령 전달 완료';
                     statusEl.style.color = '#10b981';
