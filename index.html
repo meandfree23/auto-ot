@@ -183,10 +183,49 @@
             </div>
         </section>
 
-        <!-- STRATEGIC REPORTS (FULL 5 CARDS RESTORED WITH HIGH FIDELITY) -->
+        <!-- STRATEGIC REPORTS -->
         <section class="section-block" id="reports-section">
-            <div class="section-header"><h2>📊 Strategic Research Archive <span class="section-count">7 REPORTS</span></h2></div>
+            <div class="section-header"><h2>📊 Strategic Research Archive <span class="section-count" id="reportMeta">10 REPORTS</span></h2></div>
             <div class="grid">
+                <!-- CARD: Brand in Space 26년 수입 프로젝트 -->
+                <div class="card">
+                    <div class="card-visual">🌌</div>
+                    <div class="card-body">
+                        <div class="card-tag" style="color:var(--accent-report);">OT 전략 분석</div>
+                        <h3 class="card-title">Brand in Space (2026) — 정밀 분석</h3>
+                        <p class="card-desc">Brand in Space 26년 수입 캠페인에 대한 다각도 마켓, 전략, 크리에이티브 시사점 리포트.</p>
+                        <div class="card-footer">
+                            <span style="font-size:11px; color:var(--text-secondary);">2026-04-16 · v1.0</span>
+                            <a href="./reports/20260416_084940_1Q-6_ot_precision_report.html" class="btn btn-p" target="_blank">리포트 열기</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- CARD: Downy White Musk — 전략 리포트 (OT 전략 분석) -->
+                <div class="card">
+                    <div class="card-visual">🌸</div>
+                    <div class="card-body">
+                        <div class="card-tag" style="color:var(--accent-report);">OT 전략 분석</div>
+                        <h3 class="card-title">Downy White Musk — 전략 리포트</h3>
+                        <p class="card-desc">Malone Lev 프로덕션 입찰 및 다우니 화이트 머스크 프리미엄 포지셔닝을 위한 정밀 전략 리포트.</p>
+                        <div class="card-footer">
+                            <span style="font-size:11px; color:var(--text-secondary);">2026-04-15 · v1.0</span>
+                            <a href="./reports/20260415_075019_1aMj_ot_precision_report.html" class="btn btn-p" target="_blank">리포트 열기</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- CARD: [아폴로] 광주 중앙공원_홍보 콘텐츠_기획안 (OT 전략 분석) -->
+                <div class="card">
+                    <div class="card-visual">🏞️</div>
+                    <div class="card-body">
+                        <div class="card-tag" style="color:var(--accent-report);">OT 전략 분석</div>
+                        <h3 class="card-title">[아폴로] 광주 중앙공원_홍보 콘텐츠_기획안</h3>
+                        <p class="card-desc">광주 중앙공원 홍보 및 타겟 맞춤형 콘텐츠 기획안에 대한 OT 분석 엔진 결과 보고서.</p>
+                        <div class="card-footer">
+                            <span style="font-size:11px; color:var(--text-secondary);">2026-04-15 · v1.0</span>
+                            <a href="./reports/20260414_223223_15L0_ot_precision_report.html" class="btn btn-p" target="_blank">리포트 열기</a>
+                        </div>
+                    </div>
+                </div>
                 <!-- CHOOLIP Master Proposal -->
                 <div class="card" style="border-color: var(--accent-secondary);">
                     <div class="card-visual">💎</div>
@@ -255,7 +294,7 @@
                         <h3 class="card-title">안얼음 Ice Report</h3>
                         <p class="card-desc">채널 정체성 확립과 시그니처 비주얼 톤앤매너 시스템 구축을 위한 전략 보고서.</p>
                         <div class="card-footer">
-                            <a href="./얼음/08_ice_report_visualized_v3.html" class="btn btn-p">리포트 열기</a>
+                            <a href="./얼음/ice_report_v4.html" class="btn btn-p">리포트 열기</a>
                         </div>
                     </div>
                 </div>
@@ -563,7 +602,7 @@
             btnEl.style.opacity = '0.6';
         }
 
-        const cmd = isYt ? `python3 projects/youtube-manager/engine.py stats` : `python3 run.py --project ${p} --auto`;
+        const cmd = isYt ? `python3 /Users/kk/Desktop/스킬/projects/youtube-manager/engine.py stats` : `python3 run.py --project ${p} --auto`;
         try {
             const r = await fetch(`${API}/execute?cmd_str=${encodeURIComponent(cmd)}`, {method:'POST'});
             const d = await r.json();
