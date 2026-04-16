@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="ko" class="theme-dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI 자동화 및 에이전트 전략 — 리서치 분석</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+KR:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/html-to-image@1.11.11/dist/html-to-image.min.js"></script>
+  <style>
+    /* ==============================
+       THEME: DARK
+    ============================== */
+    html.theme-dark {
+      --bg: #0A0A0A;
+      --surface: #101410;
+      --surface-hover: #161c16;
+      --border: rgba(255,255,255,0.07);
+      --text: #EDEDED;
+      --text-secondary: #888;
+      --accent: #10b981;
+      --accent-secondary: #34d399;
+      --positive: #22c55e;
+      --negative: #ef4444;
+      --warning: #f59e0b;
+    }
+    /* ==============================
+       THEME: LIGHT
+    ============================== */
+    html.theme-light {
+      --bg: #FAFAF9;
+      --surface: #ffffff;
+      --surface-hover: #f0fdf4;
+      --border: rgba(0,0,0,0.07);
+      --text: #0f172a;
+      --text-secondary: #64748b;
+      --accent: #059669;
+      --accent-secondary: #10b981;
+      --positive: #16a34a;
+      --negative: #dc2626;
+      --warning: #d97706;
+    }
+
+    /* ==============================
+       BASE
+    ============================== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', 'Noto Sans KR', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      font-size: 1rem;
+      transition: background 0.3s, color 0.3s;
+      overflow-x: hidden;
+    }
+
+    /* Skip link */
+    .skip-link {
+      position: absolute; top: -40px; left: 16px;
+      background: var(--accent); color: #fff;
+      padding: 8px 16px; border-radius: 4px; z-index: 9999;
+      text-decoration: none; font-size: 0.875rem; transition: top 0.2s;
+    }
+    .skip-link:focus { top: 8px; }
+
+    /* ==============================
+       UTILITY MENU
+    ============================== */
+    .viz-menu {
+      position: fixed; top: 20px; right: 20px; z-index: 1000;
+    }
+    .viz-menu-toggle {
+      background: var(--surface); border: 1px solid var(--border);
+      color: var(--text); padding: 8px 14px; border-radius: 8px;
+      cursor: pointer; font-size: 0.8rem; font-family: inherit;
+      display: flex; align-items: center; gap: 6px;
+      transition: background 0.2s;
+    }
+    .viz-menu-toggle:hover { background: var(--surface-hover); }
+    .viz-menu-dropdown {
+      display: none; position: absolute; right: 0; top: calc(100% + 8px);
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 10px; min-width: 160px; overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+    }
+    .viz-menu-dropdown.open { display: block; }
+    .viz-menu-item {
+      display: block; width: 100%; padding: 10px 16px;
+      background: none; border: none; color: var(--text);
+      font-family: inherit; font-size: 0.8rem; text-align: left;
+      cursor: pointer; transition: background 0.15s;
+    }
+    .viz-menu-item:hover { background: var(--surface-hover); color: var(--accent); }
+
+    /* ==============================
+       NAVIGATION
+    ============================== */
+    .site-nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 900;
+      background: rgba(10,10,10,0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px; height: 56px;
+      display: flex; align-items: center; justify-content: space-between;
+      transition: background 0.3s;
+    }
+    html.theme-light .site-nav { background: rgba(250,250,249,0.92); }
+    .nav-brand { font-size: 0.85rem; font-weight: 700; color: var(--accent); }
+    .nav-links { display: flex; gap: 4px; list-style: none; }
+    .nav-links a {
+      color: var(--text-secondary); text-decoration: none;
+      font-size: 0.78rem; padding: 6px 10px; border-radius: 6px;
+      transition: color 0.2s, background 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); background: var(--surface); }
+    .scroll-progress {
+      position: fixed; top: 56px; left: 0; height: 2px;
+      background: var(--accent); z-index: 901; width: 0;
+      transition: width 0.1s linear;
+    }
+
+    /* ==============================
+       LAYOUT
+    ============================== */
+    main { padding-top: 56px; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    section { padding: 80px 0; }
+
+    /* ==============================
+       HERO
+    ============================== */
+    #hero {
+      min-height: 88vh; display: flex; align-items: center;
+      padding-top: 80px; padding-bottom: 80px;
+      background:
+        radial-gradient(ellipse 70% 50% at 50% 0%, rgba(16,185,129,0.1) 0%, transparent 65%);
+      position: relative;
+    }
+    .hero-label {
+      display: inline-block; font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--accent); border: 1px solid var(--accent);
+      padding: 4px 10px; border-radius: 4px; margin-bottom: 20px;
+    }
+    .hero-title {
+      font-size: clamp(2.4rem, 5.5vw, 3.8rem); font-weight: 800;
+      line-height: 1.12; margin-bottom: 18px;
+    }
+    .hero-title span { color: var(--accent); }
+    .hero-subtitle {
+      font-size: 1.05rem; color: var(--text-secondary);
+      max-width: 600px; margin-bottom: 40px; line-height: 1.75;
+    }
+    .kpi-row {
+      display: flex; gap: 32px; flex-wrap: wrap; margin-bottom: 40px;
+    }
+    .kpi-item { display: flex; flex-direction: column; gap: 2px; }
+    .kpi-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.09em; color: var(--text-secondary); }
+    .kpi-value { font-size: 1.6rem; font-weight: 800; color: var(--accent); }
+    .kpi-sub { font-size: 0.75rem; color: var(--text-secondary); }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; }
+    .badge {
+      font-size: 0.72rem; padding: 5px 12px;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 20px; color: var(--text-secondary);
+    }
+    .badge.green {
+      background: rgba(16,185,129,0.1);
+      border-color: rgba(16,185,129,0.3);
+      color: var(--accent-secondary);
+    }
+
+    /* ==============================
+       SECTION HEADER
+    ============================== */
+    .section-header {
+      display: flex; align-items: flex-start; gap: 16px; margin-bottom: 48px;
+    }
+    .section-num {
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--accent);
+      padding: 5px 10px; border: 1px solid var(--accent);
+      border-radius: 6px; white-space: nowrap; margin-top: 4px;
+    }
+    .section-title { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 700; line-height: 1.25; }
+    .section-desc { font-size: 0.9rem; color: var(--text-secondary); margin-top: 6px; line-height: 1.65; }
+
+    /* ==============================
+       BENTO CARDS
+    ============================== */
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .bento-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 12px; padding: 24px;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .bento-card:hover { background: var(--surface-hover); border-color: rgba(16,185,129,0.25); }
+    .card-tag {
+      font-size: 0.68rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.08em; color: var(--accent); margin-bottom: 8px;
+    }
+    .card-title { font-size: 1rem; font-weight: 700; margin-bottom: 10px; line-height: 1.4; }
+    .card-body { font-size: 0.875rem; color: var(--text-secondary); line-height: 1.7; }
+    .card-body ul { list-style: none; }
+    .card-body li { padding-left: 16px; position: relative; margin-bottom: 4px; }
+    .card-body li::before { content: '—'; position: absolute; left: 0; color: var(--accent); }
+
+    /* ==============================
+       TABLE
+    ============================== */
+    .styled-table {
+      width: 100%; border-collapse: collapse;
+      border-radius: 12px; overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .styled-table th {
+      background: var(--surface); padding: 14px 18px;
+      font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.09em;
+      color: var(--accent); font-weight: 700; text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    .styled-table td {
+      padding: 16px 18px; font-size: 0.875rem;
+      border-bottom: 1px solid var(--border); vertical-align: top;
+    }
+    .styled-table tr:last-child td { border-bottom: none; }
+    .styled-table tr:hover td { background: var(--surface-hover); }
+    .styled-table .td-name { font-weight: 700; color: var(--text); }
+    .styled-table .td-secondary { color: var(--text-secondary); }
+
+    /* ==============================
+       STEP CARDS
+    ============================== */
+    .step-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 18px;
+    }
+    .step-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 12px; padding: 22px; display: flex; gap: 16px;
+      transition: background 0.2s;
+    }
+    .step-card:hover { background: var(--surface-hover); }
+    .step-num {
+      min-width: 38px; height: 38px; border-radius: 10px;
+      background: rgba(16,185,129,0.12); display: flex;
+      align-items: center; justify-content: center;
+      font-size: 0.82rem; font-weight: 800; color: var(--accent);
+    }
+    .step-title { font-size: 0.92rem; font-weight: 700; margin-bottom: 6px; line-height: 1.4; }
+    .step-body { font-size: 0.83rem; color: var(--text-secondary); line-height: 1.6; }
+
+    /* ==============================
+       CHART
+    ============================== */
+    .chart-wrapper {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 12px; padding: 28px;
+      min-height: 380px; position: relative;
+    }
+    .chart-title {
+      font-size: 0.78rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.09em; color: var(--text-secondary);
+      margin-bottom: 20px;
+    }
+
+    /* ==============================
+       QUOTE BLOCK
+    ============================== */
+    .quote-block {
+      background: var(--surface); border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 12px 12px 0;
+      padding: 28px 32px;
+    }
+    .quote-text {
+      font-size: clamp(1rem, 2vw, 1.2rem); font-weight: 500;
+      line-height: 1.75; color: var(--text); font-style: italic;
+      margin-bottom: 10px;
+    }
+    .quote-attr { font-size: 0.78rem; color: var(--text-secondary); font-style: normal; }
+
+    /* ==============================
+       CONCLUSION GRID
+    ============================== */
+    .conclusion-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 14px;
+    }
+    .conclusion-item {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 10px; padding: 16px;
+      transition: background 0.2s;
+    }
+    .conclusion-item:hover { background: var(--surface-hover); }
+    .conclusion-num {
+      font-size: 0.68rem; font-weight: 800; color: var(--accent);
+      margin-bottom: 6px; letter-spacing: 0.05em;
+    }
+    .conclusion-text { font-size: 0.85rem; font-weight: 500; line-height: 1.5; }
+
+    /* ==============================
+       DIVIDER
+    ============================== */
+    .divider { border: none; border-top: 1px solid var(--border); margin: 0; }
+
+    /* ==============================
+       ANIMATIONS
+    ============================== */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .animate { animation: fadeUp 0.6s ease forwards; }
+    .animate-d1 { animation-delay: 0.1s; }
+    .animate-d2 { animation-delay: 0.2s; }
+    .animate-d3 { animation-delay: 0.3s; }
+
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.55s ease, transform 0.55s ease; }
+    .revealed { opacity: 1; transform: none; }
+
+    /* ==============================
+       FOOTER
+    ============================== */
+    footer { border-top: 1px solid var(--border); padding: 40px 24px; text-align: center; }
+    .footer-text { font-size: 0.78rem; color: var(--text-secondary); }
+    .footer-text a { color: var(--accent); text-decoration: none; }
+
+    /* ==============================
+       RESPONSIVE
+    ============================== */
+    @media (max-width: 768px) {
+      .kpi-row { gap: 20px; }
+      .nav-links { display: none; }
+      section { padding: 60px 0; }
+    }
+    @media (max-width: 375px) {
+      .container { padding: 0 16px; }
+      .hero-title { font-size: 2rem; }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">본문으로 이동</a>
+
+  <!-- UTILITY MENU -->
+  <div class="viz-menu">
+    <button class="viz-menu-toggle" onclick="toggleMenu()">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
+      메뉴
+    </button>
+    <div class="viz-menu-dropdown" id="vizMenuDropdown">
+      <button class="viz-menu-item" onclick="cycleTheme()">테마 전환</button>
+      <button class="viz-menu-item" onclick="downloadPng()">PNG 다운로드</button>
+      <button class="viz-menu-item" onclick="window.print()">인쇄</button>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <nav class="site-nav" aria-label="주 내비게이션">
+    <span class="nav-brand">AI 자동화 및 에이전트 전략</span>
+    <ul class="nav-links">
+      <li><a href="#stack">기술 스택</a></li>
+      <li><a href="#workflow">워크플로우</a></li>
+      <li><a href="#skill">AI 스킬</a></li>
+      <li><a href="#data">효율 데이터</a></li>
+      <li><a href="#trend">미래 트렌드</a></li>
+    </ul>
+  </nav>
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <main id="main-content">
+
+    <!-- HERO -->
+    <section id="hero">
+      <div class="container">
+        <div class="hero-label animate">리서치 분석 · 2026</div>
+        <h1 class="hero-title animate animate-d1">
+          사고의 영역은 <span>최대화</span>,<br>도구의 영역은 최소화
+        </h1>
+        <p class="hero-subtitle animate animate-d2">
+          AI 자동화 및 에이전트 전략 분석. Claude · NotebookLM · Visualize Engine 기반
+          6단계 워크플로우와 실무 자동화 루프를 해부한다.
+        </p>
+        <div class="kpi-row animate animate-d3">
+          <div class="kpi-item">
+            <span class="kpi-label">디자인 효율화</span>
+            <span class="kpi-value">90%</span>
+            <span class="kpi-sub">AI 처리 비율</span>
+          </div>
+          <div class="kpi-item">
+            <span class="kpi-label">초안 작성</span>
+            <span class="kpi-value">70%</span>
+            <span class="kpi-sub">시간 단축 추정</span>
+          </div>
+          <div class="kpi-item">
+            <span class="kpi-label">워크플로우</span>
+            <span class="kpi-value">6단계</span>
+            <span class="kpi-sub">마스터 프로세스</span>
+          </div>
+          <div class="kpi-item">
+            <span class="kpi-label">핵심 도구</span>
+            <span class="kpi-value">3종</span>
+            <span class="kpi-sub">기술 스택</span>
+          </div>
+        </div>
+        <div class="badge-row animate animate-d3">
+          <span class="badge green">Claude 4.6</span>
+          <span class="badge green">NotebookLM</span>
+          <span class="badge green">HIITL</span>
+          <span class="badge">Agentic Desktop</span>
+          <span class="badge">Bento Grid</span>
+          <span class="badge">자동화 루프</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 1: TECH STACK -->
+    <section id="stack">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-num">01</div>
+          <div>
+            <h2 class="section-title">핵심 기술 스택 분석</h2>
+            <p class="section-desc">3개 핵심 솔루션이 조합되어 자동화 파이프라인을 완성한다</p>
+          </div>
+        </div>
+
+        <div class="reveal" style="overflow-x:auto;">
+          <table class="styled-table">
+            <thead>
+              <tr>
+                <th>솔루션</th>
+                <th>핵심 역할</th>
+                <th>주요 강점</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="td-name">Anthropic Claude 4.6</td>
+                <td class="td-secondary">논리 엔진 및 스타일 가이드</td>
+                <td class="td-secondary">정교한 비즈니스 로직 처리 역량</td>
+              </tr>
+              <tr>
+                <td class="td-name">Google NotebookLM</td>
+                <td class="td-secondary">데이터 구조화 및 시각적 브릿지</td>
+                <td class="td-secondary">방대한 자료의 맥락 파악 및 요약</td>
+              </tr>
+              <tr>
+                <td class="td-name">Visualize Engine</td>
+                <td class="td-secondary">프리미엄 HTML/PPTX 렌더링</td>
+                <td class="td-secondary">Bento Grid 및 Chart.js 기반 시각화</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- SECTION 2: WORKFLOW -->
+    <section id="workflow">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-num">02</div>
+          <div>
+            <h2 class="section-title">효율적인 워크플로우 — 6단계 마스터 프로세스</h2>
+            <p class="section-desc">리서치부터 배포까지, 반복 가능한 표준 자동화 루프</p>
+          </div>
+        </div>
+
+        <div class="step-grid reveal">
+          <div class="step-card">
+            <div class="step-num">01</div>
+            <div>
+              <div class="step-title">리서치</div>
+              <div class="step-body">Gemini / NotebookLM을 통한 심층 자료 수집. 원본 소스를 업로드하고 5개 이상의 AI 쿼리로 핵심 인사이트를 추출한다.</div>
+            </div>
+          </div>
+          <div class="step-card">
+            <div class="step-num">02</div>
+            <div>
+              <div class="step-title">구조화</div>
+              <div class="step-body">10페이지 단위의 의미 있는 단락 배치. 섹션 흐름과 논리 순서를 먼저 잡고 콘텐츠를 채운다.</div>
+            </div>
+          </div>
+          <div class="step-card">
+            <div class="step-num">03</div>
+            <div>
+              <div class="step-title">보완 (HIITL)</div>
+              <div class="step-body">Human-in-the-Loop 프로세스를 통한 논리 및 흐름 강화. 사람이 AI 초안을 검토하고 방향성을 교정한다.</div>
+            </div>
+          </div>
+          <div class="step-card">
+            <div class="step-num">04</div>
+            <div>
+              <div class="step-title">시각화</div>
+              <div class="step-body">Visualize Engine으로 HTML 리포트 렌더링. 데이터는 Chart.js, 레이아웃은 Bento Grid, 다크/라이트 테마 완전 지원.</div>
+            </div>
+          </div>
+          <div class="step-card">
+            <div class="step-num">05</div>
+            <div>
+              <div class="step-title">검수</div>
+              <div class="step-body">완성된 HTML을 처음부터 통독하며 리딩 플로우·데이터 정확성·반응형 레이아웃을 점검한다.</div>
+            </div>
+          </div>
+          <div class="step-card">
+            <div class="step-num">06</div>
+            <div>
+              <div class="step-title">배포 · 아카이빙</div>
+              <div class="step-body">마스터 허브에 카드를 삽입하고 GitHub Pages로 발행. 리포트는 자동으로 리서치 아카이브에 영구 기록된다.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- SECTION 3: AI SKILL -->
+    <section id="skill">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-num">03</div>
+          <div>
+            <h2 class="section-title">Claude AI 스킬(Skill)의 개념과 효용</h2>
+            <p class="section-desc">일관성을 코드화한다 — 스킬은 반복 가능한 전문성의 저장소다</p>
+          </div>
+        </div>
+
+        <div class="bento-grid reveal" style="margin-bottom:40px;">
+          <div class="bento-card">
+            <div class="card-tag">핵심 가치 1</div>
+            <h3 class="card-title">일관된 스타일 복제</h3>
+            <div class="card-body">
+              <ul>
+                <li>회사 고유의 템플릿과 디자인 규칙을 모듈화</li>
+                <li>매번 동일한 품질의 결과물을 즉시 재현</li>
+                <li>팀원 누구나 전문가 수준의 아웃풋 생성 가능</li>
+              </ul>
+            </div>
+          </div>
+          <div class="bento-card">
+            <div class="card-tag">핵심 가치 2</div>
+            <h3 class="card-title">휘발성 극복</h3>
+            <div class="card-body">
+              <ul>
+                <li>로컬 저장소를 활용하여 매 대화마다 일관성 유지</li>
+                <li>컨텍스트 초기화에도 스킬이 행동 규칙을 복원</li>
+                <li>지식 손실 없이 장기 프로젝트 지속 가능</li>
+              </ul>
+            </div>
+          </div>
+          <div class="bento-card">
+            <div class="card-tag">핵심 가치 3</div>
+            <h3 class="card-title">비전문가 최적화</h3>
+            <div class="card-body">
+              <ul>
+                <li>복잡한 프롬프트 없이도 고품질 결과물 도출</li>
+                <li>스킬 이름 한 줄로 전문 프로세스를 호출</li>
+                <li>진입 장벽 제거 → 조직 전체의 AI 활용률 향상</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <blockquote class="quote-block reveal">
+          <p class="quote-text">"AI 기술 변화를 모두 배우기보다 '문제 해결 기획력'에 집중하라. 나만의 전용 Skill과 자동화 루프를 구축하는 것이 핵심 역량이다."</p>
+          <cite class="quote-attr">— AI 자동화 및 에이전트 전략 핵심 결론</cite>
+        </blockquote>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- SECTION 4: EFFICIENCY DATA -->
+    <section id="data">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-num">04</div>
+          <div>
+            <h2 class="section-title">AI 도입에 따른 업무 효율 변화 (추정)</h2>
+            <p class="section-desc">단계별 AI 처리 비율 — 사람의 역할은 기획과 최종 검수로 이동한다</p>
+          </div>
+        </div>
+
+        <div class="reveal">
+          <div class="chart-wrapper">
+            <div class="chart-title">업무 단계별 AI 처리 비율 (%)</div>
+            <canvas id="efficiencyChart" role="img" aria-label="AI 도입 후 업무 단계별 효율 변화 차트" style="max-height:300px;"></canvas>
+          </div>
+        </div>
+
+        <div class="bento-grid reveal" style="margin-top:24px;">
+          <div class="bento-card">
+            <div class="card-tag" style="color:var(--positive);">70% 효율화</div>
+            <h3 class="card-title">구조화 및 초안 작성</h3>
+            <div class="card-body">AI가 리서치 자료를 단락으로 구조화하고 초안을 생성. 사람은 방향성과 키 메시지만 결정한다.</div>
+          </div>
+          <div class="bento-card">
+            <div class="card-tag" style="color:var(--positive);">90% 효율화</div>
+            <h3 class="card-title">디자인 및 시각화</h3>
+            <div class="card-body">Visualize Engine이 레이아웃·차트·테마를 완전 자동 생성. 디자인 전문 지식 없이도 프리미엄 결과물 완성.</div>
+          </div>
+          <div class="bento-card">
+            <div class="card-tag" style="color:var(--warning);">15% 효율화</div>
+            <h3 class="card-title">최종 검수 및 수정</h3>
+            <div class="card-body">전략적 판단·톤·사실 확인은 여전히 사람의 영역. AI 오류 감지와 맥락 수정이 핵심 역할로 남는다.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- SECTION 5: FUTURE TREND -->
+    <section id="trend">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-num">05</div>
+          <div>
+            <h2 class="section-title">AI 에이전트 시장의 미래 트렌드</h2>
+            <p class="section-desc">도구에서 독립적 메커니즘으로 — 실무 환경의 패러다임 전환</p>
+          </div>
+        </div>
+
+        <div class="bento-grid reveal" style="margin-bottom:40px;">
+          <div class="bento-card">
+            <div class="card-tag">트렌드 1</div>
+            <h3 class="card-title">에이전트 데스크탑 자동화 (Agentic Desktop)</h3>
+            <div class="card-body">
+              <ul>
+                <li>단순 채팅 도구를 넘어 실무 환경 전체를 제어</li>
+                <li>파일 관리·API 호출·브라우저 조작을 AI가 자율 수행</li>
+                <li>사람은 목표만 설정, 실행은 에이전트가 담당</li>
+              </ul>
+            </div>
+          </div>
+          <div class="bento-card">
+            <div class="card-tag">트렌드 2</div>
+            <h3 class="card-title">'독립 메커니즘화'가 기업 경쟁력의 핵심</h3>
+            <div class="card-body">
+              <ul>
+                <li>단순 도구 활용을 넘어선 자율 운영 시스템 구축</li>
+                <li>기업별 맞춤 에이전트 파이프라인이 차별화 요소</li>
+                <li>AI를 얼마나 잘 '훈련'시키는가가 경쟁력</li>
+              </ul>
+            </div>
+          </div>
+          <div class="bento-card">
+            <div class="card-tag">트렌드 3</div>
+            <h3 class="card-title">비개발자 중심 HIITL 자동화 확산</h3>
+            <div class="card-body">
+              <ul>
+                <li>Human-in-the-Loop 자동화가 전 산업군으로 확산</li>
+                <li>코딩 없이 워크플로우를 설계·배포하는 시대 도래</li>
+                <li>기획력과 판단력이 가장 희소한 자원이 된다</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Conclusion grid -->
+        <h3 class="reveal" style="font-size:0.78rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--text-secondary); margin-bottom:20px;">결론 — 실무 방향성 3가지</h3>
+        <div class="conclusion-grid reveal">
+          <div class="conclusion-item">
+            <div class="conclusion-num">결론 01</div>
+            <div class="conclusion-text">AI 기술 변화를 모두 배우기보다 '문제 해결 기획력'에 집중한다</div>
+          </div>
+          <div class="conclusion-item">
+            <div class="conclusion-num">결론 02</div>
+            <div class="conclusion-text">나만의 전용 Skill과 자동화 루프를 구축하는 것이 핵심 역량이다</div>
+          </div>
+          <div class="conclusion-item">
+            <div class="conclusion-num">결론 03</div>
+            <div class="conclusion-text">리서치 아카이브가 제안하는 미래 실무: 사고 최대화 · 도구 최소화</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p class="footer-text">
+      AI 자동화 및 에이전트 전략 리서치 분석 · 2026<br>
+      <a href="https://meandfree23.github.io/auto-ot/" target="_blank">안티그래비티 OT 마스터 허브</a>로 돌아가기
+    </p>
+  </footer>
+
+  <script>
+    // REQUIRED: Chart.js animation off immediately
+    Chart.defaults.animation = false;
+
+    // ==============================
+    // THEME
+    // ==============================
+    var themes = ['theme-dark', 'theme-light'];
+    var currentThemeIndex = 0;
+
+    function cycleTheme() {
+      var html = document.documentElement;
+      html.classList.remove(themes[currentThemeIndex]);
+      currentThemeIndex = (currentThemeIndex + 1) % themes.length;
+      html.classList.add(themes[currentThemeIndex]);
+      onThemeChange();
+      closeMenu();
+    }
+
+    function onThemeChange() {
+      var isDark = document.documentElement.classList.contains('theme-dark');
+      // nav
+      var nav = document.querySelector('.site-nav');
+      if (nav) {
+        nav.style.background = isDark ? 'rgba(10,10,10,0.88)' : 'rgba(250,250,249,0.92)';
+      }
+      // rebuild chart
+      buildEfficiencyChart();
+    }
+
+    // ==============================
+    // MENU
+    // ==============================
+    function toggleMenu() {
+      document.getElementById('vizMenuDropdown').classList.toggle('open');
+    }
+    function closeMenu() {
+      document.getElementById('vizMenuDropdown').classList.remove('open');
+    }
+    document.addEventListener('click', function(e) {
+      var menu = document.querySelector('.viz-menu');
+      if (menu && !menu.contains(e.target)) closeMenu();
+    });
+
+    // ==============================
+    // PNG DOWNLOAD
+    // ==============================
+    function downloadPng() {
+      closeMenu();
+      if (typeof htmlToImage !== 'undefined') {
+        htmlToImage.toPng(document.body).then(function(dataUrl) {
+          var link = document.createElement('a');
+          link.download = 'ai-automation-agents-report.png';
+          link.href = dataUrl;
+          link.click();
+        }).catch(function(err) { console.warn('PNG 저장 실패:', err); });
+      } else {
+        window.print();
+      }
+    }
+
+    // ==============================
+    // SCROLL PROGRESS
+    // ==============================
+    window.addEventListener('scroll', function() {
+      var scrollTop = window.scrollY || document.documentElement.scrollTop;
+      var docH = document.documentElement.scrollHeight - window.innerHeight;
+      var pct = docH > 0 ? (scrollTop / docH) * 100 : 0;
+      var bar = document.getElementById('scrollProgress');
+      if (bar) bar.style.width = pct + '%';
+    }, { passive: true });
+
+    // ==============================
+    // CHART: ChartManager pattern
+    // ==============================
+    var ChartManager = {
+      instances: {},
+      destroy: function(id) {
+        if (this.instances[id]) {
+          this.instances[id].destroy();
+          delete this.instances[id];
+        }
+      },
+      register: function(id, instance) {
+        this.instances[id] = instance;
+      }
+    };
+
+    function buildEfficiencyChart() {
+      var ctx = document.getElementById('efficiencyChart');
+      if (!ctx) return;
+
+      var isDark = document.documentElement.classList.contains('theme-dark');
+      var accentColor = isDark ? '#10b981' : '#059669';
+      var warningColor = isDark ? '#f59e0b' : '#d97706';
+      var textColor = isDark ? '#888' : '#64748b';
+      var gridColor = isDark ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.06)';
+      var bgColor = isDark ? '#1C1C1C' : '#FFFFFF';
+      var titleColor = isDark ? '#EDEDED' : '#0f172a';
+
+      ChartManager.destroy('efficiency');
+
+      var instance = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ['구조화 및 초안 작성', '디자인 및 시각화', '최종 검수 및 수정'],
+          datasets: [{
+            label: 'AI 처리 비율 (%)',
+            data: [70, 90, 15],
+            backgroundColor: [accentColor, accentColor, warningColor],
+            borderRadius: 10,
+            borderSkipped: false,
+            barThickness: 48
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              enabled: true,
+              backgroundColor: bgColor,
+              titleColor: titleColor,
+              bodyColor: titleColor,
+              padding: 12,
+              cornerRadius: 8,
+              displayColors: false,
+              callbacks: {
+                label: function(ctx) { return ctx.parsed.y + '% AI 처리'; }
+              }
+            }
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              max: 100,
+              grid: { color: gridColor, drawBorder: false },
+              ticks: { color: textColor, font: { size: 12 }, callback: function(v) { return v + '%'; } }
+            },
+            x: {
+              grid: { display: false },
+              ticks: { color: textColor, font: { size: 12 } }
+            }
+          },
+          layout: { padding: { top: 10 } }
+        }
+      });
+
+      ChartManager.register('efficiency', instance);
+    }
+
+    // ==============================
+    // INTERSECTION OBSERVER
+    // ==============================
+    var revealObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(function(el) {
+      revealObserver.observe(el);
+    });
+
+    // ==============================
+    // INIT
+    // ==============================
+    window.addEventListener('load', function() {
+      buildEfficiencyChart();
+      onThemeChange();
+    });
+  </script>
+</body>
+</html>
